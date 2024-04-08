@@ -1,7 +1,10 @@
+import 'package:bunya_app/pages/OTP_Pages/verify_otp_page.dart';
 import 'package:bunya_app/pages/Office%20pages/office%20auth%20pages/sign%20up%20page/bloc/sign_up_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'pages/OTP_Pages/change_password_page.dart';
+import 'pages/OTP_Pages/verify_email_page.dart';
 import 'pages/Office pages/office auth pages/sign up page/signup_page.dart';
 import 'pages/Office pages/office auth pages/signIn page/signin_page.dart';
 import 'pages/costumer pages/costumer auth pages/signIn page/signin_customer_page.dart';
@@ -24,7 +27,7 @@ class MainApp extends StatelessWidget {
         },
         debugShowCheckedModeBanner: false,
         
-        home: SigninCustomerPage()),
+        home: VerifyEmailPage()),
       
     );
   }

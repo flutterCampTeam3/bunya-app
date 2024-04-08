@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../widgets/auth/signin_text_field_auth.dart';
+import '../../../OTP_Pages/verify_email_page.dart';
 import '../sign up page/signup_page.dart';
 import 'bloc/sign_in_bloc.dart';
 import 'widgets/page_header_signin.dart';
@@ -82,7 +83,7 @@ class SigninPage extends StatelessWidget {
                                     padding: const EdgeInsets.all(0)),
                                 onPressed: () {
                                   // Here VerifyEmailPage 
-                                  // context.pushTo(view: VerifyEmailPage());
+                                  context.pushTo(view: VerifyEmailPage());
                                 },
                                 child: Text(
                                   "هل نسيت كلمة المرور؟",

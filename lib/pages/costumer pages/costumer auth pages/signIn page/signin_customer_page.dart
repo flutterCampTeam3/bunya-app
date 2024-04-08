@@ -1,3 +1,4 @@
+import 'package:bunya_app/pages/OTP_Pages/verify_email_page.dart';
 import 'package:bunya_app/widgets/auth/signin_pass_textfiled.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
@@ -82,7 +83,7 @@ class SigninCustomerPage extends StatelessWidget {
                                     padding: const EdgeInsets.all(0)),
                                 onPressed: () {
                                   // Here VerifyEmailPage 
-                                  // context.pushTo(view: VerifyEmailPage());
+                                  context.pushTo(view: VerifyEmailPage());
                                 },
                                 child: Text(
                                   "هل نسيت كلمة المرور؟",
