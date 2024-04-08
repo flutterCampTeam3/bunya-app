@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../helper/sized.dart';
-import '../signin page/sign_in.dart';
+import '../signIn page/signin_page.dart';
 import '../../../../widgets/auth/button_widget.dart';
 import 'bloc/sign_up_bloc.dart';
 import '../../../../widgets/auth/page_header.dart';
@@ -31,9 +31,9 @@ class SignUpPage extends StatelessWidget {
         final bloc = context.read<SignUpBloc>();
         return Scaffold(
           appBar: PreferredSize(
-            preferredSize: Size(MediaQuery.of(context).size.width, 280),
+            preferredSize: Size(MediaQuery.of(context).size.width, 210),
             child: const PageHeader(
-              height: 150,
+              height: 210,
               bottomText: "تسجيل حساب",
             ),
           ),
@@ -116,13 +116,14 @@ class SignUpPage extends StatelessWidget {
                                         style: TextStyle(
                                           fontSize: 15,
                                           color: darkBrown,
+                                          fontWeight: FontWeight.w600,
                                           fontFamily: GoogleFonts.vazirmatn().fontFamily,
                                         ),
                                         recognizer: TapGestureRecognizer()
                                           ..onTap = () {
                                             Navigator.pushAndRemoveUntil(
                                               context,
-                                              MaterialPageRoute(builder: (context) => SignIn()),
+                                              MaterialPageRoute(builder: (context) => SigninPage()),
                                               (Route<dynamic> route) => false,
                                             );
                                           },

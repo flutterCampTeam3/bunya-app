@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 
-class PageHeader extends StatelessWidget {
-  const PageHeader({
+class PageHeaderSignIn extends StatelessWidget {
+  const PageHeaderSignIn({
     super.key, required this.bottomText, required this.height, this.showImage = true, this.canGoBack = false, this.showActionButton, this.onActionTap, this.actionButtonIcon,
   });
   final String bottomText;
@@ -26,8 +26,8 @@ class PageHeader extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
           borderRadius: const BorderRadius.only(
-              bottomLeft: Radius.circular(40),
-             ),
+              bottomLeft: Radius.circular(60),
+            ),
           gradient: LinearGradient(
               colors: [whiteBrown, freewhiteBrown],
               begin: Alignment.topCenter,
@@ -47,7 +47,7 @@ class PageHeader extends StatelessWidget {
               ),
               // (showImage!) ? gapH15 : sizedBoxEmpty,
               // (showImage!) ? Image.asset(
-              //   '',
+              //   'assets/images/splashscreenlogo.png',
               //   width: 120,
               // ) : sizedBoxEmpty,
               Align(

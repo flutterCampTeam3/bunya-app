@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:bunya_app/helper/colors.dart';
 import 'package:flutter/material.dart';
 
 extension Screen on BuildContext {
@@ -14,6 +17,53 @@ extension Screen on BuildContext {
         .push(MaterialPageRoute(builder: (context) => view))
         .then(onValue ?? (value) {});
   }
+
+ getDialog({required String content,required String imagePath}) {
+  showDialog(
+    context: this,
+    builder: (context) {
+      return AlertDialog(
+        backgroundColor: freewhiteBrown,
+        elevation: 0,
+        content: SizedBox(
+          height: 200,
+          width: 200,
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset(
+                  imagePath,
+                  width: 100,
+                  height: 100,
+                ),
+                SizedBox(height: 40),
+                Text(
+                  content,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+      );
+    },
+  );
+
+   Timer(Duration(seconds: 3), () {
+    if (Navigator.of(this).canPop()) {
+      Navigator.of(this).pop();
+    }
+  }
+  );
+}
 
   showSuccessSnackBar(
     BuildContext context,
@@ -32,6 +82,7 @@ extension Screen on BuildContext {
       backgroundColor: Colors.green,
     ));
   }
+
 
   showErrorSnackBar(
     BuildContext context,
