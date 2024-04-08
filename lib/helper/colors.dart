@@ -18,4 +18,5 @@ Color moreDarkGreenColor = const Color(0xff318472);
 Color transparent = Colors.transparent;
 Color darkgreyColor = const Color(0xff9B9B9B);
 Color textfieldGreenColor = const Color(0xff65B19F);
-Color textgreyColor = Color(0xff504E4E);
+Color textgreyColor = const Color(0xff504E4E);
+Color brownColor = const Color(0xff9E8D7B);
