@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
-
-Color teal = const Color(0xff3DAF96);
-Color gray = const Color(0xff7F7A7A);
-Color lightGray = const Color(0xffF8F8F6);
-Color yellow = const Color(0xffFEBD5B);
 Color red = Colors.red;
-Color darkGreen = const Color(0xff3CAF96);
-Color green = const Color(0xff4ACAAD);
-Color whiteColor = Colors.white;
-Color blackColor = Colors.black;
 Color greenText = const Color(0xff2F806E);
-Color greyColor = const Color(0xffF8F8F6);
-Color darkGreyColor = const Color(0xff9B9B9B);
-Color moreDarkGreenColor = const Color(0xff318472);
+Color whiteColor = Colors.white;
 Color transparent = Colors.transparent;
-Color darkgreyColor = const Color(0xff9B9B9B);
-Color textfieldGreenColor = const Color(0xff65B19F);
-Color textgreyColor = Color(0xff504E4E);
+Color blackColor = Colors.black;
+
+Color white = const Color(0xffF5F5F5);
+Color page = const Color(0xffDFD8D0);
+Color  freewhiteBrown = Color.fromARGB(32, 158, 141, 123);
+Color  whiteBrown = const Color(0xff9E8D7B);
+Color brown = const Color(0xff706152);
+Color darkBrown = const Color(0xff463420);
+Color salver = const Color(0xff545454);
+Color darkblue = const Color(0xff1C2C3B);
+
+
+
+
+
+
+
+
