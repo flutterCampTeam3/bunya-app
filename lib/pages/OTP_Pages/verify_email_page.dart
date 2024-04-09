@@ -1,6 +1,5 @@
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
-import 'package:bunya_app/widgets/auth/page_header.dart';
 import 'package:bunya_app/widgets/auth/text_field_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

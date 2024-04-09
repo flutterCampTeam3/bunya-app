@@ -1,12 +1,10 @@
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/pages/OTP_Pages/bloc/password_reset_bloc.dart';
-import 'package:bunya_app/widgets/auth/page_header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../../widgets/auth/button_widget.dart';
 
 // ignore: must_be_immutable
