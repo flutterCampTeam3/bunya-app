@@ -4,7 +4,8 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: 3.3.2
+  sdk: '>=3.4.0-99.1.beta <4.0.0'
+  # sdk: 3.3.2
 
 dependencies:
   flutter:
@@ -22,8 +23,11 @@ dependencies:
   time_picker_spinner: ^0.0.1
   intl: ^0.18.1
   flutter_background_service: ^5.0.5
-  google_fonts: ^6.1.0
+  google_fonts: ^6.2.1
   flutter_otp_text_field: ^1.1.2+1
+  glass: ^2.0.0+1
+  glassmorphism_ui: ^0.3.0
+  device_preview: ^1.1.0
 
 dev_dependencies:
   flutter_test:
