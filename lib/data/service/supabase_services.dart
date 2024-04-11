@@ -15,14 +15,6 @@ class DBService {
   String email = '';
 
 
-  // late 
-  int pill = 0;
-  // late 
-  int days = 0;
-  // late 
-  int counts = 0;
-
-
   DBService() {
     getToken();
   }
@@ -44,21 +36,69 @@ class DBService {
 
   final supabase = Supabase.instance.client;
 
-//--- SignUp func
-  Future signUp(
+//--- Office SignUp func
+  Future signUpO(
       {required String email,
       required String password,
-      required String userName}) async {
+      required String userName,
+      required String departmentId,
+      required String unn,
+      required String cr,
+      // required String image,
+      }) async {
     print(" before: ");
     final respons = await supabase.auth.signUp(
       data: {'Name': userName},
       email: email,
       password: password,
     );
+    if (respons.hashCode>=200 && respons.hashCode<=299) {
+       await supabase.from('Offices').insert(
+      {
+        'departmentId': departmentId,
+        'name': userName,
+        'officeId': respons.user!.id,
+        'unn': unn,
+        'cr': cr,
+        // 'image': image,
+      },
+    );
+    }
     print("in the signup: ${respons.hashCode}");
     // Send email verification
     // await supabase.auth.resetPasswordForEmail(email);
   }
+
+
+  //---costumer SignUp func
+  Future signUpC(
+      {required String email,
+      required String password,
+      required String userName,
+      required String phoneNumber,
+      }) async {
+    print(" before: ");
+    final respons = await supabase.auth.signUp(
+      data: {'Name': userName},
+      email: email,
+      password: password,
+    );
+    if (respons.hashCode>=200 && respons.hashCode<=299) {
+       await supabase.from('Customer').insert(
+      {
+        'email': email,
+        'name': userName,
+        'phoneNumber' : phoneNumber,
+        'customerId': respons.user!.id,
+      },
+    );
+    }
+    print("in the signup: ${respons.hashCode}");
+    // Send email verification
+    // await supabase.auth.resetPasswordForEmail(email);
+  }
+
+
 
   Future signIn({required String email, required String password}) async {
     await supabase.auth.signInWithPassword(email: email, password: password);

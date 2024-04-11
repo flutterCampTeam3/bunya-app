@@ -21,7 +21,7 @@ class SignUpCustomerPage extends StatelessWidget {
     bool isChecked = false;
     TextEditingController nameController = TextEditingController();
     TextEditingController emailController = TextEditingController();
-     TextEditingController phoneController = TextEditingController();
+    TextEditingController phoneController = TextEditingController();
     TextEditingController passController = TextEditingController();
     TextEditingController confirmPassController = TextEditingController();
 
@@ -57,22 +57,47 @@ class SignUpCustomerPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          textFieldAuth(Controller: nameController, label: 'الاسم ', obscureText: false,),
+                          textFieldAuth(
+                            Controller: nameController,
+                            label: 'الاسم ',
+                            obscureText: false,
+                          ),
                           gapH20,
-                          textFieldAuth(Controller: emailController, label: 'البريد الإلكتروني', obscureText: false,),
+                          textFieldAuth(
+                            Controller: emailController,
+                            label: 'البريد الإلكتروني',
+                            obscureText: false,
+                          ),
                           gapH20,
-                            textFieldAuth(Controller: phoneController, label: 'رقم الجوال ', obscureText: false,),
+                          textFieldAuth(
+                            Controller: phoneController,
+                            label: 'رقم الجوال ',
+                            obscureText: false,
+                          ),
                           gapH20,
-                   
-                        PassTextField(controller: passController,),
+                          PassTextField(
+                            controller: passController,
+                          ),
                           gapH20,
-                          TextFieldConfirmPass(confController: confirmPassController, passController: passController),
+                          TextFieldConfirmPass(
+                              confController: confirmPassController,
+                              passController: passController),
                           gapH10,
                           Row(
                             children: [
-                              Text("موافق على الشروط والأحكام",style: TextStyle(color: blackColor,fontSize: 14,fontWeight: FontWeight.w600),),
-                              // Checkbox(value: isChecked, onChanged: 
-                              // ),
+                              Text(
+                                "موافق على الشروط والأحكام",
+                                style: TextStyle(
+                                    color: blackColor,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              Checkbox(
+                                value: isChecked,
+                                onChanged: (value) {
+                                  isChecked = value!;
+                                },
+                              ),
                             ],
                           ),
                           gapH20,
@@ -84,14 +109,12 @@ class SignUpCustomerPage extends StatelessWidget {
                                   backgroundColor: darkBrown,
                                   text: "تسجيل الحساب",
                                   onPressed: () {
-                                    if (Form.of(context)!.validate()) {
+                                    if (Form.of(context).validate()) {
                                       bloc.add(CreateAccountCustomerEvent(
                                         email: emailController.text,
                                         password: passController.text,
                                         name: nameController.text,
-                                       
-                                       phone: phoneController.text,
-
+                                        phone: phoneController.text,
                                         confirmPass: confirmPassController.text,
                                         isChecked: isChecked,
                                       ));
@@ -108,7 +131,8 @@ class SignUpCustomerPage extends StatelessWidget {
                                         style: TextStyle(
                                           color: whiteBrown,
                                           fontSize: 15,
-                                          fontFamily: GoogleFonts.vazirmatn().fontFamily,
+                                          fontFamily: GoogleFonts.vazirmatn()
+                                              .fontFamily,
                                         ),
                                       ),
                                       TextSpan(
@@ -117,13 +141,16 @@ class SignUpCustomerPage extends StatelessWidget {
                                           fontSize: 15,
                                           color: darkBrown,
                                           fontWeight: FontWeight.w600,
-                                          fontFamily: GoogleFonts.vazirmatn().fontFamily,
+                                          fontFamily: GoogleFonts.vazirmatn()
+                                              .fontFamily,
                                         ),
                                         recognizer: TapGestureRecognizer()
                                           ..onTap = () {
                                             Navigator.pushAndRemoveUntil(
                                               context,
-                                              MaterialPageRoute(builder: (context) => SigninCustomerPage()),
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      SigninCustomerPage()),
                                               (Route<dynamic> route) => false,
                                             );
                                           },
@@ -147,9 +174,3 @@ class SignUpCustomerPage extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
