@@ -1,9 +1,15 @@
 import 'package:bunya_app/helper/colors.dart';
+import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
+import 'package:bunya_app/pages/costumer_pages/home_page/accounts_list/account_list.dart';
+import 'package:bunya_app/pages/costumer_pages/home_page/accounts_list/desgin_account.dart';
+import 'package:bunya_app/pages/costumer_pages/home_page/accounts_list/electric_account.dart';
+import 'package:bunya_app/pages/costumer_pages/home_page/accounts_list/tools_account.dart';
 import 'package:bunya_app/pages/costumer_pages/home_page/widgets/accounts_home_widget.dart';
 import 'package:bunya_app/pages/costumer_pages/home_page/widgets/appbar_widget.dart';
 import 'package:bunya_app/pages/costumer_pages/home_page/widgets/image_widget.dart';
 import 'package:bunya_app/pages/costumer_pages/home_page/widgets/post_widget.dart';
+import 'package:bunya_app/pages/intro%20pages/first_intro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -29,13 +35,17 @@ class HomePage extends StatelessWidget {
                     Row(
                       children: [
                         ImageWidget(
-                          onTap: () {},
+                          onTap: () {
+                            context.pushAndRemove(DesginAccountList());
+                          },
                           title: "التصميم الداخلي",
                           path: 'assets/images/intern_design.jpeg',
                         ),
                         gapWe15,
                         ImageWidget(
-                          onTap: () {},
+                          onTap: () {
+                            context.pushAndRemove(ToolsAccountList());
+                          },
                           title: "ادوات البناء",
                           path: 'assets/images/drell.jpeg',
                         ),
@@ -45,13 +55,17 @@ class HomePage extends StatelessWidget {
                     Row(
                       children: [
                         ImageWidget(
-                          onTap: () {},
+                          onTap: () {
+                            context.pushAndRemove(ConstraintAccountList());
+                          },
                           title: "مكاتب المقاولات",
                           path: 'assets/images/house.jpeg',
                         ),
                         gapWe15,
                         ImageWidget(
-                          onTap: () {},
+                          onTap: () {
+                            context.pushAndRemove(ElectricAccountList());
+                          },
                           title: "الكهرباء",
                           path: 'assets/images/electric.jpeg',
                         ),
