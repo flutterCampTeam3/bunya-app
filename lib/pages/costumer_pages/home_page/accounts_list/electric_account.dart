@@ -1,15 +1,12 @@
-import 'package:bunya_app/helper/colors.dart';
+
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/costumer_pages/home_page/widgets/account_list_Widget.dart';
-import 'package:bunya_app/pages/costumer_pages/home_page/widgets/accounts_home_widget.dart';
 import 'package:bunya_app/pages/costumer_pages/home_page/widgets/appbar_widget.dart';
-import 'package:bunya_app/pages/costumer_pages/home_page/widgets/image_widget.dart';
-import 'package:bunya_app/pages/costumer_pages/home_page/widgets/post_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class ElectricAccountList extends StatelessWidget {
   const ElectricAccountList({Key? key});

@@ -1,4 +1,4 @@
-import 'package:bunya_app/helper/colors.dart';
+
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/costumer_pages/home_page/accounts_list/account_list.dart';
@@ -9,19 +9,19 @@ import 'package:bunya_app/pages/costumer_pages/home_page/widgets/accounts_home_w
 import 'package:bunya_app/pages/costumer_pages/home_page/widgets/appbar_widget.dart';
 import 'package:bunya_app/pages/costumer_pages/home_page/widgets/image_widget.dart';
 import 'package:bunya_app/pages/costumer_pages/home_page/widgets/post_widget.dart';
-import 'package:bunya_app/pages/intro%20pages/first_intro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Directionality(textDirection: TextDirection.rtl, child: 
+    Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
@@ -164,6 +164,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
+    )
     );
   }
 }

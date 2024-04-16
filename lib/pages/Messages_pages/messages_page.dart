@@ -1,14 +1,16 @@
+
+import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
-import 'package:bunya_app/pages/costumer_pages/home_page/widgets/account_list_Widget.dart';
-import 'package:bunya_app/pages/costumer_pages/home_page/widgets/appbar_widget.dart';
+import 'package:bunya_app/pages/Messages_pages/widgets/message_list.dart';
+import 'package:bunya_app/pages/costumer_pages/home_page/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 
-class ToolsAccountList extends StatelessWidget {
-  const ToolsAccountList({Key? key});
+class MessageListPage extends StatelessWidget {
+  const MessageListPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,17 +20,19 @@ class ToolsAccountList extends StatelessWidget {
         body: Stack(
           children: [
             // Background Image
+            /*
             Positioned.fill(
               child: Image.asset(
                 'assets/images/introv4.png', // Your image path
                 // fit: BoxFit.cover,
               ),
             ),
+            */
             SingleChildScrollView(
               child: SafeArea(
                 child: Column(
                   children: [
-                    const AppBarWidget(),
+                    //const AppBarWidget(),
                     Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Column(
@@ -38,7 +42,7 @@ class ToolsAccountList extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                " حسابات ادوات البناء",
+                                " الرسائل",
                                 style: TextStyle(fontSize: 20),
                               ),
                             ],
@@ -49,42 +53,26 @@ class ToolsAccountList extends StatelessWidget {
                             child: ListView(
                               scrollDirection: Axis.vertical,
                               children: [
-                                AccountListWidget(
+                                MessageListWidget(
                                   path: 'assets/images/benaa_cpmpany.png',
-                                  title: "شركة بناء للمقاولات والإستثمار",
-                                  description:
-                                      "شركة تعمل في مجال البناء والتشييد\n والاستثمار في المشاريع العقارية.",
-                                  rate: 5,
-                                  followers: 200,
+                                  title:
+                                      "رسالة من شركة بناء للمقاولات والإستثمار",
+                                 
                                   onTap: () {
                                     
                                   },
+                                  sendTime: '12:00',
                                 ),
                                 gapWe20,
                                 gapH10,
-                                AccountListWidget(
+                                MessageListWidget(
                                   path: 'assets/images/mabany.png',
                                   title: "شركة مباني الرياض للمقاولات العامة",
-                                  description:
-                                      "شركة تعمل في مجال البناء والتشييد \nوالاستثمار في المشاريع العقارية.",
-                                  rate: 4,
-                                  followers: 2,
+                                  
                                   onTap: () {
                                     
                                   },
-                                ),
-                                gapWe20,
-                                gapH10,
-                                AccountListWidget(
-                                  path: 'assets/images/mabany.png',
-                                  title: "شركة مباني الرياض للمقاولات العامة",
-                                  description:
-                                      "شركة تعمل في مجال البناء والتشييد \nوالاستثمار في المشاريع العقارية.",
-                                  rate: 4,
-                                  followers: 2,
-                                  onTap: () {
-                                    
-                                  },
+                                  sendTime: '9:00',
                                 ),
                               ],
                             ),

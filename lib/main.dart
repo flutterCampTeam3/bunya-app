@@ -1,3 +1,5 @@
+import 'package:bunya_app/pages/Messages_pages/messages_page.dart';
+import 'package:bunya_app/pages/Messages_pages/widgets/message_list.dart';
 import 'package:bunya_app/pages/costumer_pages/home_page/accounts_list/account_list.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +30,6 @@ class MainApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         home: const Directionality(
-            textDirection: TextDirection.rtl, child: HomePage()));
+            textDirection: TextDirection.rtl, child: MessageListPage( )));
   }
 }
