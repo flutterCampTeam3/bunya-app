@@ -31,7 +31,8 @@ class _SigninPageState extends State<SigninPage> {
       create: (context) => SignInBloc(),
       child: Builder(builder: (context) {
         final bloc = context.read<SignInBloc>();
-        return Scaffold(
+        return Directionality(textDirection: TextDirection.rtl, child: 
+         Scaffold(
           appBar: PreferredSize(
               preferredSize: Size(context.getWidth(), 400),
               child: const PageHeaderSignIn(
@@ -159,7 +160,7 @@ class _SigninPageState extends State<SigninPage> {
               ),
             ),
           ),
-        );
+        ));
       }),
     );
   }

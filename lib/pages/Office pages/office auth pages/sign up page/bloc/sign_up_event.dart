@@ -11,6 +11,12 @@ class CreateAccountEvent extends SignUpEvent {
   final String password;
   final String confirmPass;
   bool isChecked = false;
+
+    final String? info;
+    final String? location;
+    final String? phone;
+
+
   CreateAccountEvent(
       {required this.name,
       required this.email,
@@ -18,5 +24,28 @@ class CreateAccountEvent extends SignUpEvent {
       required this.cr,
       // required this.id,
       required this.confirmPass,
-      required this.isChecked});
+      required this.isChecked,
+       this.info,
+       this.location,
+       this.phone,
+      });
+}
+
+class CreateAccountprofileEvent extends SignUpEvent {
+
+
+    final String info;
+    final String location;
+    final String phone;
+
+
+  CreateAccountprofileEvent(
+      {
+      required this.info,
+      required this.location,
+      required this.phone,
+      });
+}
+class ChoosImageEvent extends SignUpEvent{
+
 }

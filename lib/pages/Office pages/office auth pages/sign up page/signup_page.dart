@@ -12,6 +12,7 @@ import '../../../widgets/auth/page_header.dart';
 import '../../../widgets/auth/pass_textfiled.dart';
 import '../../../widgets/auth/text_field_auth.dart';
 import '../../../widgets/auth/text_field_confirm_pass.dart';
+import 'profile_signup.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({
@@ -74,7 +75,7 @@ class _SignUpPageState extends State<SignUpPage> {
               if (state is SuccessSignUpState) {
                 // SignUp Function Here
                 context.showSuccessSnackBar(context, state.msg);
-                context.pushAndRemove(const SigninPage());
+                context.pushAndRemove(const ProfileSignup());
               }
               if (state is ErrorSignUpState) {
                 // Error SignUp Function Here
@@ -89,13 +90,12 @@ class _SignUpPageState extends State<SignUpPage> {
                     key: _formKey,
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * .7,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        mainAxisSize: MainAxisSize.max,
+                      child: ListView(
+                       
                         children: [
                           textFieldAuth(
                             Controller: nameController,
-                            label: 'الاسم ',
+                            label: 'اسم الشركة ',
                             obscureText: false,
                           ),
                           gapH20,
@@ -146,7 +146,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               children: [
                                 ButtonWidget(
                                   backgroundColor: darkBrown,
-                                  text: "تسجيل الحساب",
+                                  text: "التالي",
                                   onPressed: () {
                                     if (_formKey.currentState!.validate()) {
                                       bloc.add(CreateAccountEvent(

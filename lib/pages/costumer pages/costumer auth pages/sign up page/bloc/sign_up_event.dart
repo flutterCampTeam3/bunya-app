@@ -14,3 +14,6 @@ class CreateAccountCustomerEvent extends SignUpCustomerEvent {
       {required this.name, required this.email, required this.password,required this.phone,required this.confirmPass,required this.isChecked});
 }
 
+class CustomerChoosImageEvent extends SignUpCustomerEvent{
+
+}

@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'pages/Office pages/office auth pages/sign up page/profile_signup.dart';
+import 'pages/Office pages/office auth pages/sign up page/signup_page.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await databaseConfig();
