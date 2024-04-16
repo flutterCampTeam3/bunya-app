@@ -3,7 +3,6 @@ import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/widgets/widgets/info_edit_row.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/image_aacount_widget.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -89,30 +88,3 @@ class EditPageOffice extends StatelessWidget {
     );
   }
 }
-
-// class EditInfoRow extends StatelessWidget {
-//   EditInfoRow({super.key, required this.infoController, required this.title});
-//   String title;
-
-//   final TextEditingController infoController;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         Padding(
-//           padding: const EdgeInsets.only(top: 15.0),
-//           child: Text(title),
-//         ),
-//         Expanded(
-//           child: TextField(
-//             style: TextStyle(color: darkGreyColor),
-//             maxLines: null,
-//             controller: infoController,
-//           ),
-//         )
-//       ],
-//     );
-//   }
-// }
