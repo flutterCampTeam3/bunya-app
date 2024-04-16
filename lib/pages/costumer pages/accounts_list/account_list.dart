@@ -1,15 +1,17 @@
 import 'package:bunya_app/helper/colors.dart';
+import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
+import 'package:bunya_app/pages/costumer%20pages/home_page/home_page.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/account_list_Widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/appbar_widget.dart';
+import 'package:bunya_app/pages/intro%20pages/first_intro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-class ElectricAccountList extends StatelessWidget {
-  const ElectricAccountList({Key? key});
+class ConstraintAccountList extends StatelessWidget {
+  const ConstraintAccountList({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,7 @@ class ElectricAccountList extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                " حسابات الكهرباء",
+                                " حسابات المقاولين",
                                 style: TextStyle(fontSize: 20),
                               ),
                             ],
@@ -58,7 +60,7 @@ class ElectricAccountList extends StatelessWidget {
                                   rate: 5,
                                   followers: 200,
                                   onTap: () {
-                                    
+                                    context.pushAndRemove(HomePageCustomer());
                                   },
                                 ),
                                 gapWe20,

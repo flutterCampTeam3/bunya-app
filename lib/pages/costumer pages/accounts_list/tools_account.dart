@@ -1,17 +1,14 @@
-import 'package:bunya_app/helper/colors.dart';
-import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/account_list_Widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/appbar_widget.dart';
-import 'package:bunya_app/pages/intro%20pages/first_intro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-class DesginAccountList extends StatelessWidget {
-  const DesginAccountList({Key? key});
+
+class ToolsAccountList extends StatelessWidget {
+  const ToolsAccountList({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +17,10 @@ class DesginAccountList extends StatelessWidget {
       child: Scaffold(
         body: Stack(
           children: [
-            
+            // Background Image
             Positioned.fill(
               child: Image.asset(
-                'assets/images/introv4.png', 
+                'assets/images/introv4.png', // Your image path
                 // fit: BoxFit.cover,
               ),
             ),
@@ -41,7 +38,7 @@ class DesginAccountList extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                " حسابات المصممين",
+                                " حسابات ادوات البناء",
                                 style: TextStyle(fontSize: 20),
                               ),
                             ],
@@ -53,27 +50,42 @@ class DesginAccountList extends StatelessWidget {
                               scrollDirection: Axis.vertical,
                               children: [
                                 AccountListWidget(
-                                  path: 'assets/images/rasha.png',
-                                  title: "رشا الحربي",
-                                  description: "مصصمة ديكور   .",
+                                  path: 'assets/images/benaa_cpmpany.png',
+                                  title: "شركة بناء للمقاولات والإستثمار",
+                                  description:
+                                      "شركة تعمل في مجال البناء والتشييد\n والاستثمار في المشاريع العقارية.",
                                   rate: 5,
                                   followers: 200,
                                   onTap: () {
                                     
                                   },
                                 ),
-                                Divider(height: 20, color: Colors.transparent),
+                                gapWe20,
+                                gapH10,
                                 AccountListWidget(
-                                  path: 'assets/images/allaa.png',
-                                  title: "الاء الحارثي",
-                                  description: " مصممة ديكورات منازل داخلية",
+                                  path: 'assets/images/mabany.png',
+                                  title: "شركة مباني الرياض للمقاولات العامة",
+                                  description:
+                                      "شركة تعمل في مجال البناء والتشييد \nوالاستثمار في المشاريع العقارية.",
                                   rate: 4,
                                   followers: 2,
                                   onTap: () {
                                     
                                   },
                                 ),
-                                // Add Divider here if needed
+                                gapWe20,
+                                gapH10,
+                                AccountListWidget(
+                                  path: 'assets/images/mabany.png',
+                                  title: "شركة مباني الرياض للمقاولات العامة",
+                                  description:
+                                      "شركة تعمل في مجال البناء والتشييد \nوالاستثمار في المشاريع العقارية.",
+                                  rate: 4,
+                                  followers: 2,
+                                  onTap: () {
+                                    
+                                  },
+                                ),
                               ],
                             ),
                           ),

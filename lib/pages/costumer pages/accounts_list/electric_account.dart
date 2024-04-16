@@ -1,6 +1,5 @@
-import 'package:bunya_app/helper/extintion.dart';
+
 import 'package:bunya_app/helper/sized.dart';
-import 'package:bunya_app/pages/costumer%20pages/home_page/home_page.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/account_list_Widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/appbar_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,8 +8,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 
-class ConstraintAccountList extends StatelessWidget {
-  const ConstraintAccountList({Key? key});
+class ElectricAccountList extends StatelessWidget {
+  const ElectricAccountList({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +39,7 @@ class ConstraintAccountList extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Text(
-                                " حسابات المقاولين",
+                                " حسابات الكهرباء",
                                 style: TextStyle(fontSize: 20),
                               ),
                             ],
@@ -59,7 +58,7 @@ class ConstraintAccountList extends StatelessWidget {
                                   rate: 5,
                                   followers: 200,
                                   onTap: () {
-                                    context.pushAndRemove(HomePageCustomer());
+                                    
                                   },
                                 ),
                                 gapWe20,

@@ -12,10 +12,10 @@
 
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/sized.dart';
-import 'package:bunya_app/pages/costumer_pages/profile_page/edit_page.dart';
-import 'package:bunya_app/pages/costumer_pages/profile_page/widgets/follower_widget.dart';
-import 'package:bunya_app/pages/costumer_pages/profile_page/widgets/image_aacount_widget.dart';
-import 'package:bunya_app/pages/costumer_pages/profile_page/widgets/information_widget.dart';
+import 'package:bunya_app/pages/costumer%20pages/profile_page/edit_page.dart';
+import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/follower_widget.dart';
+import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/image_aacount_widget.dart';
+import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/information_widget.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePageCustomer extends StatelessWidget {
