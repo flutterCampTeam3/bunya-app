@@ -74,11 +74,11 @@ class NavBarPage extends StatelessWidget {
                     side: BorderSide(color: Colors.white, width: 4)),
                 // Border.all(color: Colors.white, width: 3, strokeAlign: 2),
                 backgroundColor: const Color.fromARGB(255, 223, 216, 208),
-                child: SvgPicture.asset('assets/images/bx_bot.svg',
+            /*    child: SvgPicture.asset('assets/images/bx_bot.svg',
                     colorFilter: const ColorFilter.mode(
                         Color.fromARGB(255, 84, 84, 84), BlendMode.srcIn),
                     semanticsLabel: 'Acme Logo'),
-                //  const Icon(
+               */ //  const Icon(
                 //   Icons.add,
                 //   color: Color.fromARGB(255, 84, 84, 84),
                 // ),
