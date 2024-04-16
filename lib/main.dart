@@ -1,5 +1,8 @@
+import 'package:bunya_app/pages/Office_pages/profile_page/edit_page.dart';
+import 'package:bunya_app/pages/Office_pages/profile_page/profile_page.dart';
 import 'package:bunya_app/pages/costumer_pages/categories_page/categories_page.dart';
 import 'package:bunya_app/pages/costumer_pages/home_page/home_page.dart';
+import 'package:bunya_app/pages/costumer_pages/profile_page/profile_page.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +26,6 @@ class MainApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         home: const Directionality(
-            textDirection: TextDirection.rtl, child: HomePage()));
+            textDirection: TextDirection.rtl, child: ProfilePageCustomer()));
   }
 }

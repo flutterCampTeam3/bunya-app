@@ -20,3 +20,6 @@ Color darkgreyColor = const Color(0xff9B9B9B);
 Color textfieldGreenColor = const Color(0xff65B19F);
 Color textgreyColor = const Color(0xff504E4E);
 Color brownColor = const Color(0xff9E8D7B);
+Color lightbrownColor = const Color(0xffDFD8D0);
+Color whiteOpisity = whiteColor.withOpacity(20);
+// Color darkBrown = Colors.red;

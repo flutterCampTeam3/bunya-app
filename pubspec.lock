@@ -89,6 +89,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.18.0"
+  colorful_iconify_flutter:
+    dependency: transitive
+    description:
+      name: colorful_iconify_flutter
+      sha256: "5ebc63d10c3e97279849162b415fda8e71b7ff24ddd663539d7328279dae9c1d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   cross_file:
     dependency: transitive
     description:
@@ -319,10 +327,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_svg
-      sha256: "7b4ca6cf3304575fe9c8ec64813c8d02ee41d2afe60bcfe0678bcb5375d596a2"
+      sha256: "6ff9fa12892ae074092de2fa6a9938fb21dbabfdaa2ff57dc697ff912fc8d4b2"
       url: "https://pub.dev"
     source: hosted
-    version: "2.0.10+1"
+    version: "1.1.6"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -437,6 +445,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  iconify_flutter:
+    dependency: "direct main"
+    description:
+      name: iconify_flutter
+      sha256: a2d5d36a8381331c8d4e0a6b71378fca51bd6d15e38192568a30c0a91133a9af
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.5"
   image_picker:
     dependency: "direct main"
     description:
@@ -621,6 +637,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.0"
+  path_drawing:
+    dependency: transitive
+    description:
+      name: path_drawing
+      sha256: bbb1934c0cbb03091af082a6389ca2080345291ef07a5fa6d6e078ba8682f977
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.1"
   path_parsing:
     dependency: transitive
     description:
@@ -994,30 +1018,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.3.3"
-  vector_graphics:
-    dependency: transitive
-    description:
-      name: vector_graphics
-      sha256: "32c3c684e02f9bc0afb0ae0aa653337a2fe022e8ab064bcd7ffda27a74e288e3"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.11+1"
-  vector_graphics_codec:
-    dependency: transitive
-    description:
-      name: vector_graphics_codec
-      sha256: c86987475f162fadff579e7320c7ddda04cd2fdeffbe1129227a85d9ac9e03da
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.11+1"
-  vector_graphics_compiler:
-    dependency: transitive
-    description:
-      name: vector_graphics_compiler
-      sha256: "12faff3f73b1741a36ca7e31b292ddeb629af819ca9efe9953b70bd63fc8cd81"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.11+1"
   vector_math:
     dependency: transitive
     description:
