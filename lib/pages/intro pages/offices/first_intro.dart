@@ -1,5 +1,6 @@
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
+import 'package:bunya_app/pages/Office%20pages/office%20auth%20pages/signIn%20page/signin_page.dart';
 import 'package:bunya_app/pages/intro%20pages/offices/second_intro.dart';
 import 'package:flutter/material.dart';
 
@@ -70,6 +71,7 @@ class firstOficceIntro extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     // Add your logic here for the first clickable text
+                    context.pushAndRemove(const SigninPage());
                   },
                   child: Container(
                     width: 150,
@@ -93,7 +95,7 @@ class firstOficceIntro extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    context.pushAndRemove(secondOficceIntro());
+                    context.pushAndRemove(const secondOficceIntro());
                   },
                   child: Container(
                     width: 150,

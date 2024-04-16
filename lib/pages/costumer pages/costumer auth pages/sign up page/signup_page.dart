@@ -1,21 +1,30 @@
 import 'package:bunya_app/helper/colors.dart';
-import 'package:bunya_app/widgets/auth/page_header.dart';
-import 'package:bunya_app/widgets/auth/text_field_auth.dart';
-import 'package:bunya_app/widgets/auth/text_field_confirm_pass.dart';
+import 'package:bunya_app/helper/extintion.dart';
+import 'package:bunya_app/pages/widgets/auth/page_header.dart';
+import 'package:bunya_app/pages/widgets/auth/text_field_auth.dart';
+import 'package:bunya_app/pages/widgets/auth/text_field_confirm_pass.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../helper/sized.dart';
 import '../../../Office pages/office auth pages/sign up page/bloc/sign_up_bloc.dart';
-import '../../../../widgets/auth/button_widget.dart';
-import '../../../../widgets/auth/pass_textfiled.dart';
+import '../../../widgets/auth/button_widget.dart';
+import '../../../widgets/auth/pass_textfiled.dart';
 import '../signIn page/signin_customer_page.dart';
 import 'bloc/sign_up_bloc.dart';
 
-class SignUpCustomerPage extends StatelessWidget {
-  const SignUpCustomerPage({Key? key});
+class SignUpCustomerPage extends StatefulWidget {
+  const SignUpCustomerPage({
+    super.key,
+  });
 
+  @override
+  State<SignUpCustomerPage> createState() => _SignUpCustomerPageState();
+}
+
+class _SignUpCustomerPageState extends State<SignUpCustomerPage> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     bool isChecked = false;
@@ -24,6 +33,27 @@ class SignUpCustomerPage extends StatelessWidget {
     TextEditingController phoneController = TextEditingController();
     TextEditingController passController = TextEditingController();
     TextEditingController confirmPassController = TextEditingController();
+
+    void initState() {
+      super.initState();
+      nameController = TextEditingController();
+      emailController = TextEditingController();
+      phoneController = TextEditingController();
+      // idController = TextEditingController();
+      passController = TextEditingController();
+      confirmPassController = TextEditingController();
+    }
+
+    @override
+    void dispose() {
+      nameController.dispose();
+      emailController.dispose();
+      phoneController.dispose();
+      // idController.dispose();
+      passController.dispose();
+      confirmPassController.dispose();
+      super.dispose();
+    }
 
     return BlocProvider(
       create: (context) => SignUpBlocCustomer(),
@@ -37,13 +67,16 @@ class SignUpCustomerPage extends StatelessWidget {
               bottomText: "تسجيل حساب",
             ),
           ),
-          body: BlocConsumer<SignUpBloc, SignUpState>(
+          body: BlocConsumer<SignUpBlocCustomer, SignUpCustomerState>(
             listener: (context, state) {
-              if (state is SuccessSignUpState) {
+              if (state is SuccessSignUpCustomerState) {
                 // SignUp Function Here
+                context.showSuccessSnackBar(context, state.msg);
+                context.pushAndRemove(const SigninCustomerPage());
               }
-              if (state is ErrorSignUpState) {
+              if (state is ErrorSignUpCustomerState) {
                 // Error SignUp Function Here
+                context.showErrorSnackBar(context, state.msg);
               }
             },
             builder: (context, state) {
@@ -51,6 +84,7 @@ class SignUpCustomerPage extends StatelessWidget {
                 padding: const EdgeInsets.all(15.0),
                 child: SingleChildScrollView(
                   child: Form(
+                    key: _formKey,
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * .7,
                       child: Column(
@@ -67,12 +101,14 @@ class SignUpCustomerPage extends StatelessWidget {
                             Controller: emailController,
                             label: 'البريد الإلكتروني',
                             obscureText: false,
+                            email: true,
                           ),
                           gapH20,
                           textFieldAuth(
                             Controller: phoneController,
                             label: 'رقم الجوال ',
                             obscureText: false,
+                            phone: true,
                           ),
                           gapH20,
                           PassTextField(
@@ -109,7 +145,7 @@ class SignUpCustomerPage extends StatelessWidget {
                                   backgroundColor: darkBrown,
                                   text: "تسجيل الحساب",
                                   onPressed: () {
-                                    if (Form.of(context).validate()) {
+                                    if (_formKey.currentState!.validate()) {
                                       bloc.add(CreateAccountCustomerEvent(
                                         email: emailController.text,
                                         password: passController.text,
@@ -122,7 +158,7 @@ class SignUpCustomerPage extends StatelessWidget {
                                   },
                                   textColor: Colors.white,
                                 ),
-                                SizedBox(height: 5),
+                                const SizedBox(height: 5),
                                 RichText(
                                   text: TextSpan(
                                     children: [
@@ -150,7 +186,7 @@ class SignUpCustomerPage extends StatelessWidget {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      SigninCustomerPage()),
+                                                      const SigninCustomerPage()),
                                               (Route<dynamic> route) => false,
                                             );
                                           },

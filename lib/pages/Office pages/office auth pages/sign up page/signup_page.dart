@@ -1,29 +1,61 @@
 import 'package:bunya_app/helper/colors.dart';
+import 'package:bunya_app/helper/extintion.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../helper/sized.dart';
 import '../signIn page/signin_page.dart';
-import '../../../../widgets/auth/button_widget.dart';
+import '../../../widgets/auth/button_widget.dart';
 import 'bloc/sign_up_bloc.dart';
-import '../../../../widgets/auth/page_header.dart';
-import '../../../../widgets/auth/pass_textfiled.dart';
-import '../../../../widgets/auth/text_field_auth.dart';
-import '../../../../widgets/auth/text_field_confirm_pass.dart';
+import '../../../widgets/auth/page_header.dart';
+import '../../../widgets/auth/pass_textfiled.dart';
+import '../../../widgets/auth/text_field_auth.dart';
+import '../../../widgets/auth/text_field_confirm_pass.dart';
 
-class SignUpPage extends StatelessWidget {
-  const SignUpPage({Key? key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({
+    super.key,
+  });
+
+  @override
+  State<SignUpPage> createState() => _SignUpPageState();
+}
+
+class _SignUpPageState extends State<SignUpPage> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     bool isChecked = false;
-    TextEditingController nameController = TextEditingController();
-    TextEditingController emailController = TextEditingController();
-    TextEditingController crController = TextEditingController();
-    TextEditingController idController = TextEditingController();
-    TextEditingController passController = TextEditingController();
-    TextEditingController confirmPassController = TextEditingController();
+    late TextEditingController nameController = TextEditingController();
+    late TextEditingController emailController = TextEditingController();
+    late TextEditingController crController = TextEditingController();
+    // late TextEditingController idController = TextEditingController();
+    late TextEditingController passController = TextEditingController();
+    late TextEditingController confirmPassController = TextEditingController();
+
+    @override
+    void initState() {
+      super.initState();
+      nameController = TextEditingController();
+      emailController = TextEditingController();
+      crController = TextEditingController();
+      // idController = TextEditingController();
+      passController = TextEditingController();
+      confirmPassController = TextEditingController();
+    }
+
+    @override
+    void dispose() {
+      nameController.dispose();
+      emailController.dispose();
+      crController.dispose();
+      // idController.dispose();
+      passController.dispose();
+      confirmPassController.dispose();
+      super.dispose();
+    }
 
     return BlocProvider(
       create: (context) => SignUpBloc(),
@@ -41,9 +73,12 @@ class SignUpPage extends StatelessWidget {
             listener: (context, state) {
               if (state is SuccessSignUpState) {
                 // SignUp Function Here
+                context.showSuccessSnackBar(context, state.msg);
+                context.pushAndRemove(const SigninPage());
               }
               if (state is ErrorSignUpState) {
                 // Error SignUp Function Here
+                context.showErrorSnackBar(context, state.msg);
               }
             },
             builder: (context, state) {
@@ -51,32 +86,60 @@ class SignUpPage extends StatelessWidget {
                 padding: const EdgeInsets.all(15.0),
                 child: SingleChildScrollView(
                   child: Form(
+                    key: _formKey,
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * .7,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          textFieldAuth(Controller: nameController, label: 'الاسم ', obscureText: false,),
+                          textFieldAuth(
+                            Controller: nameController,
+                            label: 'الاسم ',
+                            obscureText: false,
+                          ),
                           gapH20,
-                          textFieldAuth(Controller: emailController, label: 'البريد الإلكتروني', obscureText: false,),
+                          textFieldAuth(
+                            Controller: emailController,
+                            label: 'البريد الإلكتروني',
+                            obscureText: false,
+                            email: true,
+                          ),
                           gapH20,
-                          textFieldAuth(Controller: crController, label: 'السجل التجاري', obscureText: false,),
+                          textFieldAuth(
+                            Controller: crController,
+                            label: 'السجل التجاري',
+                            obscureText: false,
+                            cr: true,
+                          ),
                           gapH20,
-                          textFieldAuth(Controller: idController, label: "الرقم الوطني الموحد", obscureText: false,),
+                          // textFieldAuth(
+                          //   Controller: idController,
+                          //   label: "الرقم الوطني الموحد",
+                          //   obscureText: false,
+                          //   unn: true,
+                          // ),
+                          // gapH20,
+                          PassTextField(
+                            controller: passController,
+                          ),
                           gapH20,
-                        PassTextField(controller: passController,),
-                          gapH20,
-                          TextFieldConfirmPass(confController: confirmPassController, passController: passController),
+                          TextFieldConfirmPass(
+                              confController: confirmPassController,
+                              passController: passController),
                           gapH10,
                           Row(
                             children: [
-                              Text("موافق على الشروط والأحكام",style: TextStyle(color: blackColor,fontSize: 12),),
-                              // Checkbox(value: isChecked, onChanged: 
+                              Text(
+                                "موافق على الشروط والأحكام",
+                                style:
+                                    TextStyle(color: blackColor, fontSize: 12),
+                              ),
+                              // Checkbox(value: isChecked, onChanged:
                               // ),
                             ],
                           ),
-                           gapH20,
+                          gapH20,
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(
@@ -85,13 +148,13 @@ class SignUpPage extends StatelessWidget {
                                   backgroundColor: darkBrown,
                                   text: "تسجيل الحساب",
                                   onPressed: () {
-                                    if (Form.of(context)!.validate()) {
+                                    if (_formKey.currentState!.validate()) {
                                       bloc.add(CreateAccountEvent(
                                         email: emailController.text,
                                         password: passController.text,
                                         name: nameController.text,
                                         cr: crController.text,
-                                        id: idController.text,
+                                        // id: idController.text,
                                         confirmPass: confirmPassController.text,
                                         isChecked: isChecked,
                                       ));
@@ -99,7 +162,7 @@ class SignUpPage extends StatelessWidget {
                                   },
                                   textColor: Colors.white,
                                 ),
-                                SizedBox(height: 5),
+                                const SizedBox(height: 5),
                                 RichText(
                                   text: TextSpan(
                                     children: [
@@ -108,7 +171,8 @@ class SignUpPage extends StatelessWidget {
                                         style: TextStyle(
                                           color: whiteBrown,
                                           fontSize: 15,
-                                          fontFamily: GoogleFonts.vazirmatn().fontFamily,
+                                          fontFamily: GoogleFonts.vazirmatn()
+                                              .fontFamily,
                                         ),
                                       ),
                                       TextSpan(
@@ -117,13 +181,16 @@ class SignUpPage extends StatelessWidget {
                                           fontSize: 15,
                                           color: darkBrown,
                                           fontWeight: FontWeight.w600,
-                                          fontFamily: GoogleFonts.vazirmatn().fontFamily,
+                                          fontFamily: GoogleFonts.vazirmatn()
+                                              .fontFamily,
                                         ),
                                         recognizer: TapGestureRecognizer()
                                           ..onTap = () {
                                             Navigator.pushAndRemoveUntil(
                                               context,
-                                              MaterialPageRoute(builder: (context) => SigninPage()),
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      const SigninPage()),
                                               (Route<dynamic> route) => false,
                                             );
                                           },
@@ -147,14 +214,6 @@ class SignUpPage extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
 
 // import 'package:bunya_app/helper/colors.dart';
 // import 'package:bunya_app/helper/extintion.dart';
@@ -196,13 +255,12 @@ class SignUpPage extends StatelessWidget {
 //           body: BlocConsumer<SignUpBloc, SignUpState>(
 //             listener: (context, state) {
 //               if (state is SuccessSignUpState) {
-//                //        SignUp Function Here 
-                      
-               
+//                //        SignUp Function Here
+
 //               }
 //               if (state is ErrorSignUpState) {
-//                     //      Error  SignUp Function Here 
-                      
+//                     //      Error  SignUp Function Here
+
 //               }
 //             },
 //             builder: (context, state) {
@@ -257,10 +315,10 @@ class SignUpPage extends StatelessWidget {
 //                                   email: emailController.text,
 //                                   password: passController.text,
 //                                   name: nameController.text,
-//                                   cr: crController.text, 
+//                                   cr: crController.text,
 //                                   id: idController.text,
 //                                   confirmPass:confirmPassController.text,
-                                   
+
 //                                 ));
 //                               },
 //                               textColor: whiteColor,

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
-import 'package:get_it/get_it.dart';
+import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:meta/meta.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -19,6 +19,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     if(event.email.trim().isNotEmpty && event.password.trim().isNotEmpty){
       try {
        // here data pase
+       DBService().signIn(email: event.email, password: event.password);
       emit(SuccessSignInState(msg: "تم تسجيل الدخول بنجاح"));
     } on AuthException catch (p) {
       print(p);

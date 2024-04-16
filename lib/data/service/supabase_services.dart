@@ -11,9 +11,10 @@ class DBService {
   String id = '';
 
   String name = '';
-  
-  String email = '';
 
+  String officeName = '';
+
+  String email = '';
 
   DBService() {
     getToken();
@@ -37,74 +38,78 @@ class DBService {
   final supabase = Supabase.instance.client;
 
 //--- Office SignUp func
-  Future signUpO(
-      {required String email,
-      required String password,
-      required String userName,
-      required String departmentId,
-      required String unn,
-      required String cr,
-      // required String image,
-      }) async {
+  Future signUpO({
+    required String email,
+    required String password,
+    required String userName,
+    required String departmentId,
+    required String cr,
+    // required String image,
+  }) async {
     print(" before: ");
     final respons = await supabase.auth.signUp(
       data: {'Name': userName},
       email: email,
       password: password,
     );
-    if (respons.hashCode>=200 && respons.hashCode<=299) {
-       await supabase.from('Offices').insert(
-      {
-        'departmentId': departmentId,
-        'name': userName,
-        'officeId': respons.user!.id,
-        'unn': unn,
-        'cr': cr,
-        // 'image': image,
-      },
-    );
+    print("${respons.hashCode}");
+    if (respons.hashCode >= 200 && respons.hashCode <= 299) {
+      await supabase.from('Offices').insert(
+        {
+          'departmentId': departmentId,
+          'name': userName,
+          'officeId': respons.user!.id,
+          'cr': cr,
+          // 'image': image,
+        },
+      );
     }
     print("in the signup: ${respons.hashCode}");
     // Send email verification
     // await supabase.auth.resetPasswordForEmail(email);
   }
 
-
   //---costumer SignUp func
-  Future signUpC(
-      {required String email,
-      required String password,
-      required String userName,
-      required String phoneNumber,
-      }) async {
+  Future signUpC({
+    required String email,
+    required String password,
+    required String userName,
+    required String phoneNumber,
+  }) async {
     print(" before: ");
+
     final respons = await supabase.auth.signUp(
       data: {'Name': userName},
       email: email,
       password: password,
     );
-    if (respons.hashCode>=200 && respons.hashCode<=299) {
-       await supabase.from('Customer').insert(
+    print("iidone");
+    await supabase.from('Customer').insert(
       {
         'email': email,
         'name': userName,
-        'phoneNumber' : phoneNumber,
+        'phoneNumber': phoneNumber,
         'customerId': respons.user!.id,
       },
     );
-    }
+
     print("in the signup: ${respons.hashCode}");
     // Send email verification
     // await supabase.auth.resetPasswordForEmail(email);
   }
 
-
-
   Future signIn({required String email, required String password}) async {
-    await supabase.auth.signInWithPassword(email: email, password: password);
-    token = supabase.auth.currentSession!.accessToken;
-    id = supabase.auth.currentSession!.user.id;
-    addToken();
+    print('in the func');
+    final state = await supabase.auth
+        .signInWithPassword(email: email, password: password);
+    if (state.hashCode >= 200 && state.hashCode <= 299) {
+      print('after the func');
+      token = supabase.auth.currentSession!.accessToken;
+      id = supabase.auth.currentSession!.user.id;
+      addToken();
+    } else {
+      throw const AuthException('الايميل او الرقم السري خطا');
+    }
   }
 
   //Future SignOut
@@ -121,12 +126,11 @@ class DBService {
   }
 
   Future verifyOtp({required String otpToken, required String email}) async {
-    await supabase.auth.verifyOTP(
-      email: email,
-      token: token, type: OtpType.magiclink);
+    await supabase.auth
+        .verifyOTP(email: email, token: token, type: OtpType.magiclink);
   }
 
-  Future resetPassword({required String password}) async{
+  Future resetPassword({required String password}) async {
     await supabase.auth.updateUser(UserAttributes(password: password));
   }
 
@@ -149,12 +153,11 @@ class DBService {
 
   // Get User Profile Data
   Future<Map<String, dynamic>> getUserProfile() async {
-    final profileData =
-        await supabase.from('users').select().eq('id', supabase.auth.currentUser!.id).single();
-    print("in profile before $profileData");
-    name = profileData["name"];
-    print("in profile after $name");
-
+    final profileData = await supabase
+        .from('users')
+        .select()
+        .eq('id', supabase.auth.currentUser!.id)
+        .single();
     return profileData;
   }
 
@@ -162,12 +165,15 @@ class DBService {
     final response = await supabase
         .from('users')
         .select('name')
-        .eq('id', supabase.auth.currentUser!.id).single();
+        .eq('id', supabase.auth.currentUser!.id)
+        .single();
     return await response['name'];
   }
 
   Future updateUserName({required String newName}) async {
-    await supabase.from('users').update({'name': newName}).eq('id', await getCurrentUser());
+    await supabase
+        .from('users')
+        .update({'name': newName}).eq('id', await getCurrentUser());
   }
 
   // ------ medication data Services -----

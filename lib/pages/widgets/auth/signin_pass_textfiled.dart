@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../helper/colors.dart';
+import '../../../helper/colors.dart';
 
 class SigninPassTextField extends StatefulWidget {
   const SigninPassTextField({
-    Key? key,
+    super.key,
     required this.controller,
-   
-  }) : super(key: key);
+  });
 
   final TextEditingController controller;
-  
 
   @override
   _PassTextFieldState createState() => _PassTextFieldState();
@@ -25,7 +23,7 @@ class _PassTextFieldState extends State<SigninPassTextField> {
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(color:whiteBrown),
+          borderSide: BorderSide(color: whiteBrown),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
@@ -35,7 +33,7 @@ class _PassTextFieldState extends State<SigninPassTextField> {
           borderRadius: BorderRadius.circular(20),
           borderSide: BorderSide(color: brown),
         ),
-        labelText:"كلمة المرور",
+        labelText: "كلمة المرور",
         labelStyle: TextStyle(color: blackColor),
         filled: true,
         fillColor: freewhiteBrown,
@@ -46,7 +44,7 @@ class _PassTextFieldState extends State<SigninPassTextField> {
             });
           },
           icon: Icon(
-            obscureText ?  Icons.visibility_off: Icons.visibility ,
+            obscureText ? Icons.visibility_off : Icons.visibility,
             color: brown,
           ),
         ),
@@ -56,6 +54,11 @@ class _PassTextFieldState extends State<SigninPassTextField> {
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'الرجاء إدخال كلمة المرور';
+        }
+        if (value.length >= 6) {
+          print('رقم سري صحيح');
+        } else {
+          return 'الرقم السري يجب ان يكون اكثر من ٦ ارقام';
         }
         return null;
       },

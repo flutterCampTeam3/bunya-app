@@ -1,5 +1,6 @@
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
+import 'package:bunya_app/pages/costumer%20pages/costumer%20auth%20pages/signIn%20page/signin_customer_page.dart';
 import 'package:bunya_app/pages/intro%20pages/customer/second_intro.dart';
 import 'package:flutter/material.dart';
 
@@ -70,6 +71,7 @@ class firstCustomerIntro extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     // Add your logic here for the first clickable text
+                    context.pushAndRemove(const SigninCustomerPage());
                   },
                   child: Container(
                     width: 150,
@@ -93,7 +95,7 @@ class firstCustomerIntro extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    context.pushAndRemove(secondCustomerIntro());
+                    context.pushAndRemove(const secondCustomerIntro());
                   },
                   child: Container(
                     width: 150,

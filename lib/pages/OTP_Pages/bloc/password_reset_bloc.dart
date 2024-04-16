@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:meta/meta.dart';
 
 part 'password_reset_event.dart';
@@ -23,6 +24,7 @@ class PasswordResetBloc extends Bloc<PasswordResetEvent, PasswordResetState> {
     if (event.email.trim().isNotEmpty) {
       try {
       //database Here
+      await DBService().sendOtp(email: event.email);
       emit(EmailVerifiedState(msg: "تم إرسال الرمز إلى بريدك الإلكتروني، يرجى التحقق وكتابة الرمز"));
     } catch (p) {
       print(p);
@@ -39,6 +41,7 @@ class PasswordResetBloc extends Bloc<PasswordResetEvent, PasswordResetState> {
     if (event.otpToken.trim().isNotEmpty && event.otpToken.length == 6) {
       try {
        //Here data base
+        await DBService().verifyOtp(otpToken: event.otpToken, email: event.email);
         emit(OtpVerifiedState(msg: "تم التحقق من الرمز بنجاح، يمكنك الآن تغيير كلمة السر الخاصة بك"));
       } catch (e) {
         emit(OtpErrorState(msg: "الرمز المدخل غير صحيح"));
@@ -54,6 +57,7 @@ class PasswordResetBloc extends Bloc<PasswordResetEvent, PasswordResetState> {
       if(event.password == event.rePassword){
         try {
        //Here data base
+       await DBService().resetPassword(password: event.password);
           emit(PasswordChangedState(msg: "تم تغيير كلمة السر بنجاح"));
         } catch (e) {
           emit(OtpErrorState(msg: "كلمة السر غير متوفرة (يجب أن تكون جديدة و ٦ أحرف على الأقل)"));

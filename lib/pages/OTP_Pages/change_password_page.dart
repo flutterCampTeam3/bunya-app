@@ -4,12 +4,12 @@ import 'package:bunya_app/pages/OTP_Pages/bloc/password_reset_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:bunya_app/widgets/auth/page_header.dart';
+import 'package:bunya_app/pages/widgets/auth/page_header.dart';
 
-import 'package:bunya_app/widgets/auth/page_header.dart';
-import '../../widgets/auth/button_widget.dart';
-import '../../widgets/auth/pass_textfiled.dart';
-import '../../widgets/auth/text_field_confirm_pass.dart';
+import 'package:bunya_app/pages/widgets/auth/page_header.dart';
+import '../widgets/auth/button_widget.dart';
+import '../widgets/auth/pass_textfiled.dart';
+import '../widgets/auth/text_field_confirm_pass.dart';
 import '../Office pages/office auth pages/signIn page/signin_page.dart';
 
 // ignore: must_be_immutable

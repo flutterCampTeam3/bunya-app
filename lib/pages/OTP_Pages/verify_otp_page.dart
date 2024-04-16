@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
-import '../../widgets/auth/button_widget.dart';
+import '../widgets/auth/button_widget.dart';
 
 // ignore: must_be_immutable
 class VerifyOtpPage extends StatelessWidget {

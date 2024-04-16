@@ -1,20 +1,19 @@
-import 'package:bunya_app/pages/costumer%20pages/navBar%20page/bloc/nav_bloc.dart';
+import 'package:bunya_app/pages/Office%20pages/navBar%20page/bloc/nav_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 
-class NavBarPage extends StatelessWidget {
-  const NavBarPage({super.key});
+class NavBarOfficePage extends StatelessWidget {
+  const NavBarOfficePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => NavBloc(),
-      child: BlocBuilder<NavBloc, NavState>(
+      create: (context) => NavOfficeBloc(),
+      child: BlocBuilder<NavOfficeBloc, NavOfficeState>(
         builder: (context, state) {
           return Builder(builder: (context) {
-            final bloc = context.read<NavBloc>();
+            final bloc = context.read<NavOfficeBloc>();
             return Scaffold(
               body: bloc.pages[bloc.currentIndex],
               bottomNavigationBar: Container(
@@ -30,7 +29,7 @@ class NavBarPage extends StatelessWidget {
                   currentIndex: bloc.currentIndex,
                   onTap: (pageIndex) {
                     bloc.currentIndex = pageIndex;
-                    bloc.add(ChangePageEvent(index: pageIndex));
+                    bloc.add(ChangePageOfficeEvent(index: pageIndex));
                   },
                   enableFeedback: false,
                   showUnselectedLabels: true,
@@ -74,14 +73,10 @@ class NavBarPage extends StatelessWidget {
                     side: BorderSide(color: Colors.white, width: 4)),
                 // Border.all(color: Colors.white, width: 3, strokeAlign: 2),
                 backgroundColor: const Color.fromARGB(255, 223, 216, 208),
-                child: SvgPicture.asset('assets/images/bx_bot.svg',
-                    colorFilter: const ColorFilter.mode(
-                        Color.fromARGB(255, 84, 84, 84), BlendMode.srcIn),
-                    semanticsLabel: 'Acme Logo'),
-                //  const Icon(
-                //   Icons.add,
-                //   color: Color.fromARGB(255, 84, 84, 84),
-                // ),
+                child: const Icon(
+                  Icons.add,
+                  color: Color.fromARGB(255, 84, 84, 84),
+                ),
               ),
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.centerDocked,
