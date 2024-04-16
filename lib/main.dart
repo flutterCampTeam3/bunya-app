@@ -1,6 +1,5 @@
 import 'package:bunya_app/data/service/supabase_configration.dart';
 import 'package:bunya_app/pages/costumer%20pages/costumer%20auth%20pages/sign%20up%20page/signup_page.dart';
-import 'package:bunya_app/pages/intro%20pages/first_intro.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';

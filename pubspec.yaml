@@ -4,8 +4,8 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: '>=3.4.0-99.1.beta <4.0.0'
-  # sdk: 3.3.2
+  #sdk: '>=3.4.0-99.1.beta <4.0.0'
+   sdk: '>=3.4.0-99.1.beta <4.0.0'
 
 dependencies:
   flutter:
@@ -28,6 +28,7 @@ dependencies:
   glass: ^2.0.0+1
   glassmorphism_ui: ^0.3.0
   device_preview: ^1.1.0
+  onboarding: ^4.0.2
 
 dev_dependencies:
   flutter_test:
