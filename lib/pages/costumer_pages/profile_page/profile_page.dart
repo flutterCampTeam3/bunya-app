@@ -12,6 +12,7 @@
 
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/sized.dart';
+import 'package:bunya_app/pages/costumer_pages/profile_page/edit_page.dart';
 import 'package:bunya_app/pages/costumer_pages/profile_page/widgets/follower_widget.dart';
 import 'package:bunya_app/pages/costumer_pages/profile_page/widgets/image_aacount_widget.dart';
 import 'package:bunya_app/pages/costumer_pages/profile_page/widgets/information_widget.dart';
@@ -93,7 +94,14 @@ class ProfilePageCustomer extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
                             IconButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            EditPageCustomer()),
+                                  );
+                                },
                                 icon: Image.asset(
                                   'assets/images/edit.png',
                                   width: 18,
