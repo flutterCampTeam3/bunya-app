@@ -87,30 +87,3 @@ class EditPageCustomer extends StatelessWidget {
     );
   }
 }
-
-// class EditInfoRow extends StatelessWidget {
-//   EditInfoRow({super.key, required this.infoController, required this.title});
-//   String title;
-
-//   final TextEditingController infoController;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: [
-//         Padding(
-//           padding: const EdgeInsets.only(top: 15.0),
-//           child: Text(title),
-//         ),
-//         Expanded(
-//           child: TextField(
-//             style: TextStyle(color: darkGreyColor),
-//             maxLines: null,
-//             controller: infoController,
-//           ),
-//         )
-//       ],
-//     );
-//   }
-// }
