@@ -1,6 +1,10 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bunya_app/pages/Messages_pages/messages_page.dart';
+import 'package:bunya_app/pages/costumer%20pages/categories_page/categories_page.dart';
+import 'package:bunya_app/pages/costumer%20pages/home_page/home_page.dart';
+import 'package:bunya_app/pages/costumer%20pages/profile_page/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
@@ -11,10 +15,10 @@ class NavBloc extends Bloc<NavEvent, NavState> {
   int currentIndex = 0;
 
   final List<Widget> pages = [
-    const PageWidget(title: 'Page 1'),
-    const PageWidget(title: 'Page 2'),
-    const PageWidget(title: 'Page 3'),
-    const PageWidget(title: 'Page 4'),
+    const HomePageCustomer(),
+    const MessageListPage(),
+    const CategoriesPage(),
+    const ProfilePageCustomer(),
   ];
 
   NavBloc() : super(NavInitial()) {
@@ -28,15 +32,3 @@ class NavBloc extends Bloc<NavEvent, NavState> {
   }
 }
 
-class PageWidget extends StatelessWidget {
-  final String title;
-
-  const PageWidget({super.key, required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(title),
-    );
-  }
-}

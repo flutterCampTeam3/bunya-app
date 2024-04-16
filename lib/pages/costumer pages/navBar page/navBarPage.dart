@@ -5,7 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class NavBarPage extends StatelessWidget {
-  const NavBarPage({super.key});
+  const NavBarPage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,74 +19,64 @@ class NavBarPage extends StatelessWidget {
             final bloc = context.read<NavBloc>();
             return Scaffold(
               body: bloc.pages[bloc.currentIndex],
-              bottomNavigationBar: Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft:
-                        Radius.circular(30.0), // Adjust the radius as needed
-                    topRight:
-                        Radius.circular(30.0), // Adjust the radius as needed
-                  ),
-                ),
-                child: BottomNavigationBar(
-                  currentIndex: bloc.currentIndex,
-                  onTap: (pageIndex) {
-                    bloc.currentIndex = pageIndex;
-                    bloc.add(ChangePageEvent(index: pageIndex));
-                  },
-                  enableFeedback: false,
-                  showUnselectedLabels: true,
-                  showSelectedLabels: true,
-                  useLegacyColorScheme: false,
-                  elevation: 3,
-                  type: BottomNavigationBarType.fixed,
-                  backgroundColor: const Color.fromARGB(255, 223, 216, 208),
-                  unselectedItemColor: const Color.fromARGB(255, 84, 84, 84),
-                  selectedItemColor: const Color.fromARGB(255, 158, 141, 123),
-                  selectedLabelStyle: const TextStyle(
-                    color: Color.fromARGB(255, 158, 141, 123),
-                  ),
-                  unselectedLabelStyle: const TextStyle(color: Colors.black),
-                  items: const [
-                    BottomNavigationBarItem(
-                      icon: Icon(Icons.person_2_outlined),
-                      label: 'الحساب',
+              bottomNavigationBar: BottomAppBar(
+                shape: const CircularNotchedRectangle(),
+                color: const Color.fromARGB(255, 223, 216, 208),
+                elevation: 3,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    IconButton(
+                      icon: const Icon(Icons.person_2_outlined),
+                      onPressed: () {
+                        bloc.currentIndex = 0;
+                        bloc.add(ChangePageEvent(index: 0));
+                      },
                     ),
-                    BottomNavigationBarItem(
-                      icon: Icon(Icons.category_outlined),
-                      label: 'الفئات',
+                    IconButton(
+                      icon: const Icon(Icons.category_outlined),
+                      onPressed: () {
+                        bloc.currentIndex = 1;
+                        bloc.add(ChangePageEvent(index: 1));
+                      },
                     ),
-                    BottomNavigationBarItem(
-                      icon: Icon(Icons.messenger_outline),
-                      label: 'الرسائل',
+                    const SizedBox(width: 40), // Adjust spacing for FAB
+                    IconButton(
+                      icon: const Icon(Icons.messenger_outline),
+                      onPressed: () {
+                        bloc.currentIndex = 2;
+                        bloc.add(ChangePageEvent(index: 2));
+                      },
                     ),
-                    BottomNavigationBarItem(
-                      icon: Icon(Icons.home_outlined),
-                      label: 'الرئيسية',
+                    IconButton(
+                      icon: const Icon(Icons.home_outlined),
+                      onPressed: () {
+                        bloc.currentIndex = 3;
+                        bloc.add(ChangePageEvent(index: 3));
+                      },
                     ),
                   ],
                 ),
               ),
-              floatingActionButton: FloatingActionButton(
-                onPressed: () {
-                  // Handle the floating button press
-                },
-                shape: const CircleBorder(
-                    eccentricity: 1,
-                    side: BorderSide(color: Colors.white, width: 4)),
-                // Border.all(color: Colors.white, width: 3, strokeAlign: 2),
-                backgroundColor: const Color.fromARGB(255, 223, 216, 208),
-                child: SvgPicture.asset('assets/images/bx_bot.svg',
+              floatingActionButton: SizedBox(
+                width: 80,
+                height: 80,
+                child: FloatingActionButton(
+                  onPressed: () {
+                    // Handle the floating button press
+                  },
+                  shape: const CircleBorder(),
+                  backgroundColor: const Color.fromARGB(255, 223, 216, 208),
+                  child: SvgPicture.asset(
+                    'assets/images/bx_bot.svg',
+                    height: 40,
                     colorFilter: const ColorFilter.mode(
                         Color.fromARGB(255, 84, 84, 84), BlendMode.srcIn),
-                    semanticsLabel: 'Acme Logo'),
-                //  const Icon(
-                //   Icons.add,
-                //   color: Color.fromARGB(255, 84, 84, 84),
-                // ),
+                  ),
+                ),
               ),
               floatingActionButtonLocation:
-                  FloatingActionButtonLocation.centerDocked,
+                  FloatingActionButtonLocation.miniCenterDocked,
             );
           });
         },
