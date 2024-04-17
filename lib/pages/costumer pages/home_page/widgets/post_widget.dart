@@ -1,3 +1,4 @@
+import 'package:bunya_app/data/model/post_model.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:flutter/material.dart';
@@ -11,14 +12,15 @@ class PostWidget extends StatelessWidget {
       required this.like,
       required this.name,
       required this.profilePath});
-  String postPath;
+  final postModel postPath;
   String like;
-  String description;
+  final postModel description;
   String profilePath;
   String name;
 
   @override
   Widget build(BuildContext context) {
+   
     return Expanded(
       child: Container(
         // height: 240,
@@ -65,9 +67,13 @@ class PostWidget extends StatelessWidget {
                           bottomLeft: Radius.circular(20),
                           bottomRight: Radius.circular(20),
                         ),
-                        child: Image.asset(
-                          postPath,
+                        child: Image.network(
+                         
+                          postPath.image, 
                           fit: BoxFit.cover,
+                          errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
+              return Image.asset("assets/images/noimage.png");
+                          }
                         ),
                       ),
                     ),
@@ -87,7 +93,7 @@ class PostWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              Text(description),
+              Text(description.desc),
               gapH15,
               Row(
                 children: [

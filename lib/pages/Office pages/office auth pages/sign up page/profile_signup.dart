@@ -89,16 +89,17 @@ class _ProfileSignupState extends State<ProfileSignup> {
                       children: [
                        
                          gapH10, 
-                        const TypeDropDownWidget(),
-                        gapH20,                       
+                         
+                         ImagePickerWidget(),                  
+                       
+                        gapH20,
+                         const TypeDropDownWidget(),
+                        gapH20,   
                         ProfiletextFieldAuth(
                           Controller: infoController,
                           label: 'معلومات عن الشركة  ',
                           obscureText: false,
                         ),
-                        gapH20,
-                        
-                        ImagePickerWidget(),
                         gapH20,
                         ProfiletextFieldAuth(
                           Controller: locationController,

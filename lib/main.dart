@@ -1,5 +1,6 @@
 import 'package:bunya_app/data/service/supabase_configration.dart';
 import 'package:bunya_app/pages/costumer%20pages/costumer%20auth%20pages/sign%20up%20page/signup_page.dart';
+import 'package:bunya_app/pages/costumer%20pages/home_page/home_page.dart';
 import 'package:bunya_app/pages/costumer%20pages/office%20profile%20pages/profile_office.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/profile_page.dart';
 import 'package:device_preview/device_preview.dart';
@@ -31,6 +32,6 @@ class MainApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         home: const Directionality(
-            textDirection: TextDirection.rtl, child: ProfilePageOfficeCustomur()));
+            textDirection: TextDirection.rtl, child: HomePageCustomer()));
   }
 }

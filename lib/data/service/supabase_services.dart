@@ -2,6 +2,9 @@ import 'package:bunya_app/data/model/medicattion_model.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+import '../model/offices_model.dart';
+import '../model/post_model.dart';
+
 class DBService {
   // ------ Data Storage -----
 
@@ -353,4 +356,27 @@ class DBService {
   Future deleteMedications({required midId}) async {
     await supabase.from('medication').delete().match({'medicationId': midId});
   }
+
+  Future<List<postModel>> getposts() async {
+    final postData =
+        await supabase.from('post').select('*');
+    final List<postModel> classposts = [];
+    for (var element in postData) {
+      classposts.add(postModel.fromJson(element));
+    }
+    return classposts;
+  }
+
+Future<List<OfficesModel>> getOffices() async {
+    final officesData =
+        await supabase.from('Offices').select('*');
+    final List<OfficesModel> classOffices = [];
+    for (var element in officesData) {
+      classOffices.add(OfficesModel.fromJson(element));
+    }
+    return classOffices;
+  }
+
 }
+
+
