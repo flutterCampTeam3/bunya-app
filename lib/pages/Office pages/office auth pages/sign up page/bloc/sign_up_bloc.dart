@@ -13,35 +13,35 @@ part 'sign_up_state.dart';
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   SignUpBloc() : super(SignUpInitial()) {
     on<CreateAccountEvent>(createAccount);
-     on<ChoosImageEvent>((event, emit) async {
- File avatar = await pickedImage();
- emit(ShowImageState(avatar)); 
+    on<ChoosImageEvent>((event, emit) async {
+      File avatar = await pickedImage();
+      emit(ShowImageState(avatar));
     });
   }
 
-Future pickedImage()async{
- var img = await ImagePicker().pickImage(source: ImageSource.gallery);
- 
- return (img!.path);
- }
- 
+  Future pickedImage() async {
+    var img = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    return (img!.path);
+  }
+
   Future<void> createAccount(
       CreateAccountEvent event, Emitter<SignUpState> emit) async {
     emit(LoadingSignUpState());
 
     if (event.name.trim().isNotEmpty &&
-        event.email.trim().isNotEmpty &&
-        event.password.trim().isNotEmpty &&
-        // event.id.trim().isNotEmpty &&
-        event.cr.trim().isNotEmpty &&
-        event.confirmPass.trim().isNotEmpty 
+            event.email.trim().isNotEmpty &&
+            event.password.trim().isNotEmpty &&
+            // event.id.trim().isNotEmpty &&
+            event.cr.trim().isNotEmpty &&
+            event.confirmPass.trim().isNotEmpty
         // && event.isChecked
         ) {
       try {
         emit(LoadingSignUpState());
         try {
           CheckOffice().checkOffice(event.cr);
-        }catch(error){
+        } catch (error) {
           emit(ErrorSignUpState(msg: 'لم يتم ايجاد السجل التجاري'));
         }
         DBService().signUpO(
