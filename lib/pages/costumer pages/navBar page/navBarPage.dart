@@ -70,13 +70,13 @@ class NavBarPage extends StatelessWidget {
                   child: SvgPicture.asset(
                     'assets/images/bx_bot.svg',
                     height: 40,
-                    colorFilter: const ColorFilter.mode(
-                        Color.fromARGB(255, 84, 84, 84), BlendMode.srcIn),
+                    // colorFilter: const ColorFilter.mode(
+                    //     Color.fromARGB(255, 84, 84, 84), BlendMode.srcIn),
                   ),
                 ),
               ),
-              floatingActionButtonLocation:
-                  FloatingActionButtonLocation.miniCenterDocked,
+              // floatingActionButtonLocation:
+              //     FloatingActionButtonLocation.miniCenterDocked,
             );
           });
         },

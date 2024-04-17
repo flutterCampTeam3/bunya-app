@@ -7,6 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'pages/costumer pages/aichat/chat.dart';
+import 'pages/costumer pages/aichat/first_chat_page.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await databaseConfig();
@@ -28,6 +31,6 @@ class MainApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         home: const Directionality(
-            textDirection: TextDirection.rtl, child: NavBarPage()));
+            textDirection: TextDirection.rtl, child: FirstChatPage()));
   }
 }
