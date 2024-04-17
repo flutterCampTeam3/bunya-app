@@ -1,0 +1,44 @@
+name: bunya_app
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  #sdk: '>=3.4.0-99.1.beta <4.0.0'
+   sdk: '>=3.4.0-99.1.beta <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_dotenv: ^5.1.0
+  get_it: ^7.6.8
+  get_storage: ^2.1.1
+  http: ^1.2.1
+  supabase_flutter: ^2.4.0
+  # dash_chat_2: ^0.0.20
+  flutter_barcode_scanner: ^2.0.0  
+  flutter_bloc: ^8.1.4
+  flutter_svg: 1.1.6
+  image_picker: ^1.0.7
+  time_picker_spinner: ^0.0.1
+  intl: ^0.19.0
+  flutter_background_service: ^5.0.5
+  google_fonts: ^6.2.1
+  flutter_otp_text_field: ^1.1.2+1
+  glass: ^2.0.0+1
+  glassmorphism_ui: ^0.3.0
+  device_preview: ^1.1.0
+  onboarding: ^4.0.2
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+   
+   - assets/images/
+   - .env
