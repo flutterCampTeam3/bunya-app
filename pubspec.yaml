@@ -5,7 +5,7 @@ version: 0.1.0
 
 environment:
   #sdk: '>=3.4.0-99.1.beta <4.0.0'
-   sdk: 3.3.2
+   sdk: '>=3.4.0-99.1.beta <4.0.0'
 
 dependencies:
   flutter:
@@ -21,7 +21,7 @@ dependencies:
   flutter_svg: 1.1.6
   image_picker: ^1.0.7
   time_picker_spinner: ^0.0.1
-  intl: ^0.18.1
+  intl: ^0.19.0
   flutter_background_service: ^5.0.5
   google_fonts: ^6.2.1
   flutter_otp_text_field: ^1.1.2+1

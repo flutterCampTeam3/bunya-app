@@ -1,5 +1,4 @@
 import 'package:bunya_app/helper/colors.dart';
-import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/pages/Office%20pages/office%20auth%20pages/sign%20up%20page/widgets/image_piker_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,6 @@ import '../../../../helper/sized.dart';
 import '../../../widgets/auth/button_widget.dart';
 import '../signIn page/signin_page.dart';
 import 'bloc/sign_up_bloc.dart';
-import 'signup_page.dart';
 import 'widgets/profile_text_field_auth.dart';
 import 'widgets/type_dropdown_Container_widget.dart';
 import 'widgets/page_header.dart';

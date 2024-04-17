@@ -1,4 +1,5 @@
 import 'package:bunya_app/pages/OTP_Pages/verify_email_page.dart';
+import 'package:bunya_app/pages/Office%20pages/navBar%20page/navBarPage.dart';
 import 'package:bunya_app/pages/costumer%20pages/navBar%20page/navBarPage.dart';
 import 'package:bunya_app/pages/widgets/auth/signin_pass_textfiled.dart';
 import 'package:bunya_app/helper/colors.dart';
@@ -50,7 +51,12 @@ class _SigninCustomerPageState extends State<SigninCustomerPage> {
                       // SuccessSignInState Function Here
                       context.showSuccessSnackBar(context, state.msg);
                       // BottomBarScreen Here
-                      context.pushAndRemove(const NavBarPage());
+                      
+                      if (bloc.userType) {
+                        context.pushAndRemove(const NavBarPage());
+                      }else{
+                        context.pushAndRemove(const NavBarOfficePage());
+                      }
                     }
                     if (state is ErrorSignInCustomerState) {
                       context.showErrorSnackBar(context, state.massage);

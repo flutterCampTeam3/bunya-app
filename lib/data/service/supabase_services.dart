@@ -99,16 +99,28 @@ class DBService {
   }
 
   Future signIn({required String email, required String password}) async {
-    print('in the func');
     final state = await supabase.auth
         .signInWithPassword(email: email, password: password);
     if (state.hashCode >= 200 && state.hashCode <= 299) {
-      print('after the func');
       token = supabase.auth.currentSession!.accessToken;
       id = supabase.auth.currentSession!.user.id;
       addToken();
     } else {
       throw const AuthException('الايميل او الرقم السري خطا');
+    }
+  }
+
+  Future checkUserCustomer() async {
+    final profileData = await supabase
+        .from('Customer')
+        .select()
+        .eq('id', supabase.auth.currentUser!.id)
+        .single();
+
+    if (profileData.isNotEmpty) {
+      return true;
+    }else{
+      return false;
     }
   }
 

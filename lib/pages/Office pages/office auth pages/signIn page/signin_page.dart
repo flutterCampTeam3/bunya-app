@@ -1,4 +1,5 @@
 import 'package:bunya_app/pages/Office%20pages/navBar%20page/navBarPage.dart';
+import 'package:bunya_app/pages/costumer%20pages/navBar%20page/navBarPage.dart';
 import 'package:bunya_app/pages/widgets/auth/signin_pass_textfiled.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
@@ -48,10 +49,14 @@ class _SigninPageState extends State<SigninPage> {
                   listener: (context, state) {
                     if (state is SuccessSignInState) {
                       // SuccessSignInState Function Here
-                      context.showSuccessSnackBar(context, state.msg);
-
+                       context.showSuccessSnackBar(context, state.msg);
                       // BottomBarScreen Here
-                      context.pushAndRemove(const NavBarOfficePage());
+                      
+                      if (bloc.userType) {
+                        context.pushAndRemove(const NavBarPage());
+                      }else{
+                        context.pushAndRemove(const NavBarOfficePage());
+                      }
                     }
                     if (state is ErrorSignInState) {
                       context.showErrorSnackBar(context, state.massage);
