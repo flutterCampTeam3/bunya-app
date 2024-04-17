@@ -31,4 +31,3 @@ class NavBloc extends Bloc<NavEvent, NavState> {
     emit(ChangePageState());
   }
 }
-

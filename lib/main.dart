@@ -28,6 +28,6 @@ class MainApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         home: const Directionality(
-            textDirection: TextDirection.rtl, child: NavBarPage()));
+            textDirection: TextDirection.rtl, child: ProfilePageCustomer()));
   }
 }

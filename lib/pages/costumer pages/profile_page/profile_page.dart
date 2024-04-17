@@ -134,32 +134,32 @@ class ProfilePageCustomer extends StatelessWidget {
                               ),
                             ],
                           ),
-                        child : InkWell(
-                          child: Container(
-                            height: 65,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              color: whiteColor,
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.3),
-                                  spreadRadius: 1,
-                                  blurRadius: 2,
-                                  offset: const Offset(0, 4),
-                                ),
-                              ],
+                          child: InkWell(
+                            child: Container(
+                              height: 65,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15),
+                                color: whiteColor,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.3),
+                                    spreadRadius: 1,
+                                    blurRadius: 2,
+                                    offset: const Offset(0, 4),
+                                  ),
+                                ],
+                              ),
+                              child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text("تسجيل الخروج",
+                                          style: TextStyle(color: red))
+                                    ],
+                                  )),
                             ),
-                            child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text("تسجيل الخروج",
-                                        style: TextStyle(color: red))
-                                  ],
-                                )),
                           ),
-                        ),
                         )
                       ],
                     ),
@@ -168,17 +168,6 @@ class ProfilePageCustomer extends StatelessWidget {
                     child: Column(
                       children: [
                         const Text("المتابعون"),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            IconButton(
-                                onPressed: () {},
-                                icon: Image.asset(
-                                  'assets/images/edit.png',
-                                  width: 18,
-                                )),
-                          ],
-                        ),
                         FollowresRow(
                             name: "شركة بناء للمقاولات والإستثمار",
                             path: 'assets/images/benaa_cpmpany.png'),
