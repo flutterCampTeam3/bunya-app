@@ -9,7 +9,7 @@ class GPT {
   final locator = GetIt.I.get<DBService>();
   Future<String> getChatAnswer(String prompt) async {
     
-    String link = "https://api.openai.com/v1/chat/completions";
+    String link = "";
     final uri = Uri.parse(link);
     String answer = 'empty';
     const String kay = "";
