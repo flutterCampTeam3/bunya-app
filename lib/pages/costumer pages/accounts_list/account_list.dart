@@ -6,6 +6,7 @@ import 'package:bunya_app/pages/costumer%20pages/accounts_list/bloc/account_list
 import 'package:bunya_app/pages/costumer%20pages/home_page/home_page.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/account_list_Widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/appbar_widget.dart';
+import 'package:bunya_app/pages/costumer%20pages/office%20profile%20pages/profile_office.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -112,8 +113,8 @@ class ConstraintAccountList extends StatelessWidget {
                                               //rate: 5,
                                               followers: 200,
                                               onTap: () {
-                                                context.pushAndRemove(
-                                                    HomePageCustomer());
+                                                context.pushTo(
+                                                   view:  ProfilePageOfficeCustomur(office: med, ), );
                                               },
                                             );
                                           },

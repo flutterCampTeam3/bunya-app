@@ -52,7 +52,7 @@ class AccountsHomeWidget extends StatelessWidget {
                     path.image,
                     fit: BoxFit.cover,
                     errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
-                return Image.asset("assets/images/.png");
+                return Image.asset("assets/images/noimage.png");
                             }
                   ),
                 ),

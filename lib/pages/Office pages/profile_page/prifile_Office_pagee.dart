@@ -198,29 +198,29 @@ class ProfilePageOffice extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        PostProfileWidget(
-                          path: "assets/images/design_category.jpeg",
-                          name: "لاء علي",
-                          profilePath: 'assets/images/post1.jpeg',
-                          likes: "100 لايك",
-                          desc:
-                              "تصميم ديكور صالة  فاخرة  احد فنادق مدينة جدة بستايل\n مودرن حديث  ",
-                        ),
-                        gapH15,
-                        PostProfileWidget(
-                          path: "assets/images/design_category.jpeg",
-                          name: "لاء علي",
-                          profilePath: 'assets/images/post1.jpeg',
-                          likes: "100 لايك",
-                          desc:
-                              "تصميم ديكور صالة  فاخرة  احد فنادق مدينة جدة بستايل\n مودرن حديث  ",
-                        ),
-                      ],
-                    ),
-                  ),
+                  // SingleChildScrollView(
+                  //   child: Column(
+                  //     children: [
+                  //       PostProfileWidget(
+                  //         path: "assets/images/design_category.jpeg",
+                  //         name: "لاء علي",
+                  //         profilePath: 'assets/images/post1.jpeg',
+                  //         likes: "100 لايك",
+                  //         desc:
+                  //             "تصميم ديكور صالة  فاخرة  احد فنادق مدينة جدة بستايل\n مودرن حديث  ",
+                  //       ),
+                  //       gapH15,
+                  //       PostProfileWidget(
+                  //         path: "assets/images/design_category.jpeg",
+                  //         name: "لاء علي",
+                  //         profilePath: 'assets/images/post1.jpeg',
+                  //         likes: "100 لايك",
+                  //         desc:
+                  //             "تصميم ديكور صالة  فاخرة  احد فنادق مدينة جدة بستايل\n مودرن حديث  ",
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                 ]),
               ),
             ],

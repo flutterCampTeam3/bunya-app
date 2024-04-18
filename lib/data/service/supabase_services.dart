@@ -387,6 +387,27 @@ class DBService {
     return classposts;
   }
 
+Future<List<postModel>> getPostsId({required String ofiiceId}) async {
+    final postData =
+        await supabase.from('post').select('*').match({'ofiiceId':ofiiceId});
+    final List<postModel> classposts = [];
+    for (var element in postData) {
+      classposts.add(postModel.fromJson(element));
+    }
+    return classposts;
+  }
+
+// Future<List<MedicationModel>> getMedications() async {
+//     final medication =
+//         await supabase.from('medication').select('*').match({'userId': id});
+//     final List<MedicationModel> medications = [];
+//     for (var element in medication) {
+//       medications.add(MedicationModel.fromJson(element));
+//     }
+//     return medications;
+//   }
+
+
     Future<List<OfficesModel>> getOfficeAccount(String type) async {
     print('in the func');
     final officeAccounte = await supabase.from('Offices').select("*").match({'departmentId': type});
