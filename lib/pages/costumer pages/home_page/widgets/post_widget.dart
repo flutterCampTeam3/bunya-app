@@ -93,7 +93,12 @@ class PostWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              Text(description.desc),
+              Text(description.desc,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              ),
+          
+
               gapH15,
               Row(
                 children: [

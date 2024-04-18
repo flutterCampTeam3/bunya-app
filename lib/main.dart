@@ -1,7 +1,9 @@
 import 'package:bunya_app/data/service/supabase_configration.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'pages/Office pages/home_page/home_page_office.dart';
 import 'pages/Office pages/office auth pages/sign up page/signup_page.dart';
+import 'pages/costumer pages/home_page/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +27,6 @@ class MainApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         home: const Directionality(
-            textDirection: TextDirection.rtl, child: SignUpPage()));
+            textDirection: TextDirection.rtl, child: HomePageOffice()));
   }
 }

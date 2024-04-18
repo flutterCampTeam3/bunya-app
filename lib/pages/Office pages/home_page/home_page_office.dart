@@ -12,18 +12,18 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../costumer pages/home_page/widgets/scaffoldWidget.dart';
 import 'bloc/home_bloc.dart';
-import 'widgets/scaffoldWidget.dart';
 
-class HomePageCustomer extends StatelessWidget {
-  const HomePageCustomer({super.key});
+class HomePageOffice extends StatelessWidget {
+  const HomePageOffice({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeBloc()..add(ShowDataEvent()),
+      create: (context) => HomeOfficesBloc()..add(ShowDataOfficesEvent()),
       child: Builder(builder: (context) {
-        final bloc = context.read<HomeBloc>();
+        final bloc = context.read<HomeOfficesBloc>();
         
         return Directionality(
         textDirection: TextDirection.rtl,
@@ -94,9 +94,9 @@ class HomePageCustomer extends StatelessWidget {
                           ],
                         ),
                         gapH10,
-                           BlocConsumer<HomeBloc, HomeState>(
+                           BlocConsumer<HomeOfficesBloc, HomeOfficesState>(
             listener: (context, state) {
-              if (state is ErrorShowpostState) {
+              if (state is ErrorOfficesState) {
                 Navigator.pop(context);
                 context.showErrorSnackBar(context, state.msg);
               }
@@ -110,7 +110,7 @@ class HomePageCustomer extends StatelessWidget {
             color: brown,
           ),
                 );
-              } else if (state is datahomeSuccesState) {
+              } else if (state is datahomeSuccesOfficesState) {
                 // Return ListView.builder when the state is postsLoadedState
                 return SizedBox(
           height: 100,
@@ -143,9 +143,9 @@ class HomePageCustomer extends StatelessWidget {
                             ],
                           ),
                           gapH10,
-                         BlocConsumer<HomeBloc, HomeState>(
+                         BlocConsumer<HomeOfficesBloc, HomeOfficesState>(
             listener: (context, state) {
-              if (state is ErrorShowpostState) {
+              if (state is ErrorOfficesState) {
                 Navigator.pop(context);
                 context.showErrorSnackBar(context, state.msg);
               }
@@ -158,7 +158,7 @@ class HomePageCustomer extends StatelessWidget {
             color: darkBrown,
           ),
                 );
-              } else if (state is datahomeSuccesState) {
+              } else if (state is datahomeSuccesOfficesState) {
                
                 return SizedBox(
           height: 200,

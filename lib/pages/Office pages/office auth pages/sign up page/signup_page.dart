@@ -150,7 +150,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               children: [
                                 ButtonWidget(
                                   backgroundColor: darkBrown,
-                                  text: "التالي",
+                                  text: "إنشاء حساب",
                                   onPressed: () {
                                     if (_formKey.currentState!.validate()) {
                                       bloc.add(CreateAccountEvent(

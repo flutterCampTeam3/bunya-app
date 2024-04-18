@@ -92,9 +92,7 @@ class _ProfileSignupState extends State<ProfileSignup> {
                       children: [
                         gapH10, 
                          
-                         ImagePickerWidget(),                  
                        
-                        gapH20,
                          const TypeDropDownWidget(),
                         gapH20,                       
                         ProfiletextFieldAuth(
@@ -104,8 +102,7 @@ class _ProfileSignupState extends State<ProfileSignup> {
                         ),
                         gapH20,
                         
-                        const ImagePickerWidget(),
-                        gapH20,
+                      
                         ProfiletextFieldAuth(
                           Controller: locationController,
                           label: ' عنوان الشركة  ',
@@ -118,8 +115,12 @@ class _ProfileSignupState extends State<ProfileSignup> {
                           obscureText: false,
                           phone: true,
                         ),
-                        gapH10,
                         gapH20,
+                          ImagePickerWidget(),                  
+                       
+                        
+                        gapH10,
+                        
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(
