@@ -81,8 +81,8 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                 },
                                 style: ButtonStyle(
                                   backgroundColor:
-                                      MaterialStateProperty.all<Color>(lightBrown),
-                                  fixedSize: MaterialStateProperty.all<Size>(
+                                      WidgetStateProperty.all<Color>(lightBrown),
+                                  fixedSize: WidgetStateProperty.all<Size>(
                                       const Size(150, 50)),
                                 ),
                                 child: const Text(
@@ -103,8 +103,8 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                 },
                                 style: ButtonStyle(
                                   backgroundColor:
-                                      MaterialStateProperty.all<Color>(lightBrown),
-                                  fixedSize: MaterialStateProperty.all<Size>(
+                                      WidgetStateProperty.all<Color>(lightBrown),
+                                  fixedSize: WidgetStateProperty.all<Size>(
                                       const Size(150, 50)),
                                 ),
                                 child: const Text(
@@ -202,25 +202,27 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                             SingleChildScrollView(
                               child: Column(
                                 children: [
-                                  Align(
-                                    alignment: Alignment.topLeft,
-                                    child: IconButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) {
-                                                // Return the widget for the new route here
-                                                return EditPageOffice();
-                                              },
-                                            ),
-                                          );
-                                        },
-                                        icon: Image.asset(
-                                          'assets/images/edit.png',
-                                          width: 18,
-                                        )),
-                                  ),
+                                  // Align(
+                                  //   alignment: Alignment.topLeft,
+                                  //   child: IconButton(
+                                  //       onPressed: () {
+                                  //         Navigator.push(
+                                  //           context,
+                                  //           MaterialPageRoute(
+                                  //             builder: (context) {
+                                  //               // Return the widget for the new route here
+                                  //               return EditPageOffice(
+                                  //                 name: state.name,
+                                  //               );
+                                  //             },
+                                  //           ),
+                                  //         );
+                                  //       },
+                                  //       icon: Image.asset(
+                                  //         'assets/images/edit.png',
+                                  //         width: 18,
+                                  //       )),
+                                  // ),
                                   InformationWidgetOffice(
                                     widget: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
