@@ -44,7 +44,7 @@ class ProfilePageOffice extends StatelessWidget {
                           Row(
                             children: [
                               ImageAacountWodget(
-                                path: 'assets/images/benaa_cpmpany.png',
+                                path: state.image,
                               ),
                               gapWe15,
                               Column(

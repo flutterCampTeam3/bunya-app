@@ -52,8 +52,7 @@ class ProfilePageCustomer extends StatelessWidget {
                                     Row(
                                       children: [
                                         ImageAacountWodget(
-                                          path:
-                                              'assets/images/profile_image.png',
+                                          path: state.image,
                                         ),
                                         gapWe15,
                                         Column(

@@ -24,12 +24,13 @@ final class DisplayOfficeInfoState extends ProfileOfficeState {
   String name;
   String email;
   String description;
+    String image;
   int phone;
   DisplayOfficeInfoState(
       {required this.email,
       required this.name,
       required this.phone,
-      required this.description});
+      required this.description,required this.image});
 }
 
 final class ProfileLoadingState extends ProfileOfficeState {}

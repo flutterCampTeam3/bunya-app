@@ -36,9 +36,14 @@ class ProfileOfficeBloc extends Bloc<ProfileOfficeEvent, ProfileOfficeState> {
       final email = profile.email;
       final name = profile.name;
       final phone = profile.phone;
+      final image = profile.image;
       final descriptionn = profile.description;
       emit(DisplayOfficeInfoState(
-          name: name, email: email, phone: phone, description: descriptionn));
+          image: image,
+          name: name,
+          email: email,
+          phone: phone,
+          description: descriptionn));
     } catch (e) {
       print("in catch");
       print(e.toString());
