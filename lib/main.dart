@@ -1,6 +1,7 @@
 import 'package:bunya_app/data/service/supabase_configration.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'pages/Office pages/add post page/add_post_page.dart';
 import 'pages/Office pages/home_page/home_page_office.dart';
 import 'pages/Office pages/office auth pages/sign up page/signup_page.dart';
 import 'pages/costumer pages/accounts_list/account_list.dart';
@@ -29,6 +30,6 @@ class MainApp extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         home:  Directionality(
-            textDirection: TextDirection.rtl, child: HomePageCustomer()));
+            textDirection: TextDirection.rtl, child: AddPostPage()));
   }
 }
