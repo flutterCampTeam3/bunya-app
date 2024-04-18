@@ -11,7 +11,7 @@ part 'sign_up_event.dart';
 part 'sign_up_state.dart';
 
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
-  bool checkOffice = false;
+  bool checkOffice = true;
   SignUpBloc() : super(SignUpInitial()) {
     on<CreateAccountEvent>(createAccount);
     on<CreateAccountprofileEvent>(createProfileAccount);
@@ -41,12 +41,12 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         ) {
       try {
         emit(LoadingSignUpState());
-        try {
-          checkOffice = await CheckOffice().checkOffice(event.cr);
-        } catch (error) {
-          emit(ErrorSignUpState(msg: 'لم يتم ايجاد السجل التجاري'));
-        }
-        if (checkOffice) {
+        // try {
+        //   checkOffice = await CheckOffice().checkOffice(event.cr);
+        // } catch (error) {
+        //   emit(ErrorSignUpState(msg: 'لم يتم ايجاد السجل التجاري'));
+        // }
+        if (true) {
           DBService().signUpO(
               userName: event.name,
               email: event.email,

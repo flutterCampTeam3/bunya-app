@@ -158,6 +158,7 @@ class _SignUpCustomerPageState extends State<SignUpCustomerPage> {
                                         phone: phoneController.text,
                                         confirmPass: confirmPassController.text,
                                         isChecked: isChecked,
+                                        
                                       ));
                                     }
                                   },

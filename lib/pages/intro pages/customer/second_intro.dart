@@ -1,5 +1,6 @@
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
+import 'package:bunya_app/pages/costumer%20pages/costumer%20auth%20pages/signIn%20page/signin_customer_page.dart';
 import 'package:bunya_app/pages/intro%20pages/customer/third_intro.dart';
 import 'package:flutter/material.dart';
 
@@ -8,8 +9,7 @@ class secondCustomerIntro extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-     Scaffold(
+    return Scaffold(
       body: Container(
         height: double.maxFinite,
         width: double.maxFinite,
@@ -57,6 +57,8 @@ class secondCustomerIntro extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
+                    context.pushAndRemove(const SigninCustomerPage());
+
                     // Add your logic here for the first clickable text
                   },
                   child: Container(

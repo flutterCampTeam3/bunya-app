@@ -70,8 +70,10 @@ class _ProfileSignupState extends State<ProfileSignup> {
           appBar: PreferredSize(
             preferredSize: Size(MediaQuery.of(context).size.width, 210),
             child: const PageHeader(
+              
               height: 210,
               bottomText: " ادخل بيانات ملفك الشخصي",
+              
             ),
           ),
           body: BlocConsumer<SignUpBloc, SignUpState>(

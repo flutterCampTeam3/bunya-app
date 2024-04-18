@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:bunya_app/data/service/supabase_services.dart';
+import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
 
@@ -14,7 +15,10 @@ class SignUpBlocCustomer
   SignUpBlocCustomer() : super(SignUpInitial()) {
     on<CreateAccountCustomerEvent>(createAccount);
     on<CustomerChoosImageEvent>((event, emit) async {
-      File avatar = await pickedImage();
+      //----imgaepick
+      File avatar = File(await pickedImage());
+      GetIt.I.get<DBService>().uploadImage(avatar);
+//-------
       emit(CustomerChoosImageEventShowImageState(avatar));
     });
   }
