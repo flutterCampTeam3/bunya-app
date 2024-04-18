@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:bunya_app/data/model/profile_model_customer.dart';
 import 'package:bunya_app/data/service/supabase_services.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
 import 'package:meta/meta.dart';
 
@@ -11,9 +12,9 @@ part 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final locator = GetIt.I.get<DBService>();
-  String? name;
-  String? email;
-  int? phone;
+  // String? name;
+  // String? email;
+  // int? phone;
   ProfileBloc() : super(ProfileInitial()) {
     on<ActivateEditModeEvent>(activateEditMode);
     on<DeactivateEditModeEvent>(deactivateEditMode);
@@ -50,7 +51,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       final email = profile.email;
       final name = profile.name;
       final phone = profile.phone;
-      emit(DisplayUserInfoState(name: name, email: email, phone: phone));
+      final image = profile.image;
+      emit(DisplayUserInfoState(
+          name: name, email: email, phone: phone, image: image));
     } catch (e) {
       print(e.toString());
       emit(ProfileErrorState(

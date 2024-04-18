@@ -20,9 +20,10 @@ final class DeactivatedEditModeState extends ProfileState {}
 final class DisplayUserInfoState extends ProfileState {
   String name;
   String email;
+    String image;
   int phone;
   DisplayUserInfoState(
-      {required this.email, required this.name, required this.phone});
+      {required this.email, required this.name, required this.phone, required this.image});
 }
 
 final class ProfilSuccessState extends ProfileState {
