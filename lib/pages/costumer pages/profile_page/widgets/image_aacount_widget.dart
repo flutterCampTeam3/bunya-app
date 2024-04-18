@@ -17,7 +17,7 @@ class ImageAacountWodget extends StatelessWidget {
         ),
       ),
       child: ClipOval(
-        child: Image.asset(
+        child: Image.network(
           path,
           fit: BoxFit.cover,
         ),
