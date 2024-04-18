@@ -1,9 +1,6 @@
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/costumer%20pages/accounts_list/account_list.dart';
-import 'package:bunya_app/pages/costumer%20pages/accounts_list/desgin_account.dart';
-import 'package:bunya_app/pages/costumer%20pages/accounts_list/electric_account.dart';
-import 'package:bunya_app/pages/costumer%20pages/accounts_list/tools_account.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/accounts_home_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/appbar_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/image_widget.dart';
@@ -27,7 +24,7 @@ class HomePageCustomer extends StatelessWidget {
             child: SafeArea(
               child: Column(
                 children: [
-                  //   const AppBarWidget(),
+                  
 
                   Padding(
                     padding: const EdgeInsets.all(20.0),
@@ -39,7 +36,7 @@ class HomePageCustomer extends StatelessWidget {
                             ImageWidget(
                               onTap: () {
                                 context
-                                    .pushAndRemove(const DesginAccountList());
+                                    .pushAndRemove( ConstraintAccountList(type: "التصميم الداخلي",));
                               },
                               title: "التصميم الداخلي",
                               path: 'assets/images/intern_design.jpeg',
@@ -47,7 +44,7 @@ class HomePageCustomer extends StatelessWidget {
                             gapWe15,
                             ImageWidget(
                               onTap: () {
-                                context.pushAndRemove(const ToolsAccountList());
+                                context.pushAndRemove( ConstraintAccountList(type: 'ادوات البناء',));
                               },
                               title: "ادوات البناء",
                               path: 'assets/images/drell.jpeg',
@@ -60,7 +57,7 @@ class HomePageCustomer extends StatelessWidget {
                             ImageWidget(
                               onTap: () {
                                 context.pushAndRemove(
-                                    const ConstraintAccountList());
+                                     ConstraintAccountList(type: "مكاتب المقاولات"));
                               },
                               title: "مكاتب المقاولات",
                               path: 'assets/images/house.jpeg',
@@ -69,7 +66,7 @@ class HomePageCustomer extends StatelessWidget {
                             ImageWidget(
                               onTap: () {
                                 context
-                                    .pushAndRemove(const ElectricAccountList());
+                                    .pushAndRemove(ConstraintAccountList(type: 'الكهرباء',));
                               },
                               title: "الكهرباء",
                               path: 'assets/images/electric.jpeg',

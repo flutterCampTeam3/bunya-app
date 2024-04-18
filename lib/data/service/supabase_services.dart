@@ -1,4 +1,5 @@
 import 'package:bunya_app/data/model/medicattion_model.dart';
+import 'package:bunya_app/data/model/offices_model.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -318,5 +319,20 @@ class DBService {
   // Delete Medication
   Future deleteMedications({required midId}) async {
     await supabase.from('medication').delete().match({'medicationId': midId});
+  }
+
+//-------------
+
+  Future<List<OfficesModel>> getOfficeAccount(String type) async {
+    print('in the func');
+    final officeAccounte = await supabase.from('Offices').select("*").match({'departmentId': type});
+    print('the length${officeAccounte.length}');
+    final List<OfficesModel> officeAccount = [];
+    for (var element in officeAccounte) {
+      officeAccount.add(OfficesModel.fromJson(element));
+    }
+    
+   
+    return officeAccount;
   }
 }
