@@ -22,12 +22,9 @@ class EditPageCustomer extends StatelessWidget {
       required this.phone});
   final locator = GetIt.I.get<DBService>();
 
-  TextEditingController infoController =
-      TextEditingController(text: "مرام الحارثي ");
-  TextEditingController phoneController =
-      TextEditingController(text: "053445522");
-  TextEditingController emailController =
-      TextEditingController(text: "akjnbsjwbec@gmail.com");
+  TextEditingController infoController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
   // TextEditingController addressController =
   //     TextEditingController(text: "الرياض ، شارع احمد");
   String name;
@@ -49,7 +46,7 @@ class EditPageCustomer extends StatelessWidget {
             listener: (context, state) {
               if (state is ProfilSuccessState) {
                 context.showSuccessSnackBar(context, state.msg);
-                context.pushAndRemove(const ProfilePageCustomer());
+                context.pushAndRemove( ProfilePageCustomer());
                 // bloc.add(GetUserInfoEvent());
               }
               if (state is ProfileErrorState) {
@@ -115,12 +112,10 @@ class EditPageCustomer extends StatelessWidget {
                               backgroundColor: brownColor,
                               minimumSize: const Size(double.infinity, 50)),
                           onPressed: () async {
-                            bloc.add(UpdateUserInfoEvent(
-                                name: name, email: email, phone: phone));
-                            // await locator.editUpdate(
-                            //     name: infoController.text,
-                            //     email: emailController.text,
-                            //     phone: int.parse(phoneController.text));
+                            await locator.editUpdate(
+                                name: infoController.text,
+                                email: emailController.text,
+                                phone: int.parse(phoneController.text));
                             Navigator.pop(context);
                             // Navigator.push(
                             //   context,

@@ -145,8 +145,8 @@ class NavBarOfficePage extends StatelessWidget {
                   child: SvgPicture.asset(
                     'assets/images/addIcon.svg',
                     height: 45,
-                    colorFilter: const ColorFilter.mode(
-                        Color.fromARGB(255, 84, 84, 84), BlendMode.srcIn),
+                    // colorFilter: const ColorFilter.mode(
+                    //     Color.fromARGB(255, 84, 84, 84), BlendMode.srcIn),
                   ),
                 ),
               ),

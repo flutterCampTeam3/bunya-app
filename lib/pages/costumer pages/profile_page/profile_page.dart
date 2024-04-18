@@ -1,3 +1,4 @@
+import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
@@ -10,11 +11,13 @@ import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/informatio
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 class ProfilePageCustomer extends StatelessWidget {
-  const ProfilePageCustomer({super.key});
+  ProfilePageCustomer({super.key});
 
   @override
+  final locator = GetIt.I.get<DBService>();
 
   // bool isEditing = false;
   @override
@@ -130,7 +133,11 @@ class ProfilePageCustomer extends StatelessWidget {
                                                                               state.email,
                                                                           phone:
                                                                               state.phone,
-                                                                        )));
+                                                                        ))).then(
+                                                            (value) {
+                                                          bloc.add(
+                                                              GetUserInfoEvent());
+                                                        });
                                                       },
                                                       icon: Image.asset(
                                                         'assets/images/edit.png',
@@ -176,7 +183,9 @@ class ProfilePageCustomer extends StatelessWidget {
                                                   ],
                                                 ),
                                                 child: InkWell(
-                                                  onTap: () {},
+                                                  onTap: () async {
+                                                    await locator.signOut();
+                                                  },
                                                   child: Container(
                                                     height: 65,
                                                     decoration: BoxDecoration(
