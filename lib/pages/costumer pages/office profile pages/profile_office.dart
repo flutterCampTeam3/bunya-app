@@ -3,7 +3,7 @@ import 'package:bunya_app/data/model/post_model.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
-import 'package:bunya_app/pages/Office%20pages/profile_page/edit_page.dart';
+import 'package:bunya_app/pages/Office%20pages/profile_page/edit_office_page.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/widgets/widgets/information_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/image_aacount_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/post_widget.dart';

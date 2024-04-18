@@ -18,7 +18,7 @@ class NavOfficeBloc extends Bloc<NavOfficeEvent, NavOfficeState> {
     const HomePageOffice(),
     const MessageListPage(),
     const CategoriesPage(),
-    const ProfilePageOffice(),
+     ProfilePageOffice(),
   ];
 
   NavOfficeBloc() : super(NavInitial()) {

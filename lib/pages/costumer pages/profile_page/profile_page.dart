@@ -56,12 +56,12 @@ class ProfilePageCustomer extends StatelessWidget {
                                               'assets/images/profile_image.png',
                                         ),
                                         gapWe15,
-                                        const Column(
+                                        Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
                                           children: [
-                                            Text("مرام"),
-                                            Text("maram@gmail.com")
+                                            Text(state.name),
+                                            Text(state.email)
                                           ],
                                         )
                                       ],

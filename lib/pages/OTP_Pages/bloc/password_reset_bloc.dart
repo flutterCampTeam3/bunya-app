@@ -82,7 +82,7 @@ class PasswordResetBloc extends Bloc<PasswordResetEvent, PasswordResetState> {
       ResendOtpEvent event, Emitter<PasswordResetState> emit) async {
     emit(OtpLoadingState());
     try {
-      await DBService().resendOtp(email: event.email);
+      await DBService().sendOtp(email: event.email);
       emit(AuthOtpResentState(msg: "تم إرسال رمز التحقق الجديد"));
     } catch (error) {
       print(error);

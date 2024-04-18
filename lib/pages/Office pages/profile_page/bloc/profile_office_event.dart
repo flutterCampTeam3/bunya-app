@@ -9,16 +9,16 @@ final class ActivateEditModeEvent extends ProfileOfficeEvent {}
 
 final class DeactivateEditModeEvent extends ProfileOfficeEvent {}
 
-final class UpdateUserInfoEvent extends ProfileOfficeEvent {
+final class UpdateOfficeInfoEvent extends ProfileOfficeEvent {
   final String description;
   final String email;
   final int phone;
-  final String address;
-  UpdateUserInfoEvent({
+  final String name;
+  UpdateOfficeInfoEvent({
     required this.description,
     required this.email,
     required this.phone,
-    required this.address,
+    required this.name,
   });
 }
 

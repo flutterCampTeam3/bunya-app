@@ -203,13 +203,19 @@ class DBService {
 
 // Get Office Profile
   Future getOffice() async {
-    print("in the func");
+    print("in the funjjjc");
+    print("id${supabase.auth.currentUser!.id}");
+    // final response = await supabase
+    //     .from('Customer')
+    //     .select('*')
+    //     .eq('customerId', supabase.auth.currentUser!.id)
+    //     .single();
+
     final response = await supabase
         .from('Offices')
         .select('*')
         .eq('officeId', supabase.auth.currentUser!.id)
         .single();
-
     print("after func $response");
     ProfileOfficeModel profileoffice = ProfileOfficeModel.fromJson(response);
     print("after func ${profileoffice.name}");
@@ -243,7 +249,7 @@ class DBService {
       {
         'name': name,
         'email': email,
-        'desc': description,
+        'disc': description,
         'phoneNumber': phone,
       },
     ).match({'officeId': supabase.auth.currentUser!.id});

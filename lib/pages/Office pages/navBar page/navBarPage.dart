@@ -137,18 +137,23 @@ class NavBarOfficePage extends StatelessWidget {
                 width: 80,
                 height: 80,
                 child: FloatingActionButton(
-                  onPressed: () {
-                    // Handle the floating button press
-                  },
-                  shape: const CircleBorder(),
-                  backgroundColor: const Color.fromARGB(255, 223, 216, 208),
-                  child: SvgPicture.asset(
-                    'assets/images/addIcon.svg',
-                    height: 45,
-                    // colorFilter: const ColorFilter.mode(
-                    //     Color.fromARGB(255, 84, 84, 84), BlendMode.srcIn),
-                  ),
-                ),
+                    onPressed: () {
+                      // Handle the floating button press
+                    },
+                    shape: const CircleBorder(),
+                    backgroundColor: const Color.fromARGB(255, 223, 216, 208),
+                    child: Icon(
+                      Icons.add_outlined,
+                      size: 70,
+                      color: salver,
+                    )
+                    // SvgPicture.asset(
+                    //   'assets/images/addIcon.svg',
+                    //   height: 45,
+                    //   // colorFilter: const ColorFilter.mode(
+                    //   //     Color.fromARGB(255, 84, 84, 84), BlendMode.srcIn),
+                    // ),
+                    ),
               ),
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.miniCenterDocked,

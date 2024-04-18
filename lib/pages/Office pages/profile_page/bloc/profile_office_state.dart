@@ -15,7 +15,10 @@ final class ProfileOfficeInitial extends ProfileOfficeState {}
 //   });
 // }
 
-final class DeactivatedEditModeState extends ProfileOfficeState {}
+final class ProfilOfficeSuccessState extends ProfileOfficeState {
+  String msg;
+  ProfilOfficeSuccessState({required this.msg});
+}
 
 final class DisplayOfficeInfoState extends ProfileOfficeState {
   String name;
@@ -31,10 +34,10 @@ final class DisplayOfficeInfoState extends ProfileOfficeState {
 
 final class ProfileLoadingState extends ProfileOfficeState {}
 
-final class ProfileErrorState extends ProfileOfficeState {
+final class ProfileOfficeErrorState extends ProfileOfficeState {
   final String msg;
 
-  ProfileErrorState({required this.msg});
+  ProfileOfficeErrorState({required this.msg});
 }
 
 final class SignedOutState extends ProfileOfficeState {

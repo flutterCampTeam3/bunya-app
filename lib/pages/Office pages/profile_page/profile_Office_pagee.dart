@@ -1,7 +1,8 @@
+import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/bloc/profile_office_bloc.dart';
-import 'package:bunya_app/pages/Office%20pages/profile_page/edit_page.dart';
+import 'package:bunya_app/pages/Office%20pages/profile_page/edit_office_page.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/widgets/widgets/information_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/image_aacount_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/post_widget.dart';
@@ -10,9 +11,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 class ProfilePageOffice extends StatelessWidget {
-  const ProfilePageOffice({super.key});
+  ProfilePageOffice({super.key});
+
+  @override
+  final locator = GetIt.I.get<DBService>();
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +47,9 @@ class ProfilePageOffice extends StatelessWidget {
                                 path: 'assets/images/benaa_cpmpany.png',
                               ),
                               gapWe15,
-                              const Column(
-                                children: [
-                                  Text("شركة بناء للمقاولات والإستثمار"),
-                                  Text("bnaa@gmail.com")
-                                ],
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [Text(state.name), Text(state.email)],
                               )
                             ],
                           ),
@@ -151,14 +154,18 @@ class ProfilePageOffice extends StatelessWidget {
                                       child: IconButton(
                                           onPressed: () {
                                             Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) {
-                                                  // Return the widget for the new route here
-                                                  return EditPageOffice();
-                                                },
-                                              ),
-                                            );
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        EditPageOffice(
+                                                          desc:
+                                                              state.description,
+                                                          name: state.name,
+                                                          email: state.email,
+                                                          phone: state.phone,
+                                                        ))).then((value) {
+                                              bloc.add(GetOfficeInfoEvent());
+                                            });
                                           },
                                           icon: Image.asset(
                                             'assets/images/edit.png',
@@ -206,10 +213,10 @@ class ProfilePageOffice extends StatelessWidget {
                                             style:
                                                 const TextStyle(fontSize: 14),
                                           ),
-                                          const Text(
-                                            "الموقع : الرياض -شارع فهد",
-                                            style: TextStyle(fontSize: 14),
-                                          )
+                                          // const Text(
+                                          //   "الموقع : الرياض -شارع فهد",
+                                          //   style: TextStyle(fontSize: 14),
+                                          // )
                                         ],
                                       ),
                                     ),
