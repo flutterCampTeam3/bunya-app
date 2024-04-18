@@ -1,4 +1,5 @@
 import 'package:bunya_app/helper/colors.dart';
+import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/costumer%20pages/accounts_list/account_list.dart';
@@ -12,7 +13,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:bunya_app/helper/extintion.dart';
+import 'package:bunya_app/helper/sized.dart';
+import 'package:bunya_app/pages/costumer%20pages/accounts_list/account_list.dart';
 
+import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/accounts_home_widget.dart';
+import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/appbar_widget.dart';
+import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/image_widget.dart';
+import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/post_widget.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'bloc/home_bloc.dart';
 import 'widgets/scaffoldWidget.dart';
 
@@ -37,7 +49,7 @@ class HomePageCustomer extends StatelessWidget {
                   children: [
                     
                     Padding(
-                      padding: const EdgeInsets.all(20.0),
+                      padding: const EdgeInsets.only(right: 20.0, left: 20),
                       child: Column(
                         children: [
                           gapH15,

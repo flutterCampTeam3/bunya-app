@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  #sdk: '>=3.4.0-99.1.beta <4.0.0' 3.19.4. 
+  #sdk: '>=3.4.0-99.1.beta <4.0.0'
    sdk: 3.3.2
 
 dependencies:
@@ -18,7 +18,8 @@ dependencies:
   # dash_chat_2: ^0.0.20 
   flutter_barcode_scanner: ^2.0.0  
   flutter_bloc: ^8.1.4
-  flutter_svg: ^2.0.10+1
+  # flutter_svg: ^2.0.10+1
+  flutter_svg: ^1.1.6
   image_picker: ^1.0.7
   time_picker_spinner: ^0.0.1
   intl: ^0.19.0

@@ -1,5 +1,7 @@
 import 'package:bunya_app/data/model/medicattion_model.dart';
 import 'package:bunya_app/data/model/offices_model.dart';
+import 'package:bunya_app/data/model/profile_model_customer.dart';
+import 'package:bunya_app/data/model/profile_model_office.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../model/post_model.dart';
@@ -119,13 +121,13 @@ class DBService {
     // signOut();
     final state = await supabase.auth
         .signInWithPassword(email: email, password: password);
-    print("$state");
+    print('after the func');
     token = supabase.auth.currentSession!.accessToken;
     id = supabase.auth.currentSession!.user.id;
     addToken();
   }
 
-  Future checkUserCustomer() async {
+    Future checkUserCustomer() async {
     final profileData = await supabase
         .from('Customer')
         .select()
@@ -182,208 +184,76 @@ class DBService {
     return id;
   }
 
-  // Get User Profile Data
-  Future<Map<String, dynamic>> getUserProfile() async {
-    final profileData = await supabase
-        .from('users')
-        .select()
-        .eq('id', supabase.auth.currentUser!.id)
-        .single();
-    return profileData;
-  }
 
-  Future getUserName() async {
+  Future getUser() async {
+    print("in the func");
     final response = await supabase
-        .from('users')
-        .select('name')
-        .eq('id', supabase.auth.currentUser!.id)
+        .from('Customer')
+        .select('*')
+        .eq('customerId', supabase.auth.currentUser!.id)
         .single();
-    return await response['name'];
+    print("after func $response");
+    ProfileModel profile = ProfileModel.fromJson(response);
+    print("after func ${profile.name}");
+    print("after func ${profile.email}");
+    print("after func ${profile.phone}");
+
+    return profile;
   }
 
-  Future updateUserName({required String newName}) async {
-    await supabase
-        .from('users')
-        .update({'name': newName}).eq('id', await getCurrentUser());
-  }
-
-  // ------ medication data Services -----
-
-  // Get User Medications Data
-  Future<List<MedicationModel>> getMedications() async {
-    final medication =
-        await supabase.from('medication').select('*').match({'userId': id});
-    final List<MedicationModel> medications = [];
-    for (var element in medication) {
-      medications.add(MedicationModel.fromJson(element));
-    }
-    return medications;
-  }
-
-  ///-- add Follower
-  Future addFollowers({
-    required String userId,
-    required String officeID,
-  }) async {
-    await supabase.from('office_followers').insert(
-      {
-        'officeId': officeID,
-        'customerId': userId,
-      },
-    );
-  }
-
-  ///-- Check Follower
-  Future<bool> checkFollowers({
-    required String userId,
-    required String officeID,
-  }) async {
+// Get Office Profile
+  Future getOffice() async {
+    print("in the func");
     final response = await supabase
-        .from('office_followers')
-        .select()
-        .eq('officeId', officeID)
-        .eq('customerId', userId);
-    // .execute();
+        .from('Offices')
+        .select('*')
+        .eq('officeId', supabase.auth.currentUser!.id)
+        .single();
 
-    if (response.isEmpty) {
-      // Handle error
-      print('Error: $response');
-      return false;
-    } else {
-      return true;
-    }
+    print("after func $response");
+    ProfileOfficeModel profileoffice = ProfileOfficeModel.fromJson(response);
+    print("after func ${profileoffice.name}");
+    print("after func ${profileoffice.email}");
+    print("after func ${profileoffice.description}");
+    print("after func ${profileoffice.phone}");
+
+    return profileoffice;
   }
 
-  ///-- Check Follower
-  Future deleteFollowers({
-    required String userId,
-    required String officeID,
-  }) async {
-     await supabase
-        .from('office_followers')
-        .delete()
-        .eq('officeId', officeID)
-        .eq('customerId', userId);
-    // .execute();
-  }
 
-  // Add Medications to Data
-  Future addMedications({
-    required String name,
-    required int pills,
-    required int days,
-    required String before,
-    required String time,
-  }) async {
-    await supabase.from('medication').insert(
-      {
-        "medicationName": name,
-        "pills": pills,
-        "days": days,
-        "userId": id,
-        "before": before,
-        "time": time,
-        "isCompleted": false,
-        "todayPills": false,
-        "isUpdate": false,
-        "updateTime": "",
-        "UpdateTimeDate": "",
-      },
-    );
-  }
-
-  // Edit User Medications Data
-  Future editMedications({
-    required String name,
-    required int pills,
-    required int days,
-    required String before,
-    required MedicationModel medication,
-    required String time,
-  }) async {
-    await supabase.from('medication').update(
-      {
-        "medicationName": name,
-        "pills": pills,
-        "days": days,
-        "userId": id,
-        "before": before,
-        "time": time,
-        "isCompleted": medication.isCompleted,
-        "todayPills": medication.todayPills,
-        "isUpdate": medication.isUpdate,
-        "updateTime": medication.updateTime,
-        "UpdateTimeDate": medication.updateTimeDate,
-      },
-    ).match({'medicationId': medication.medicationId});
-  }
-
-  // Edit User Medications Data
-  Future editIsCompleted(
-      {required MedicationModel medication, required bool isCompleted}) async {
-    await supabase.from('medication').update(
-      {
-        "medicationName": medication.medicationName,
-        "pills": medication.pills,
-        "days": medication.days,
-        "userId": medication.userId,
-        "before": medication.before,
-        "time": medication.time,
-        "isCompleted": isCompleted,
-        "todayPills": true,
-        "isUpdate": false,
-        "updateTime": medication.updateTime,
-        "UpdateTimeDate": DateTime.now().toString(),
-      },
-    ).match({'medicationId': medication.medicationId});
-  }
-
+// to edit profile
   Future editUpdate(
-      {required MedicationModel medication,
-      required bool isUpdate,
-      required String updateTime,
-      required String date}) async {
-    await supabase.from('medication').update(
+      {required String name, required String email, required int phone}) async {
+    await supabase.from('Customer').update(
       {
-        "medicationName": medication.medicationName,
-        "pills": medication.pills,
-        "days": medication.days,
-        "userId": medication.userId,
-        "before": medication.before,
-        "time": medication.time,
-        "isCompleted": medication.isCompleted,
-        "todayPills": true,
-        "isUpdate": isUpdate,
-        "updateTime": updateTime,
-        "UpdateTimeDate": date,
+        'name': name,
+        'email': email,
+        'phoneNumber': phone,
       },
-    ).match({'medicationId': medication.medicationId});
+    ).match({'customerId': supabase.auth.currentUser!.id});
   }
 
-  Future editNotUpdate({
-    required MedicationModel medication,
-  }) async {
-    await supabase.from('medication').update(
+  // to edit office profile
+  Future editUpdateOffice(
+      {required String name,
+      required String email,
+      required int phone,
+      required String description}) async {
+    await supabase.from('Offices').update(
       {
-        "medicationName": medication.medicationName,
-        "pills": medication.pills,
-        "days": medication.days,
-        "userId": medication.userId,
-        "before": medication.before,
-        "time": medication.time,
-        "isCompleted": medication.isCompleted,
-        "todayPills": false,
-        "isUpdate": medication.isUpdate,
-        "updateTime": medication.updateTime,
-        "UpdateTimeDate": medication.updateTimeDate,
+        'name': name,
+        'email': email,
+        'desc': description,
+        'phoneNumber': phone,
       },
-    ).match({'medicationId': medication.medicationId});
+    ).match({'officeId': supabase.auth.currentUser!.id});
   }
 
+ 
   // Delete Medication
-  Future deleteMedications({required midId}) async {
-    await supabase.from('medication').delete().match({'medicationId': midId});
-  }
+  // Future deleteMedications({required midId}) async {
+  //   await supabase.from('medication').delete().match({'medicationId': midId});
+  // }
 
   Future<List<postModel>> getposts() async {
     final postData = await supabase.from('post').select('*');

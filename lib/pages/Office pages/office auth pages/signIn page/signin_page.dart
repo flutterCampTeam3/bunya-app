@@ -26,8 +26,10 @@ class _SigninPageState extends State<SigninPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController = TextEditingController();
-    TextEditingController passController = TextEditingController();
+    TextEditingController emailController =
+        TextEditingController(text: "ss@gmail.com");
+    TextEditingController passController =
+        TextEditingController(text: "123456");
     return BlocProvider(
       create: (context) => SignInBloc(),
       child: Builder(builder: (context) {
