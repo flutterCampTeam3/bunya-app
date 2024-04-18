@@ -90,15 +90,20 @@ class _ProfileSignupState extends State<ProfileSignup> {
                     height: MediaQuery.of(context).size.height * .7,
                     child: ListView(
                       children: [
-                        gapH10,
-                        const TypeDropDownWidget(),
+                        gapH10, 
+                         
+                         ImagePickerWidget(),                  
+                       
                         gapH20,
+                         const TypeDropDownWidget(),
+                        gapH20,                       
                         ProfiletextFieldAuth(
                           Controller: infoController,
                           label: 'معلومات عن الشركة  ',
                           obscureText: false,
                         ),
                         gapH20,
+                        
                         const ImagePickerWidget(),
                         gapH20,
                         ProfiletextFieldAuth(

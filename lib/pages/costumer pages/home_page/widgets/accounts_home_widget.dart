@@ -1,3 +1,4 @@
+import 'package:bunya_app/data/model/offices_model.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +10,9 @@ class AccountsHomeWidget extends StatelessWidget {
       required this.path,
       required this.title});
 
-  String path;
-  String title;
-  String description;
+  final OfficesModel path;
+   final OfficesModel title;
+   final OfficesModel description;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,9 +44,12 @@ class AccountsHomeWidget extends StatelessWidget {
                 ),
               ),
               child: ClipOval(
-                child: Image.asset(
-                  path,
+                child: Image.network(
+                  path.image,
                   fit: BoxFit.cover,
+                  errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
+              return Image.asset("assets/images/noimage.png");
+                          }
                 ),
               ),
             ),
@@ -54,9 +58,9 @@ class AccountsHomeWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title),
+                Text(title.name),
                 Text(
-                  description,
+                  description.disc,
                   style: TextStyle(fontSize: 9, color: darkGreyColor),
                 )
               ],
