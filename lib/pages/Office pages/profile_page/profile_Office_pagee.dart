@@ -47,11 +47,9 @@ class ProfilePageOffice extends StatelessWidget {
                                 path: 'assets/images/benaa_cpmpany.png',
                               ),
                               gapWe15,
-                              const Column(
-                                children: [
-                                  Text("شركة بناء للمقاولات والإستثمار"),
-                                  Text("bnaa@gmail.com")
-                                ],
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [Text(state.name), Text(state.email)],
                               )
                             ],
                           ),
@@ -160,7 +158,8 @@ class ProfilePageOffice extends StatelessWidget {
                                                 MaterialPageRoute(
                                                     builder: (context) =>
                                                         EditPageOffice(
-                                                          desc: state.description,
+                                                          desc:
+                                                              state.description,
                                                           name: state.name,
                                                           email: state.email,
                                                           phone: state.phone,
