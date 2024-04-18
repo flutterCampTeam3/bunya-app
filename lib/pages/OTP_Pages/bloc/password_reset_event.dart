@@ -22,3 +22,9 @@ final class ChangePasswordEvent extends PasswordResetEvent {
 
   ChangePasswordEvent({required this.password, required this.rePassword});
 }
+
+final class ResendOtpEvent extends PasswordResetEvent {
+  final String email;
+
+  ResendOtpEvent({required this.email});
+}

@@ -46,122 +46,125 @@ class _SigninCustomerPageState extends State<SigninCustomerPage> {
               child: SizedBox(
                 height: context.getHeight() * .5,
                 child: BlocConsumer<SignInCustomerBloc, SignInCustomerState>(
-                  listener: (context, state) {
-                    if (state is SuccessSignInCustomerState) {
-                      // SuccessSignInState Function Here
-                      context.showSuccessSnackBar(context, state.msg);
-                      // BottomBarScreen Here
-                      
-                      if (bloc.userType) {
-                        context.pushAndRemove(const NavBarPage());
-                      }else{
-                        context.pushAndRemove(const NavBarOfficePage());
-                      }
-                    }
-                    if (state is ErrorSignInCustomerState) {
-                      context.showErrorSnackBar(context, state.massage);
-                    }
-                    if (state is SuccessResetCustomerState) {
-                      // SuccessResetState Function Here
-                      context.showSuccessSnackBar(context, state.msg);
-                    }
-                  },
-                  builder: (context, state) {
-                    if (state is LoadingSignInCustomerState) {
-                      return Center(
-                        child: CircularProgressIndicator(
-                          color: freewhiteBrown,
-                        ),
-                      );
+                    listener: (context, state) {
+                  if (state is SuccessSignInCustomerState) {
+                    Navigator.pop(context);
+                    // SuccessSignInState Function Here
+                    context.showSuccessSnackBar(context, state.msg);
+                    // BottomBarScreen Here
+                    if (bloc.userType) {
+                      context.pushAndRemove(const NavBarPage());
                     } else {
-                      return Form(
-                        key: _formKey,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SignintextFieldAuth(
-                                  Controller: emailController,
-                                  label: 'البريد الإلكتروني',
-                                  obscureText: false,
-                                  email: true,
-                                ),
-                                gapH40,
-                                SigninPassTextField(
-                                  controller: passController,
-                                ),
-                                gapH20,
-                                TextButton(
-                                    style: TextButton.styleFrom(
-                                        padding: const EdgeInsets.all(0)),
-                                    onPressed: () {
-                                      // Here VerifyEmailPage
-                                      context.pushTo(view: VerifyEmailPage());
-                                    },
-                                    child: Text(
-                                      "هل نسيت كلمة المرور؟",
-                                      style: TextStyle(
-                                          color: blackColor,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold),
-                                    )),
-                              ],
+                      context.pushAndRemove(const NavBarOfficePage());
+                    }
+                  }
+                  if (state is ErrorSignInCustomerState) {
+                    Navigator.pop(context);
+                    context.showErrorSnackBar(context, state.massage);
+                  }
+
+                  if (state is LoadingSignInCustomerState) {
+                    showDialog(
+                        barrierDismissible: false,
+                        barrierColor: Colors.transparent,
+                        context: context,
+                        builder: (context) {
+                          return const SizedBox(
+                            height: 80,
+                            width: 80,
+                            child: Center(
+                              child: CircularProgressIndicator(),
                             ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                ButtonWidget(
-                                  backgroundColor: darkBrown,
-                                  text: "تسجيل دخول",
-                                  onPressed: () {
-                                    if (_formKey.currentState!.validate()) {
-                                      bloc.add(AddSignInCustomerEvent(
-                                          email: emailController.text,
-                                          password: passController.text));
-                                    }
-                                  },
-                                  textColor: whiteColor,
+                          );
+                        });
+                  }
+                }, builder: (context, state) {
+                  return Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SignintextFieldAuth(
+                              Controller: emailController,
+                              label: 'البريد الإلكتروني',
+                              obscureText: false,
+                              email: true,
+                            ),
+                            gapH40,
+                            SigninPassTextField(
+                              controller: passController,
+                            ),
+                            gapH20,
+                            TextButton(
+                                style: TextButton.styleFrom(
+                                    padding: const EdgeInsets.all(0)),
+                                onPressed: () {
+                                  // Here VerifyEmailPage
+                                  context.pushTo(view: VerifyEmailPage());
+                                },
+                                child: Text(
+                                  "هل نسيت كلمة المرور؟",
+                                  style: TextStyle(
+                                      color: blackColor,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold),
+                                )),
+                          ],
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            ButtonWidget(
+                              backgroundColor: darkBrown,
+                              text: "تسجيل دخول",
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  bloc.add(AddSignInCustomerEvent(
+                                      email: emailController.text,
+                                      password: passController.text));
+                                }
+                              },
+                              textColor: whiteColor,
+                            ),
+                            gapH15,
+                            RichText(
+                              text: TextSpan(children: [
+                                TextSpan(
+                                  text: "لا يوجد لديك حساب؟  ",
+                                  style: TextStyle(
+                                    color: whiteBrown,
+                                    fontSize: 15,
+                                    fontFamily:
+                                        GoogleFonts.vazirmatn().fontFamily,
+                                  ),
                                 ),
-                                gapH15,
-                                RichText(
-                                  text: TextSpan(children: [
-                                    TextSpan(
-                                      text: "لا يوجد لديك حساب؟  ",
-                                      style: TextStyle(
-                                        color: whiteBrown,
-                                        fontSize: 15,
-                                        fontFamily:
-                                            GoogleFonts.vazirmatn().fontFamily,
-                                      ),
+                                TextSpan(
+                                    text: "سجل الآن",
+                                    style: TextStyle(
+                                      color: darkBrown,
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w600,
+                                      fontFamily:
+                                          GoogleFonts.vazirmatn().fontFamily,
                                     ),
-                                    TextSpan(
-                                        text: "سجل الآن",
-                                        style: TextStyle(
-                                          color: darkBrown,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w600,
-                                          fontFamily: GoogleFonts.vazirmatn()
-                                              .fontFamily,
-                                        ),
-                                        recognizer: TapGestureRecognizer()
-                                          ..onTap = () {
-                                            context.pushAndRemove(
-                                                const SignUpCustomerPage());
-                                          })
-                                  ]),
-                                ),
-                              ],
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        context.pushAndRemove(
+                                            const SignUpCustomerPage());
+                                      })
+                              ]),
                             ),
                           ],
                         ),
-                      );
-                    }
-                  },
-                ),
+                      ],
+                    ),
+                  );
+                }),
               ),
             ),
           ),

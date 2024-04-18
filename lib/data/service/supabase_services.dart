@@ -2,6 +2,7 @@ import 'package:bunya_app/data/model/medicattion_model.dart';
 import 'package:bunya_app/data/model/offices_model.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'dart:developer';
 
 import '../model/offices_model.dart';
 import '../model/post_model.dart';
@@ -75,10 +76,10 @@ class DBService {
       {
         'departmentId': departmentId,
         'name': userName,
-        'officeId': id,
+        'officeId': supabase.auth.currentUser!.id,
         'cr': cr,
         'disc': disc,
-        'phoneNumber': cr,
+        'phoneNumber': phoneNumber,
         'email': email,
         // 'image': image,
       },
@@ -91,9 +92,9 @@ class DBService {
     required String password,
     required String userName,
     required String phoneNumber,
+    required String image,
   }) async {
     print(" before: ");
-
     final respons = await supabase.auth.signUp(
       data: {'Name': userName},
       email: email,
@@ -106,6 +107,8 @@ class DBService {
         'name': userName,
         'phoneNumber': phoneNumber,
         'customerId': respons.user!.id,
+        'image':
+            'https://mtaainvajktwbwpffkxw.supabase.co/storage/v1/object/public/profile/Ellipse%2024.svg'
       },
     );
 
@@ -115,8 +118,11 @@ class DBService {
   }
 
   Future signIn({required String email, required String password}) async {
+    print("in the func");
+    // signOut();
     final state = await supabase.auth
         .signInWithPassword(email: email, password: password);
+    print("$state");
     token = supabase.auth.currentSession!.accessToken;
     id = supabase.auth.currentSession!.user.id;
     addToken();
@@ -126,7 +132,7 @@ class DBService {
     final profileData = await supabase
         .from('Customer')
         .select()
-        .eq('id', supabase.auth.currentUser!.id)
+        .eq('customerId', supabase.auth.currentUser!.id)
         .single();
 
     if (profileData.isNotEmpty) {
@@ -149,13 +155,17 @@ class DBService {
     );
   }
 
-  Future verifyOtp({required String otpToken, required String email}) async {
+  Future verifyOtp({required String email, required String otpToken}) async {
     await supabase.auth
-        .verifyOTP(email: email, token: token, type: OtpType.magiclink);
+        .verifyOTP(token: otpToken, type: OtpType.email, email: email);
   }
 
-  Future resetPassword({required String password}) async {
-    await supabase.auth.updateUser(UserAttributes(password: password));
+  Future resendOtp({required String email}) async {
+    await supabase.auth.resend(type: OtpType.magiclink, email: email);
+  }
+
+  Future resetPassword({required String newPassword}) async {
+    await supabase.auth.updateUser(UserAttributes(password: newPassword));
   }
 
   // ------ Data Services -----
@@ -377,9 +387,9 @@ class DBService {
   Future deleteMedications({required midId}) async {
     await supabase.from('medication').delete().match({'medicationId': midId});
   }
+
   Future<List<postModel>> getposts() async {
-    final postData =
-        await supabase.from('post').select('*');
+    final postData = await supabase.from('post').select('*');
     final List<postModel> classposts = [];
     for (var element in postData) {
       classposts.add(postModel.fromJson(element));
@@ -387,21 +397,23 @@ class DBService {
     return classposts;
   }
 
-    Future<List<OfficesModel>> getOfficeAccount(String type) async {
+  Future<List<OfficesModel>> getOfficeAccount(String type) async {
     print('in the func');
-    final officeAccounte = await supabase.from('Offices').select("*").match({'departmentId': type});
+    final officeAccounte = await supabase
+        .from('Offices')
+        .select("*")
+        .match({'departmentId': type});
     print('the length${officeAccounte.length}');
     final List<OfficesModel> officeAccount = [];
     for (var element in officeAccounte) {
       officeAccount.add(OfficesModel.fromJson(element));
     }
-    
-   
+
     return officeAccount;
   }
+
   Future<List<OfficesModel>> getOffices() async {
-    final officesData =
-        await supabase.from('Offices').select('*');
+    final officesData = await supabase.from('Offices').select('*');
     final List<OfficesModel> classOffices = [];
     for (var element in officesData) {
       classOffices.add(OfficesModel.fromJson(element));

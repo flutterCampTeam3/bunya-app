@@ -36,6 +36,9 @@ class ChangePasswordPage extends StatelessWidget {
                     context.showSuccessSnackBar(context, state.msg);
                     context.pushAndRemove(const SigninPage());
                   }
+                  if (state is OtpLoadingState) {
+                    
+                  }
                 },
                 builder: (context, state) {
                   final prBloc = context.read<PasswordResetBloc>();
@@ -69,7 +72,7 @@ class ChangePasswordPage extends StatelessWidget {
                             ),
                           )),
                      PassTextField(controller: passwordController),
-                         TextFieldConfirmPass(confController:rePasswordController, passController: passwordController ),
+                     TextFieldConfirmPass(confController:rePasswordController, passController: passwordController ),
                       ButtonWidget(
                           backgroundColor: brown,
                           text: "إعادة تعيين كلمة المرور",

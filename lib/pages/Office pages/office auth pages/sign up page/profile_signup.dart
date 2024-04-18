@@ -21,10 +21,12 @@ class ProfileSignup extends StatefulWidget {
       Key,
       required this.name,
       required this.cr,
+      required this.pass,
       required this.email});
   final String name;
   final String cr;
   final String email;
+  final String pass;
 
   @override
   State<ProfileSignup> createState() => _ProfileSignupState();
@@ -86,24 +88,22 @@ class _ProfileSignupState extends State<ProfileSignup> {
             builder: (context, state) {
               return SingleChildScrollView(
                 child: Form(
+                  key: _formKey,
                   child: SizedBox(
                     height: MediaQuery.of(context).size.height * .7,
                     child: ListView(
                       children: [
-                        gapH10, 
-                         
-                         ImagePickerWidget(),                  
-                       
+                        gapH10,
+                        const ImagePickerWidget(),
                         gapH20,
-                         const TypeDropDownWidget(),
-                        gapH20,                       
+                        const TypeDropDownWidget(),
+                        gapH20,
                         ProfiletextFieldAuth(
                           Controller: infoController,
                           label: 'معلومات عن الشركة  ',
                           obscureText: false,
                         ),
                         gapH20,
-                        
                         const ImagePickerWidget(),
                         gapH20,
                         ProfiletextFieldAuth(
@@ -129,53 +129,21 @@ class _ProfileSignupState extends State<ProfileSignup> {
                                 text: "  حفظ",
                                 onPressed: () {
                                   if (_formKey.currentState!.validate()) {
-                                    // here function
-
-                                    // bloc.add(CreateAccountprofilEvent(
-                                    //   info: infoController.text,
-                                    //   location: locationController.text,
-                                    //   phone: phoneController.text,
-                                    // ));
+                                    bloc.add(CreateAccountprofileEvent(
+                                      info: infoController.text,
+                                      location: locationController.text,
+                                      phone: phoneController.text,
+                                      cr: widget.cr,
+                                      email: widget.email,
+                                      name: widget.name,
+                                      departmentId: bloc.type,
+                                      password: widget.pass,
+                                    ));
                                   }
                                 },
                                 textColor: Colors.white,
                               ),
                               const SizedBox(height: 5),
-                              RichText(
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: "يوجد لديك حساب بالفعل؟  ",
-                                      style: TextStyle(
-                                        color: whiteBrown,
-                                        fontSize: 15,
-                                        fontFamily:
-                                            GoogleFonts.vazirmatn().fontFamily,
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: "تسجيل الدخول",
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: darkBrown,
-                                        fontWeight: FontWeight.w600,
-                                        fontFamily:
-                                            GoogleFonts.vazirmatn().fontFamily,
-                                      ),
-                                      recognizer: TapGestureRecognizer()
-                                        ..onTap = () {
-                                          Navigator.pushAndRemoveUntil(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const SigninPage()),
-                                            (Route<dynamic> route) => false,
-                                          );
-                                        },
-                                    )
-                                  ],
-                                ),
-                              ),
                             ],
                           ),
                         ),

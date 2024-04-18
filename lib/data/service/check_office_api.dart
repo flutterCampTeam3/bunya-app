@@ -8,13 +8,12 @@ class CheckOffice {
   Future<bool> checkOffice(String id) async {
     print("in the func");
     final String link =
-        "https://api.wathq.sa/v5/commercialregistration/info/$id";
+        "https://api.wathq.sa/v5/commercialregistration/fullinfo/$id";
     final uri = Uri.parse(link);
 
     final Map<String, String> headers = {
-      'Authorization': 'Bearer ${dotenv.env["apiKey"]}',
+      'apikey': 'J5eei6F5SH0qNVBg5fCo1ZYSAIzESAvZ',
       'Content-Type': 'application/json',
-      'content-type': 'multipart/form-data'
     };
     final request = await http.get(uri, headers: headers);
     final response = jsonDecode(request.body);

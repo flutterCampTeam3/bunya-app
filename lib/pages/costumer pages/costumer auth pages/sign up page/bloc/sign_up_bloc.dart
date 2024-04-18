@@ -27,6 +27,7 @@ class SignUpBlocCustomer
 
   Future<void> createAccount(CreateAccountCustomerEvent event,
       Emitter<SignUpCustomerState> emit) async {
+    print("in the bloc");
     if (event.name.trim().isNotEmpty &&
         event.email.trim().isNotEmpty &&
         event.password.trim().isNotEmpty &&
@@ -35,7 +36,9 @@ class SignUpBlocCustomer
         event.isChecked) {
       try {
         emit(LoadingSignUpCustomerState());
+    print("befor signup");
         await DBService().signUpC(
+            image: '',
             phoneNumber: event.phone,
             userName: event.name,
             email: event.email,

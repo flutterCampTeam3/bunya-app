@@ -32,48 +32,59 @@ class _SigninPageState extends State<SigninPage> {
       create: (context) => SignInBloc(),
       child: Builder(builder: (context) {
         final bloc = context.read<SignInBloc>();
-        return Directionality(textDirection: TextDirection.rtl, child: 
-         Scaffold(
-          appBar: PreferredSize(
-              preferredSize: Size(context.getWidth(), 400),
-              child: const PageHeaderSignIn(
-                height: 400,
-                bottomText: " نورتنا من جديد ",
-              )),
-          body: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SingleChildScrollView(
-              child: SizedBox(
-                height: context.getHeight() * .5,
-                child: BlocConsumer<SignInBloc, SignInState>(
-                  listener: (context, state) {
-                    if (state is SuccessSignInState) {
-                      // SuccessSignInState Function Here
-                       context.showSuccessSnackBar(context, state.msg);
-                      // BottomBarScreen Here
-                      
-                      if (bloc.userType) {
-                        context.pushAndRemove(const NavBarPage());
-                      }else{
-                        context.pushAndRemove(const NavBarOfficePage());
+        return Directionality(
+            textDirection: TextDirection.rtl,
+            child: Scaffold(
+              appBar: PreferredSize(
+                  preferredSize: Size(context.getWidth(), 400),
+                  child: const PageHeaderSignIn(
+                    height: 400,
+                    bottomText: " نورتنا من جديد ",
+                  )),
+              body: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: SingleChildScrollView(
+                  child: SizedBox(
+                    height: context.getHeight() * .5,
+                    child: BlocConsumer<SignInBloc, SignInState>(
+                        listener: (context, state) {
+                      if (state is SuccessSignInState) {
+                        Navigator.pop(context);
+                        // SuccessSignInState Function Here
+                        context.showSuccessSnackBar(context, state.msg);
+                        // BottomBarScreen Here
+
+                        if (bloc.userType) {
+                          context.pushAndRemove(const NavBarPage());
+                        } else {
+                          context.pushAndRemove(const NavBarOfficePage());
+                        }
                       }
-                    }
-                    if (state is ErrorSignInState) {
-                      context.showErrorSnackBar(context, state.massage);
-                    }
-                    if (state is SuccessResetState) {
-                      // SuccessResetState Function Here
-                      context.showSuccessSnackBar(context, state.msg);
-                    }
-                  },
-                  builder: (context, state) {
-                    if (state is LoadingSignInState) {
-                      return Center(
-                        child: CircularProgressIndicator(
-                          color: freewhiteBrown,
-                        ),
-                      );
-                    } else {
+                      if (state is ErrorSignInState) {
+                        Navigator.pop(context);
+                        context.showErrorSnackBar(context, state.massage);
+                      }
+                      
+                      if (state is LoadingSignInState) {
+                        showDialog(
+                            barrierDismissible: false,
+                            barrierColor: Colors.transparent,
+                            context: context,
+                            builder: (context) {
+                              return const AlertDialog(
+                                backgroundColor: Colors.transparent,
+                                elevation: 0,
+                                content: SizedBox(
+                                  height: 80,
+                                  width: 80,
+                                  child: Center(
+                                    child: CircularProgressIndicator(),
+                                  ),
+                                ),
+                              );
+                            });
+                      }
+                    }, builder: (context, state) {
                       return Form(
                         key: _formKey,
                         child: Column(
@@ -144,8 +155,8 @@ class _SigninPageState extends State<SigninPage> {
                                           color: darkBrown,
                                           fontSize: 15,
                                           fontWeight: FontWeight.w600,
-                                          fontFamily:
-                                              GoogleFonts.vazirmatn().fontFamily,
+                                          fontFamily: GoogleFonts.vazirmatn()
+                                              .fontFamily,
                                         ),
                                         recognizer: TapGestureRecognizer()
                                           ..onTap = () {
@@ -159,13 +170,11 @@ class _SigninPageState extends State<SigninPage> {
                           ],
                         ),
                       );
-                    }
-                  },
+                    }),
+                  ),
                 ),
               ),
-            ),
-          ),
-        ));
+            ));
       }),
     );
   }

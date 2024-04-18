@@ -6,6 +6,7 @@ import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/accounts_home
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/appbar_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/image_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/post_widget.dart';
+import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/scaffoldWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -26,10 +27,9 @@ class HomePageCustomer extends StatelessWidget {
         
         return Directionality(
         textDirection: TextDirection.rtl,
-        // child: ScaffoldWidget(
-        //   hasAppBar: true,
-        //     body: 
-           child: SingleChildScrollView(
+        child: ScaffoldWidget(
+          hasAppBar: true,
+            body:  SingleChildScrollView(
               child: SafeArea(
                 child: Column(
                   children: [
@@ -258,7 +258,7 @@ class HomePageCustomer extends StatelessWidget {
                 ),
               ),
             ),
-          // ),
+          ),
         );
       }
       ),

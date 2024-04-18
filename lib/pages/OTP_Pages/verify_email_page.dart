@@ -17,7 +17,6 @@ class VerifyEmailPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => PasswordResetBloc(),
       child: Scaffold(
-       
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: SingleChildScrollView(
@@ -25,65 +24,77 @@ class VerifyEmailPage extends StatelessWidget {
               width: context.getWidth(),
               height: context.getHeight() * .8,
               child: BlocConsumer<PasswordResetBloc, PasswordResetState>(
-                listener: (context, state) {
-                  if (state is OtpErrorState) {
-                    context.showErrorSnackBar(context, state.msg);
-                  } else if (state is EmailVerifiedState) {
-                    context.showSuccessSnackBar(context, state.msg);
-                    context.pushTo(view: VerifyOtpPage(email: emailController.text,));
-                  }
-                },
-                builder: (context, state) {
-                  final prBloc = context.read<PasswordResetBloc>();
-                  if (state is OtpLoadingState) {
-                    return Center(
-                      child: CircularProgressIndicator(
-                        color: whiteBrown,
-                      ),
-                    );
-                  }else {
-                    return Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Image.asset("assets/images/emails.png"),
-                      Text(
-                        "هل نسيت كلمة المرور؟",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w300,
-                          color: blackColor,
-                          fontSize: context.getWidth() * .06,
-                        ),
-                      ),
-                      Align(
-                          alignment: Alignment.centerRight,
-                          child: Text(
-                            "يرجى إدخال الإيميل الخاص بك",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: blackColor,
-                              fontSize: context.getWidth() * .05,
+                  listener: (context, state) {
+                if (state is OtpErrorState) {
+                  Navigator.pop(context);
+                  context.showErrorSnackBar(context, state.msg);
+                } else if (state is EmailVerifiedState) {
+                  Navigator.pop(context);
+                  context.showSuccessSnackBar(context, state.msg);
+                  context.pushTo(
+                      view: VerifyOtpPage(
+                    remail: emailController.text,
+                  ));
+                }
+                if (state is OtpLoadingState) {
+                  showDialog(
+                      barrierDismissible: false,
+                      barrierColor: Colors.transparent,
+                      context: context,
+                      builder: (context) {
+                        return const AlertDialog(
+                          backgroundColor: Colors.transparent,
+                          elevation: 0,
+                          content: SizedBox(
+                            height: 80,
+                            width: 80,
+                            child: Center(
+                              child: CircularProgressIndicator(),
                             ),
-                          )),
-                     textFieldAuth(
-                      Controller: emailController, 
-                      label: 'البريد الإلكتروني', 
+                          ),
+                        );
+                      });
+                }
+              }, builder: (context, state) {
+                final prBloc = context.read<PasswordResetBloc>();
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Image.asset("assets/images/emails.png"),
+                    Text(
+                      "هل نسيت كلمة المرور؟",
+                      style: TextStyle(
+                        fontWeight: FontWeight.w300,
+                        color: blackColor,
+                        fontSize: context.getWidth() * .06,
+                      ),
+                    ),
+                    Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          "يرجى إدخال الإيميل الخاص بك",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: blackColor,
+                            fontSize: context.getWidth() * .05,
+                          ),
+                        )),
+                    textFieldAuth(
+                      Controller: emailController,
+                      label: 'البريد الإلكتروني',
                       obscureText: false,
                       email: true,
-                      ),
-                      ButtonWidget(
-                          backgroundColor: brown,
-                          text: "إرسال الرمز",
-                          textColor: whiteColor,
-                          onPressed: () {
-                            prBloc
-                                .add(SendOtpEvent(email: emailController.text));
-                          })
-                    ],
-                  );
-                  }
-                  
-                },
-              ),
+                    ),
+                    ButtonWidget(
+                        backgroundColor: brown,
+                        text: "إرسال الرمز",
+                        textColor: whiteColor,
+                        onPressed: () {
+                          prBloc.add(SendOtpEvent(email: emailController.text));
+                        })
+                  ],
+                );
+              }),
             ),
           ),
         ),

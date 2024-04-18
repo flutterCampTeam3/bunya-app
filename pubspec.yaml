@@ -18,8 +18,7 @@ dependencies:
   # dash_chat_2: ^0.0.20 
   flutter_barcode_scanner: ^2.0.0  
   flutter_bloc: ^8.1.4
-  # flutter_svg: ^2.0.10+1
-  flutter_svg: ^1.1.6
+  flutter_svg: ^2.0.10+1
   image_picker: ^1.0.7
   time_picker_spinner: ^0.0.1
   intl: ^0.19.0
@@ -30,6 +29,7 @@ dependencies:
   glassmorphism_ui: ^0.3.0
   # device_preview: ^1.0.0
   onboarding: ^4.0.2
+  timer_button: ^2.1.1
 
 
 dev_dependencies:
@@ -40,6 +40,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-   
    - assets/images/
    - .env

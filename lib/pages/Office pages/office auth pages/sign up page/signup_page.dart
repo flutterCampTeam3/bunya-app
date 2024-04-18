@@ -74,18 +74,41 @@ class _SignUpPageState extends State<SignUpPage> {
             listener: (context, state) {
               if (state is SuccessSignUpState) {
                 // SignUp Function Here
+                Navigator.pop(context);
                 context.showSuccessSnackBar(context, state.msg);
                 context.pushAndRemove(ProfileSignup(
                   name: nameController.text,
                   cr: crController.text,
                   email: emailController.text,
-
+                  pass: passController.text,
                 ));
               }
               if (state is ErrorSignUpState) {
                 // Error SignUp Function Here
+                Navigator.pop(context);
                 context.showErrorSnackBar(context, state.msg);
               }
+              if (state is LoadingSignUpState) {
+                showDialog(
+                    barrierDismissible: false,
+                    barrierColor: Colors.transparent,
+                    context: context,
+                    builder: (context) {
+                      return const AlertDialog(
+                        backgroundColor: Colors.transparent,
+                        elevation: 0,
+                        content: SizedBox(
+                          height: 80,
+                          width: 80,
+                          child: Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        ),
+                      );
+                    });
+                
+              }
+              
             },
             builder: (context, state) {
               return Padding(
