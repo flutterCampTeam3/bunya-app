@@ -41,9 +41,23 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         // && event.isChecked
         ) {
       try {
+        emit(LoadingSignUpState());
+       try {
         checkOffice = await CheckOffice().checkOffice(event.cr);
       } catch (error) {
         emit(ErrorSignUpState(msg: 'لم يتم ايجاد السجل التجاري'));
+        }
+        if (checkOffice) {
+          DBService().signUpO(
+              userName: event.name,
+              email: event.email,
+              password: event.password);
+          emit(SuccessSignUpState(msg: "تم إنشاء الحساب بنجاح"));
+        } else {
+          emit(ErrorSignUpState(msg: 'لا يوجد سجل تجاري بهذا الرقم'));
+        }
+      } catch (error) {
+        emit(ErrorSignUpState(msg: "هناك خطأ في إنشاء الحساب"));
       }
     } else {
       emit(ErrorSignUpState(msg: "الرجاء إدخال جميع القيم"));

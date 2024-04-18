@@ -1,4 +1,3 @@
-
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/pages/Office%20pages/office%20auth%20pages/sign%20up%20page/bloc/sign_up_bloc.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,29 +16,31 @@ class CustomerImagePickerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      
       children: [
-         Padding(
-        padding: const EdgeInsets.all(8.0),
-         child: Text("صورة الحساب",style: TextStyle(fontWeight: FontWeight.w500,fontSize: 19),),
+        const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text(
+            "صورة الحساب",
+            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 19),
           ),
+        ),
         Stack(
           children: [
-           Padding(
-             padding: const EdgeInsets.all(8.0),
-             child: Container(
-                                     height: 130,
-                                  width: MediaQuery.of(context).size.width,
-                                  decoration: BoxDecoration(
-                                    color: const Color.fromARGB(255, 224, 220, 220), // لون خلفية الحاوية
-                                   border: Border.all(
-                                   color:whiteBrown, // لون الحدود
-                                    width: 1, // عرض الحدود
-                                   ),
-                                  ),
-                                     ),
-           ),
-        
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                height: 130,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  color: const Color.fromARGB(
+                      255, 224, 220, 220), // لون خلفية الحاوية
+                  border: Border.all(
+                    color: whiteBrown, // لون الحدود
+                    width: 1, // عرض الحدود
+                  ),
+                ),
+              ),
+            ),
             Positioned(
               top: 30,
               left: MediaQuery.of(context).size.width / 2 - 37,
@@ -51,8 +52,7 @@ class CustomerImagePickerWidget extends StatelessWidget {
                     if (state is CustomerChoosImageEventShowImageState) {
                       return CircleAvatar(
                           radius: 70,
-                          backgroundImage:
-                              FileImage(state.PickedImage));
+                          backgroundImage: FileImage(state.PickedImage));
                     }
                     return CircleAvatar(
                       radius: 70,
@@ -62,8 +62,7 @@ class CustomerImagePickerWidget extends StatelessWidget {
                           BlocProvider.of<SignUpBlocCustomer>(context)
                               .add(CustomerChoosImageEvent());
                         },
-                        icon: Icon(Icons.camera_alt_outlined,
-                            color: darkBrown),
+                        icon: Icon(Icons.camera_alt_outlined, color: darkBrown),
                       ),
                     );
                   },
@@ -71,9 +70,13 @@ class CustomerImagePickerWidget extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 110,
-              left: 95,
-              child: Text("اضغط على الايقونة لرفع صورة الحساب",style: TextStyle(fontWeight: FontWeight.bold,color:darkBrown),))
+                top: 110,
+                left: 95,
+                child: Text(
+                  "اضغط على الايقونة لرفع صورة الحساب",
+                  style:
+                      TextStyle(fontWeight: FontWeight.bold, color: darkBrown),
+                ))
           ],
         ),
       ],

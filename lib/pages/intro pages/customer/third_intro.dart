@@ -56,7 +56,7 @@ class thirdCustomerIntro extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    // Add your logic here for the first clickable text
+                    context.pushAndRemove(const SigninCustomerPage());
                   },
                   child: Container(
                     width: 150,

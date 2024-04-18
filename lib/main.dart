@@ -24,8 +24,6 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        // locale: DevicePreview.locale(context),
-        // builder: DevicePreview.appBuilder,
         theme: ThemeData(
           fontFamily: GoogleFonts.aBeeZee().fontFamily,
         ),

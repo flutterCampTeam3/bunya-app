@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bunya_app/data/model/medicattion_model.dart';
 import 'package:bunya_app/data/model/offices_model.dart';
 import 'package:bunya_app/data/model/profile_model_customer.dart';
@@ -127,7 +129,7 @@ class DBService {
     addToken();
   }
 
-    Future checkUserCustomer() async {
+  Future checkUserCustomer() async {
     final profileData = await supabase
         .from('Customer')
         .select()
@@ -167,8 +169,6 @@ class DBService {
     await supabase.auth.updateUser(UserAttributes(password: newPassword));
   }
 
-  // ------ Data Services -----
-
   // ------ User data Services -----
 
   // Get Current session info
@@ -183,7 +183,6 @@ class DBService {
     id = currentUser;
     return id;
   }
-
 
   Future getUser() async {
     print("in the func");
@@ -226,7 +225,6 @@ class DBService {
     return profileoffice;
   }
 
-
 // to edit profile
   Future editUpdate(
       {required String name, required String email, required int phone}) async {
@@ -255,11 +253,10 @@ class DBService {
     ).match({'officeId': supabase.auth.currentUser!.id});
   }
 
- 
   // Delete Medication
-  // Future deleteMedications({required midId}) async {
-  //   await supabase.from('medication').delete().match({'medicationId': midId});
-  // }
+  Future deleteMedications({required midId}) async {
+    await supabase.from('medication').delete().match({'medicationId': midId});
+  }
 
   Future<List<postModel>> getposts() async {
     final postData = await supabase.from('post').select('*');
@@ -270,9 +267,9 @@ class DBService {
     return classposts;
   }
 
-Future<List<postModel>> getPostsId({required String ofiiceId}) async {
+  Future<List<postModel>> getPostsId({required String ofiiceId}) async {
     final postData =
-        await supabase.from('post').select('*').match({'ofiiceId':ofiiceId});
+        await supabase.from('post').select('*').match({'ofiiceId': ofiiceId});
     final List<postModel> classposts = [];
     for (var element in postData) {
       classposts.add(postModel.fromJson(element));
@@ -280,11 +277,9 @@ Future<List<postModel>> getPostsId({required String ofiiceId}) async {
     return classposts;
   }
 
-
-
-
   Future<List<OfficesModel>> getOfficeAccount(String type) async {
     print('in the func');
+
     final officeAccounte = await supabase
         .from('Offices')
         .select("*")
@@ -294,7 +289,6 @@ Future<List<postModel>> getPostsId({required String ofiiceId}) async {
     for (var element in officeAccounte) {
       officeAccount.add(OfficesModel.fromJson(element));
     }
-
     return officeAccount;
   }
 
@@ -305,5 +299,22 @@ Future<List<postModel>> getPostsId({required String ofiiceId}) async {
       classOffices.add(OfficesModel.fromJson(element));
     }
     return classOffices;
+  }
+
+  //-------------------- uplaod image
+
+  Future<void> uploadImage(File imageFile) async {
+    print("object");
+
+    final response =
+        await supabase.storage.from('ImageProfile').upload('kk', imageFile);
+    print("oooooo");
+    UrlImage();
+    print("done");
+  }
+
+  Future<void> UrlImage() async {
+    final response = supabase.storage.from('ImageProfile').getPublicUrl("kk");
+    print(response);
   }
 }

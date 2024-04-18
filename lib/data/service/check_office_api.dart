@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 
 class CheckOffice {
   Future<bool> checkOffice(String id) async {
-    print("in the func");
     final String link =
         "https://api.wathq.sa/v5/commercialregistration/fullinfo/$id";
     final uri = Uri.parse(link);
@@ -25,3 +24,4 @@ class CheckOffice {
     }
   }
 }
+
