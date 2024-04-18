@@ -2,9 +2,6 @@ import 'package:bunya_app/data/model/medicattion_model.dart';
 import 'package:bunya_app/data/model/offices_model.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'dart:developer';
-
-import '../model/offices_model.dart';
 import '../model/post_model.dart';
 
 class DBService {
@@ -262,7 +259,7 @@ class DBService {
     required String userId,
     required String officeID,
   }) async {
-    final response = await supabase
+     await supabase
         .from('office_followers')
         .delete()
         .eq('officeId', officeID)
