@@ -18,7 +18,7 @@ class NavBloc extends Bloc<NavEvent, NavState> {
     const HomePageCustomer(),
     const MessageListPage(),
     const CategoriesPage(),
-    const ProfilePageCustomer(),
+     ProfilePageCustomer(),
   ];
 
   NavBloc() : super(NavInitial()) {

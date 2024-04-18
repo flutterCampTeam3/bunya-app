@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bunya_app/data/model/profile_model_customer.dart';
 import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:meta/meta.dart';
@@ -10,6 +11,9 @@ part 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final locator = GetIt.I.get<DBService>();
+  String? name;
+  String? email;
+  int? phone;
   ProfileBloc() : super(ProfileInitial()) {
     on<ActivateEditModeEvent>(activateEditMode);
     on<DeactivateEditModeEvent>(deactivateEditMode);
@@ -23,7 +27,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   FutureOr<void> activateEditMode(
       ActivateEditModeEvent event, Emitter<ProfileState> emit) {
-    emit(ActivatedEditModeState());
+    emit(ActivatedEditModeState(
+      email: locator.email,
+      name: locator.name,
+    ));
   }
 
   Future<FutureOr<void>> deactivateEditMode(
@@ -34,15 +41,18 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   Future<FutureOr<void>> getUserInfo(
       GetUserInfoEvent event, Emitter<ProfileState> emit) async {
+    print("in the bloc");
     emit(ProfileLoadingState());
     try {
-      locator.email = locator.supabase.auth.currentUser!.email!;
-      locator.name = await locator.getUserName();
-      emit(DisplayUserInfoState(
-        email: locator.email,
-        name: locator.name,
-      ));
+      print("in the try");
+      final ProfileModel profile = await locator.getUser();
+      print("after");
+      final email = profile.email;
+      final name = profile.name;
+      final phone = profile.phone;
+      emit(DisplayUserInfoState(name: name, email: email, phone: phone));
     } catch (e) {
+      print(e.toString());
       emit(ProfileErrorState(
           msg: "حدث خطأ عند تحميل بياناتك يرجى المحاولة لاحقاً"));
     }
@@ -53,7 +63,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     emit(ProfileLoadingState());
     if (event.name.trim().isNotEmpty) {
       try {
-        await locator.updateUserName(newName: event.name);
+        await locator.editUpdate(
+            name: event.name, email: event.email, phone: event.phone);
         await getUserInfo(GetUserInfoEvent(), emit);
       } catch (e) {
         emit(ProfileErrorState(msg: "هناك خطأ في عملية تحديث بياناتك"));

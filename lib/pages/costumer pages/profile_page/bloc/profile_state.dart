@@ -5,25 +5,33 @@ sealed class ProfileState {}
 
 final class ProfileInitial extends ProfileState {}
 
-
 final class ActivatedEditModeState extends ProfileState {
+  String name;
+  String email;
 
+  ActivatedEditModeState({
+    required this.email,
+    required this.name,
+  });
 }
 
-final class DeactivatedEditModeState extends ProfileState {
-  
-}
+final class DeactivatedEditModeState extends ProfileState {}
 
 final class DisplayUserInfoState extends ProfileState {
-  final String name;
-  final String email;
-
-  DisplayUserInfoState({required this.email, required this.name,});
+  String name;
+  String email;
+  int phone;
+  DisplayUserInfoState(
+      {required this.email, required this.name, required this.phone});
 }
 
-final class ProfileLoadingState extends ProfileState {
+final class ProfilSuccessState extends ProfileState {
+  final String msg;
 
+  ProfilSuccessState({required this.msg});
 }
+
+final class ProfileLoadingState extends ProfileState {}
 
 final class ProfileErrorState extends ProfileState {
   final String msg;

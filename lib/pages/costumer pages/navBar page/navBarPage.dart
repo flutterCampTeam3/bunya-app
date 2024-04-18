@@ -1,3 +1,4 @@
+import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/costumer%20pages/navBar%20page/bloc/nav_bloc.dart';
 import 'package:flutter/material.dart';
@@ -32,12 +33,21 @@ class NavBarPage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
                     IconButton(
-                      icon: const Column(
+                      icon: Column(
                         children: [
-                          Icon(Icons.person_2_outlined),
+                          Icon(
+                            Icons.person_2_outlined,
+                            color:
+                                bloc.currentIndex == 0 ? brownNavSelect : null,
+                          ),
                           Text(
                             "الحساب",
-                            style: TextStyle(fontSize: 11),
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: bloc.currentIndex == 0
+                                  ? brownNavSelect
+                                  : null,
+                            ),
                           )
                         ],
                       ),
@@ -47,12 +57,21 @@ class NavBarPage extends StatelessWidget {
                       },
                     ),
                     IconButton(
-                      icon: const Column(
+                      icon: Column(
                         children: [
-                          Icon(Icons.category_outlined),
+                          Icon(
+                            Icons.category_outlined,
+                            color:
+                                bloc.currentIndex == 1 ? brownNavSelect : null,
+                          ),
                           Text(
                             "الفئات",
-                            style: TextStyle(fontSize: 11),
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: bloc.currentIndex == 1
+                                  ? brownNavSelect
+                                  : null,
+                            ),
                           )
                         ],
                       ),
@@ -63,12 +82,21 @@ class NavBarPage extends StatelessWidget {
                     ),
                     const SizedBox(width: 40), // Adjust spacing for FAB
                     IconButton(
-                      icon: const Column(
+                      icon: Column(
                         children: [
-                          Icon(Icons.messenger_outline),
+                          Icon(
+                            Icons.messenger_outline,
+                            color:
+                                bloc.currentIndex == 2 ? brownNavSelect : null,
+                          ),
                           Text(
                             "الرسائل",
-                            style: TextStyle(fontSize: 11),
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: bloc.currentIndex == 2
+                                  ? brownNavSelect
+                                  : null,
+                            ),
                           )
                         ],
                       ),
@@ -78,12 +106,21 @@ class NavBarPage extends StatelessWidget {
                       },
                     ),
                     IconButton(
-                      icon: const Column(
+                      icon: Column(
                         children: [
-                          Icon(Icons.home_outlined),
+                          Icon(
+                            Icons.home_outlined,
+                            color:
+                                bloc.currentIndex == 3 ? brownNavSelect : null,
+                          ),
                           Text(
                             "الرئيسية",
-                            style: TextStyle(fontSize: 11),
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: bloc.currentIndex == 3
+                                  ? brownNavSelect
+                                  : null,
+                            ),
                           )
                         ],
                       ),

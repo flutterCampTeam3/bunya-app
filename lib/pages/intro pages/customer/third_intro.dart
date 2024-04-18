@@ -1,4 +1,6 @@
 import 'package:bunya_app/helper/colors.dart';
+import 'package:bunya_app/helper/extintion.dart';
+import 'package:bunya_app/pages/costumer%20pages/costumer%20auth%20pages/signIn%20page/signin_customer_page.dart';
 import 'package:flutter/material.dart';
 
 class thirdCustomerIntro extends StatelessWidget {
@@ -6,8 +8,7 @@ class thirdCustomerIntro extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    Scaffold(
+    return Scaffold(
       body: Container(
         height: double.maxFinite,
         width: double.maxFinite,
@@ -32,7 +33,7 @@ class thirdCustomerIntro extends StatelessWidget {
                     " تواصل مع أفضل الشركات \nلتلبية احتياجات بناء منزلك",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 20, 
+                      fontSize: 20,
                       // Define text style here if needed
                     ),
                   ),
@@ -79,7 +80,7 @@ class thirdCustomerIntro extends StatelessWidget {
                 ),
                 GestureDetector(
                   onTap: () {
-                    
+                    context.pushAndRemove(const SigninCustomerPage());
                   },
                   child: Container(
                     width: 150,
