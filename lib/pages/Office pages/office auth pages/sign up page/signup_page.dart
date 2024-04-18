@@ -75,7 +75,12 @@ class _SignUpPageState extends State<SignUpPage> {
               if (state is SuccessSignUpState) {
                 // SignUp Function Here
                 context.showSuccessSnackBar(context, state.msg);
-                context.pushAndRemove(const ProfileSignup());
+                context.pushAndRemove(ProfileSignup(
+                  name: nameController.text,
+                  cr: crController.text,
+                  email: emailController.text,
+
+                ));
               }
               if (state is ErrorSignUpState) {
                 // Error SignUp Function Here
@@ -91,7 +96,6 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * .7,
                       child: ListView(
-                       
                         children: [
                           textFieldAuth(
                             Controller: nameController,

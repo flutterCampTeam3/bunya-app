@@ -42,8 +42,6 @@ class DBService {
     required String email,
     required String password,
     required String userName,
-    required String departmentId,
-    required String cr,
     // required String image,
   }) async {
     print(" before: ");
@@ -52,21 +50,35 @@ class DBService {
       email: email,
       password: password,
     );
+    id = respons.user!.id;
     print("${respons.hashCode}");
-    if (respons.hashCode >= 200 && respons.hashCode <= 299) {
-      await supabase.from('Offices').insert(
-        {
-          'departmentId': departmentId,
-          'name': userName,
-          'officeId': respons.user!.id,
-          'cr': cr,
-          // 'image': image,
-        },
-      );
-    }
     print("in the signup: ${respons.hashCode}");
     // Send email verification
     // await supabase.auth.resetPasswordForEmail(email);
+  }
+
+  //--- Office SignUp func
+  Future createProfileOffice({
+    required String email,
+    required String userName,
+    required String departmentId,
+    required String phoneNumber,
+    required String cr,
+    required String disc,
+    // required String image,
+  }) async {
+    await supabase.from('Offices').insert(
+      {
+        'departmentId': departmentId,
+        'name': userName,
+        'officeId': id,
+        'cr': cr,
+        'disc': disc,
+        'phoneNumber': cr,
+        'email': email,
+        // 'image': image,
+      },
+    );
   }
 
   //---costumer SignUp func
@@ -101,13 +113,9 @@ class DBService {
   Future signIn({required String email, required String password}) async {
     final state = await supabase.auth
         .signInWithPassword(email: email, password: password);
-    if (state.hashCode >= 200 && state.hashCode <= 299) {
-      token = supabase.auth.currentSession!.accessToken;
-      id = supabase.auth.currentSession!.user.id;
-      addToken();
-    } else {
-      throw const AuthException('الايميل او الرقم السري خطا');
-    }
+    token = supabase.auth.currentSession!.accessToken;
+    id = supabase.auth.currentSession!.user.id;
+    addToken();
   }
 
   Future checkUserCustomer() async {
@@ -119,7 +127,7 @@ class DBService {
 
     if (profileData.isNotEmpty) {
       return true;
-    }else{
+    } else {
       return false;
     }
   }

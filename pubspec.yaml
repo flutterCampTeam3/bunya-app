@@ -27,7 +27,7 @@ dependencies:
   flutter_otp_text_field: ^1.1.2+1
   glass: ^2.0.0+1
   glassmorphism_ui: ^0.3.0
-  device_preview: ^1.1.0
+  # device_preview: ^1.0.0
   onboarding: ^4.0.2
 
 

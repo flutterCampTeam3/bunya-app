@@ -55,13 +55,13 @@ class textFieldAuth extends StatelessWidget {
         if (cr) {
           if (isValidSaudiUnifiedNumber(value)) {
           } else {
-            return 'الرجاء ادخال الرقم الوطني الموحد بشكل صحيح';
+            return 'الرجاء ادخال رقم السجل التجاري بشكل صحيح';
           }
         }
         if (unn) {
           if (isValidSaudiCommercialRegistrationNumber(value)) {
           } else {
-            return 'الرجاء ادخال رقم السجل التجاري بشكل صحيح';
+            return 'الرجاء ادخال الرقم الوطني الموحد بشكل صحيح';
           }
         }
         if (obscureText) {

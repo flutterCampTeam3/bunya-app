@@ -16,7 +16,15 @@ import 'widgets/page_header.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileSignup extends StatefulWidget {
-  const ProfileSignup({super.key, Key});
+  const ProfileSignup(
+      {super.key,
+      Key,
+      required this.name,
+      required this.cr,
+      required this.email});
+  final String name;
+  final String cr;
+  final String email;
 
   @override
   State<ProfileSignup> createState() => _ProfileSignupState();
@@ -25,20 +33,18 @@ class ProfileSignup extends StatefulWidget {
 class _ProfileSignupState extends State<ProfileSignup> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-
   @override
   Widget build(BuildContext context) {
     late TextEditingController infoController = TextEditingController();
     late TextEditingController locationController = TextEditingController();
     late TextEditingController phoneController = TextEditingController();
 
- @override
+    @override
     void initState() {
       super.initState();
       infoController = TextEditingController();
       locationController = TextEditingController();
       phoneController = TextEditingController();
-     
     }
 
     @override
@@ -49,8 +55,7 @@ class _ProfileSignupState extends State<ProfileSignup> {
       super.dispose();
     }
 
-
-    Future<void> _pickImage() async {
+    Future<void> pickImage() async {
       final pickedImage =
           await ImagePicker().pickImage(source: ImageSource.gallery);
       // Handle the pickedImage here
@@ -66,7 +71,7 @@ class _ProfileSignupState extends State<ProfileSignup> {
             preferredSize: Size(MediaQuery.of(context).size.width, 210),
             child: const PageHeader(
               height: 210,
-              bottomText: " ادخل بيانات ملفك الشخصي" ,
+              bottomText: " ادخل بيانات ملفك الشخصي",
             ),
           ),
           body: BlocConsumer<SignUpBloc, SignUpState>(
@@ -85,18 +90,16 @@ class _ProfileSignupState extends State<ProfileSignup> {
                     height: MediaQuery.of(context).size.height * .7,
                     child: ListView(
                       children: [
-                       
-                         gapH10, 
+                        gapH10,
                         const TypeDropDownWidget(),
-                        gapH20,                       
+                        gapH20,
                         ProfiletextFieldAuth(
                           Controller: infoController,
                           label: 'معلومات عن الشركة  ',
                           obscureText: false,
                         ),
                         gapH20,
-                        
-                        ImagePickerWidget(),
+                        const ImagePickerWidget(),
                         gapH20,
                         ProfiletextFieldAuth(
                           Controller: locationController,
@@ -108,6 +111,7 @@ class _ProfileSignupState extends State<ProfileSignup> {
                           Controller: phoneController,
                           label: 'رقم الجوال',
                           obscureText: false,
+                          phone: true,
                         ),
                         gapH10,
                         gapH20,
@@ -122,12 +126,12 @@ class _ProfileSignupState extends State<ProfileSignup> {
                                   if (_formKey.currentState!.validate()) {
                                     // here function
 
-                                      // bloc.add(CreateAccountprofilEvent(
-                                      //   info: infoController.text,
-                                      //   location: locationController.text,
-                                      //   phone: phoneController.text,
-                                      // ));
-                                    }
+                                    // bloc.add(CreateAccountprofilEvent(
+                                    //   info: infoController.text,
+                                    //   location: locationController.text,
+                                    //   phone: phoneController.text,
+                                    // ));
+                                  }
                                 },
                                 textColor: Colors.white,
                               ),
