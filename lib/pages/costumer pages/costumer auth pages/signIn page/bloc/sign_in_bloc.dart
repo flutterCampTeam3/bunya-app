@@ -11,7 +11,9 @@ part 'sign_in_state.dart';
 class SignInCustomerBloc
     extends Bloc<SignInCustomerEvent, SignInCustomerState> {
   // here data pase
+  bool userType = true;
   SignInCustomerBloc() : super(SignInInitial()) {
+    
     on<SignInCustomerEvent>((event, emit) {});
     on<AddSignInCustomerEvent>(signIn);
   }
@@ -21,10 +23,9 @@ class SignInCustomerBloc
     emit(LoadingSignInCustomerState());
     if (event.email.trim().isNotEmpty && event.password.trim().isNotEmpty) {
       try {
-        print('in the bloc');
         // here data pase
         await DBService().signIn(email: event.email, password: event.password);
-        print('after');
+        userType = await DBService().checkUserCustomer();
         emit(SuccessSignInCustomerState(msg: "تم تسجيل الدخول بنجاح"));
       } on AuthException catch (p) {
         print(p);

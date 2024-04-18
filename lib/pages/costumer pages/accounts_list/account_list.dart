@@ -1,106 +1,155 @@
+import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
+import 'package:bunya_app/pages/costumer%20pages/accounts_list/bloc/account_list_bloc.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/home_page.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/account_list_Widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/appbar_widget.dart';
-import 'package:bunya_app/pages/intro%20pages/first_intro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 class ConstraintAccountList extends StatelessWidget {
-  const ConstraintAccountList({Key? key});
+  ConstraintAccountList({Key? key, required this.type});
+  final String type;
+  final locator = GetIt.I.get<DBService>();
 
   @override
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
-      child: Scaffold(
-        body: Stack(
-          children: [
-            // Background Image
-            Positioned.fill(
-              child: Image.asset(
-                'assets/images/introv4.png', // Your image path
-                // fit: BoxFit.cover,
-              ),
-            ),
-            SingleChildScrollView(
-              child: SafeArea(
-                child: Column(
-                  children: [
-                    const AppBarWidget(),
-                    Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: [
-                          gapH20,
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
+      child: BlocProvider(
+        create: (context) => AccountListBloc(),
+        child: Builder(builder: (context) {
+          final bloc = context.read<AccountListBloc>();
+          print("BEFORE");
+          bloc.add(GetAccountEvent(type: type));
+          return Scaffold(
+            body: Stack(
+              children: [
+                // Background Image
+                Positioned.fill(
+                  child: Image.asset(
+                    'assets/images/introv4.png', // Your image path
+                    // fit: BoxFit.cover,
+                  ),
+                ),
+                SingleChildScrollView(
+                  child: SafeArea(
+                    child: Column(
+                      children: [
+                        const AppBarWidget(),
+                        Padding(
+                          padding: const EdgeInsets.all(20.0),
+                          child: Column(
                             children: [
-                              Text(
-                                " حسابات المقاولين",
-                                style: TextStyle(fontSize: 20),
+                              gapH20,
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    " حسابات $type",
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                ],
+                              ),
+                              gapH10,
+                              BlocConsumer<AccountListBloc, AccountListState>(
+                                listener: (context, state) {
+                                  if (state is LoadingHomeState) {
+                                    showDialog(
+                                        barrierDismissible: false,
+                                        barrierColor: Colors.transparent,
+                                        context: context,
+                                        builder: (context) {
+                                          return AlertDialog(
+                                            backgroundColor: Colors.transparent,
+                                            elevation: 0,
+                                            content: SizedBox(
+                                              height: 80,
+                                              width: 80,
+                                              child: Center(
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  color: brown,
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        });
+                                  }
+
+                                  if (state is SuccessHomeState) {
+                                    Navigator.pop(context);
+                                  }
+                                  if (state is ErrorHomeState) {
+                                    Navigator.pop(context);
+                                    context.showErrorSnackBar(
+                                        context, state.msg);
+                                  }
+                                },
+                                builder: (context, state) {
+                                  if (state is SuccessHomeState) {
+                                    if (state.officeAccounte.isNotEmpty) {
+                                      return SizedBox(
+                                        height: context.getHeight() * 0.80,
+                                        width: context.getWidth(),
+                                        child: ListView.builder(
+                                          shrinkWrap: true,
+                                          itemCount:
+                                              state.officeAccounte.length,
+                                          itemBuilder: (context, index) {
+                                            final med =
+                                                state.officeAccounte[index];
+                                            return AccountListWidget(
+                                              path: med.image,
+                                              title: med.name,
+                                              description: med.disc,
+                                              //rate: 5,
+                                              followers: 200,
+                                              onTap: () {
+                                                context.pushAndRemove(
+                                                    HomePageCustomer());
+                                              },
+                                            );
+                                          },
+                                        ),
+                                      );
+                                    } else {
+                                      return SizedBox(
+                                        width: context.getWidth(),
+                                        height: context.getHeight(),
+                                        child: const Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "لا يوجد حسابات لهذا القسم",
+                                            )
+                                          ],
+                                        ),
+                                      );
+                                    }
+                                  } else {
+                                    return sizedBoxEmpty;
+                                  }
+                                },
                               ),
                             ],
                           ),
-                          gapH10,
-                          SizedBox(
-                            height: 800,
-                            child: ListView(
-                              scrollDirection: Axis.vertical,
-                              children: [
-                                AccountListWidget(
-                                  path: 'assets/images/benaa_cpmpany.png',
-                                  title: "شركة بناء للمقاولات والإستثمار",
-                                  description:
-                                      "شركة تعمل في مجال البناء والتشييد\n والاستثمار في المشاريع العقارية.",
-                                  rate: 5,
-                                  followers: 200,
-                                  onTap: () {
-                                    context.pushAndRemove(HomePageCustomer());
-                                  },
-                                ),
-                                gapWe20,
-                                gapH10,
-                                AccountListWidget(
-                                  path: 'assets/images/mabany.png',
-                                  title: "شركة مباني الرياض للمقاولات العامة",
-                                  description:
-                                      "شركة تعمل في مجال البناء والتشييد \nوالاستثمار في المشاريع العقارية.",
-                                  rate: 4,
-                                  followers: 2,
-                                  onTap: () {
-                                    
-                                  },
-                                ),
-                                gapWe20,
-                                gapH10,
-                                AccountListWidget(
-                                  path: 'assets/images/mabany.png',
-                                  title: "شركة مباني الرياض للمقاولات العامة",
-                                  description:
-                                      "شركة تعمل في مجال البناء والتشييد \nوالاستثمار في المشاريع العقارية.",
-                                  rate: 4,
-                                  followers: 2,
-                                  onTap: () {
-                                    
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ],
+                        )
+                      ],
+                    ),
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
+          );
+        }),
       ),
     );
   }

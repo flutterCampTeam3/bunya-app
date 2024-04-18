@@ -12,7 +12,10 @@ final class SuccessSignUpCustomerState extends SignUpCustomerState {
 
   SuccessSignUpCustomerState({required this.msg});
 }
-
+class CustomerChoosImageEventShowImageState extends SignUpCustomerState{
+  final File  PickedImage;
+  CustomerChoosImageEventShowImageState(this.PickedImage);
+}
 final class ErrorSignUpCustomerState extends SignUpCustomerState {
   final String msg;
 

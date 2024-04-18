@@ -1,5 +1,6 @@
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
+import 'package:bunya_app/pages/Office%20pages/office%20auth%20pages/sign%20up%20page/widgets/image_piker_widget.dart';
 import 'package:bunya_app/pages/widgets/auth/page_header.dart';
 import 'package:bunya_app/pages/widgets/auth/text_field_auth.dart';
 import 'package:bunya_app/pages/widgets/auth/text_field_confirm_pass.dart';
@@ -13,6 +14,7 @@ import '../../../widgets/auth/button_widget.dart';
 import '../../../widgets/auth/pass_textfiled.dart';
 import '../signIn page/signin_customer_page.dart';
 import 'bloc/sign_up_bloc.dart';
+import 'widgets/customer_image_piker_widget.dart';
 
 class SignUpCustomerPage extends StatefulWidget {
   const SignUpCustomerPage({
@@ -87,9 +89,8 @@ class _SignUpCustomerPageState extends State<SignUpCustomerPage> {
                     key: _formKey,
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * .7,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        mainAxisSize: MainAxisSize.max,
+                      child: ListView(
+                        
                         children: [
                           textFieldAuth(
                             Controller: nameController,
@@ -103,7 +104,11 @@ class _SignUpCustomerPageState extends State<SignUpCustomerPage> {
                             obscureText: false,
                             email: true,
                           ),
-                          gapH20,
+                           gapH20,
+                        
+                        CustomerImagePickerWidget(),
+                        gapH20,
+                          
                           textFieldAuth(
                             Controller: phoneController,
                             label: 'رقم الجوال ',

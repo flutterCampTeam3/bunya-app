@@ -1,6 +1,10 @@
 import 'package:bunya_app/data/model/medicattion_model.dart';
+import 'package:bunya_app/data/model/offices_model.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+
+import '../model/offices_model.dart';
+import '../model/post_model.dart';
 
 class DBService {
   // ------ Data Storage -----
@@ -42,8 +46,6 @@ class DBService {
     required String email,
     required String password,
     required String userName,
-    required String departmentId,
-    required String cr,
     // required String image,
   }) async {
     print(" before: ");
@@ -52,21 +54,35 @@ class DBService {
       email: email,
       password: password,
     );
+    id = respons.user!.id;
     print("${respons.hashCode}");
-    if (respons.hashCode >= 200 && respons.hashCode <= 299) {
-      await supabase.from('Offices').insert(
-        {
-          'departmentId': departmentId,
-          'name': userName,
-          'officeId': respons.user!.id,
-          'cr': cr,
-          // 'image': image,
-        },
-      );
-    }
     print("in the signup: ${respons.hashCode}");
     // Send email verification
     // await supabase.auth.resetPasswordForEmail(email);
+  }
+
+  //--- Office SignUp func
+  Future createProfileOffice({
+    required String email,
+    required String userName,
+    required String departmentId,
+    required String phoneNumber,
+    required String cr,
+    required String disc,
+    // required String image,
+  }) async {
+    await supabase.from('Offices').insert(
+      {
+        'departmentId': departmentId,
+        'name': userName,
+        'officeId': id,
+        'cr': cr,
+        'disc': disc,
+        'phoneNumber': cr,
+        'email': email,
+        // 'image': image,
+      },
+    );
   }
 
   //---costumer SignUp func
@@ -99,16 +115,24 @@ class DBService {
   }
 
   Future signIn({required String email, required String password}) async {
-    print('in the func');
     final state = await supabase.auth
         .signInWithPassword(email: email, password: password);
-    if (state.hashCode >= 200 && state.hashCode <= 299) {
-      print('after the func');
-      token = supabase.auth.currentSession!.accessToken;
-      id = supabase.auth.currentSession!.user.id;
-      addToken();
+    token = supabase.auth.currentSession!.accessToken;
+    id = supabase.auth.currentSession!.user.id;
+    addToken();
+  }
+
+  Future checkUserCustomer() async {
+    final profileData = await supabase
+        .from('Customer')
+        .select()
+        .eq('id', supabase.auth.currentUser!.id)
+        .single();
+
+    if (profileData.isNotEmpty) {
+      return true;
     } else {
-      throw const AuthException('الايميل او الرقم السري خطا');
+      return false;
     }
   }
 
@@ -189,17 +213,51 @@ class DBService {
     return medications;
   }
 
-  ///-- add user name
-  Future addUserName({
-    required String name,
-    required String id,
+  ///-- add Follower
+  Future addFollowers({
+    required String userId,
+    required String officeID,
   }) async {
-    await supabase.from('users').insert(
+    await supabase.from('office_followers').insert(
       {
-        "name": name,
-        "id": id,
+        'officeId': officeID,
+        'customerId': userId,
       },
     );
+  }
+
+  ///-- Check Follower
+  Future<bool> checkFollowers({
+    required String userId,
+    required String officeID,
+  }) async {
+    final response = await supabase
+        .from('office_followers')
+        .select()
+        .eq('officeId', officeID)
+        .eq('customerId', userId);
+    // .execute();
+
+    if (response.isEmpty) {
+      // Handle error
+      print('Error: $response');
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  ///-- Check Follower
+  Future deleteFollowers({
+    required String userId,
+    required String officeID,
+  }) async {
+    final response = await supabase
+        .from('office_followers')
+        .delete()
+        .eq('officeId', officeID)
+        .eq('customerId', userId);
+    // .execute();
   }
 
   // Add Medications to Data
@@ -318,5 +376,36 @@ class DBService {
   // Delete Medication
   Future deleteMedications({required midId}) async {
     await supabase.from('medication').delete().match({'medicationId': midId});
+  }
+  Future<List<postModel>> getposts() async {
+    final postData =
+        await supabase.from('post').select('*');
+    final List<postModel> classposts = [];
+    for (var element in postData) {
+      classposts.add(postModel.fromJson(element));
+    }
+    return classposts;
+  }
+
+    Future<List<OfficesModel>> getOfficeAccount(String type) async {
+    print('in the func');
+    final officeAccounte = await supabase.from('Offices').select("*").match({'departmentId': type});
+    print('the length${officeAccounte.length}');
+    final List<OfficesModel> officeAccount = [];
+    for (var element in officeAccounte) {
+      officeAccount.add(OfficesModel.fromJson(element));
+    }
+    
+   
+    return officeAccount;
+  }
+  Future<List<OfficesModel>> getOffices() async {
+    final officesData =
+        await supabase.from('Offices').select('*');
+    final List<OfficesModel> classOffices = [];
+    for (var element in officesData) {
+      classOffices.add(OfficesModel.fromJson(element));
+    }
+    return classOffices;
   }
 }
