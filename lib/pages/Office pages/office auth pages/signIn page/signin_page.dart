@@ -26,9 +26,9 @@ class _SigninPageState extends State<SigninPage> {
   @override
   Widget build(BuildContext context) {
     TextEditingController emailController =
-        TextEditingController(text: "ss@gmail.com");
+        TextEditingController(text: "khaled@gmail.com");
     TextEditingController passController =
-        TextEditingController(text: "123456");
+        TextEditingController(text: "000000");
     return BlocProvider(
       create: (context) => SignInBloc(),
       child: Builder(builder: (context) {

@@ -27,7 +27,7 @@ class ProfileOfficeBloc extends Bloc<ProfileOfficeEvent, ProfileOfficeState> {
   }
   Future<FutureOr<void>> getOfficeInfo(
       GetOfficeInfoEvent event, Emitter<ProfileOfficeState> emit) async {
-    print("in the bloc");
+    print("in the bloc get");
     emit(ProfileLoadingState());
     try {
       print("in the try");
@@ -40,8 +40,9 @@ class ProfileOfficeBloc extends Bloc<ProfileOfficeEvent, ProfileOfficeState> {
       emit(DisplayOfficeInfoState(
           name: name, email: email, phone: phone, description: descriptionn));
     } catch (e) {
+      print("in catch");
       print(e.toString());
-      emit(ProfileErrorState(
+      emit(ProfileOfficeErrorState(
           msg: "حدث خطأ عند تحميل بياناتك يرجى المحاولة لاحقاً"));
     }
   }
