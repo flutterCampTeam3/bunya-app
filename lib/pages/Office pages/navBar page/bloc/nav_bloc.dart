@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:bunya_app/pages/Messages_pages/messages_page.dart';
-import 'package:bunya_app/pages/Office%20pages/home_page/home_page.dart';
+import 'package:bunya_app/pages/Office%20pages/home_page/home_page_office.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/profile_Office_pagee.dart';
 import 'package:bunya_app/pages/costumer%20pages/categories_page/categories_page.dart';
 import 'package:flutter/material.dart';

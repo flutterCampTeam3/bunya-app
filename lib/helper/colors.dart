@@ -24,4 +24,5 @@ Color darkblue = const Color(0xff1C2C3B);
 Color lightbrownColor = const Color(0xffDFD8D0);
 Color whiteOpisity = whiteColor.withOpacity(20);
 Color brownNavSelect = const Color(0xff9E8D7B);
+Color whitegrey = const Color(0xff9E8D7B);
 
