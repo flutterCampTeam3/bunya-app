@@ -23,3 +23,7 @@ Color salver = const Color(0xff545454);
 Color darkblue = const Color(0xff1C2C3B);
 Color lightbrownColor = const Color(0xffDFD8D0);
 Color whiteOpisity = whiteColor.withOpacity(20);
+Color whitegrey =const Color(0xffF3F3F3);
+
+
+
