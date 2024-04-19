@@ -191,12 +191,6 @@ class DBService {
     Future getOffice() async {
       print("in the funjjjc");
       print("id${supabase.auth.currentUser!.id}");
-      // final response = await supabase
-      //     .from('Customer')
-      //     .select('*')
-      //     .eq('customerId', supabase.auth.currentUser!.id)
-      //     .single();
-
       final response = await supabase
           .from('Offices')
           .select('*')
@@ -241,10 +235,50 @@ class DBService {
       ).match({'officeId': supabase.auth.currentUser!.id});
     }
 
-    // Delete Medication
-    Future deleteMedications({required midId}) async {
-      await supabase.from('medication').delete().match({'medicationId': midId});
+  ///-- add Follower
+  Future addFollowers({
+    required String officeID,
+  }) async {
+    await supabase.from('office_followers').insert(
+      {
+        'officeId': officeID,
+        'customerId': supabase.auth.currentUser!.id,
+      },
+    );
+  }
+
+  ///-- Check Follower
+  Future<bool> checkFollowers({
+    required String officeID,
+  }) async {
+    final response = await supabase
+        .from('office_followers')
+        .select()
+        .eq('officeId', officeID)
+        .eq('customerId', supabase.auth.currentUser!.id);
+    // .execute();
+
+    if (response.isEmpty) {
+      // Handle error
+      print('Error: $response');
+      return false;
+    } else {
+      return true;
     }
+  }
+
+    ///-- Delete Follower
+  Future deleteFollowers({
+    required String officeID,
+  }) async {
+    final response = await supabase
+        .from('office_followers')
+        .delete()
+        .eq('officeId', officeID)
+        .eq('customerId', supabase.auth.currentUser!.id);
+    // .execute();
+  }
+
 
     Future<List<postModel>> getposts() async {
       final postData = await supabase.from('post').select('*');

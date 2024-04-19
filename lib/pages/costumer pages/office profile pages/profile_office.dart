@@ -23,7 +23,7 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
           ProfilePostsBloc()..add(ShowDataIdEvent(id: office.officeId)),
       child: Builder(builder: (context) {
         final bloc = context.read<ProfilePostsBloc>();
-        bloc.add(CheckFollowEvent());
+        bloc.add(CheckFollowEvent(id: office.officeId));
         return Directionality(
             textDirection: TextDirection.rtl,
             child: DefaultTabController(
@@ -69,47 +69,70 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                   fontWeight: FontWeight.bold),
                             ),
                           ),
-                          Visibility(
-                            visible: false,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                //
-                              },
-                              style: ButtonStyle(
-                                backgroundColor:
-                                    WidgetStateProperty.all<Color>(lightBrown),
-                                fixedSize: WidgetStateProperty.all<Size>(
-                                    const Size(150, 50)),
-                              ),
-                              child: const Text(
-                                'الغاء المتابعة ',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
-                          ),
-                          Visibility(
-                            visible: true,
-                            child: ElevatedButton(
-                              onPressed: () {
-                                //
-                              },
-                              style: ButtonStyle(
-                                backgroundColor:
-                                    WidgetStateProperty.all<Color>(lightBrown),
-                                fixedSize: WidgetStateProperty.all<Size>(
-                                    const Size(150, 50)),
-                              ),
-                              child: const Text(
-                                'متابعة',
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ),
+                          BlocConsumer<ProfilePostsBloc, ProfilePostsState>(
+                            listener: (context, state) {
+                              // TODO: implement listener
+                            },
+                            builder: (context, state) {
+                              if (state is LoadingState) {
+                                return Center(
+                                  child: CircularProgressIndicator(
+                                    color: brown,
+                                  ),
+                                );
+                              } else {
+                                return Row(
+                                  children: [
+                                    Visibility(
+                                      visible: !bloc.isFollow,
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          //
+                                        },
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              WidgetStateProperty.all<Color>(
+                                                  lightBrown),
+                                          fixedSize:
+                                              WidgetStateProperty.all<Size>(
+                                                  const Size(150, 50)),
+                                        ),
+                                        child: const Text(
+                                          'الغاء المتابعة ',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ),
+                                    Visibility(
+                                      visible: bloc.isFollow,
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          //
+                                        },
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              WidgetStateProperty.all<Color>(
+                                                  lightBrown),
+                                          fixedSize:
+                                              WidgetStateProperty.all<Size>(
+                                                  const Size(150, 50)),
+                                        ),
+                                        child: const Text(
+                                          'متابعة',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              }
+                            },
                           ),
                         ],
                       ),

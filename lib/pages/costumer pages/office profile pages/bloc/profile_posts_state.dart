@@ -12,6 +12,7 @@ class profilePostsSuccesState extends ProfilePostsState{
 }
 
  final class LoadingState extends ProfilePostsState {}
+ final class CheckFollow extends ProfilePostsState {}
 
 final class ErrorprofileShowpostState extends ProfilePostsState {
   final String msg;
