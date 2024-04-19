@@ -7,11 +7,19 @@ final class SignUpInitial extends SignUpState {}
 
 final class LoadingSignUpState extends SignUpState {}
 
+
 final class SuccessSignUpState extends SignUpState {
   final String msg;
 
   SuccessSignUpState({required this.msg});
 }
+
+final class SuccessFindState extends SignUpState {
+  final String msg;
+
+  SuccessFindState({required this.msg});
+}
+
 class ShowImageState extends SignUpState{
   final File  PickedImage;
   ShowImageState(this.PickedImage);

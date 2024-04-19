@@ -50,17 +50,16 @@ class DBService {
     required String userName,
     // required String image,
   }) async {
-    print(" before: ");
+    print(" before: in the func");
     final respons = await supabase.auth.signUp(
       data: {'Name': userName},
       email: email,
       password: password,
     );
     id = respons.user!.id;
-    print("${respons.hashCode}");
-    print("in the signup: ${respons.hashCode}");
+    print("${respons.hashCode}");    
     // Send email verification
-    // await supabase.auth.resetPasswordForEmail(email);
+    await supabase.auth.resetPasswordForEmail(email);
   }
 
   //--- Office SignUp func
@@ -82,7 +81,7 @@ class DBService {
         'disc': disc,
         'phoneNumber': phoneNumber,
         'email': email,
-        // 'image': image,
+        'image': 'nn',
       },
     );
   }
@@ -130,12 +129,13 @@ class DBService {
   }
 
   Future checkUserCustomer() async {
+    print("in this func");
     final profileData = await supabase
         .from('Customer')
         .select()
         .eq('customerId', supabase.auth.currentUser!.id)
         .single();
-
+    print(profileData.toString());
     if (profileData.isNotEmpty) {
       return true;
     } else {

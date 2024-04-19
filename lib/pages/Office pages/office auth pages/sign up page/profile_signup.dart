@@ -72,10 +72,8 @@ class _ProfileSignupState extends State<ProfileSignup> {
           appBar: PreferredSize(
             preferredSize: Size(MediaQuery.of(context).size.width, 210),
             child: const PageHeader(
-              
               height: 210,
               bottomText: " ادخل بيانات ملفك الشخصي",
-              
             ),
           ),
           body: BlocConsumer<SignUpBloc, SignUpState>(
@@ -95,22 +93,16 @@ class _ProfileSignupState extends State<ProfileSignup> {
                     height: MediaQuery.of(context).size.height * .7,
                     child: ListView(
                       children: [
-                        gapH10, 
-                         
-                        const ImagePickerWidget(),                  
-                       
+                        gapH10,
+                        const ImagePickerWidget(),
                         gapH20,
-                         const TypeDropDownWidget(),
-                        gapH20,                       
+                        const TypeDropDownWidget(),
+                        gapH20,
                         ProfiletextFieldAuth(
                           Controller: infoController,
                           label: 'معلومات عن الشركة  ',
                           obscureText: false,
                         ),
-                        gapH20,
-                        
-
-                        const ImagePickerWidget(),
                         gapH20,
                         ProfiletextFieldAuth(
                           Controller: locationController,
@@ -124,12 +116,7 @@ class _ProfileSignupState extends State<ProfileSignup> {
                           obscureText: false,
                           phone: true,
                         ),
-                        gapH20,
-                          ImagePickerWidget(),                  
-                       
-                        
                         gapH10,
-                        
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Column(

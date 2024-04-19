@@ -28,7 +28,6 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   Widget build(BuildContext context) {
-    bool isChecked = false;
     late TextEditingController nameController = TextEditingController();
     late TextEditingController emailController = TextEditingController();
     late TextEditingController crController = TextEditingController();
@@ -62,6 +61,7 @@ class _SignUpPageState extends State<SignUpPage> {
       create: (context) => SignUpBloc(),
       child: Builder(builder: (context) {
         final bloc = context.read<SignUpBloc>();
+        crController.text = '1010595389';
         return Scaffold(
           appBar: PreferredSize(
             preferredSize: Size(MediaQuery.of(context).size.width, 210),
@@ -72,7 +72,7 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           body: BlocConsumer<SignUpBloc, SignUpState>(
             listener: (context, state) {
-              if (state is SuccessSignUpState) {
+              if (state is SuccessFindState) {
                 // SignUp Function Here
                 Navigator.pop(context);
                 context.showSuccessSnackBar(context, state.msg);
@@ -106,9 +106,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         ),
                       );
                     });
-                
               }
-              
             },
             builder: (context, state) {
               return Padding(
@@ -154,18 +152,6 @@ class _SignUpPageState extends State<SignUpPage> {
                           TextFieldConfirmPass(
                               confController: confirmPassController,
                               passController: passController),
-                          gapH10,
-                          Row(
-                            children: [
-                              Text(
-                                "موافق على الشروط والأحكام",
-                                style:
-                                    TextStyle(color: blackColor, fontSize: 12),
-                              ),
-                              // Checkbox(value: isChecked, onChanged:
-                              // ),
-                            ],
-                          ),
                           gapH20,
                           Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -183,7 +169,6 @@ class _SignUpPageState extends State<SignUpPage> {
                                         cr: crController.text,
                                         // id: idController.text,
                                         confirmPass: confirmPassController.text,
-                                        isChecked: isChecked,
                                       ));
                                     }
                                   },

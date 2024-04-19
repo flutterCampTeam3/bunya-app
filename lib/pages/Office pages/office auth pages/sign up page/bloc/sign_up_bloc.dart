@@ -31,7 +31,6 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   Future<void> createAccount(
       CreateAccountEvent event, Emitter<SignUpState> emit) async {
     emit(LoadingSignUpState());
-
     if (event.name.trim().isNotEmpty &&
             event.email.trim().isNotEmpty &&
             event.password.trim().isNotEmpty &&
@@ -41,23 +40,15 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         // && event.isChecked
         ) {
       try {
-        emit(LoadingSignUpState());
-       try {
         checkOffice = await CheckOffice().checkOffice(event.cr);
+        print("the value $checkOffice");
+        if (checkOffice) {
+          emit(SuccessFindState(msg: 'السجل التجاري صحيح'));
+        } else {
+          emit(ErrorSignUpState(msg: 'لم يتم ايجاد السجل التجاري'));
+        }
       } catch (error) {
         emit(ErrorSignUpState(msg: 'لم يتم ايجاد السجل التجاري'));
-        }
-        if (checkOffice) {
-          DBService().signUpO(
-              userName: event.name,
-              email: event.email,
-              password: event.password);
-          emit(SuccessSignUpState(msg: "تم إنشاء الحساب بنجاح"));
-        } else {
-          emit(ErrorSignUpState(msg: 'لا يوجد سجل تجاري بهذا الرقم'));
-        }
-      } catch (error) {
-        emit(ErrorSignUpState(msg: "هناك خطأ في إنشاء الحساب"));
       }
     } else {
       emit(ErrorSignUpState(msg: "الرجاء إدخال جميع القيم"));
@@ -67,7 +58,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   FutureOr<void> createProfileAccount(
       CreateAccountprofileEvent event, Emitter<SignUpState> emit) async {
     emit(LoadingSignUpState());
-
+    print("-------------------------------1");
     if (event.name.trim().isNotEmpty &&
         event.email.trim().isNotEmpty &&
         event.cr.trim().isNotEmpty &&
@@ -75,20 +66,20 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         event.location.trim().isNotEmpty &&
         event.phone.trim().isNotEmpty) {
       try {
+        print("in the bloc");
         try {
-          if (checkOffice) {
-            DBService().signUpO(
-                userName: event.name,
-                email: event.email,
-                password: event.password);
-            emit(SuccessSignUpState(msg: "تم إنشاء الحساب بنجاح"));
-          } else {
-            emit(ErrorSignUpState(msg: 'لا يوجد سجل تجاري بهذا الرقم'));
-          }
+          print("-------------------------------2");
+          print("in try ");
+          print("in the if condition");
+          await DBService().signUpO(
+              userName: event.name,
+              email: event.email,
+              password: event.password);
+          print("-------------------------------2");
         } catch (error) {
           emit(ErrorSignUpState(msg: "هناك خطأ في إنشاء الحساب"));
         }
-        DBService().createProfileOffice(
+        await DBService().createProfileOffice(
             userName: event.name,
             email: event.email,
             cr: event.cr,

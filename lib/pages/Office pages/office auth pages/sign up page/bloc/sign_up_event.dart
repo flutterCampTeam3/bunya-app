@@ -19,7 +19,6 @@ class CreateAccountEvent extends SignUpEvent {
     required this.cr,
     // required this.id,
     required this.confirmPass,
-    required this.isChecked,
   });
 }
 

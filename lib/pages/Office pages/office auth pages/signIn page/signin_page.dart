@@ -57,8 +57,11 @@ class _SigninPageState extends State<SigninPage> {
                         // BottomBarScreen Here
 
                         if (bloc.userType) {
+                          print("costummer");
                           context.pushAndRemove(const NavBarPage());
                         } else {
+                          print("office");
+
                           context.pushAndRemove(const NavBarOfficePage());
                         }
                       }
@@ -66,7 +69,7 @@ class _SigninPageState extends State<SigninPage> {
                         Navigator.pop(context);
                         context.showErrorSnackBar(context, state.massage);
                       }
-                      
+
                       if (state is LoadingSignInState) {
                         showDialog(
                             barrierDismissible: false,
