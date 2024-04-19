@@ -55,12 +55,12 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                             onPressed: () {
                               //
                             },
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  WidgetStateProperty.all<Color>(lightBrown),
-                              fixedSize: WidgetStateProperty.all<Size>(
-                                  const Size(150, 50)),
-                            ),
+                            // style: ButtonStyle(
+                            //   backgroundColor:
+                            //       WidgetStateProperty.all<Color>(lightBrown),
+                            //   fixedSize: WidgetStateProperty.all<Size>(
+                            //       const Size(150, 50)),
+                            // ),
                             child: const Text(
                               'محادثة',
                               style: TextStyle(
@@ -69,7 +69,7 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                   fontWeight: FontWeight.bold),
                             ),
                           ),
-                          BlocConsumer<ProfilePostsBloc, ProfilePostsState>(
+BlocConsumer<ProfilePostsBloc, ProfilePostsState>(
                             listener: (context, state) {
                               // TODO: implement listener
                             },
@@ -276,7 +276,7 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                         style: const TextStyle(fontSize: 14),
                                       ),
                                       Text(
-                                        office.phoneNumber,
+                                        office.phoneNumber.toString(),
                                         style: const TextStyle(fontSize: 14),
                                       ),
                                       Text(

@@ -6,8 +6,8 @@ class OfficesModel {
   final String disc;
   final int cn;
   final String image;
-   final String phoneNumber;
-    final String email;
+  final int phoneNumber;
+  final String email;
 
   OfficesModel({
     required this.officeId,
