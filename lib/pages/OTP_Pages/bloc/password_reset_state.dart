@@ -11,6 +11,12 @@ final class EmailVerifiedState extends PasswordResetState {
   EmailVerifiedState({required this.msg});
 }
 
+final class AuthOtpResentState extends PasswordResetState {
+  final String msg;
+
+  AuthOtpResentState({required this.msg});
+}
+
 final class OtpVerifiedState extends PasswordResetState {
   final String msg;
 

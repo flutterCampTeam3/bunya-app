@@ -31,6 +31,8 @@ class CreateAccountprofileEvent extends SignUpEvent {
   final String email;
   final String cr;
   final String departmentId;
+  final String password;
+  
 
   CreateAccountprofileEvent({
     required this.info,
@@ -40,6 +42,7 @@ class CreateAccountprofileEvent extends SignUpEvent {
     required this.email,
     required this.cr,
     required this.departmentId,
+    required this.password,
   });
 }
 

@@ -7,6 +7,7 @@ environment:
   #sdk: '>=3.4.0-99.1.beta <4.0.0' 3.19.4. 
    sdk: '3.3.2'
 
+
 dependencies:
   flutter:
     sdk: flutter
@@ -30,6 +31,7 @@ dependencies:
   glassmorphism_ui: ^0.3.0
   # device_preview: ^1.0.0
   onboarding: ^4.0.2
+  timer_button: ^2.1.1
 
 
 dev_dependencies:
@@ -40,6 +42,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-   
    - assets/images/
    - .env

@@ -1,6 +1,10 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bunya_app/pages/Messages_pages/messages_page.dart';
+import 'package:bunya_app/pages/Office%20pages/home_page/home_page_office.dart';
+import 'package:bunya_app/pages/Office%20pages/profile_page/profile_Office_pagee.dart';
+import 'package:bunya_app/pages/costumer%20pages/categories_page/categories_page.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
@@ -11,10 +15,10 @@ class NavOfficeBloc extends Bloc<NavOfficeEvent, NavOfficeState> {
   int currentIndex = 0;
 
   final List<Widget> pages = [
-    const PageWidget(title: 'Page 1'),
-    const PageWidget(title: 'Page 2'),
-    const PageWidget(title: 'Page 3'),
-    const PageWidget(title: 'Page 4'),
+    const HomePageOffice(),
+    const MessageListPage(),
+    const CategoriesPage(),
+     ProfilePageOffice(),
   ];
 
   NavOfficeBloc() : super(NavInitial()) {
@@ -22,7 +26,8 @@ class NavOfficeBloc extends Bloc<NavOfficeEvent, NavOfficeState> {
     on<ChangePageOfficeEvent>(changePage);
   }
 
-  FutureOr<void> changePage(ChangePageOfficeEvent event, Emitter<NavOfficeState> emit) {
+  FutureOr<void> changePage(
+      ChangePageOfficeEvent event, Emitter<NavOfficeState> emit) {
     currentIndex = event.index;
     emit(ChangePageOfficeState());
   }

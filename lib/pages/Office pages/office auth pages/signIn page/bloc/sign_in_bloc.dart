@@ -13,6 +13,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   SignInBloc() : super(SignInInitial()) {
     on<SignInEvent>((event, emit) {});
     on<AddSignInEvent>(signIn);
+    on<ResetPasswordEvent>(resetPass);
   }
 
   FutureOr<void> signIn(AddSignInEvent event, Emitter<SignInState> emit) async {
@@ -30,5 +31,9 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     } else {
       emit(ErrorSignInState(massage: "الرجاء تعبئة جميع الحقول"));
     }
+  }
+
+  FutureOr<void> resetPass(ResetPasswordEvent event, Emitter<SignInState> emit) async{
+    emit(LoadingSignInState());
   }
 }

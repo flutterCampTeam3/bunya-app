@@ -3,9 +3,11 @@ import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/costumer%20pages/accounts_list/bloc/account_list_bloc.dart';
+import 'package:bunya_app/pages/costumer%20pages/accounts_list/widgets/appBar_accounts_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/home_page.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/account_list_Widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/appbar_widget.dart';
+import 'package:bunya_app/pages/costumer%20pages/office%20profile%20pages/profile_office.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -14,7 +16,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 class ConstraintAccountList extends StatelessWidget {
-  ConstraintAccountList({Key? key, required this.type});
+  ConstraintAccountList({super.key, required this.type});
   final String type;
   final locator = GetIt.I.get<DBService>();
 
@@ -42,7 +44,7 @@ class ConstraintAccountList extends StatelessWidget {
                   child: SafeArea(
                     child: Column(
                       children: [
-                        const AppBarWidget(),
+                        const AppBarAccoutWidget(),
                         Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Column(
@@ -53,7 +55,7 @@ class ConstraintAccountList extends StatelessWidget {
                                 children: [
                                   Text(
                                     " حسابات $type",
-                                    style: TextStyle(fontSize: 20),
+                                    style: const TextStyle(fontSize: 20),
                                   ),
                                 ],
                               ),
@@ -112,8 +114,12 @@ class ConstraintAccountList extends StatelessWidget {
                                               //rate: 5,
                                               followers: 200,
                                               onTap: () {
-                                                context.pushAndRemove(
-                                                    HomePageCustomer());
+                                                context.pushTo(
+                                                  view:
+                                                      ProfilePageOfficeCustomur(
+                                                    office: med,
+                                                  ),
+                                                );
                                               },
                                             );
                                           },

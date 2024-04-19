@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:bunya_app/data/service/supabase_services.dart';
+import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
 
@@ -14,7 +15,10 @@ class SignUpBlocCustomer
   SignUpBlocCustomer() : super(SignUpInitial()) {
     on<CreateAccountCustomerEvent>(createAccount);
     on<CustomerChoosImageEvent>((event, emit) async {
-      File avatar = await pickedImage();
+      //----imgaepick
+      File avatar = File(await pickedImage());
+      GetIt.I.get<DBService>().uploadImage(avatar);
+//-------
       emit(CustomerChoosImageEventShowImageState(avatar));
     });
   }
@@ -27,6 +31,7 @@ class SignUpBlocCustomer
 
   Future<void> createAccount(CreateAccountCustomerEvent event,
       Emitter<SignUpCustomerState> emit) async {
+    print("in the bloc");
     if (event.name.trim().isNotEmpty &&
         event.email.trim().isNotEmpty &&
         event.password.trim().isNotEmpty &&
@@ -35,7 +40,9 @@ class SignUpBlocCustomer
         event.isChecked) {
       try {
         emit(LoadingSignUpCustomerState());
+    print("befor signup");
         await DBService().signUpC(
+            image: '',
             phoneNumber: event.phone,
             userName: event.name,
             email: event.email,

@@ -72,13 +72,34 @@ class _SignUpCustomerPageState extends State<SignUpCustomerPage> {
           body: BlocConsumer<SignUpBlocCustomer, SignUpCustomerState>(
             listener: (context, state) {
               if (state is SuccessSignUpCustomerState) {
+                Navigator.pop(context);
                 // SignUp Function Here
                 context.showSuccessSnackBar(context, state.msg);
                 context.pushAndRemove(const SigninCustomerPage());
               }
               if (state is ErrorSignUpCustomerState) {
+                Navigator.pop(context);
                 // Error SignUp Function Here
                 context.showErrorSnackBar(context, state.msg);
+              }
+              if (state is LoadingSignUpCustomerState) {
+                showDialog(
+                    barrierDismissible: false,
+                    barrierColor: Colors.transparent,
+                    context: context,
+                    builder: (context) {
+                      return const AlertDialog(
+                        backgroundColor: Colors.transparent,
+                        elevation: 0,
+                        content: SizedBox(
+                          height: 80,
+                          width: 80,
+                          child: Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                        ),
+                      );
+                    });
               }
             },
             builder: (context, state) {
@@ -90,7 +111,6 @@ class _SignUpCustomerPageState extends State<SignUpCustomerPage> {
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * .7,
                       child: ListView(
-                        
                         children: [
                           textFieldAuth(
                             Controller: nameController,
@@ -104,11 +124,9 @@ class _SignUpCustomerPageState extends State<SignUpCustomerPage> {
                             obscureText: false,
                             email: true,
                           ),
-                           gapH20,
-                        
-                        CustomerImagePickerWidget(),
-                        gapH20,
-                          
+                          gapH20,
+                          const CustomerImagePickerWidget(),
+                          gapH20,
                           textFieldAuth(
                             Controller: phoneController,
                             label: 'رقم الجوال ',
@@ -158,6 +176,7 @@ class _SignUpCustomerPageState extends State<SignUpCustomerPage> {
                                         phone: phoneController.text,
                                         confirmPass: confirmPassController.text,
                                         isChecked: isChecked,
+                                        
                                       ));
                                     }
                                   },

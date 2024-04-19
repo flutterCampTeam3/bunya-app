@@ -3,10 +3,6 @@ import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/pages/OTP_Pages/bloc/password_reset_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:bunya_app/pages/widgets/auth/page_header.dart';
-
-import 'package:bunya_app/pages/widgets/auth/page_header.dart';
 import '../widgets/auth/button_widget.dart';
 import '../widgets/auth/pass_textfiled.dart';
 import '../widgets/auth/text_field_confirm_pass.dart';
@@ -35,6 +31,9 @@ class ChangePasswordPage extends StatelessWidget {
                   if (state is PasswordChangedState) {
                     context.showSuccessSnackBar(context, state.msg);
                     context.pushAndRemove(const SigninPage());
+                  }
+                  if (state is OtpLoadingState) {
+                    
                   }
                 },
                 builder: (context, state) {
@@ -69,7 +68,7 @@ class ChangePasswordPage extends StatelessWidget {
                             ),
                           )),
                      PassTextField(controller: passwordController),
-                         TextFieldConfirmPass(confController:rePasswordController, passController: passwordController ),
+                     TextFieldConfirmPass(confController:rePasswordController, passController: passwordController ),
                       ButtonWidget(
                           backgroundColor: brown,
                           text: "إعادة تعيين كلمة المرور",

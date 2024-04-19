@@ -1,3 +1,4 @@
+import 'package:bunya_app/data/model/post_model.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,16 +9,16 @@ import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 class PostProfileWidget extends StatelessWidget {
   PostProfileWidget(
       {super.key,
-      required this.name,
+       this.name,
       required this.path,
-      required this.profilePath,
-      required this.likes,
+       this.profilePath,
+      // required this.likes,
       required this.desc});
-  String path;
-  String name;
-  String profilePath;
-  String likes;
-  String desc;
+  final postModel path;
+  String? name;
+  String ?profilePath;
+  // String likes;
+  final postModel desc;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -27,11 +28,15 @@ class PostProfileWidget extends StatelessWidget {
             // Background image
             ClipRRect(
               borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                path,
+              child: Image.network(
+
+                path.image,
                 height: 370,
                 width: double.infinity,
                 fit: BoxFit.cover,
+                 errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
+                return Image.asset("assets/images/noimage.png");
+                            }
               ),
             ),
             // Glass container
@@ -91,7 +96,7 @@ class PostProfileWidget extends StatelessWidget {
         Row(
           children: [
             Text(
-              likes,
+              "100 لايك",
               style: const TextStyle(
                 fontWeight: FontWeight.w900,
               ),
@@ -101,7 +106,7 @@ class PostProfileWidget extends StatelessWidget {
         Row(
           children: [
             Text(
-              desc,
+              desc.desc,
               style: const TextStyle(
                 fontWeight: FontWeight.w900,
               ),
