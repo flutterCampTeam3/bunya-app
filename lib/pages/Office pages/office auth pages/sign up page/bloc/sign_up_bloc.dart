@@ -39,6 +39,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
             event.confirmPass.trim().isNotEmpty
         // && event.isChecked
         ) {
+        emit(LoadingSignUpState());
       try {
         checkOffice = await CheckOffice().checkOffice(event.cr);
         print("the value $checkOffice");
@@ -66,7 +67,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         event.location.trim().isNotEmpty &&
         event.phone.trim().isNotEmpty) {
       try {
-        print("in the bloc");
+                print("in the bloc");
         try {
           print("-------------------------------2");
           print("in try ");

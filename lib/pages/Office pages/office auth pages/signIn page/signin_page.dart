@@ -1,5 +1,6 @@
 import 'package:bunya_app/pages/Office%20pages/navBar%20page/navBarPage.dart';
 import 'package:bunya_app/pages/costumer%20pages/navBar%20page/navBarPage.dart';
+import 'package:bunya_app/pages/intro%20pages/first_intro.dart';
 import 'package:bunya_app/pages/widgets/auth/signin_pass_textfiled.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
@@ -26,6 +27,7 @@ class _SigninPageState extends State<SigninPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+
     TextEditingController emailController =
         TextEditingController(text: "khaled@gmail.com");
     TextEditingController passController =
@@ -35,42 +37,40 @@ class _SigninPageState extends State<SigninPage> {
       child: Builder(builder: (context) {
         final bloc = context.read<SignInBloc>();
         return Directionality(
-            textDirection: TextDirection.rtl,
-            child: Scaffold(
-              appBar: PreferredSize(
-                  preferredSize: Size(context.getWidth(), 400),
-                  child: const PageHeaderSignIn(
-                    height: 400,
-                    bottomText: " نورتنا من جديد ",
-                  )),
-              body: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SingleChildScrollView(
-                  child: SizedBox(
-                    height: context.getHeight() * .5,
-                    child: BlocConsumer<SignInBloc, SignInState>(
-                        listener: (context, state) {
-                      if (state is SuccessSignInState) {
-                        Navigator.pop(context);
-                        // SuccessSignInState Function Here
-                        context.showSuccessSnackBar(context, state.msg);
-                        // BottomBarScreen Here
-
-                        if (bloc.userType) {
-                          print("costummer");
-                          context.pushAndRemove(const NavBarPage());
-                        } else {
-                          print("office");
-
-                          context.pushAndRemove(const NavBarOfficePage());
-                        }
+          textDirection: TextDirection.rtl, 
+          child:  Scaffold(
+          appBar: PreferredSize(
+              preferredSize: Size(context.getWidth(), 400),
+              child: const PageHeaderSignIn(
+                height: 400,
+                bottomText: " نورتنا من جديد ",
+              )),
+          body: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: SingleChildScrollView(
+              child: SizedBox(
+                height: context.getHeight() * .5,
+                child: BlocConsumer<SignInBloc, SignInState>(
+                  listener: (context, state) {
+                    if (state is SuccessSignInState) {
+                      // SuccessSignInState Function Here
+                       context.showSuccessSnackBar(context, state.msg);
+                      // BottomBarScreen Here
+                      print(bloc.userType);
+                      if (bloc.userType) {
+                        context.pushAndRemove(const NavBarPage());
+                      }else{
+                        context.pushAndRemove(const NavBarOfficePage());
                       }
-                      if (state is ErrorSignInState) {
-                        Navigator.pop(context);
-                        context.showErrorSnackBar(context, state.massage);
-                      }
-
-                      if (state is LoadingSignInState) {
+                    }
+                    if (state is ErrorSignInState) {
+                      context.showErrorSnackBar(context, state.massage);
+                    }
+                    if (state is SuccessResetState) {
+                      // SuccessResetState Function Here
+                      context.showSuccessSnackBar(context, state.msg);
+                    }
+                  if (state is LoadingSignInState) {
                         showDialog(
                             barrierDismissible: false,
                             barrierColor: Colors.transparent,
@@ -111,16 +111,27 @@ class _SigninPageState extends State<SigninPage> {
                                   controller: passController,
                                 ),
                                 gapH20,
-                                TextButton(
-                                    style: TextButton.styleFrom(
-                                        padding: const EdgeInsets.all(0)),
-                                    onPressed: () {
+                                InkWell(
+                                    onTap: () {
                                       // Here VerifyEmailPage
                                       context.pushTo(view: VerifyEmailPage());
                                     },
                                     child: Text(
                                       "هل نسيت كلمة المرور؟",
                                       style: TextStyle(
+                                          decoration: TextDecoration.underline,
+                                          color: blackColor,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold),
+                                    )),
+                                InkWell(
+                                    onTap: () {
+                                      context.pushTo(view: const introPage());
+                                    },
+                                    child: Text(
+                                      "تغيير حساب المستخدم",
+                                      style: TextStyle(
+                                          decoration: TextDecoration.underline,
                                           color: blackColor,
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold),

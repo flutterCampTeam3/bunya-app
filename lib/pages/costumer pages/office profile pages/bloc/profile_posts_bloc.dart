@@ -35,10 +35,3 @@ Future<void> checkFollow(CheckFollowEvent event, Emitter<ProfilePostsState> emit
     }
   }
 }
-
-                                       
-                                                                                                                                       
-                                                                                                                                                                                          
-                                          
-                                          
-                                                                                                         

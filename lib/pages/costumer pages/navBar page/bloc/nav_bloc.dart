@@ -12,7 +12,7 @@ part 'nav_event.dart';
 part 'nav_state.dart';
 
 class NavBloc extends Bloc<NavEvent, NavState> {
-  int currentIndex = 0;
+  int currentIndex = 3;
 
   final List<Widget> pages = [
     const HomePageCustomer(),
@@ -29,18 +29,5 @@ class NavBloc extends Bloc<NavEvent, NavState> {
   FutureOr<void> changePage(ChangePageEvent event, Emitter<NavState> emit) {
     currentIndex = event.index;
     emit(ChangePageState());
-  }
-}
-
-class PageWidget extends StatelessWidget {
-  final String title;
-
-  const PageWidget({super.key, required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text(title),
-    );
   }
 }

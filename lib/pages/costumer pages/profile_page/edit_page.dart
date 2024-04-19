@@ -32,6 +32,7 @@ class EditPageCustomer extends StatelessWidget {
   int phone;
   @override
   Widget build(BuildContext context) {
+
     emailController.text = email;
     infoController.text = name;
     phoneController.text = phone.toString();
@@ -45,8 +46,8 @@ class EditPageCustomer extends StatelessWidget {
           return BlocConsumer<ProfileBloc, ProfileState>(
             listener: (context, state) {
               if (state is ProfilSuccessState) {
-                context.showSuccessSnackBar(context, state.msg);
-                context.pushAndRemove(ProfilePageCustomer());
+                // context.showSuccessSnackBar(context, state.msg);
+                // context.pushAndRemove(ProfilePageCustomer());
                 // bloc.add(GetUserInfoEvent());
               }
               if (state is ProfileErrorState) {
@@ -138,6 +139,9 @@ class EditPageCustomer extends StatelessWidget {
                                 name: infoController.text,
                                 email: emailController.text,
                                 phone: int.parse(phoneController.text)));
+                            context.showSuccessSnackBar(
+                                context, "تم تغيير البيانات بنجاح");
+
                             // Navigator.pop(context);
                           },
                           child: Text(
@@ -156,3 +160,4 @@ class EditPageCustomer extends StatelessWidget {
     );
   }
 }
+

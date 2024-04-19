@@ -184,6 +184,8 @@ class ProfilePageCustomer extends StatelessWidget {
                                                 child: InkWell(
                                                   onTap: () async {
                                                     await locator.signOut();
+                                                    context.pushAndRemove(
+                                                        const SigninPage());
                                                   },
                                                   child: Container(
                                                     height: 65,

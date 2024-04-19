@@ -1,5 +1,6 @@
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/colors.dart';
+import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/costumer%20pages/accounts_list/account_list.dart';
@@ -60,6 +61,10 @@ class HomePageCustomer extends StatelessWidget {
                                   context.pushAndRemove(ConstraintAccountList(
                                     type: "التصميم الداخلي",
                                   ));
+                                  // context.pushTo(
+                                  //     view: ConstraintAccountList(
+                                  //   type: "التصميم الداخلي",
+                                  // ));
                                 },
                                 title: "التصميم الداخلي",
                                 path: 'assets/images/intern_design.jpeg',
@@ -70,6 +75,10 @@ class HomePageCustomer extends StatelessWidget {
                                   context.pushAndRemove(ConstraintAccountList(
                                     type: 'ادوات البناء',
                                   ));
+                                  // context.pushTo(
+                                  //     view: ConstraintAccountList(
+                                  //   type: 'ادوات البناء',
+                                  // ));
                                 },
                                 title: "ادوات البناء",
                                 path: 'assets/images/drell.jpeg',
@@ -82,7 +91,11 @@ class HomePageCustomer extends StatelessWidget {
                               ImageWidget(
                                 onTap: () {
                                   context.pushAndRemove(ConstraintAccountList(
-                                      type: "مكاتب المقاولات"));
+                                    type: 'الكهرباء',
+                                  ));
+                                  // context.pushTo(
+                                  //     view: ConstraintAccountList(
+                                  //         type: "مكاتب المقاولات"));
                                 },
                                 title: "مكاتب المقاولات",
                                 path: 'assets/images/house.jpeg',
@@ -90,7 +103,8 @@ class HomePageCustomer extends StatelessWidget {
                               gapWe15,
                               ImageWidget(
                                 onTap: () {
-                                  context.pushAndRemove(ConstraintAccountList(
+                                  context.pushTo(
+                                      view: ConstraintAccountList(
                                     type: 'الكهرباء',
                                   ));
                                 },
@@ -113,7 +127,7 @@ class HomePageCustomer extends StatelessWidget {
                           BlocConsumer<HomeBloc, HomeState>(
                             listener: (context, state) {
                               if (state is ErrorShowpostState) {
-                                Navigator.pop(context);
+                                // Navigator.pop(context);
                                 context.showErrorSnackBar(context, state.msg);
                               }
                             },

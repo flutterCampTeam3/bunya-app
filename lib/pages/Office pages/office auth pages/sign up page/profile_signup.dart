@@ -72,8 +72,10 @@ class _ProfileSignupState extends State<ProfileSignup> {
           appBar: PreferredSize(
             preferredSize: Size(MediaQuery.of(context).size.width, 210),
             child: const PageHeader(
+              
               height: 210,
               bottomText: " ادخل بيانات ملفك الشخصي",
+              
             ),
           ),
           body: BlocConsumer<SignUpBloc, SignUpState>(
@@ -93,8 +95,10 @@ class _ProfileSignupState extends State<ProfileSignup> {
                     height: MediaQuery.of(context).size.height * .7,
                     child: ListView(
                       children: [
-                        gapH10,
-                        const ImagePickerWidget(),
+                        gapH10, 
+                         
+                        const ImagePickerWidget(),                  
+                       
                         gapH20,
                         const TypeDropDownWidget(),
                         gapH20,
@@ -115,7 +119,9 @@ class _ProfileSignupState extends State<ProfileSignup> {
                           label: 'رقم الجوال',
                           obscureText: false,
                           phone: true,
-                        ),
+                        ),                 
+                       
+                        
                         gapH10,
                         Padding(
                           padding: const EdgeInsets.all(8.0),

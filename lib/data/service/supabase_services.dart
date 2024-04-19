@@ -1,11 +1,9 @@
 import 'dart:io';
-
-import 'package:bunya_app/data/model/medicattion_model.dart';
 import 'package:bunya_app/data/model/offices_model.dart';
-import 'package:bunya_app/data/model/profile_model_customer.dart';
 import 'package:bunya_app/data/model/profile_model_office.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+
 import '../model/post_model.dart';
 
 class DBService {
@@ -57,7 +55,7 @@ class DBService {
       password: password,
     );
     id = respons.user!.id;
-    print("${respons.hashCode}");    
+    print("${respons.hashCode}");
     // Send email verification
     await supabase.auth.resetPasswordForEmail(email);
   }
@@ -118,11 +116,8 @@ class DBService {
   }
 
   Future signIn({required String email, required String password}) async {
-    print("in the func");
-    // signOut();
     final state = await supabase.auth
         .signInWithPassword(email: email, password: password);
-    print('after the func');
     token = supabase.auth.currentSession!.accessToken;
     id = supabase.auth.currentSession!.user.id;
     addToken();
@@ -162,7 +157,7 @@ class DBService {
   }
 
   Future resendOtp({required String email}) async {
-    await supabase.auth.resend(type: OtpType.magiclink, email: email);
+    sendOtp(email: email);
   }
 
   Future resetPassword({required String newPassword}) async {
@@ -191,129 +186,123 @@ class DBService {
         .select('*')
         .eq('customerId', supabase.auth.currentUser!.id)
         .single();
-    print("after func $response");
-    ProfileModel profile = ProfileModel.fromJson(response);
-    print("after func ${profile.name}");
-    print("after func ${profile.email}");
-    print("after func ${profile.phone}");
-
-    return profile;
   }
-
 // Get Office Profile
-  Future getOffice() async {
-    print("in the funjjjc");
-    print("id${supabase.auth.currentUser!.id}");
-    // final response = await supabase
-    //     .from('Customer')
-    //     .select('*')
-    //     .eq('customerId', supabase.auth.currentUser!.id)
-    //     .single();
+    Future getOffice() async {
+      print("in the funjjjc");
+      print("id${supabase.auth.currentUser!.id}");
+      // final response = await supabase
+      //     .from('Customer')
+      //     .select('*')
+      //     .eq('customerId', supabase.auth.currentUser!.id)
+      //     .single();
 
-    final response = await supabase
-        .from('Offices')
-        .select('*')
-        .eq('officeId', supabase.auth.currentUser!.id)
-        .single();
-    print("after func $response");
-    ProfileOfficeModel profileoffice = ProfileOfficeModel.fromJson(response);
-    print("after func ${profileoffice.name}");
-    print("after func ${profileoffice.email}");
-    print("after func ${profileoffice.description}");
-    print("after func ${profileoffice.phone}");
+      final response = await supabase
+          .from('Offices')
+          .select('*')
+          .eq('officeId', supabase.auth.currentUser!.id)
+          .single();
+      print("after func $response");
+      ProfileOfficeModel profileoffice = ProfileOfficeModel.fromJson(response);
+      print("after func ${profileoffice.name}");
+      print("after func ${profileoffice.email}");
+      print("after func ${profileoffice.description}");
+      print("after func ${profileoffice.phone}");
 
-    return profileoffice;
-  }
-
-// to edit profile
-  Future editUpdate(
-      {required String name, required String email, required int phone}) async {
-    await supabase.from('Customer').update(
-      {
-        'name': name,
-        'email': email,
-        'phoneNumber': phone,
-      },
-    ).match({'customerId': supabase.auth.currentUser!.id});
-  }
-
-  // to edit office profile
-  Future editUpdateOffice(
-      {required String name,
-      required String email,
-      required int phone,
-      required String description}) async {
-    await supabase.from('Offices').update(
-      {
-        'name': name,
-        'email': email,
-        'disc': description,
-        'phoneNumber': phone,
-      },
-    ).match({'officeId': supabase.auth.currentUser!.id});
-  }
-
-  // Delete Medication
-  Future deleteMedications({required midId}) async {
-    await supabase.from('medication').delete().match({'medicationId': midId});
-  }
-
-  Future<List<postModel>> getposts() async {
-    final postData = await supabase.from('post').select('*');
-    final List<postModel> classposts = [];
-    for (var element in postData) {
-      classposts.add(postModel.fromJson(element));
+      return profileoffice;
     }
-    return classposts;
-  }
 
-  Future<List<postModel>> getPostsId({required String ofiiceId}) async {
-    final postData =
-        await supabase.from('post').select('*').match({'ofiiceId': ofiiceId});
-    final List<postModel> classposts = [];
-    for (var element in postData) {
-      classposts.add(postModel.fromJson(element));
+    Future editUpdate(
+        {required String name,
+        required String email,
+        required int phone}) async {
+      await supabase.from('Customer').update(
+        {
+          'name': name,
+          'email': email,
+          'phoneNumber': phone,
+        },
+      ).match({'customerId': supabase.auth.currentUser!.id});
     }
-    return classposts;
-  }
 
-  Future<List<OfficesModel>> getOfficeAccount(String type) async {
-    print('in the func');
-
-    final officeAccounte = await supabase
-        .from('Offices')
-        .select("*")
-        .match({'departmentId': type});
-    print('the length${officeAccounte.length}');
-    final List<OfficesModel> officeAccount = [];
-    for (var element in officeAccounte) {
-      officeAccount.add(OfficesModel.fromJson(element));
+    // to edit office profile
+    Future editUpdateOffice(
+        {required String name,
+        required String email,
+        required int phone,
+        required String description}) async {
+      await supabase.from('Offices').update(
+        {
+          'name': name,
+          'email': email,
+          'disc': description,
+          'phoneNumber': phone,
+        },
+      ).match({'officeId': supabase.auth.currentUser!.id});
     }
-    return officeAccount;
-  }
 
-  Future<List<OfficesModel>> getOffices() async {
-    final officesData = await supabase.from('Offices').select('*');
-    final List<OfficesModel> classOffices = [];
-    for (var element in officesData) {
-      classOffices.add(OfficesModel.fromJson(element));
+    // Delete Medication
+    Future deleteMedications({required midId}) async {
+      await supabase.from('medication').delete().match({'medicationId': midId});
     }
-    return classOffices;
+
+    Future<List<postModel>> getposts() async {
+      final postData = await supabase.from('post').select('*');
+      final List<postModel> classposts = [];
+      for (var element in postData) {
+        classposts.add(postModel.fromJson(element));
+      }
+      return classposts;
+    }
+
+    Future<List<postModel>> getPostsId({required String ofiiceId}) async {
+      final postData =
+          await supabase.from('post').select('*').match({'ofiiceId': ofiiceId});
+      final List<postModel> classposts = [];
+      for (var element in postData) {
+        classposts.add(postModel.fromJson(element));
+      }
+      return classposts;
+    }
+
+    Future<List<OfficesModel>> getOfficeAccount(String type) async {
+      print('in the func');
+
+      final officeAccounte = await supabase
+          .from('Offices')
+          .select("*")
+          .match({'departmentId': type});
+      print('the length${officeAccounte.length}');
+      final List<OfficesModel> officeAccount = [];
+      for (var element in officeAccounte) {
+        officeAccount.add(OfficesModel.fromJson(element));
+      }
+      return officeAccount;
+    }
+
+    Future<List<OfficesModel>> getOffices() async {
+      final officesData = await supabase.from('Offices').select('*');
+      final List<OfficesModel> classOffices = [];
+      for (var element in officesData) {
+        classOffices.add(OfficesModel.fromJson(element));
+      }
+      return classOffices;
+    }
+
+    //-------------------- uplaod image
+
+    Future<void> uploadImage(File imageFile) async {
+      print("object");
+      final response =
+          await supabase.storage.from('ImageProfile').upload('kk', imageFile);
+      print("oooooo");
+     await UrlImage();
+      print("done");
+    }
+
+    Future<void> UrlImage() async {
+      final response = supabase.storage.from('ImageProfile').getPublicUrl("kk");
+      print(response);
+    }
   }
 
-  //-------------------- uplaod image
-
-  Future<void> uploadImage(File imageFile) async {
-    print("object");
-    final response =
-        await supabase.storage.from('ImageProfile').upload('kk', imageFile);
-    print("oooooo");
-    UrlImage();
-    print("done");
-  }
-
-  Future<void> UrlImage() async {
-    final response = supabase.storage.from('ImageProfile').getPublicUrl("kk");
-    print(response);
-  }
-}

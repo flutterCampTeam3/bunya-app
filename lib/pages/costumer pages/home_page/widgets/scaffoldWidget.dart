@@ -23,18 +23,19 @@ class ScaffoldWidget extends StatelessWidget {
           ///--------------- drawer design
           ? Drawer(
               child: Container(
-                color: page,
+                color: white,
                 child: ListView(
                   children: [
                     const DrawerHeader(
                       child: Center(
                         child: Text(
                           'الاعدادات والخصوصية',
-                          style: TextStyle(fontSize: 25 , fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
-                    gapH10,
+                    gapH5,
                     const ListTile(
                       title: Text(
                         'المحتوى و العرض ',
@@ -43,7 +44,10 @@ class ScaffoldWidget extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      color: brown,
+                      decoration: BoxDecoration(
+                          color: brownDrawer,
+                          borderRadius: BorderRadius.circular(10)),
+                      margin: const EdgeInsets.all(10),
                       child: Column(
                         children: [
                           ListTile(
@@ -90,7 +94,10 @@ class ScaffoldWidget extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      color: brown,
+                      margin: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: brownDrawer,
+                          borderRadius: BorderRadius.circular(10)),
                       child: Column(
                         children: [
                           ListTile(

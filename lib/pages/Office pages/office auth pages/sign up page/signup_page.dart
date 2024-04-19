@@ -72,7 +72,7 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           body: BlocConsumer<SignUpBloc, SignUpState>(
             listener: (context, state) {
-              if (state is SuccessFindState) {
+              if (state is SuccessSignUpState) {
                 // SignUp Function Here
                 Navigator.pop(context);
                 context.showSuccessSnackBar(context, state.msg);
@@ -81,6 +81,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   cr: crController.text,
                   email: emailController.text,
                   pass: passController.text,
+
                 ));
               }
               if (state is ErrorSignUpState) {
@@ -159,7 +160,7 @@ class _SignUpPageState extends State<SignUpPage> {
                               children: [
                                 ButtonWidget(
                                   backgroundColor: darkBrown,
-                                  text: "إنشاء حساب",
+                                  text: "التالي",
                                   onPressed: () {
                                     if (_formKey.currentState!.validate()) {
                                       bloc.add(CreateAccountEvent(
