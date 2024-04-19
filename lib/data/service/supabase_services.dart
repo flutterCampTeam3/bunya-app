@@ -305,7 +305,6 @@ class DBService {
 
   Future<void> uploadImage(File imageFile) async {
     print("object");
-
     final response =
         await supabase.storage.from('ImageProfile').upload('kk', imageFile);
     print("oooooo");

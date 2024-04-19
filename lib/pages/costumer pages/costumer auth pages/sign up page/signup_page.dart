@@ -141,24 +141,6 @@ class _SignUpCustomerPageState extends State<SignUpCustomerPage> {
                           TextFieldConfirmPass(
                               confController: confirmPassController,
                               passController: passController),
-                          gapH10,
-                          Row(
-                            children: [
-                              Text(
-                                "موافق على الشروط والأحكام",
-                                style: TextStyle(
-                                    color: blackColor,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600),
-                              ),
-                              Checkbox(
-                                value: isChecked,
-                                onChanged: (value) {
-                                  isChecked = value!;
-                                },
-                              ),
-                            ],
-                          ),
                           gapH20,
                           Padding(
                             padding: const EdgeInsets.all(8.0),

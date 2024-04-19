@@ -7,3 +7,6 @@ class ShowDataIdEvent extends ProfilePostsEvent{
   final String id;
   ShowDataIdEvent({required this.id});
 }
+
+class CheckFollowEvent extends ProfilePostsEvent{
+}

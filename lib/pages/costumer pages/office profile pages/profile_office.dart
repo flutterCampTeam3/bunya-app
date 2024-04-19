@@ -27,6 +27,7 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
       child: Builder(
         builder: (context) {
           final bloc =context.read<ProfilePostsBloc>();
+          bloc.add(CheckFollowEvent());
           return Directionality(
               textDirection: TextDirection.rtl,
               child: DefaultTabController(
