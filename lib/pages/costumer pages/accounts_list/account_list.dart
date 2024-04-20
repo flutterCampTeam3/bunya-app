@@ -4,10 +4,7 @@ import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/costumer%20pages/accounts_list/bloc/account_list_bloc.dart';
 import 'package:bunya_app/pages/costumer%20pages/accounts_list/widgets/appBar_accounts_widget.dart';
-import 'package:bunya_app/pages/costumer%20pages/home_page/home_page.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/account_list_Widget.dart';
-import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/appbar_widget.dart';
-
 import 'package:bunya_app/pages/costumer%20pages/office%20profile%20pages/profile_office.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +26,6 @@ class ConstraintAccountList extends StatelessWidget {
         create: (context) => AccountListBloc(),
         child: Builder(builder: (context) {
           final bloc = context.read<AccountListBloc>();
-
           bloc.add(GetAccountEvent(type: type));
           return Scaffold(
             body: Stack(

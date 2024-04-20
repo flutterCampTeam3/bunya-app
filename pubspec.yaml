@@ -4,8 +4,8 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  #sdk: '>=3.4.0-99.1.beta <4.0.0' 3.19.4. 
-   sdk: '3.3.2'
+  #sdk: '>=3.4.0-99.1.beta <4.0.0'
+   sdk: '>=3.4.0-99.1.beta <4.0.0'
 
 
 

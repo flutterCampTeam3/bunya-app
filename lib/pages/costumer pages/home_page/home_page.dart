@@ -1,35 +1,17 @@
 import 'package:bunya_app/helper/colors.dart';
-import 'package:bunya_app/helper/colors.dart';
-import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/costumer%20pages/accounts_list/account_list.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/accounts_home_widget.dart';
-import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/appbar_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/image_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/post_widget.dart';
-import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/scaffoldWidget.dart';
-import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/scaffoldWidget.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/scaffoldWidget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:bunya_app/helper/extintion.dart';
-import 'package:bunya_app/helper/sized.dart';
-import 'package:bunya_app/pages/costumer%20pages/accounts_list/account_list.dart';
-
-import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/accounts_home_widget.dart';
-import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/appbar_widget.dart';
-import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/image_widget.dart';
-import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/post_widget.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'bloc/home_bloc.dart';
-import 'widgets/scaffoldWidget.dart';
 
 class HomePageCustomer extends StatelessWidget {
   const HomePageCustomer({super.key});
@@ -40,7 +22,6 @@ class HomePageCustomer extends StatelessWidget {
       create: (context) => HomeBloc()..add(ShowDataEvent()),
       child: Builder(builder: (context) {
         final bloc = context.read<HomeBloc>();
-
         return Directionality(
           textDirection: TextDirection.rtl,
           child: ScaffoldWidget(
@@ -59,7 +40,7 @@ class HomePageCustomer extends StatelessWidget {
                             children: [
                               ImageWidget(
                                 onTap: () {
-                                  context.pushAndRemove(ConstraintAccountList(
+                                  context.pushTo(view: ConstraintAccountList(
                                     type: "التصميم الداخلي",
                                   ));
                                   // context.pushTo(
@@ -73,7 +54,7 @@ class HomePageCustomer extends StatelessWidget {
                               gapWe15,
                               ImageWidget(
                                 onTap: () {
-                                  context.pushAndRemove(ConstraintAccountList(
+                                  context.pushTo(view: ConstraintAccountList(
                                     type: 'ادوات البناء',
                                   ));
                                   // context.pushTo(
@@ -91,8 +72,8 @@ class HomePageCustomer extends StatelessWidget {
                             children: [
                               ImageWidget(
                                 onTap: () {
-                                  context.pushAndRemove(ConstraintAccountList(
-                                    type: 'الكهرباء',
+                                  context.pushTo(view:  ConstraintAccountList(
+                                    type: "مكاتب المقاولات",
                                   ));
                                   // context.pushTo(
                                   //     view: ConstraintAccountList(
