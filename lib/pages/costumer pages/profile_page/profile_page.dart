@@ -132,6 +132,8 @@ class ProfilePageCustomer extends StatelessWidget {
                                                                               state.email,
                                                                           phone:
                                                                               state.phone,
+                                                                          image:
+                                                                              state.image,
                                                                         ))).then(
                                                             (value) {
                                                           bloc.add(
@@ -246,6 +248,7 @@ class ProfilePageCustomer extends StatelessWidget {
                 } else if (state is ProfileLoadingState) {
                   return const Center(child: CircularProgressIndicator());
                 } else {
+                  // context.showErrorSnackBar(context, "حصل خطا");
                   return const Center(
                     child: Text("Error"),
                   );

@@ -55,12 +55,12 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                             onPressed: () {
                               //
                             },
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  WidgetStateProperty.all<Color>(lightBrown),
-                              fixedSize: WidgetStateProperty.all<Size>(
-                                  const Size(130, 50)),
-                            ),
+                            // style: ButtonStyle(
+                            //   backgroundColor:
+                            //       WidgetStateProperty.all<Color>(lightBrown),
+                            //   fixedSize: WidgetStateProperty.all<Size>(
+                            //       const Size(130, 50)),
+                            // ),
                             child: const Text(
                               'محادثة',
                               style: TextStyle(
@@ -97,14 +97,14 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                         bloc.add(DeleteFollowEvent(
                                             id: office.officeId));
                                       },
-                                      style: ButtonStyle(
-                                        backgroundColor:
-                                            WidgetStateProperty.all<Color>(
-                                                lightBrown),
-                                        fixedSize:
-                                            WidgetStateProperty.all<Size>(
-                                                const Size(130, 50)),
-                                      ),
+                                      // style: ButtonStyle(
+                                      //   backgroundColor:
+                                      //       WidgetStateProperty.all<Color>(
+                                      //           lightBrown),
+                                      //   fixedSize:
+                                      //       WidgetStateProperty.all<Size>(
+                                      //           const Size(130, 50)),
+                                      // ),
                                       child: const Text(
                                         'الغاء المتابعة ',
                                         style: TextStyle(
@@ -122,14 +122,14 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                         bloc.add(AddFollowEvent(
                                             id: office.officeId));
                                       },
-                                      style: ButtonStyle(
-                                        backgroundColor:
-                                            WidgetStateProperty.all<Color>(
-                                                brown),
-                                        fixedSize:
-                                            WidgetStateProperty.all<Size>(
-                                                const Size(130, 50)),
-                                      ),
+                                      // style: ButtonStyle(
+                                      //   backgroundColor:
+                                      //       WidgetStateProperty.all<Color>(
+                                      //           brown),
+                                      //   fixedSize:
+                                      //       WidgetStateProperty.all<Size>(
+                                      //           const Size(130, 50)),
+                                      // ),
                                       child: const Text(
                                         'متابعة',
                                         style: TextStyle(

@@ -19,6 +19,7 @@ class EditPageCustomer extends StatelessWidget {
       {super.key,
       required this.name,
       required this.email,
+      required this.image,
       required this.phone});
   final locator = GetIt.I.get<DBService>();
 
@@ -30,9 +31,9 @@ class EditPageCustomer extends StatelessWidget {
   String name;
   String email;
   int phone;
+  String image;
   @override
   Widget build(BuildContext context) {
-
     emailController.text = email;
     infoController.text = name;
     phoneController.text = phone.toString();
@@ -75,27 +76,30 @@ class EditPageCustomer extends StatelessWidget {
                             "تعديل حسابي",
                             style: TextStyle(fontSize: 24),
                           )),
-                      Align(
-                        alignment: Alignment.center,
-                        child: Stack(
-                          children: [
-                            ImageAacountWodget(
-                              path: 'assets/images/profile_image.png',
-                            ),
-                            Positioned(
-                                bottom: 0,
-                                child: InkWell(
-                                  child: Container(
-                                    width: 25,
-                                    height: 25,
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(50),
-                                        color: greyColor),
-                                    child:
-                                        const Icon(Icons.camera_alt_outlined),
-                                  ),
-                                ))
-                          ],
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.center,
+                          child: Stack(
+                            children: [
+                              ImageAacountWodget(
+                                path: image,
+                              ),
+                              Positioned(
+                                  bottom: 0,
+                                  child: InkWell(
+                                    child: Container(
+                                      width: 25,
+                                      height: 25,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(50),
+                                          color: greyColor),
+                                      child:
+                                          const Icon(Icons.camera_alt_outlined),
+                                    ),
+                                  ))
+                            ],
+                          ),
                         ),
                       ),
                       gapH20,
@@ -105,8 +109,6 @@ class EditPageCustomer extends StatelessWidget {
                       ),
                       EditInfoRow(
                           controller: phoneController, title: "الجوال:"),
-                      EditInfoRow(
-                          controller: emailController, title: "الايميل:"),
                       const Spacer(),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
@@ -160,4 +162,3 @@ class EditPageCustomer extends StatelessWidget {
     );
   }
 }
-

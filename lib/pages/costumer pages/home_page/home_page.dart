@@ -50,7 +50,8 @@ class HomePageCustomer extends StatelessWidget {
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(right: 20.0, left: 20),
+                      padding:
+                          const EdgeInsets.only(right: 20.0, left: 20, top: 20),
                       child: Column(
                         children: [
                           gapH15,

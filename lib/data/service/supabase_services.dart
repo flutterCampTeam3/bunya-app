@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:bunya_app/data/model/offices_model.dart';
+import 'package:bunya_app/data/model/profile_model_customer.dart';
 import 'package:bunya_app/data/model/profile_model_office.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
@@ -188,11 +189,11 @@ class DBService {
         .select('*')
         .eq('customerId', supabase.auth.currentUser!.id)
         .single();
+    return ProfileModel.fromJson(response);
   }
 
 // Get Office Profile
   Future getOffice() async {
-
     final response = await supabase
         .from('Offices')
         .select('*')
