@@ -8,6 +8,7 @@ class AppBarOfficeProfileWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+        backgroundColor: Colors.white,
         automaticallyImplyLeading: false,
         leading: Row(
           children: [
