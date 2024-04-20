@@ -30,6 +30,13 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
               initialIndex: 0,
               length: 2,
               child: Scaffold(
+                appBar: AppBar(
+                  leading: IconButton(
+                      onPressed: () {
+                        context.popNav();
+                      },
+                      icon: Icon(Icons.arrow_back_ios_new)),
+                ),
                 backgroundColor: whiteColor,
                 body: SafeArea(
                     child: Padding(
