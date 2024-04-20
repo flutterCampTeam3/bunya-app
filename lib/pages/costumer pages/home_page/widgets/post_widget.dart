@@ -13,14 +13,12 @@ class PostWidget extends StatelessWidget {
       required this.postPath,
       required this.description,
       required this.like,
-      required this.name,
       required this.profilePath});
   final postModel postPath;
   String like;
   final postModel description;
-  // final OfficesModel profilePath;
-  String profilePath;
-  String name;
+  final OfficesModel profilePath;
+
 
   @override
   Widget build(BuildContext context) {
@@ -140,16 +138,14 @@ class PostWidget extends StatelessWidget {
                               ),
                               child: ClipOval(
                                 child: Image.network(
-                                  // profilePath.image,
-                                  profilePath,
+                                  profilePath.image,
                                   fit: BoxFit.cover,
                                 ),
                               ),
                             ),
                             gapWe5,
                             Text(
-                              // profilePath.name,
-                              name,
+                              profilePath.name,
                               style: const TextStyle(
                                   fontSize: 13, fontWeight: FontWeight.bold),
                             )

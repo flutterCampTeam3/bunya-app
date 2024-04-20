@@ -197,10 +197,7 @@ class HomePageOffice extends StatelessWidget {
                                         postPath: state.classPost[index],
                                         description: state.classPost[index],
                                         like: "100 لايك",
-                                        // profilePath: state.classOffices[index],
-                                        name: "الاء علي",
-                                        profilePath:
-                                            'assets/images/profile1.jpeg',
+                                        profilePath: state.classOffices[index],
                                       ),
                                     );
                                   },
