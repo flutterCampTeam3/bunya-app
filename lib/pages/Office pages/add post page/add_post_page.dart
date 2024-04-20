@@ -40,7 +40,7 @@ class _AddPostPageState extends State<AddPostPage> {
       child: Builder(builder: (context) {
         final bloc = context.read<PostBloc>();
         return Scaffold(
-          backgroundColor: whitegrey,
+          backgroundColor: whiteColor,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(
                 100.0), 

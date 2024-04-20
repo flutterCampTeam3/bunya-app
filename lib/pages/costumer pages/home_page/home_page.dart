@@ -27,6 +27,7 @@ class HomePageCustomer extends StatelessWidget {
         return Directionality(
           textDirection: TextDirection.rtl,
           child: ScaffoldWidget(
+            
             hasAppBar: true,
             body: SingleChildScrollView(
               child: SafeArea(
@@ -118,6 +119,7 @@ class HomePageCustomer extends StatelessWidget {
                                   height: 100,
                                   width: context.getWidth(),
                                   child: ListView.builder(
+                                    
                                     scrollDirection: Axis.horizontal,
                                     itemCount: state.classOffices.length,
                                     itemBuilder: (context, index) {
@@ -195,9 +197,9 @@ class HomePageCustomer extends StatelessWidget {
                                         postPath: state.classPost[index],
                                         description: state.classPost[index],
                                         like: "100 لايك",
-                                        name: "الاء علي",
+                                        name: state.classOffices[index],
                                         profilePath:
-                                            'assets/images/profile1.jpeg',
+                                           state.classOffices[index],
                                       ),
                                     );
                                   },

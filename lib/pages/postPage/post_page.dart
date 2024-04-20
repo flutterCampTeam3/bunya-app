@@ -25,6 +25,7 @@ class PostPage extends StatelessWidget {
         return Directionality(
           textDirection: TextDirection.rtl,
           child: Scaffold(
+            backgroundColor: whiteColor,
             appBar: AppBar(
               leading: IconButton(
                   onPressed: () {
@@ -117,7 +118,7 @@ class PostPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            "100لايك",
+                            "100 لايك",
                             style: TextStyle(
                                 fontSize: 15, fontWeight: FontWeight.bold),
                           ),
@@ -127,11 +128,17 @@ class PostPage extends StatelessWidget {
                     //------------
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        // "اضائات جميلة بمواصفات مميزه وحديثه وتتمع بمزايا عديده لجعل شقتك او منزلك يبدو افضل واجمل وايضا تمتاز باستهلاكها القليل للطاقة كل ذالك بسعر مميز واقتصادي"
-                        post.desc,
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w500),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [                      
+                          Text(
+                            // "اضائات جميلة بمواصفات مميزه وحديثه وتتمع بمزايا عديده لجعل شقتك او منزلك يبدو افضل واجمل وايضا تمتاز باستهلاكها القليل للطاقة كل ذالك بسعر مميز واقتصادي"
+                            post.desc,
+                            
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w500),
+                          ),
+                        ],
                       ),
                     )
 

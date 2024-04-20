@@ -62,10 +62,10 @@ class AccountsHomeWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title.name),
+                  Text(title.name,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold),),
                   Text(
                     description.disc,
-                    style: TextStyle(fontSize: 9, color: darkGreyColor),
+                    style: TextStyle(fontSize: 15, color: darkGreyColor),
                   )
                 ],
               ),

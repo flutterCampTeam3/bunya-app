@@ -1,3 +1,4 @@
+import 'package:bunya_app/data/model/offices_model.dart';
 import 'package:bunya_app/data/model/post_model.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/sized.dart';
@@ -17,8 +18,8 @@ class PostWidget extends StatelessWidget {
   final postModel postPath;
   String like;
   final postModel description;
-  String profilePath;
-  String name;
+  final OfficesModel profilePath;
+   final OfficesModel name;
 
   @override
   Widget build(BuildContext context) {
@@ -120,15 +121,15 @@ class PostWidget extends StatelessWidget {
                                 ),
                               ),
                               child: ClipOval(
-                                child: Image.asset(
-                                  profilePath,
+                                child: Image.network(
+                                  profilePath.image,
                                   fit: BoxFit.cover,
                                 ),
                               ),
                             ),
                             gapWe5,
                             Text(
-                              name,
+                              name.name,
                               style: const TextStyle(
                                   fontSize: 13, fontWeight: FontWeight.bold),
                             )
