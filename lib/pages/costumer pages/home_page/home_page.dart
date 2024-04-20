@@ -44,10 +44,6 @@ class HomePageCustomer extends StatelessWidget {
                                       view: ConstraintAccountList(
                                     type: "التصميم الداخلي",
                                   ));
-                                  // context.pushTo(
-                                  //     view: ConstraintAccountList(
-                                  //   type: "التصميم الداخلي",
-                                  // ));
                                 },
                                 title: "التصميم الداخلي",
                                 path: 'assets/images/intern_design.jpeg',
@@ -59,10 +55,6 @@ class HomePageCustomer extends StatelessWidget {
                                       view: ConstraintAccountList(
                                     type: 'ادوات البناء',
                                   ));
-                                  // context.pushTo(
-                                  //     view: ConstraintAccountList(
-                                  //   type: 'ادوات البناء',
-                                  // ));
                                 },
                                 title: "ادوات البناء",
                                 path: 'assets/images/drell.jpeg',
@@ -76,11 +68,7 @@ class HomePageCustomer extends StatelessWidget {
                                 onTap: () {
                                   context.pushTo(
                                       view: ConstraintAccountList(
-                                    type: "مكاتب المقاولات",
-                                  ));
-                                  // context.pushTo(
-                                  //     view: ConstraintAccountList(
-                                  //         type: "مكاتب المقاولات"));
+                                          type: "مكاتب المقاولات"));
                                 },
                                 title: "مكاتب المقاولات",
                                 path: 'assets/images/house.jpeg',
@@ -112,7 +100,6 @@ class HomePageCustomer extends StatelessWidget {
                           BlocConsumer<HomeBloc, HomeState>(
                             listener: (context, state) {
                               if (state is ErrorShowpostState) {
-                                // Navigator.pop(context);
                                 context.showErrorSnackBar(context, state.msg);
                               }
                             },
@@ -165,39 +152,38 @@ class HomePageCustomer extends StatelessWidget {
                               }
                             },
                             builder: (context, state) {
-                              if (state is LoadingState) {
-                                return Center(
-                                  child: CircularProgressIndicator(
-                                    color: darkBrown,
-                                  ),
-                                );
-                              } else if (state is datahomeSuccesState) {
+                              // if (state is LoadingState) {
+                              //   return Center(
+                              //     child: CircularProgressIndicator(
+                              //       color: darkBrown,
+                              //     ),
+                              //   );
+                              // } else
+                              if (state is datahomeSuccesState) {
                                 // Return GridView when the state is postsLoadedState
-                                return SizedBox(
-                                  height: 200,
-                                  width: context.getWidth(),
-                                  child: GridView.builder(
-                                    gridDelegate:
-                                        const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2,
-                                      crossAxisSpacing: 10.0,
-                                      mainAxisSpacing: 10.0,
-                                      childAspectRatio: 0.75,
-                                    ),
-                                    itemCount: state.classPost.length,
-                                    itemBuilder: (context, index) {
-                                      return PostWidget(
-                                        postPath: state.classPost[index],
-                                        description: state.classPost[index],
-                                        like: "100 لايك",
-                                        name: "الاء علي",
-                                        profilePath:
-                                            'assets/images/profile1.jpeg',
-                                      );
-                                    },
+                                return GridView.builder(
+                                  shrinkWrap: true,
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    crossAxisSpacing: 10.0,
+                                    mainAxisSpacing: 10.0,
+                                    childAspectRatio: 0.75,
                                   ),
+                                  itemCount: state.classPost.length,
+                                  itemBuilder: (context, index) {
+                                    return PostWidget(
+                                      postPath: state.classPost[index],
+                                      description: state.classPost[index],
+                                      like: "100 لايك",
+                                      name: "الاء علي",
+                                      profilePath:
+                                          'assets/images/profile1.jpeg',
+                                    );
+                                  },
                                 );
-                              } else {
+                              }
+                              else {
                                 // Return an empty SizedBox for other states
                                 return const SizedBox();
                               }

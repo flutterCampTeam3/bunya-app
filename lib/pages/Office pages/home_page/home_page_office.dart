@@ -3,7 +3,6 @@ import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/costumer%20pages/accounts_list/account_list.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/accounts_home_widget.dart';
-import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/appbar_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/image_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/post_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,7 +23,6 @@ class HomePageOffice extends StatelessWidget {
       create: (context) => HomeOfficesBloc()..add(ShowDataOfficesEvent()),
       child: Builder(builder: (context) {
         final bloc = context.read<HomeOfficesBloc>();
-
         return Directionality(
           textDirection: TextDirection.rtl,
           child: ScaffoldWidget(
@@ -42,7 +40,8 @@ class HomePageOffice extends StatelessWidget {
                             children: [
                               ImageWidget(
                                 onTap: () {
-                                  context.pushAndRemove(ConstraintAccountList(
+                                  context.pushTo(
+                                      view: ConstraintAccountList(
                                     type: "التصميم الداخلي",
                                   ));
                                 },
@@ -52,7 +51,8 @@ class HomePageOffice extends StatelessWidget {
                               gapWe15,
                               ImageWidget(
                                 onTap: () {
-                                  context.pushAndRemove(ConstraintAccountList(
+                                  context.pushTo(
+                                      view: ConstraintAccountList(
                                     type: 'ادوات البناء',
                                   ));
                                 },
@@ -66,8 +66,9 @@ class HomePageOffice extends StatelessWidget {
                             children: [
                               ImageWidget(
                                 onTap: () {
-                                  context.pushAndRemove(ConstraintAccountList(
-                                      type: "مكاتب المقاولات"));
+                                  context.pushTo(
+                                      view: ConstraintAccountList(
+                                          type: "مكاتب المقاولات"));
                                 },
                                 title: "مكاتب المقاولات",
                                 path: 'assets/images/house.jpeg',
@@ -75,7 +76,8 @@ class HomePageOffice extends StatelessWidget {
                               gapWe15,
                               ImageWidget(
                                 onTap: () {
-                                  context.pushAndRemove(ConstraintAccountList(
+                                  context.pushTo(
+                                      view: ConstraintAccountList(
                                     type: 'الكهرباء',
                                   ));
                                 },
@@ -98,7 +100,6 @@ class HomePageOffice extends StatelessWidget {
                           BlocConsumer<HomeOfficesBloc, HomeOfficesState>(
                             listener: (context, state) {
                               if (state is ErrorOfficesState) {
-                                // Navigator.pop(context);
                                 context.showErrorSnackBar(context, state.msg);
                               }
                             },
@@ -146,19 +147,19 @@ class HomePageOffice extends StatelessWidget {
                           BlocConsumer<HomeOfficesBloc, HomeOfficesState>(
                             listener: (context, state) {
                               if (state is ErrorOfficesState) {
-                                Navigator.pop(context);
+                                // Navigator.pop(context);
                                 context.showErrorSnackBar(context, state.msg);
                               }
-                              if (state is LoadingState) {
-                                showDialog(
-                                  context: context,
-                                  builder: (context) {
-                                    return CircularProgressIndicator(
-                                      color: darkBrown,
-                                    );
-                                  },
-                                );
-                              }
+                              // if (state is LoadingState) {
+                              //   showDialog(
+                              //     context: context,
+                              //     builder: (context) {
+                              //       return CircularProgressIndicator(
+                              //         color: darkBrown,
+                              //       );
+                              //     },
+                              //   );
+                              // }
                             },
                             builder: (context, state) {
                               if (state is datahomeSuccesOfficesState) {

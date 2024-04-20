@@ -23,7 +23,7 @@ class LikeBloc extends Bloc<LikeEvent, LikeState> {
     emit(LaudLikeState());
     try {
       isLike = await DBService().checkLike(postId: event.id);
-      // number = await DBService().getLikeNumber(postId: event.id);
+      number = await DBService().getLikeNumber(postId: event.id);
       emit(CheckLikeState());
     } catch (e) {
       print(e.toString());
@@ -34,9 +34,8 @@ class LikeBloc extends Bloc<LikeEvent, LikeState> {
   FutureOr<void> addLike(AddLikeEvent event, Emitter<LikeState> emit) async {
     emit(LaudLikeState());
     try {
-      print("press the add bottun");
       isLike = await DBService().addLike(postId: event.id);
-      // number = await DBService().getLikeNumber(postId: event.id);
+      number = await DBService().getLikeNumber(postId: event.id);
       emit(AddLikeState());
     } catch (e) {
       print(e.toString());
@@ -49,7 +48,7 @@ class LikeBloc extends Bloc<LikeEvent, LikeState> {
     emit(LaudLikeState());
     try {
       isLike = await DBService().deleteLike(postId: event.id);
-      // number = await DBService().getLikeNumber(postId: event.id);
+      number = await DBService().getLikeNumber(postId: event.id);
       emit(DeleteLikeState());
     } catch (e) {
       print(e.toString());

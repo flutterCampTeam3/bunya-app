@@ -231,6 +231,26 @@ class DBService {
     ).match({'officeId': supabase.auth.currentUser!.id});
   }
 
+  // to edit office follower
+  Future editUpdateOfficeFollower({
+    required String name,
+    required String email,
+    required int phone,
+    required String description,
+    required int follower,
+  }) async {
+    follower = follower + 1;
+    await supabase.from('Offices').update(
+      {
+        'name': name,
+        'email': email,
+        'disc': description,
+        'phoneNumber': phone,
+        'follower': follower,
+      },
+    ).match({'officeId': supabase.auth.currentUser!.id});
+  }
+
   ///-- add Follower
   Future addFollowers({
     required String officeID,
@@ -357,17 +377,20 @@ class DBService {
     print("in the number like func");
     print("--------------------------------------1");
     final postLikeNumber =
-        await supabase.from('post_likes').delete().eq('postId', postId);
-    print("in the number like func after the num");
-    print("--------------------------------------2");
-    final List<postModel> likes = [];
-    for (var element in postLikeNumber) {
-      likes.add(postModel.fromJson(element));
+        await supabase.from('post_likes').select('*').eq('postId', postId);
+    if (postLikeNumber.isNotEmpty) {
+      print("in the number like func after the num");
+      print("--------------------------------------2");
+      final List<postModel> likes = [];
+      for (var element in postLikeNumber) {
+        likes.add(postModel.fromJson(element));
+      }
+      print("--------------------------------------3");
+      print("in ${likes.length}");
+      return likes.length;
+    } else {
+      return 0;
     }
-    print("--------------------------------------3");
-    print("in ${likes.length}");
-
-    return likes.length;
   }
 
   Future<List<postModel>> getposts() async {
