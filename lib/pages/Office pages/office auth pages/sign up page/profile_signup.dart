@@ -56,13 +56,13 @@ class _ProfileSignupState extends State<ProfileSignup> {
       phoneController.dispose();
       super.dispose();
     }
-
-    Future<void> pickImage() async {
+//--- 
+    /*Future<void> pickImage() async {
       final pickedImage =
           await ImagePicker().pickImage(source: ImageSource.gallery);
       // Handle the pickedImage here
     }
-
+ */
     return BlocProvider(
       create: (context) => SignUpBloc(),
       child: Builder(builder: (context) {

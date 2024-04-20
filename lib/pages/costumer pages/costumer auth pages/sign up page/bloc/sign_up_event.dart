@@ -16,4 +16,4 @@ class CreateAccountCustomerEvent extends SignUpCustomerEvent {
 
 class CustomerChoosImageEvent extends SignUpCustomerEvent{
 
-}
+} 

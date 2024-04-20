@@ -17,7 +17,7 @@ class CustomerChoosImageEventShowImageState extends SignUpCustomerState{
   CustomerChoosImageEventShowImageState(this.PickedImage);
 }
 final class ErrorSignUpCustomerState extends SignUpCustomerState {
-  final String msg;
+  final String msg; 
 
   ErrorSignUpCustomerState({required this.msg});
 }

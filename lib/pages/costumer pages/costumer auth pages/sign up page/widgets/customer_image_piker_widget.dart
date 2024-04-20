@@ -24,7 +24,7 @@ class CustomerImagePickerWidget extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 19),
           ),
         ),
-        Stack(
+        Stack( 
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),

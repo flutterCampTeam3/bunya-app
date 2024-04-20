@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:bunya_app/data/service/check_office_api.dart';
 import 'package:bunya_app/data/service/supabase_services.dart';
+import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
 
@@ -18,6 +19,8 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     on<CreateAccountprofileEvent>(createProfileAccount);
     on<ChoosImageEvent>((event, emit) async {
       File avatar = await pickedImage();
+      GetIt.I.get<DBService>().uploadOfficeImage(avatar);
+
       emit(ShowImageState(avatar));
     });
   }
@@ -39,7 +42,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
             event.confirmPass.trim().isNotEmpty
         // && event.isChecked
         ) {
-        emit(LoadingSignUpState());
+      emit(LoadingSignUpState());
       try {
         checkOffice = await CheckOffice().checkOffice(event.cr);
         print("the value $checkOffice");
@@ -67,7 +70,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         event.location.trim().isNotEmpty &&
         event.phone.trim().isNotEmpty) {
       try {
-                print("in the bloc");
+        print("in the bloc");
         try {
           print("-------------------------------2");
           print("in try ");

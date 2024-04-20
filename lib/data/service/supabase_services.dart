@@ -342,13 +342,26 @@ class DBService {
     return classOffices;
   }
 
-  //-------------------- uplaod image
+  //-------------------- uplaod coustomer image
 
   Future<void> uploadImage(File imageFile) async {
     print("object");
     //supabase.storage.setAuth("jwt");
     final response = await supabase.storage.from('profile').upload(
-          'testfloder/saud',
+          'CoustomerImage/kh',
+          imageFile,
+        );
+    print("oooooo");
+    UrlImage();
+    print("done");
+  }
+
+  //----------------------- 
+  Future<void> uploadOfficeImage(File imageFile) async {
+    print("object");
+    //supabase.storage.setAuth("jwt");
+    final response = await supabase.storage.from('profile').upload(
+          'OfficeImage/kh123',
           imageFile,
         );
     print("oooooo");
@@ -356,6 +369,7 @@ class DBService {
     print("done");
   }
   /*
+  
   //--
 
 Future<void> uploadImage(File imageFile, {String? name,String id}) async {
@@ -377,7 +391,7 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
     final response = supabase.storage.from('profile').getPublicUrl("kk");
     print(response);
   }
-
+//------------------------------
   getSession() async {
     try {
       final Session? session = await DBService().getCurrentSession();
