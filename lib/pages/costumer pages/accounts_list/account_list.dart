@@ -35,11 +35,11 @@ class ConstraintAccountList extends StatelessWidget {
             body: Stack(
               children: [
                 // Background Image
-                Positioned.fill(
-                  child: Image.asset(
-                    'assets/images/introv4.png', // Your image path
-                    // fit: BoxFit.cover,
-                  ),
+                Image.asset(
+                  'assets/images/introv4.png',
+                  width: double.infinity,
+                  height: double.infinity, // Your image path
+                  // fit: BoxFit.cover,
                 ),
                 SingleChildScrollView(
                   child: SafeArea(
@@ -127,17 +127,12 @@ class ConstraintAccountList extends StatelessWidget {
                                         ),
                                       );
                                     } else {
-                                      return SizedBox(
-                                        width: context.getWidth(),
-                                        height: context.getHeight(),
-                                        child: const Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              "لا يوجد حسابات لهذا القسم",
-                                            )
-                                          ],
+                                      return const Center(
+                                        child: Padding(
+                                          padding: EdgeInsets.only(top: 180.0),
+                                          child: Text(
+                                            "لا يوجد حسابات لهذا القسم",
+                                          ),
                                         ),
                                       );
                                     }

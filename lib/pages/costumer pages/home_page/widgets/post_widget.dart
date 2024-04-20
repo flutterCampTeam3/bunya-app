@@ -20,7 +20,6 @@ class PostWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-   
     return Expanded(
       child: Container(
         // height: 240,
@@ -67,14 +66,11 @@ class PostWidget extends StatelessWidget {
                           bottomLeft: Radius.circular(20),
                           bottomRight: Radius.circular(20),
                         ),
-                        child: Image.network(
-                         
-                          postPath.image, 
-                          fit: BoxFit.cover,
-                          errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
-              return Image.asset("assets/images/noimage.png");
-                          }
-                        ),
+                        child: Image.network(postPath.image, fit: BoxFit.cover,
+                            errorBuilder: (BuildContext context, Object error,
+                                StackTrace? stackTrace) {
+                          return Image.asset("assets/images/noimage.png");
+                        }),
                       ),
                     ),
                     Positioned(
@@ -93,12 +89,11 @@ class PostWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              Text(description.desc,
-              overflow: TextOverflow.ellipsis,
-              maxLines: 1,
+              Text(
+                description.desc,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
               ),
-          
-
               gapH15,
               Row(
                 children: [

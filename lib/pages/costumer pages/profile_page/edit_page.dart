@@ -76,40 +76,38 @@ class EditPageCustomer extends StatelessWidget {
                             "تعديل حسابي",
                             style: TextStyle(fontSize: 24),
                           )),
-                      Expanded(
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Stack(
-                            children: [
-                              ImageAacountWodget(
-                                path: image,
-                              ),
-                              Positioned(
-                                  bottom: 0,
-                                  child: InkWell(
-                                    child: Container(
-                                      width: 25,
-                                      height: 25,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(50),
-                                          color: greyColor),
-                                      child:
-                                          const Icon(Icons.camera_alt_outlined),
-                                    ),
-                                  ))
-                            ],
-                          ),
+                      gapH20,
+                      Align(
+                        alignment: Alignment.topCenter,
+                        child: Stack(
+                          children: [
+                            ImageAacountWodget(
+                              path: image,
+                            ),
+                            Positioned(
+                                bottom: 0,
+                                child: InkWell(
+                                  child: Container(
+                                    width: 25,
+                                    height: 25,
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(50),
+                                        color: greyColor),
+                                    child:
+                                        const Icon(Icons.camera_alt_outlined),
+                                  ),
+                                ))
+                          ],
                         ),
                       ),
-                      gapH20,
+                      gapH50,
                       EditInfoRow(
                         controller: infoController,
                         title: "الاسم:",
                       ),
                       EditInfoRow(
                           controller: phoneController, title: "الجوال:"),
-                      const Spacer(),
+                      gapH50,
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               backgroundColor: brownColor,

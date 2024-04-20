@@ -15,10 +15,10 @@ class NavBloc extends Bloc<NavEvent, NavState> {
   int currentIndex = 3;
 
   final List<Widget> pages = [
-    const HomePageCustomer(),
-    const MessageListPage(),
+    ProfilePageCustomer(),
     const CategoriesPage(),
-     ProfilePageCustomer(),
+    const MessageListPage(),
+    const HomePageCustomer(),
   ];
 
   NavBloc() : super(NavInitial()) {
