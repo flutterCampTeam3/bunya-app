@@ -31,6 +31,7 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
               initialIndex: 0,
               length: 2,
               child: Scaffold(
+
                 backgroundColor: whiteColor,
                 body: SafeArea(
                     child: Padding(
@@ -334,7 +335,9 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                       }),
                                 );
                               } else {
-                                return const SizedBox();
+                                return const SizedBox(
+                                  child: Center(child: Text("لا يوجد منشورات حتى الان")),
+                                );
                               }
                             },
                           )

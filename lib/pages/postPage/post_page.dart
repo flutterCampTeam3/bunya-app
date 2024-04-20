@@ -25,12 +25,13 @@ class PostPage extends StatelessWidget {
         return Directionality(
           textDirection: TextDirection.rtl,
           child: Scaffold(
+            backgroundColor: white,
             appBar: AppBar(
               leading: IconButton(
                   onPressed: () {
                     context.popNav();
                   },
-                  icon: Icon(Icons.arrow_back_ios_new)),
+                  icon: const Icon(Icons.arrow_back_ios_new)),
             ),
             body: BlocConsumer<PostPageBloc, PostPageState>(
                 listener: (context, state) {
@@ -75,7 +76,7 @@ class PostPage extends StatelessWidget {
                             style: const TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           ),
-                          Spacer(),
+                          const Spacer(),
                           ElevatedButton(
                               onPressed: () {},
                               style: ElevatedButton.styleFrom(
@@ -108,16 +109,16 @@ class PostPage extends StatelessWidget {
                       children: [
                         IconButton(
                             onPressed: () {},
-                            icon: Icon(Icons.favorite_border)),
+                            icon: const Icon(Icons.favorite_border)),
                       ],
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(right: 5),
+                    const Padding(
+                      padding: EdgeInsets.only(right: 5),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            "100لايك",
+                            "100 لايك",
                             style: TextStyle(
                                 fontSize: 15, fontWeight: FontWeight.bold),
                           ),
@@ -127,11 +128,17 @@ class PostPage extends StatelessWidget {
                     //------------
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        // "اضائات جميلة بمواصفات مميزه وحديثه وتتمع بمزايا عديده لجعل شقتك او منزلك يبدو افضل واجمل وايضا تمتاز باستهلاكها القليل للطاقة كل ذالك بسعر مميز واقتصادي"
-                        post.desc,
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w500),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            // "اضائات جميلة بمواصفات مميزه وحديثه وتتمع بمزايا عديده لجعل شقتك او منزلك يبدو افضل واجمل وايضا تمتاز باستهلاكها القليل للطاقة كل ذالك بسعر مميز واقتصادي"
+                            post.desc,
+
+                            style: const TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w500),
+                          ),
+                        ],
                       ),
                     )
 

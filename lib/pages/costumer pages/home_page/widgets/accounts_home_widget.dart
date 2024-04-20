@@ -12,15 +12,15 @@ class AccountsHomeWidget extends StatelessWidget {
       required this.title});
 
   final OfficesModel path;
-   final OfficesModel title;
-   final OfficesModel description;
+  final OfficesModel title;
+  final OfficesModel description;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
         // height: ,
-        width: context.getWidth()*0.7,
+        width: context.getWidth() * 0.7,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: whiteColor,
@@ -48,13 +48,11 @@ class AccountsHomeWidget extends StatelessWidget {
                   ),
                 ),
                 child: ClipOval(
-                  child: Image.network(
-                    path.image,
-                    fit: BoxFit.cover,
-                    errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
-                return Image.asset("assets/images/noimage.png");
-                            }
-                  ),
+                  child: Image.network(path.image, fit: BoxFit.cover,
+                      errorBuilder: (BuildContext context, Object error,
+                          StackTrace? stackTrace) {
+                    return Image.asset("assets/images/noimage.png");
+                  }),
                 ),
               ),
               gapWe10,
@@ -62,10 +60,14 @@ class AccountsHomeWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title.name),
+                  Text(
+                    title.name,
+                    style: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.bold),
+                  ),
                   Text(
                     description.disc,
-                    style: TextStyle(fontSize: 9, color: darkGreyColor),
+                    style: TextStyle(fontSize: 15, color: darkGreyColor),
                   )
                 ],
               ),

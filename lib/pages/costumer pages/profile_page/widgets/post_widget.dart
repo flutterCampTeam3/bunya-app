@@ -15,12 +15,10 @@ class PostProfileWidget extends StatelessWidget {
       this.name,
       required this.path,
       this.profilePath,
-      // required this.likes,
       required this.desc});
   final postModel path;
   String? name;
   String? profilePath;
-  // String likes;
   final postModel desc;
   @override
   Widget build(BuildContext context) {

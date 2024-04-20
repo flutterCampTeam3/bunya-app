@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:bunya_app/helper/colors.dart';
-import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/pages/Office%20pages/add%20post%20page/bloc/post_bloc.dart';
 import 'package:bunya_app/pages/Office%20pages/navBar%20page/navBarPage.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +9,7 @@ import '../../../helper/sized.dart';
 import '../../widgets/auth/button_widget.dart';
 
 class AddPostPage extends StatefulWidget {
-  AddPostPage({super.key});
+  const AddPostPage({super.key});
 
   @override
   State<AddPostPage> createState() => _AddPostPageState();
@@ -40,15 +37,14 @@ class _AddPostPageState extends State<AddPostPage> {
       child: Builder(builder: (context) {
         final bloc = context.read<PostBloc>();
         return Scaffold(
-          backgroundColor: whitegrey,
+          backgroundColor: white,
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(
-                100.0), 
+            preferredSize: const Size.fromHeight(100.0),
             child: AppBar(
               backgroundColor: whitegrey,
               leading: TextButton(
                 onPressed: () {
-                  Navigator.pop(context, NavBarOfficePage());
+                  Navigator.pop(context, const NavBarOfficePage());
                 },
                 child: Text("الغاء",
                     style: TextStyle(
@@ -56,7 +52,6 @@ class _AddPostPageState extends State<AddPostPage> {
                         color: blackColor,
                         fontWeight: FontWeight.w500)),
               ),
-            
             ),
           ),
           body: Center(
@@ -74,20 +69,16 @@ class _AddPostPageState extends State<AddPostPage> {
                 padding: const EdgeInsets.all(14.0),
                 child: BlocBuilder<PostBloc, PostState>(
                   builder: (context, state) {
-                    if(state is ShowImagepostState){
+                    if (state is ShowImagepostState) {
                       return Container(
-  height: 400,
-  decoration: BoxDecoration(
-    color: whiteColor,
-    border: Border.all(color: darkGreyColor),
-    image: DecorationImage(
-      image: FileImage(state.PickedImage),
-      fit: BoxFit.contain
-      )
-  ),
-  
-);
-
+                        height: 400,
+                        decoration: BoxDecoration(
+                            color: whiteColor,
+                            border: Border.all(color: darkGreyColor),
+                            image: DecorationImage(
+                                image: FileImage(state.PickedImage),
+                                fit: BoxFit.contain)),
+                      );
                     }
                     return Container(
                       height: 400,
@@ -102,7 +93,7 @@ class _AddPostPageState extends State<AddPostPage> {
                                 onPressed: () {
                                   bloc.add(ChoseImagePostEvent());
                                 },
-                                icon: Icon(
+                                icon: const Icon(
                                   Icons.image,
                                   size: 75,
                                 )),
@@ -130,15 +121,14 @@ class _AddPostPageState extends State<AddPostPage> {
                       labelStyle: TextStyle(
                           color: darkGreyColor,
                           fontWeight: FontWeight.w500,
-                          fontSize: 15), 
+                          fontSize: 15),
                       hintStyle: TextStyle(color: darkGreyColor),
                       floatingLabelStyle: TextStyle(
                           color: blackColor,
                           fontSize: 23,
                           fontWeight: FontWeight.w600),
                       border: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: whiteColor), 
+                        borderSide: BorderSide(color: whiteColor),
                       ),
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: darkGreyColor)),
@@ -146,7 +136,8 @@ class _AddPostPageState extends State<AddPostPage> {
                           borderSide: BorderSide(color: darkGreyColor)),
                       filled: true,
                       fillColor: whiteColor,
-                      contentPadding: EdgeInsets.symmetric(vertical: 40.0)),
+                      contentPadding:
+                          const EdgeInsets.symmetric(vertical: 40.0)),
                   textAlignVertical: TextAlignVertical.bottom,
                   maxLines: 3,
                   controller: descController,

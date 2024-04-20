@@ -10,7 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import '../../costumer pages/office profile pages/profile_office.dart';
+import '../../postPage/post_page.dart';
 import '../../costumer pages/home_page/widgets/scaffoldWidget.dart';
 import 'bloc/home_bloc.dart';
 
@@ -119,10 +120,19 @@ class HomePageOffice extends StatelessWidget {
                                     scrollDirection: Axis.horizontal,
                                     itemCount: state.classOffices.length,
                                     itemBuilder: (context, index) {
-                                      return AccountsHomeWidget(
-                                        description: state.classOffices[index],
-                                        path: state.classOffices[index],
-                                        title: state.classOffices[index],
+                                      return InkWell(
+                                        onTap: () {
+                                          context.pushTo(
+                                              view: ProfilePageOfficeCustomur(
+                                            office: state.classOffices[index],
+                                          ));
+                                        },
+                                        child: AccountsHomeWidget(
+                                          description:
+                                              state.classOffices[index],
+                                          path: state.classOffices[index],
+                                          title: state.classOffices[index],
+                                        ),
                                       );
                                     },
                                   ),
@@ -175,13 +185,23 @@ class HomePageOffice extends StatelessWidget {
                                   ),
                                   itemCount: state.classPost.length,
                                   itemBuilder: (context, index) {
-                                    return PostWidget(
-                                      postPath: state.classPost[index],
-                                      description: state.classPost[index],
-                                      like: "100 لايك",
-                                      name: "الاء علي",
-                                      profilePath:
-                                          'assets/images/profile1.jpeg',
+                                    return InkWell(
+                                      onTap: () {
+                                        context.pushTo(
+                                            view: PostPage(
+                                                post: state.classPost[index],
+                                                Office:
+                                                    state.classOffices[index]));
+                                      },
+                                      child: PostWidget(
+                                        postPath: state.classPost[index],
+                                        description: state.classPost[index],
+                                        like: "100 لايك",
+                                        // profilePath: state.classOffices[index],
+                                        name: "الاء علي",
+                                        profilePath:
+                                            'assets/images/profile1.jpeg',
+                                      ),
                                     );
                                   },
                                 );
