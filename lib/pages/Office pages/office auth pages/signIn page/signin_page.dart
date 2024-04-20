@@ -27,7 +27,6 @@ class _SigninPageState extends State<SigninPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-
     TextEditingController emailController =
         TextEditingController(text: "khaled@gmail.com");
     TextEditingController passController =
@@ -37,40 +36,40 @@ class _SigninPageState extends State<SigninPage> {
       child: Builder(builder: (context) {
         final bloc = context.read<SignInBloc>();
         return Directionality(
-          textDirection: TextDirection.rtl, 
-          child:  Scaffold(
-          appBar: PreferredSize(
-              preferredSize: Size(context.getWidth(), 400),
-              child: const PageHeaderSignIn(
-                height: 400,
-                bottomText: " نورتنا من جديد ",
-              )),
-          body: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SingleChildScrollView(
-              child: SizedBox(
-                height: context.getHeight() * .5,
-                child: BlocConsumer<SignInBloc, SignInState>(
-                  listener: (context, state) {
-                    if (state is SuccessSignInState) {
-                      // SuccessSignInState Function Here
-                       context.showSuccessSnackBar(context, state.msg);
-                      // BottomBarScreen Here
-                      print(bloc.userType);
-                      if (bloc.userType) {
-                        context.pushAndRemove(const NavBarPage());
-                      }else{
-                        context.pushAndRemove(const NavBarOfficePage());
+            textDirection: TextDirection.rtl,
+            child: Scaffold(
+              appBar: PreferredSize(
+                  preferredSize: Size(context.getWidth(), 400),
+                  child: const PageHeaderSignIn(
+                    height: 400,
+                    bottomText: " نورتنا من جديد ",
+                  )),
+              body: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: SingleChildScrollView(
+                  child: SizedBox(
+                    height: context.getHeight() * .5,
+                    child: BlocConsumer<SignInBloc, SignInState>(
+                        listener: (context, state) {
+                      if (state is SuccessSignInState) {
+                        // SuccessSignInState Function Here
+                        context.showSuccessSnackBar(context, state.msg);
+                        // BottomBarScreen Here
+                        print(bloc.userType);
+                        if (bloc.userType) {
+                          context.pushAndRemove(const NavBarPage());
+                        } else {
+                          context.pushAndRemove(const NavBarOfficePage());
+                        }
                       }
-                    }
-                    if (state is ErrorSignInState) {
-                      context.showErrorSnackBar(context, state.massage);
-                    }
-                    if (state is SuccessResetState) {
-                      // SuccessResetState Function Here
-                      context.showSuccessSnackBar(context, state.msg);
-                    }
-                  if (state is LoadingSignInState) {
+                      if (state is ErrorSignInState) {
+                        context.showErrorSnackBar(context, state.massage);
+                      }
+                      if (state is SuccessResetState) {
+                        // SuccessResetState Function Here
+                        context.showSuccessSnackBar(context, state.msg);
+                      }
+                      if (state is LoadingSignInState) {
                         showDialog(
                             barrierDismissible: false,
                             barrierColor: Colors.transparent,
@@ -124,6 +123,7 @@ class _SigninPageState extends State<SigninPage> {
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold),
                                     )),
+                                gapH10,
                                 InkWell(
                                     onTap: () {
                                       context.pushTo(view: const introPage());

@@ -1,6 +1,7 @@
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/pages/intro%20pages/customer/first_intro.dart';
+import 'package:bunya_app/pages/intro%20pages/customer/onboarding_screen.dart';
 import 'package:bunya_app/pages/intro%20pages/offices/first_intro.dart';
 import 'package:flutter/material.dart';
 
@@ -9,10 +10,7 @@ class introPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    
-    
-    Scaffold(
+    return Scaffold(
       body: Container(
         height: double.maxFinite,
         width: double.maxFinite,
@@ -70,7 +68,7 @@ class introPage extends StatelessWidget {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    context.pushAndRemove(firstCustomerIntro());
+                    context.pushAndRemove(BoardingPage());
                   },
                   style: ButtonStyle(
                     backgroundColor:
@@ -88,7 +86,9 @@ class introPage extends StatelessWidget {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    context.pushAndRemove(firstOficceIntro());
+                    context.pushAndRemove(BoardingPage(
+                      isCustomer: false,
+                    ));
                   },
                   style: ButtonStyle(
                     backgroundColor:
