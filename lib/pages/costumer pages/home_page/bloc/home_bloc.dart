@@ -21,21 +21,19 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<DeleteLikeHomeEvent>(deleteHomeLike);
   }
 
-   Future<void> fetchData(ShowDataEvent event, Emitter<HomeState> emit) async {
-    emit (LoadingState());
+  Future<void> fetchData(ShowDataEvent event, Emitter<HomeState> emit) async {
+    emit(LoadingState());
     try {
       List<OfficesModel> officeList = await DBService().getOffices();
       List<postModel> postList = await DBService().getposts();
-      
-      emit(datahomeSuccesState(classOffices: officeList, classPost:postList ));
+      emit(datahomeSuccesState(classOffices: officeList, classPost: postList));
     } catch (e) {
-        emit(ErrorShowpostState(msg: 'فشل في جلب البيانات '));
+      emit(ErrorShowpostState(msg: 'فشل في جلب البيانات '));
     }
   }
 
-  
-
-  FutureOr<void> checkHomeLike(CheckLikeHomeEvent event, Emitter<HomeState> emit) async {
+  FutureOr<void> checkHomeLike(
+      CheckLikeHomeEvent event, Emitter<HomeState> emit) async {
     emit(LaudLikeHomeState());
     try {
       isHomeLike = await DBService().checkLike(postId: event.id);
@@ -47,7 +45,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     }
   }
 
-  FutureOr<void> addHomeLike(AddLikeHomeEvent event, Emitter<HomeState> emit)  async {
+  FutureOr<void> addHomeLike(
+      AddLikeHomeEvent event, Emitter<HomeState> emit) async {
     emit(LaudLikeHomeState());
     try {
       isHomeLike = await DBService().addLike(postId: event.id);
@@ -59,7 +58,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     }
   }
 
-  FutureOr<void> deleteHomeLike(DeleteLikeHomeEvent event, Emitter<HomeState> emit)  async {
+  FutureOr<void> deleteHomeLike(
+      DeleteLikeHomeEvent event, Emitter<HomeState> emit) async {
     emit(LaudLikeHomeState());
     try {
       isHomeLike = await DBService().deleteLike(postId: event.id);

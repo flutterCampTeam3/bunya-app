@@ -174,6 +174,7 @@ class HomePageCustomer extends StatelessWidget {
                                 // Return GridView when the state is postsLoadedState
                                 return GridView.builder(
                                   shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
                                   gridDelegate:
                                       const SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2,
@@ -183,15 +184,15 @@ class HomePageCustomer extends StatelessWidget {
                                   ),
                                   itemCount: state.classPost.length,
                                   itemBuilder: (context, index) {
-                                    return  InkWell(
-                                        onTap: () {
-                                          context.pushTo(
-                                              view: PostPage(
-                                                  post: state.classPost[index],
-                                                  Office: state
-                                                      .classOffices[index]));
-                                        },
-                                        child : PostWidget(
+                                    return InkWell(
+                                      onTap: () {
+                                        context.pushTo(
+                                            view: PostPage(
+                                                post: state.classPost[index],
+                                                Office:
+                                                    state.classOffices[index]));
+                                      },
+                                      child: PostWidget(
                                         postPath: state.classPost[index],
                                         description: state.classPost[index],
                                         like: "100 لايك",
@@ -202,8 +203,7 @@ class HomePageCustomer extends StatelessWidget {
                                     );
                                   },
                                 );
-                              }
-                              else {
+                              } else {
                                 // Return an empty SizedBox for other states
                                 return const SizedBox();
                               }

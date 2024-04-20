@@ -86,11 +86,28 @@ class PostWidget extends StatelessWidget {
                                 ),
                               ),
                               Positioned(
-                                  bottom: 15,
-                                  child: Icon(
-                                    Icons.favorite,
-                                    color: red,
-                                  )),
+                                bottom: 15,
+                                child: bloc.isHomeLike
+                                    ? InkWell(
+                                        onTap: () {
+                                          bloc.add(AddLikeHomeEvent(
+                                              id: description.postId));
+                                        },
+                                        child: Icon(
+                                          Icons.favorite,
+                                          color: red,
+                                        ))
+                                    : InkWell(
+                                        onTap: () {
+                                          bloc.add(DeleteLikeHomeEvent(
+                                              id: description.postId));
+                                        },
+                                        child: Icon(
+                                          Icons.favorite,
+                                          color: red,
+                                        ),
+                                      ),
+                              ),
                               Positioned(
                                   bottom: 0,
                                   child: Text(like,

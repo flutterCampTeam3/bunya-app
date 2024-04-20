@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:bunya_app/data/model/offices_model.dart';
+import 'package:bunya_app/data/model/post_like_model.dart';
 import 'package:bunya_app/data/model/profile_model_customer.dart';
 import 'package:bunya_app/data/model/profile_model_office.dart';
 import 'package:get_storage/get_storage.dart';
@@ -231,26 +232,6 @@ class DBService {
     ).match({'officeId': supabase.auth.currentUser!.id});
   }
 
-  // to edit office follower
-  Future editUpdateOfficeFollower({
-    required String name,
-    required String email,
-    required int phone,
-    required String description,
-    required int follower,
-  }) async {
-    follower = follower + 1;
-    await supabase.from('Offices').update(
-      {
-        'name': name,
-        'email': email,
-        'disc': description,
-        'phoneNumber': phone,
-        'follower': follower,
-      },
-    ).match({'officeId': supabase.auth.currentUser!.id});
-  }
-
   ///-- add Follower
   Future addFollowers({
     required String officeID,
@@ -371,22 +352,34 @@ class DBService {
     }
   }
 
+  // post like number
   Future getLikeNumber({
     required String postId,
   }) async {
-    print("in the number like func");
-    print("--------------------------------------1");
     final postLikeNumber =
         await supabase.from('post_likes').select('*').eq('postId', postId);
     if (postLikeNumber.isNotEmpty) {
-      print("in the number like func after the num");
-      print("--------------------------------------2");
-      final List<postModel> likes = [];
+      final List<postLikeModel> likes = [];
       for (var element in postLikeNumber) {
-        likes.add(postModel.fromJson(element));
+        likes.add(postLikeModel.fromJson(element));
       }
-      print("--------------------------------------3");
-      print("in ${likes.length}");
+      return likes.length;
+    } else {
+      return 0;
+    }
+  }
+
+
+    Future followerNumber({
+    required String postId,
+  }) async {
+    final postLikeNumber =
+        await supabase.from('office_followers').select('*').eq('postId', postId);
+    if (postLikeNumber.isNotEmpty) {
+      final List<postLikeModel> likes = [];
+      for (var element in postLikeNumber) {
+        likes.add(postLikeModel.fromJson(element));
+      }
       return likes.length;
     } else {
       return 0;

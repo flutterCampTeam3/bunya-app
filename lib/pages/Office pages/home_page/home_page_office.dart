@@ -163,29 +163,27 @@ class HomePageOffice extends StatelessWidget {
                             },
                             builder: (context, state) {
                               if (state is datahomeSuccesOfficesState) {
-                                return SizedBox(
-                                  height: 200,
-                                  width: context.getWidth(),
-                                  child: GridView.builder(
-                                    gridDelegate:
-                                        const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2,
-                                      crossAxisSpacing: 10.0,
-                                      mainAxisSpacing: 10.0,
-                                      childAspectRatio: 0.75,
-                                    ),
-                                    itemCount: state.classPost.length,
-                                    itemBuilder: (context, index) {
-                                      return PostWidget(
-                                        postPath: state.classPost[index],
-                                        description: state.classPost[index],
-                                        like: "100 لايك",
-                                        name: "الاء علي",
-                                        profilePath:
-                                            'assets/images/profile1.jpeg',
-                                      );
-                                    },
+                                return GridView.builder(
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    crossAxisSpacing: 10.0,
+                                    mainAxisSpacing: 10.0,
+                                    childAspectRatio: 0.75,
                                   ),
+                                  itemCount: state.classPost.length,
+                                  itemBuilder: (context, index) {
+                                    return PostWidget(
+                                      postPath: state.classPost[index],
+                                      description: state.classPost[index],
+                                      like: "100 لايك",
+                                      name: "الاء علي",
+                                      profilePath:
+                                          'assets/images/profile1.jpeg',
+                                    );
+                                  },
                                 );
                               } else {
                                 return const SizedBox();

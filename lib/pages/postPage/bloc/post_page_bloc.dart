@@ -18,7 +18,7 @@ class PostPageBloc extends Bloc<PostPageEvent, PostPageState> {
     emit(LoadingPostState());
     try {
       List<postModel> postList =
-          await DBService().getPostsId(ofiiceId: event.id);
+      await DBService().getPostsId(ofiiceId: event.id);
       emit(PostsSuccesState(classPostId: postList));
     } catch (e) {
       emit(ErrorPostShowpostState(msg: 'فشل في جلب البيانات '));

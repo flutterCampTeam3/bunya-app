@@ -16,11 +16,11 @@ class ProfileOfficeModel {
 
   factory ProfileOfficeModel.fromJson(Map<String, dynamic> json) {
     return ProfileOfficeModel(
-        name: json['name'] ?? "hi",
-        email: json['email'] ?? "em",
-        description: json['disc'],
+        name: json['name'] ?? " ",
+        email: json['email'] ?? " ",
+        description: json['disc'] ?? " ",
         phone: json['phoneNumber'] ?? 7,
-        image: json['image'] ?? '');
+        image: json['image'] ?? ' ');
   }
 
   Map<String, dynamic> toJson() {

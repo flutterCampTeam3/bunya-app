@@ -30,10 +30,7 @@ class PostProfileWidget extends StatelessWidget {
         final bloc = context.read<LikeBloc>();
         bloc.add(GetLikeNumberEvent(id: desc.postId));
         bloc.add(CheckLikeEvent(id: desc.postId));
-        return BlocConsumer<LikeBloc, LikeState>(
-          listener: (context, state) {
-            // TODO: implement listener
-          },
+        return BlocBuilder<LikeBloc, LikeState>(
           builder: (context, state) {
             return Column(
               children: [
