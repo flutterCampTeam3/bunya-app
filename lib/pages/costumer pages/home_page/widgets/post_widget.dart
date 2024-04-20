@@ -12,18 +12,17 @@ class PostWidget extends StatelessWidget {
       {super.key,
       required this.postPath,
       required this.description,
-      required this.like,
       required this.profilePath});
   final postModel postPath;
-  String like;
   final postModel description;
   final OfficesModel profilePath;
-
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeBloc()..add(ShowDataEvent()),
+      create: (context) => HomeBloc()
+        ..add(ShowDataEvent())
+        ..add(CheckLikeHomeEvent(id: description.postId)),
       child: Builder(
         builder: (context) {
           final bloc = context.read<HomeBloc>();
@@ -110,7 +109,7 @@ class PostWidget extends StatelessWidget {
                               ),
                               Positioned(
                                   bottom: 0,
-                                  child: Text(like,
+                                  child: Text("${bloc.likeNumber} لايك",
                                       style: GoogleFonts.balooBhaijaan2(
                                         textStyle: const TextStyle(
                                             fontWeight: FontWeight.bold),

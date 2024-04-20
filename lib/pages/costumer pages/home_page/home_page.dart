@@ -195,7 +195,6 @@ class HomePageCustomer extends StatelessWidget {
                                       child: PostWidget(
                                         postPath: state.classPost[index],
                                         description: state.classPost[index],
-                                        like: "100 لايك",
                                         profilePath: state.classOffices[index],
                                       ),
                                     );
