@@ -5,7 +5,7 @@ version: 0.1.0
 
 environment:
   #sdk: '>=3.4.0-99.1.beta <4.0.0'
-   sdk: '>=3.4.0-99.1.beta <4.0.0'
+   sdk: '3.3.2'
 
 
 
@@ -34,20 +34,24 @@ dependencies:
   onboarding: ^4.0.2
   timer_button: ^2.1.1
   internet_connection_checker_plus: ^2.3.0
+  flutter_launcher_icons: "^0.13.1"
+  smooth_page_indicator: ^1.1.0
+
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
-  flutter_launcher_icons: "^0.13.1"
+
 
 flutter:
   uses-material-design: true
   assets:
    - assets/images/
    - .env
+
 flutter_launcher_icons:
   android: "launcher_icon"
   ios: true
-  image_path: "assets/images/bunya_logo.png"
+  image_path: "assets/images/logo_white.png"

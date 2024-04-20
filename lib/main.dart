@@ -4,7 +4,10 @@ import 'package:bunya_app/pages/Office%20pages/navBar%20page/navBarPage.dart';
 import 'package:bunya_app/pages/costumer%20pages/costumer%20auth%20pages/signIn%20page/signin_customer_page.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/home_page.dart';
 import 'package:bunya_app/pages/costumer%20pages/navBar%20page/navBarPage.dart';
+import 'package:bunya_app/pages/intro%20pages/customer/first_intro.dart';
+import 'package:bunya_app/pages/intro%20pages/customer/onboarding_screen.dart';
 import 'package:bunya_app/pages/intro%20pages/disconnect_page.dart';
+import 'package:bunya_app/pages/intro%20pages/first_intro.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:get_it/get_it.dart';
 // import 'package:device_preview/device_preview.dart';import 'package:flutter/material.dart';
@@ -46,6 +49,6 @@ class MainApp extends StatelessWidget {
                 ? isSignIn
                     ? const NavBarPage()
                     : const NavBarOfficePage()
-                : const HomePageCustomer()));
+                : const introPage()));
   }
 }
