@@ -301,19 +301,52 @@ class DBService {
     return classOffices;
   }
 
-  //-------------------- uplaod image
+  //-------------------- uplaod user image
 
   Future<void> uploadImage(File imageFile) async {
     print("object");
-    final response =
-        await supabase.storage.from('ImageProfile').upload('kk', imageFile);
+    //supabase.storage.setAuth("jwt");
+    final response = await supabase.storage.from('profile').upload(
+          'CustomerFolder/kh',
+          imageFile,
+        );
     print("oooooo");
     UrlImage();
     print("done");
   }
 
+  //-------------- 
+  Future<void> uploadOfficeImage(File imageFile) async {
+    print("object");
+    //supabase.storage.setAuth("jwt");
+    final response = await supabase.storage.from('profile').upload(
+          'OfficeFolder/kh1',
+          imageFile,
+        );
+    print("oooooo");
+    UrlImage();
+    print("done");
+  }
+  /*
+  //--
+
+Future<void> uploadImage(File imageFile, {String? name,String id}) async {
+    print("object");
+
+    final response = await supabase.storage.from('profile').upload(
+          '$id/${name ?? "kk"}',
+          imageFile,
+        );
+    print("oooooo");
+    UrlImage();
+    print("done");
+  }
+
+  //--
+*/
+
   Future<void> UrlImage() async {
-    final response = supabase.storage.from('ImageProfile').getPublicUrl("kk");
+    final response = supabase.storage.from('profile').getPublicUrl("kk");
     print(response);
   }
 }

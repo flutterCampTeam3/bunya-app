@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:bunya_app/data/service/check_office_api.dart';
 import 'package:bunya_app/data/service/supabase_services.dart';
+import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
 
@@ -17,8 +18,12 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
     on<CreateAccountEvent>(createAccount);
     on<CreateAccountprofileEvent>(createProfileAccount);
     on<ChoosImageEvent>((event, emit) async {
+      //------
       File avatar = await pickedImage();
+      GetIt.I.get<DBService>().uploadOfficeImage(avatar);
+
       emit(ShowImageState(avatar));
+      //------
     });
   }
 

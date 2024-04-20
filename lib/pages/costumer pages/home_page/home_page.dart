@@ -113,7 +113,7 @@ class HomePageCustomer extends StatelessWidget {
                           BlocConsumer<HomeBloc, HomeState>(
                             listener: (context, state) {
                               if (state is ErrorShowpostState) {
-                                Navigator.pop(context);
+                              //  Navigator.pop(context);
                                 context.showErrorSnackBar(context, state.msg);
                               }
                             },
@@ -161,7 +161,7 @@ class HomePageCustomer extends StatelessWidget {
                           BlocConsumer<HomeBloc, HomeState>(
                             listener: (context, state) {
                               if (state is ErrorShowpostState) {
-                                Navigator.pop(context);
+                             //   Navigator.pop(context);
                                 context.showErrorSnackBar(context, state.msg);
                               }
                             },
