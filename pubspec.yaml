@@ -42,4 +42,7 @@ dev_dependencies:
   flutter_lints: ^3.0.0
 
 flutter:
-  uses-material-design: tr
+  uses-material-design: true
+  assets:
+   - assets/images/
+   - .env

@@ -24,8 +24,6 @@ class DBService {
 
   String email = '';
 
-  bool isInitializeDataBase =false;
-
   DBService() {
     getToken();
   }
@@ -130,13 +128,11 @@ class DBService {
   }
 
   Future checkUserCustomer() async {
-    print("in this func");
     final profileData = await supabase
         .from('Customer')
         .select()
         .eq('customerId', supabase.auth.currentUser!.id)
         .single();
-    print(profileData.toString());
     if (profileData.isNotEmpty) {
       userType = true;
       return true;
@@ -146,7 +142,6 @@ class DBService {
     }
   }
 
-  //Future SignOut
   Future signOut() async {
     await supabase.auth.signOut();
   }
@@ -188,7 +183,6 @@ class DBService {
   }
 
   Future getUser() async {
-    print("in the func");
     final response = await supabase
         .from('Customer')
         .select('*')
@@ -198,19 +192,13 @@ class DBService {
 
 // Get Office Profile
   Future getOffice() async {
-    print("in the funjjjc");
-    print("id${supabase.auth.currentUser!.id}");
+
     final response = await supabase
         .from('Offices')
         .select('*')
         .eq('officeId', supabase.auth.currentUser!.id)
         .single();
-    print("after func $response");
     ProfileOfficeModel profileoffice = ProfileOfficeModel.fromJson(response);
-    print("after func ${profileoffice.name}");
-    print("after func ${profileoffice.email}");
-    print("after func ${profileoffice.description}");
-    print("after func ${profileoffice.phone}");
 
     return profileoffice;
   }
@@ -300,6 +288,85 @@ class DBService {
     } else {
       return true;
     }
+  }
+
+  ///-- Check Like
+  Future<bool> checkLike({
+    required String postId,
+  }) async {
+    final response = await supabase
+        .from('post_likes')
+        .select()
+        .eq('postId', postId)
+        .eq('customerId', supabase.auth.currentUser!.id);
+    if (response.isEmpty) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  ///-- add Like
+  Future addLike({
+    required String postId,
+  }) async {
+    await supabase.from('post_likes').insert(
+      {
+        'postId': postId,
+        'customerId': supabase.auth.currentUser!.id,
+      },
+    );
+    final response = await supabase
+        .from('post_likes')
+        .select()
+        .eq('postId', postId)
+        .eq('customerId', supabase.auth.currentUser!.id);
+    if (response.isEmpty) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  ///-- Delete Like
+  Future deleteLike({
+    required String postId,
+  }) async {
+    await supabase
+        .from('post_likes')
+        .delete()
+        .eq('postId', postId)
+        .eq('customerId', supabase.auth.currentUser!.id);
+
+    final response = await supabase
+        .from('post_likes')
+        .select()
+        .eq('postId', postId)
+        .eq('customerId', supabase.auth.currentUser!.id);
+    if (response.isEmpty) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  Future getLikeNumber({
+    required String postId,
+  }) async {
+    print("in the number like func");
+    print("--------------------------------------1");
+    final postLikeNumber =
+        await supabase.from('post_likes').delete().eq('postId', postId);
+    print("in the number like func after the num");
+    print("--------------------------------------2");
+    final List<postModel> likes = [];
+    for (var element in postLikeNumber) {
+      likes.add(postModel.fromJson(element));
+    }
+    print("--------------------------------------3");
+    print("in ${likes.length}");
+
+    return likes.length;
   }
 
   Future<List<postModel>> getposts() async {
