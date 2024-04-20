@@ -36,7 +36,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       CheckLikeHomeEvent event, Emitter<HomeState> emit) async {
     emit(LaudLikeHomeState());
     try {
+      print("in the bloc of home like the val: $isHomeLike");
       isHomeLike = await DBService().checkLike(postId: event.id);
+      print("in the bloc of home like the val: $isHomeLike");
       likeNumber = await DBService().getLikeNumber(postId: event.id);
       emit(CheckLikeHomeState());
     } catch (e) {
