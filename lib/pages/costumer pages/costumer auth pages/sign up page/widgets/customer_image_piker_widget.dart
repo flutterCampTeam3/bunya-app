@@ -32,6 +32,7 @@ class CustomerImagePickerWidget extends StatelessWidget {
                 height: 130,
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
                   color: const Color.fromARGB(
                       255, 224, 220, 220), // لون خلفية الحاوية
                   border: Border.all(
@@ -44,7 +45,7 @@ class CustomerImagePickerWidget extends StatelessWidget {
             Positioned(
               top: 30,
               left: MediaQuery.of(context).size.width / 2 - 37,
-              child: Container(
+              child: SizedBox(
                 height: 74,
                 width: 74,
                 child: BlocBuilder<SignUpBlocCustomer, SignUpCustomerState>(

@@ -61,155 +61,158 @@ class _SignUpCustomerPageState extends State<SignUpCustomerPage> {
       create: (context) => SignUpBlocCustomer(),
       child: Builder(builder: (context) {
         final bloc = context.read<SignUpBlocCustomer>();
-        return Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size(MediaQuery.of(context).size.width, 280),
-            child: const PageHeader(
-              height: 150,
-              bottomText: "تسجيل حساب",
+        return Directionality(
+          textDirection: TextDirection.rtl,
+          child: Scaffold(
+            appBar: PreferredSize(
+              preferredSize: Size(MediaQuery.of(context).size.width, 280),
+              child: const PageHeader(
+                height: 150,
+                bottomText: "تسجيل حساب",
+              ),
             ),
-          ),
-          body: BlocConsumer<SignUpBlocCustomer, SignUpCustomerState>(
-            listener: (context, state) {
-              if (state is SuccessSignUpCustomerState) {
-                Navigator.pop(context);
-                // SignUp Function Here
-                context.showSuccessSnackBar(context, state.msg);
-                context.pushAndRemove(const SigninCustomerPage());
-              }
-              if (state is ErrorSignUpCustomerState) {
-                Navigator.pop(context);
-                // Error SignUp Function Here
-                context.showErrorSnackBar(context, state.msg);
-              }
-              if (state is LoadingSignUpCustomerState) {
-                showDialog(
-                    barrierDismissible: false,
-                    barrierColor: Colors.transparent,
-                    context: context,
-                    builder: (context) {
-                      return const AlertDialog(
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        content: SizedBox(
-                          height: 80,
-                          width: 80,
-                          child: Center(
-                            child: CircularProgressIndicator(),
-                          ),
-                        ),
-                      );
-                    });
-              }
-            },
-            builder: (context, state) {
-              return Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: SingleChildScrollView(
-                  child: Form(
-                    key: _formKey,
-                    child: SizedBox(
-                      height: MediaQuery.of(context).size.height * .7,
-                      child: ListView(
-                        children: [
-                          textFieldAuth(
-                            Controller: nameController,
-                            label: 'الاسم ',
-                            obscureText: false,
-                          ),
-                          gapH20,
-                          textFieldAuth(
-                            Controller: emailController,
-                            label: 'البريد الإلكتروني',
-                            obscureText: false,
-                            email: true,
-                          ),
-                          gapH20,
-                          const CustomerImagePickerWidget(),
-                          gapH20,
-                          textFieldAuth(
-                            Controller: phoneController,
-                            label: 'رقم الجوال ',
-                            obscureText: false,
-                            phone: true,
-                          ),
-                          gapH20,
-                          PassTextField(
-                            controller: passController,
-                          ),
-                          gapH20,
-                          TextFieldConfirmPass(
-                              confController: confirmPassController,
-                              passController: passController),
-                          gapH20,
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(
-                              children: [
-                                ButtonWidget(
-                                  backgroundColor: darkBrown,
-                                  text: "تسجيل الحساب",
-                                  onPressed: () {
-                                    if (_formKey.currentState!.validate()) {
-                                      bloc.add(CreateAccountCustomerEvent(
-                                        email: emailController.text,
-                                        password: passController.text,
-                                        name: nameController.text,
-                                        phone: phoneController.text,
-                                        confirmPass: confirmPassController.text,
-                                        isChecked: isChecked,
-                                        
-                                      ));
-                                    }
-                                  },
-                                  textColor: Colors.white,
-                                ),
-                                const SizedBox(height: 5),
-                                RichText(
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: "يوجد لديك حساب بالفعل؟  ",
-                                        style: TextStyle(
-                                          color: whiteBrown,
-                                          fontSize: 15,
-                                          fontFamily: GoogleFonts.vazirmatn()
-                                              .fontFamily,
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: "تسجيل الدخول",
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          color: darkBrown,
-                                          fontWeight: FontWeight.w600,
-                                          fontFamily: GoogleFonts.vazirmatn()
-                                              .fontFamily,
-                                        ),
-                                        recognizer: TapGestureRecognizer()
-                                          ..onTap = () {
-                                            Navigator.pushAndRemoveUntil(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      const SigninCustomerPage()),
-                                              (Route<dynamic> route) => false,
-                                            );
-                                          },
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ],
+            body: BlocConsumer<SignUpBlocCustomer, SignUpCustomerState>(
+              listener: (context, state) {
+                if (state is SuccessSignUpCustomerState) {
+                  Navigator.pop(context);
+                  // SignUp Function Here
+                  context.showSuccessSnackBar(context, state.msg);
+                  context.pushAndRemove(const SigninCustomerPage());
+                }
+                if (state is ErrorSignUpCustomerState) {
+                  Navigator.pop(context);
+                  // Error SignUp Function Here
+                  context.showErrorSnackBar(context, state.msg);
+                }
+                if (state is LoadingSignUpCustomerState) {
+                  showDialog(
+                      barrierDismissible: false,
+                      barrierColor: Colors.transparent,
+                      context: context,
+                      builder: (context) {
+                        return const AlertDialog(
+                          backgroundColor: Colors.transparent,
+                          elevation: 0,
+                          content: SizedBox(
+                            height: 80,
+                            width: 80,
+                            child: Center(
+                              child: CircularProgressIndicator(),
                             ),
                           ),
-                        ],
+                        );
+                      });
+                }
+              },
+              builder: (context, state) {
+                return Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: SingleChildScrollView(
+                    child: Form(
+                      key: _formKey,
+                      child: SizedBox(
+                        height: MediaQuery.of(context).size.height * .7,
+                        child: ListView(
+                          children: [
+                            textFieldAuth(
+                              Controller: nameController,
+                              label: 'الاسم ',
+                              obscureText: false,
+                            ),
+                            gapH20,
+                            textFieldAuth(
+                              Controller: emailController,
+                              label: 'البريد الإلكتروني',
+                              obscureText: false,
+                              email: true,
+                            ),
+                            gapH20,
+                            const CustomerImagePickerWidget(),
+                            gapH20,
+                            textFieldAuth(
+                              Controller: phoneController,
+                              label: 'رقم الجوال ',
+                              obscureText: false,
+                              phone: true,
+                            ),
+                            gapH20,
+                            PassTextField(
+                              controller: passController,
+                            ),
+                            gapH20,
+                            TextFieldConfirmPass(
+                                confController: confirmPassController,
+                                passController: passController),
+                            gapH20,
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  ButtonWidget(
+                                    backgroundColor: darkBrown,
+                                    text: "تسجيل الحساب",
+                                    onPressed: () {
+                                      if (_formKey.currentState!.validate()) {
+                                        bloc.add(CreateAccountCustomerEvent(
+                                          email: emailController.text,
+                                          password: passController.text,
+                                          name: nameController.text,
+                                          phone: phoneController.text,
+                                          confirmPass:
+                                              confirmPassController.text,
+                                          isChecked: isChecked,
+                                        ));
+                                      }
+                                    },
+                                    textColor: Colors.white,
+                                  ),
+                                  const SizedBox(height: 5),
+                                  RichText(
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: "يوجد لديك حساب بالفعل؟  ",
+                                          style: TextStyle(
+                                            color: whiteBrown,
+                                            fontSize: 15,
+                                            fontFamily: GoogleFonts.vazirmatn()
+                                                .fontFamily,
+                                          ),
+                                        ),
+                                        TextSpan(
+                                          text: "تسجيل الدخول",
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            color: darkBrown,
+                                            fontWeight: FontWeight.w600,
+                                            fontFamily: GoogleFonts.vazirmatn()
+                                                .fontFamily,
+                                          ),
+                                          recognizer: TapGestureRecognizer()
+                                            ..onTap = () {
+                                              Navigator.pushAndRemoveUntil(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        const SigninCustomerPage()),
+                                                (Route<dynamic> route) => false,
+                                              );
+                                            },
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
-                ),
-              );
-            },
+                );
+              },
+            ),
           ),
         );
       }),

@@ -1,3 +1,4 @@
+import 'package:bunya_app/data/model/splash_model.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/pages/Office%20pages/office%20auth%20pages/signIn%20page/signin_page.dart';
@@ -237,15 +238,4 @@ class BoardingPage extends StatelessWidget {
   }
 }
 
-class SplashModel {
-  final String image;
-  final String backImage;
 
-  final String body;
-
-  SplashModel({
-    required this.image,
-    required this.backImage,
-    required this.body,
-  });
-}
