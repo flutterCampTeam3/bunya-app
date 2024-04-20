@@ -40,7 +40,8 @@ class HomePageCustomer extends StatelessWidget {
                             children: [
                               ImageWidget(
                                 onTap: () {
-                                  context.pushTo(view: ConstraintAccountList(
+                                  context.pushTo(
+                                      view: ConstraintAccountList(
                                     type: "التصميم الداخلي",
                                   ));
                                   // context.pushTo(
@@ -54,7 +55,8 @@ class HomePageCustomer extends StatelessWidget {
                               gapWe15,
                               ImageWidget(
                                 onTap: () {
-                                  context.pushTo(view: ConstraintAccountList(
+                                  context.pushTo(
+                                      view: ConstraintAccountList(
                                     type: 'ادوات البناء',
                                   ));
                                   // context.pushTo(
@@ -72,7 +74,8 @@ class HomePageCustomer extends StatelessWidget {
                             children: [
                               ImageWidget(
                                 onTap: () {
-                                  context.pushTo(view:  ConstraintAccountList(
+                                  context.pushTo(
+                                      view: ConstraintAccountList(
                                     type: "مكاتب المقاولات",
                                   ));
                                   // context.pushTo(

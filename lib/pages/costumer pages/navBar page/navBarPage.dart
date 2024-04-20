@@ -1,6 +1,6 @@
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/sized.dart';
-  import 'package:bunya_app/helper/colors.dart';
+import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/sized.dart';
@@ -38,15 +38,15 @@ class NavBarPage extends StatelessWidget {
                       icon: Column(
                         children: [
                           Icon(
-                            Icons.person_2_outlined,
+                            Icons.home_outlined,
                             color:
-                                bloc.currentIndex == 0 ? brownNavSelect : null,
+                                bloc.currentIndex == 3 ? brownNavSelect : null,
                           ),
                           Text(
-                            "الحساب",
+                            "الرئيسية",
                             style: TextStyle(
                               fontSize: 11,
-                              color: bloc.currentIndex == 0
+                              color: bloc.currentIndex == 3
                                   ? brownNavSelect
                                   : null,
                             ),
@@ -54,35 +54,10 @@ class NavBarPage extends StatelessWidget {
                         ],
                       ),
                       onPressed: () {
-                        bloc.currentIndex = 0;
-                        bloc.add(ChangePageEvent(index: 0));
+                        bloc.currentIndex = 3;
+                        bloc.add(ChangePageEvent(index: 3));
                       },
                     ),
-                    IconButton(
-                      icon: Column(
-                        children: [
-                          Icon(
-                            Icons.category_outlined,
-                            color:
-                                bloc.currentIndex == 1 ? brownNavSelect : null,
-                          ),
-                          Text(
-                            "الفئات",
-                            style: TextStyle(
-                              fontSize: 11,
-                              color: bloc.currentIndex == 1
-                                  ? brownNavSelect
-                                  : null,
-                            ),
-                          )
-                        ],
-                      ),
-                      onPressed: () {
-                        bloc.currentIndex = 1;
-                        bloc.add(ChangePageEvent(index: 1));
-                      },
-                    ),
-                    const SizedBox(width: 40), // Adjust spacing for FAB
                     IconButton(
                       icon: Column(
                         children: [
@@ -108,19 +83,20 @@ class NavBarPage extends StatelessWidget {
                       },
                     ),
 
+                    const SizedBox(width: 40), // Adjust spacing for FAB
                     IconButton(
                       icon: Column(
                         children: [
                           Icon(
-                            Icons.home_outlined,
+                            Icons.category_outlined,
                             color:
-                                bloc.currentIndex == 3 ? brownNavSelect : null,
+                                bloc.currentIndex == 1 ? brownNavSelect : null,
                           ),
                           Text(
-                            "الرئيسية",
+                            "الفئات",
                             style: TextStyle(
                               fontSize: 11,
-                              color: bloc.currentIndex == 3
+                              color: bloc.currentIndex == 1
                                   ? brownNavSelect
                                   : null,
                             ),
@@ -128,8 +104,33 @@ class NavBarPage extends StatelessWidget {
                         ],
                       ),
                       onPressed: () {
-                        bloc.currentIndex = 3;
-                        bloc.add(ChangePageEvent(index: 3));
+                        bloc.currentIndex = 1;
+                        bloc.add(ChangePageEvent(index: 1));
+                      },
+                    ),
+
+                    IconButton(
+                      icon: Column(
+                        children: [
+                          Icon(
+                            Icons.person_2_outlined,
+                            color:
+                                bloc.currentIndex == 0 ? brownNavSelect : null,
+                          ),
+                          Text(
+                            "الحساب",
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: bloc.currentIndex == 0
+                                  ? brownNavSelect
+                                  : null,
+                            ),
+                          )
+                        ],
+                      ),
+                      onPressed: () {
+                        bloc.currentIndex = 0;
+                        bloc.add(ChangePageEvent(index: 0));
                       },
                     ),
                   ],
@@ -150,7 +151,8 @@ class NavBarPage extends StatelessWidget {
                     // colorFilter: const ColorFilter.mode(
                     //     Color.fromARGB(255, 84, 84, 84), BlendMode.srcIn),
                   ),
-                ),              ),
+                ),
+              ),
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.miniCenterDocked,
             );

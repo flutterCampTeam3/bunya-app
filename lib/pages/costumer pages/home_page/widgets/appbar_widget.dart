@@ -11,8 +11,8 @@ class AppBarWidget extends StatelessWidget {
         title: Row(
       children: [
         Image.asset(
-          'assets/images/logo.png',
-          width: 65,
+          'assets/images/bunya_logo.png',
+          width: 55,
         ),
         // const Spacer(),
         IconButton(
