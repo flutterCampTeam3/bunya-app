@@ -23,10 +23,6 @@ class DeleteFollowEvent extends ProfilePostsEvent {
   DeleteFollowEvent({required this.id});
 }
 
-class GetFollowersNumberEvent extends ProfilePostsEvent {
-  final String id;
-  GetFollowersNumberEvent({required this.id});
-}
 
 class GetFollowingNumberEvent extends ProfilePostsEvent {
   final String id;
