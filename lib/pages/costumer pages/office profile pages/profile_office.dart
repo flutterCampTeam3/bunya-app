@@ -123,13 +123,13 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                           BlocConsumer<ProfilePostsBloc, ProfilePostsState>(
                             listener: (context, state) {
                               if (state is LoadingFollowState) {
-                                context.getDialog();
+                                // context.getDialog();
                               }
                               if (state is AddFollowState) {
                                 // context.popNav();
                               }
                               if (state is profilePostsSuccesState) {
-                                context.popNav();
+                                // context.popNav();
                               }
                               if (state is CheckFollowState) {
                                 // context.popNav();
@@ -335,13 +335,7 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                               }
                             },
                             builder: (context, state) {
-                              if (state is LoadingState) {
-                                return Center(
-                                  child: CircularProgressIndicator(
-                                    color: brown,
-                                  ),
-                                );
-                              } else if (state is profilePostsSuccesState) {
+                              if (bloc.classPostId.isNotEmpty) {
                                 print("inside the 22");
                                 return SizedBox(
                                   child: GridView.builder(
@@ -352,12 +346,12 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                         mainAxisSpacing: 10.0,
                                         childAspectRatio: 0.75,
                                       ),
-                                      itemCount: state.classPostId.length,
+                                      itemCount: bloc.classPostId.length,
                                       itemBuilder: (context, index) {
                                         print("inside the loob");
                                         return PostProfileWidget(
-                                          desc: state.classPostId[index],
-                                          path: state.classPostId[index],
+                                          desc: bloc.classPostId[index],
+                                          path: bloc.classPostId[index],
                                         );
                                       }),
                                 );

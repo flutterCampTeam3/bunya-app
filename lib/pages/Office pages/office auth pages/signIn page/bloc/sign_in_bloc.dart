@@ -21,6 +21,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     if (event.email.trim().isNotEmpty && event.password.trim().isNotEmpty) {
       try {
         // here data pase
+        // serviceLocator.userImageUrl =
+        //     await serviceLocator.UrlImage("avatar", serviceLocator.userID);
         await DBService().signIn(email: event.email, password: event.password);
         userType = await DBService().checkUserCustomer();
         emit(SuccessSignInState(msg: "تم تسجيل الدخول بنجاح"));

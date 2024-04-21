@@ -6,8 +6,8 @@ sealed class ProfilePostsState {}
 final class ProfilePostsInitial extends ProfilePostsState {}
 
 class profilePostsSuccesState extends ProfilePostsState{
-  final List<postModel> classPostId;
-  profilePostsSuccesState ({required this.classPostId});
+  // final List<postModel> classPostId;
+  // profilePostsSuccesState ({required this.classPostId});
 
 }
 
