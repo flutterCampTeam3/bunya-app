@@ -12,6 +12,7 @@ class ScaffoldWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: white,
       appBar: hasAppBar
           ? const PreferredSize(
               preferredSize: Size(90, 40),
