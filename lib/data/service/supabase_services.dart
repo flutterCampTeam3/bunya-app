@@ -157,7 +157,6 @@ class DBService {
         .eq('customerId', supabase.auth.currentUser!.id);
     // .single();
     print("i-2-----------$profileData");
-
     if (profileData.isNotEmpty) {
       userType = true;
       return true;

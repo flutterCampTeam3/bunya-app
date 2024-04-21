@@ -5,7 +5,6 @@ import 'package:bunya_app/pages/Office%20pages/profile_page/bloc/profile_office_
 import 'package:bunya_app/pages/Office%20pages/profile_page/edit_office_page.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/widgets/widgets/information_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/image_aacount_widget.dart';
-import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/post_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -18,7 +17,6 @@ class ProfilePageOffice extends StatelessWidget {
 
   @override
   final locator = GetIt.I.get<DBService>();
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

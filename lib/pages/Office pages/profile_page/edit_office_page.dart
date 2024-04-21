@@ -5,7 +5,6 @@ import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/bloc/profile_office_bloc.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/profile_Office_pagee.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/widgets/widgets/info_edit_row.dart';
-import 'package:bunya_app/pages/costumer%20pages/profile_page/bloc/profile_bloc.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/image_aacount_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
