@@ -357,6 +357,8 @@ class DBService {
   Future getLikeNumber({
     required String postId,
   }) async {
+    print("in the function");
+    print("---------------------");
     final postLikeNumber =
         await supabase.from('post_likes').select('*').eq('postId', postId);
     if (postLikeNumber.isNotEmpty) {
@@ -416,12 +418,17 @@ class DBService {
   }
 
   Future<List<postModel>> getPostsId({required String ofiiceId}) async {
+    print("git the post");
     final postData =
         await supabase.from('post').select('*').match({'ofiiceId': ofiiceId});
+    print("git the post11");
+
     final List<postModel> classposts = [];
     for (var element in postData) {
       classposts.add(postModel.fromJson(element));
     }
+    print("git the post11 ${classposts.length}");
+
     return classposts;
   }
 

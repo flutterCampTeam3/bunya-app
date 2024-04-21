@@ -4,6 +4,7 @@ import 'package:bunya_app/pages/Office%20pages/navBar%20page/navBarPage.dart';
 import 'package:bunya_app/pages/costumer%20pages/costumer%20auth%20pages/signIn%20page/signin_customer_page.dart';
 import 'package:bunya_app/pages/costumer%20pages/navBar%20page/navBarPage.dart';
 import 'package:bunya_app/pages/intro%20pages/disconnect_page.dart';
+import 'package:bunya_app/pages/intro%20pages/first_intro.dart';
 import 'package:bunya_app/pages/theme/bloc/drak_mode_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -35,9 +36,8 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final locator = GetIt.I.get<DBService>();
     final bool isSignIn = locator.isSession;
-   
 
-return BlocProvider(
+    return BlocProvider(
       create: (context) => DrakModeBloc()..add(GetThemeEvent()),
       child:
           BlocBuilder<DrakModeBloc, DrakModeState>(builder: (context, state) {
@@ -47,15 +47,15 @@ return BlocProvider(
         return MaterialApp(
             theme: bloc.themeInfo,
             debugShowCheckedModeBanner: false,
-            home:  Directionality(
-              textDirection: TextDirection.rtl,
-              child:  locator.token.isNotEmpty
-                ? isSignIn
-                    ? const NavBarPage()
-                    : const NavBarOfficePage()
-                : const SigninCustomerPage()
-                
-            ));
+            home: const Directionality(
+                textDirection: TextDirection.rtl,
+                child:
+                    // locator.token.isNotEmpty
+                    //     ? isSignIn
+                    //         ? const NavBarPage()
+                    //         : const NavBarOfficePage()
+                    //     :
+                    introPage()));
       }),
     );
   }

@@ -20,8 +20,11 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          ProfilePostsBloc()..add(ShowDataIdEvent(id: office.officeId))..add(CheckFollowNumberEvent(officeId: office.officeId,)),
+      create: (context) => ProfilePostsBloc()
+        ..add(ShowDataIdEvent(id: office.officeId))
+        ..add(CheckFollowNumberEvent(
+          officeId: office.officeId,
+        )),
       child: Builder(builder: (context) {
         final bloc = context.read<ProfilePostsBloc>();
         bloc.add(CheckFollowEvent(id: office.officeId));
@@ -103,6 +106,12 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                             //   fixedSize: WidgetStateProperty.all<Size>(
                             //       const Size(130, 50)),
                             // ),
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all<Color>(lightBrown),
+                              fixedSize: MaterialStateProperty.all<Size>(
+                                  const Size(150, 50)),
+                            ),
                             child: const Text(
                               'محادثة',
                               style: TextStyle(
@@ -117,16 +126,16 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                 context.getDialog();
                               }
                               if (state is AddFollowState) {
-                                context.popNav();
+                                // context.popNav();
                               }
-                              if (state is DeleteFollowState) {
+                              if (state is profilePostsSuccesState) {
                                 context.popNav();
                               }
                               if (state is CheckFollowState) {
-                                context.popNav();
+                                // context.popNav();
                               }
                               if (state is ErrorFollowState) {
-                                context.popNav();
+                                // context.popNav();
                               }
                             },
                             builder: (context, state) {
@@ -147,6 +156,14 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                       //       WidgetStateProperty.all<Size>(
                                       //           const Size(130, 50)),
                                       // ),
+                                      style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                                lightBrown),
+                                        fixedSize:
+                                            MaterialStateProperty.all<Size>(
+                                                const Size(150, 50)),
+                                      ),
                                       child: const Text(
                                         'الغاء المتابعة ',
                                         style: TextStyle(
@@ -172,6 +189,14 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                       //       WidgetStateProperty.all<Size>(
                                       //           const Size(130, 50)),
                                       // ),
+                                      style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStateProperty.all<Color>(
+                                                lightBrown),
+                                        fixedSize:
+                                            MaterialStateProperty.all<Size>(
+                                                const Size(150, 50)),
+                                      ),
                                       child: const Text(
                                         'متابعة',
                                         style: TextStyle(
@@ -317,6 +342,7 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                   ),
                                 );
                               } else if (state is profilePostsSuccesState) {
+                                print("inside the 22");
                                 return SizedBox(
                                   child: GridView.builder(
                                       gridDelegate:
@@ -328,6 +354,7 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                       ),
                                       itemCount: state.classPostId.length,
                                       itemBuilder: (context, index) {
+                                        print("inside the loob");
                                         return PostProfileWidget(
                                           desc: state.classPostId[index],
                                           path: state.classPostId[index],

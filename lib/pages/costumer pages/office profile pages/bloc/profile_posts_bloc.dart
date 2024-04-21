@@ -21,8 +21,10 @@ class ProfilePostsBloc extends Bloc<ProfilePostsEvent, ProfilePostsState> {
       ShowDataIdEvent event, Emitter<ProfilePostsState> emit) async {
     emit(LoadingState());
     try {
+      print("in the bloc of post fitch");
       List<postModel> postList =
           await DBService().getPostsId(ofiiceId: event.id);
+      print("in the bloc of post after the func");
       emit(profilePostsSuccesState(classPostId: postList));
     } catch (e) {
       emit(ErrorprofileShowpostState(msg: 'فشل في جلب البيانات '));
@@ -43,7 +45,7 @@ class ProfilePostsBloc extends Bloc<ProfilePostsEvent, ProfilePostsState> {
 
   FutureOr<void> addFollow(
       AddFollowEvent event, Emitter<ProfilePostsState> emit) async {
-    emit(LoadingFollowState());
+    // emit(LoadingFollowState());
     try {
       print("press the add bottun");
       isFollow = await DBService().addFollowers(officeID: event.id);
@@ -56,7 +58,7 @@ class ProfilePostsBloc extends Bloc<ProfilePostsEvent, ProfilePostsState> {
 
   FutureOr<void> deleteFollow(
       DeleteFollowEvent event, Emitter<ProfilePostsState> emit) async {
-    emit(LoadingFollowState());
+    // emit(LoadingFollowState());
     try {
       isFollow = await DBService().deleteFollowers(officeID: event.id);
       emit(DeleteFollowState(msg: 'تم الغاء متابعة المستخدم'));

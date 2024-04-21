@@ -28,7 +28,7 @@ class _SigninPageState extends State<SigninPage> {
   @override
   Widget build(BuildContext context) {
     TextEditingController emailController =
-        TextEditingController(text: "khaled@gmail.com");
+        TextEditingController(text: "admin@gmail.com");
     TextEditingController passController =
         TextEditingController(text: "000000");
     return BlocProvider(
@@ -53,6 +53,7 @@ class _SigninPageState extends State<SigninPage> {
                         listener: (context, state) {
                       if (state is SuccessSignInState) {
                         // SuccessSignInState Function Here
+                        Navigator.pop(context);
                         context.showSuccessSnackBar(context, state.msg);
                         // BottomBarScreen Here
                         print(bloc.userType);
@@ -63,6 +64,7 @@ class _SigninPageState extends State<SigninPage> {
                         }
                       }
                       if (state is ErrorSignInState) {
+                        Navigator.pop(context);
                         context.showErrorSnackBar(context, state.massage);
                       }
                       if (state is SuccessResetState) {
