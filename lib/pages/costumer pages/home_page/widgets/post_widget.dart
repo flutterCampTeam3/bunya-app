@@ -143,10 +143,12 @@ class PostWidget extends StatelessWidget {
                               ),
                             ),
                             gapWe5,
-                            Text(
-                              profilePath.name,
-                              style: const TextStyle(
-                                  fontSize: 13, fontWeight: FontWeight.bold),
+                            Expanded(
+                              child: Text(
+                                profilePath.name,
+                                style: const TextStyle(
+                                    fontSize: 13, fontWeight: FontWeight.bold),
+                              ),
                             )
                           ],
                         )

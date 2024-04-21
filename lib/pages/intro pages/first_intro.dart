@@ -20,8 +20,7 @@ class introPage extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
           children: [
             Stack(
               alignment: Alignment.center,
@@ -71,10 +70,9 @@ class introPage extends StatelessWidget {
                     context.pushAndRemove(BoardingPage());
                   },
                   style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(lightBrown),
+                    backgroundColor: WidgetStateProperty.all<Color>(lightBrown),
                     fixedSize:
-                        MaterialStateProperty.all<Size>(const Size(150, 50)),
+                        WidgetStateProperty.all<Size>(const Size(150, 50)),
                   ),
                   child: const Text(
                     'عميل',
@@ -91,10 +89,9 @@ class introPage extends StatelessWidget {
                     ));
                   },
                   style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(lightBrown),
+                    backgroundColor: WidgetStateProperty.all<Color>(lightBrown),
                     fixedSize:
-                        MaterialStateProperty.all<Size>(const Size(150, 50)),
+                        WidgetStateProperty.all<Size>(const Size(150, 50)),
                   ),
                   child: const Text(
                     'صاحب شركة',
