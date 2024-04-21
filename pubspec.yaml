@@ -1,13 +1,11 @@
 name: bunya_app
 description: "A new Flutter project."
-publish_to: 'none'
+publish_to: "none"
 version: 0.1.0
 
 environment:
   #sdk: '>=3.4.0-99.1.beta <4.0.0'
-   sdk: '>=3.4.0-99.1.beta <4.0.0'
-
-
+  sdk: 3.3.2
 
 dependencies:
   flutter:
@@ -17,8 +15,8 @@ dependencies:
   get_storage: ^2.1.1
   http: ^1.2.1
   supabase_flutter: ^2.4.0
-  # dash_chat_2: ^0.0.20 
-  flutter_barcode_scanner: ^2.0.0  
+  # dash_chat_2: ^0.0.20
+  flutter_barcode_scanner: ^2.0.0
   flutter_bloc: ^8.1.4
   # flutter_svg: ^2.0.10+1
   flutter_svg: ^1.1.6
@@ -37,19 +35,16 @@ dependencies:
   flutter_launcher_icons: "^0.13.1"
   smooth_page_indicator: ^1.1.0
 
-
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
 
-
 flutter:
   uses-material-design: true
   assets:
-   - assets/images/
-   - .env
+    - assets/images/
+    - .env
 
 flutter_launcher_icons:
   android: "launcher_icon"
