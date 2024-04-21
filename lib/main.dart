@@ -49,8 +49,8 @@ class MainApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             home: Directionality(
                 textDirection: TextDirection.rtl,
-                child: locator.token.isNotEmpty
-                    ? isSignIn
+                child: isSignIn
+                    ? locator.userType
                         ? const NavBarPage()
                         : const NavBarOfficePage()
                     : const introPage()));

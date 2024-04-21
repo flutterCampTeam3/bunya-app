@@ -150,11 +150,14 @@ class DBService {
   }
 
   Future checkUserCustomer() async {
+    print("i------------");
     final profileData = await supabase
         .from('Customer')
         .select()
-        .eq('customerId', supabase.auth.currentUser!.id)
-        .single();
+        .eq('customerId', supabase.auth.currentUser!.id);
+    // .single();
+    print("i-2-----------$profileData");
+
     if (profileData.isNotEmpty) {
       userType = true;
       return true;
@@ -513,7 +516,7 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
       final Session? session = await DBService().getCurrentSession();
       if (session != null) {
         id = await getCurrentUser();
-        checkUserCustomer();
+        await checkUserCustomer();
         isSession = true;
         print("in the function of bool");
         print("-----------------------------2");

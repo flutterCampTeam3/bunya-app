@@ -43,7 +43,11 @@ class PageHeaderSignIn extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
             children: [
-              Image.asset('assets/images/bunya_logo.png'),
+              gapH20,
+              Image.asset(
+                'assets/images/bunya_logo.png',
+                height: context.getHeight() / 3,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
