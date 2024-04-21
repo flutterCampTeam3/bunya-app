@@ -15,8 +15,9 @@ databaseConfig() async {
 
 Future<void> setup() async {
   await GetStorage.init();
-
   GetIt.instance;
-  final locator1 = GetIt.I;
-  locator1.registerSingleton<AppearanceService>(AppearanceService());
+  // final locator1 = GetIt.I;
+  // locator1.registerSingleton<AppearanceService>(AppearanceService());
+  // locator1
+  //     .registerSingletonAsync<AppearanceService>(() async => AppearanceService());
 }

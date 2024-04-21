@@ -27,8 +27,11 @@ class DBService {
 
   String email = '';
 
+  String currentTheme = 'Light';
+
   DBService() {
     getToken();
+    getTheme();
   }
 
   addToken() async {
@@ -43,6 +46,22 @@ class DBService {
       if (token.isEmpty) {
         token = box.read("token");
       }
+    }
+  }
+
+  void getTheme() {
+    if (box.read('theme') == null) {
+      box.write('theme', currentTheme);
+    } else {
+      currentTheme = box.read('theme');
+    }
+  }
+
+  void changeTheme() {
+    if (currentTheme == 'Dark') {
+      box.write('theme', 'Light');
+    } else {
+      box.write('theme', 'Dark');
     }
   }
 

@@ -136,7 +136,6 @@ class ScaffoldWidget extends StatelessWidget {
 
 //-------------------------- dark mode ON
 
-
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/appbar_widget.dart';
@@ -145,7 +144,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ScaffoldWidget extends StatelessWidget {
-  ScaffoldWidget({super.key, required this.hasAppBar, required this.body});
+  const ScaffoldWidget(
+      {super.key, required this.hasAppBar, required this.body});
   final bool hasAppBar;
   final Widget body;
 
@@ -211,7 +211,9 @@ class ScaffoldWidget extends StatelessWidget {
                                 onTap: () {},
                               ),
                               ListTile(
-                                leading: const Icon(Icons.mode_night_outlined),
+                                leading: bloc.light
+                                    ? const Icon(Icons.mode_night_outlined)
+                                    : const Icon(Icons.sunny),
                                 title: const Text(
                                   'الوضع الليلي',
                                   style: TextStyle(fontSize: 20),

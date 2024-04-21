@@ -21,6 +21,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     if (event.email.trim().isNotEmpty && event.password.trim().isNotEmpty) {
       try {
         // here data pase
+        print(event.email);
+        print(event.password);
         await DBService().signIn(email: event.email, password: event.password);
         userType = await DBService().checkUserCustomer();
         emit(SuccessSignInState(msg: "تم تسجيل الدخول بنجاح"));
@@ -33,7 +35,8 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     }
   }
 
-  FutureOr<void> resetPass(ResetPasswordEvent event, Emitter<SignInState> emit) async{
+  FutureOr<void> resetPass(
+      ResetPasswordEvent event, Emitter<SignInState> emit) async {
     emit(LoadingSignInState());
   }
 }

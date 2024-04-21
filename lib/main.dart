@@ -47,15 +47,13 @@ class MainApp extends StatelessWidget {
         return MaterialApp(
             theme: bloc.themeInfo,
             debugShowCheckedModeBanner: false,
-            home: const Directionality(
+            home: Directionality(
                 textDirection: TextDirection.rtl,
-                child:
-                    // locator.token.isNotEmpty
-                    //     ? isSignIn
-                    //         ? const NavBarPage()
-                    //         : const NavBarOfficePage()
-                    //     :
-                    introPage()));
+                child: locator.token.isNotEmpty
+                    ? isSignIn
+                        ? const NavBarPage()
+                        : const NavBarOfficePage()
+                    : const introPage()));
       }),
     );
   }
