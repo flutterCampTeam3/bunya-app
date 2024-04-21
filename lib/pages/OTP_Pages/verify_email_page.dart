@@ -62,6 +62,8 @@ class VerifyEmailPage extends StatelessWidget {
                 
                 },
                 builder: (context, state) {
+                  //--- to cancel the 2 loading circle
+                  /*
                   final prBloc = context.read<PasswordResetBloc>();
                   if (state is OtpLoadingState) {
                     return Center(
@@ -69,7 +71,8 @@ class VerifyEmailPage extends StatelessWidget {
                         color: whiteBrown,
                       ),
                     );
-                  }else {
+                  }else {*/
+                  
                      final prBloc = context.read<PasswordResetBloc>();
                     return Column(
                      mainAxisAlignment: MainAxisAlignment.center,
@@ -116,7 +119,7 @@ class VerifyEmailPage extends StatelessWidget {
                           })
                     ],
                   );
-                  }
+                 // }
                   
                 },)
               ),
