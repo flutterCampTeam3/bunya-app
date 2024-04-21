@@ -31,11 +31,10 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
               initialIndex: 0,
               length: 2,
               child: Scaffold(
-
                 backgroundColor: whiteColor,
                 body: SafeArea(
                     child: Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.only(left: 20.0, right: 20),
                   child: Column(
                     children: [
                       const AppBarOfficeProfileWidget(),
@@ -47,9 +46,48 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                           ),
                           gapWe15,
                           Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [Text(office.name), Text(office.email)],
                           )
                         ],
+                      ),
+                      IntrinsicHeight(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Column(
+                              children: [
+                                Text("المتابَعون"),
+                                gapH20,
+                                Text("500"),
+                              ],
+                            ),
+                            VerticalDivider(
+                              width: 30.0,
+                              thickness: 1.0,
+                              color: blackColor,
+                            ),
+                            const Column(
+                              children: [
+                                Text("المتابِعون"),
+                                gapH20,
+                                Text("90"),
+                              ],
+                            ),
+                            VerticalDivider(
+                              width: 30.0,
+                              thickness: 1.0,
+                              color: blackColor,
+                            ),
+                            const Column(
+                              children: [
+                                Text("الإعجابات"),
+                                gapH20,
+                                Text("1500"),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                       gapH20,
                       Row(
@@ -150,45 +188,7 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                         ],
                       ),
                       gapH20,
-                      IntrinsicHeight(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Column(
-                              children: [
-                                Text("المتابَعون"),
-                                gapH20,
-                                Text("500"),
-                              ],
-                            ),
-                            VerticalDivider(
-                              width: 30.0,
-                              thickness: 1.0,
-                              color: blackColor,
-                            ),
-                            const Column(
-                              children: [
-                                Text("المتابِعون"),
-                                gapH20,
-                                Text("90"),
-                              ],
-                            ),
-                            VerticalDivider(
-                              width: 30.0,
-                              thickness: 1.0,
-                              color: blackColor,
-                            ),
-                            const Column(
-                              children: [
-                                Text("الإعجابات"),
-                                gapH20,
-                                Text("1500"),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                      gapH20,
+                      // gapH20,
                       Container(
                         padding: const EdgeInsets.all(2),
                         height: 40,
@@ -336,7 +336,8 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                 );
                               } else {
                                 return const SizedBox(
-                                  child: Center(child: Text("لا يوجد منشورات حتى الان")),
+                                  child: Center(
+                                      child: Text("لا يوجد منشورات حتى الان")),
                                 );
                               }
                             },
