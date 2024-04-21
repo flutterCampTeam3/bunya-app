@@ -1,6 +1,7 @@
 import 'package:bunya_app/data/service/supabase_configration.dart';
 import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:bunya_app/pages/Office%20pages/navBar%20page/navBarPage.dart';
+import 'package:bunya_app/pages/costumer%20pages/aichat/chat.dart';
 import 'package:bunya_app/pages/costumer%20pages/navBar%20page/navBarPage.dart';
 import 'package:bunya_app/pages/intro%20pages/disconnect_page.dart';
 import 'package:bunya_app/pages/intro%20pages/first_intro.dart';
@@ -45,6 +46,6 @@ class MainApp extends StatelessWidget {
                 ? isSignIn
                     ? const NavBarPage()
                     : const NavBarOfficePage()
-                : const introPage()));
+                : const Chat()));
   }
 }
