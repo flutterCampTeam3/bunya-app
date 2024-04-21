@@ -12,12 +12,12 @@ class introPage extends StatelessWidget {
       body: Container(
         height: double.maxFinite,
         width: double.maxFinite,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [whiteColor, whiteColor],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter),
-        ),
+        decoration: const BoxDecoration(
+            // gradient: LinearGradient(colors: [
+            //   Theme.of(context).colorScheme.background,
+            //   Theme.of(context).colorScheme.background
+            // ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
+            ),
         child: ListView(
           children: [
             Stack(
@@ -73,7 +73,8 @@ class introPage extends StatelessWidget {
                   //       WidgetStateProperty.all<Size>(const Size(150, 50)),
                   // ),
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(lightBrown),
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(lightBrown),
                     fixedSize:
                         MaterialStateProperty.all<Size>(const Size(150, 50)),
                   ),
@@ -98,7 +99,8 @@ class introPage extends StatelessWidget {
                   // ),
 
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(lightBrown),
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(lightBrown),
                     fixedSize:
                         MaterialStateProperty.all<Size>(const Size(150, 50)),
                   ),

@@ -31,7 +31,7 @@ class VerifyOtpPage extends StatelessWidget {
                 icon: const Icon(Icons.arrow_forward_ios_outlined)),
           ],
         ),
-        backgroundColor: whiteColor,
+        // backgroundColor: whiteColor,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: SingleChildScrollView(
@@ -91,7 +91,7 @@ class VerifyOtpPage extends StatelessWidget {
                         "تم إرسال الرمز إلى بريدك الإلكتروني",
                         style: TextStyle(
                           fontWeight: FontWeight.w300,
-                          color: blackColor,
+                          // color: blackColor,
                           fontSize: context.getWidth() * .06,
                         ),
                       ),
@@ -102,7 +102,7 @@ class VerifyOtpPage extends StatelessWidget {
                             "يرجى إدخال الرمز للتحقق",
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
-                              color: blackColor,
+                              // color: blackColor,
                               fontSize: context.getWidth() * .05,
                             ),
                           )),

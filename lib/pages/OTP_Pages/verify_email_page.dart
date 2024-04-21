@@ -82,7 +82,7 @@ class VerifyEmailPage extends StatelessWidget {
                               "هل نسيت كلمة المرور؟",
                               style: TextStyle(
                                 fontWeight: FontWeight.w300,
-                                color: blackColor,
+                                // color: blackColor,
                                 fontSize: context.getWidth() * .06,
                               ),
                             ),
@@ -93,7 +93,7 @@ class VerifyEmailPage extends StatelessWidget {
                                   "يرجى إدخال الإيميل الخاص بك",
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
-                                    color: blackColor,
+                                    // color: blackColor,
                                     fontSize: context.getWidth() * .05,
                                   ),
                                 )),

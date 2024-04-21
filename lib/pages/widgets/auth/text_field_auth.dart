@@ -37,7 +37,7 @@ class textFieldAuth extends StatelessWidget {
             borderSide: BorderSide(color: brown),
           ),
           labelText: label,
-          labelStyle: TextStyle(color: blackColor),
+          // labelStyle: TextStyle(color: blackColor),
           filled: true,
           fillColor: freewhiteBrown),
       obscureText: obscureText,

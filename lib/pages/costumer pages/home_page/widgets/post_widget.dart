@@ -92,7 +92,10 @@ class PostWidget extends StatelessWidget {
                                         bloc.add(AddLikeHomeEvent(
                                             id: description.postId));
                                       },
-                                      child: const Icon(Icons.favorite_border))
+                                      child: const Icon(
+                                        Icons.favorite_border,
+                                        color: Colors.black,
+                                      ))
                                   : InkWell(
                                       onTap: () {
                                         bloc.add(DeleteLikeHomeEvent(
@@ -109,6 +112,7 @@ class PostWidget extends StatelessWidget {
                                 child: Text("${bloc.likeNumber} لايك",
                                     style: GoogleFonts.balooBhaijaan2(
                                       textStyle: const TextStyle(
+                                          color: Colors.black,
                                           fontWeight: FontWeight.bold),
                                     )))
                           ],
@@ -118,6 +122,7 @@ class PostWidget extends StatelessWidget {
                         description.desc,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
+                        style: TextStyle(color: blackColor),
                       ),
                       gapH15,
                       Row(
@@ -144,11 +149,12 @@ class PostWidget extends StatelessWidget {
                             child: Text(
                               profilePath.name,
                               style: const TextStyle(
-                                  fontSize: 12, fontWeight: FontWeight.bold),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
                             ),
                           )
                         ],
-                        
                       )
                     ],
                   ),

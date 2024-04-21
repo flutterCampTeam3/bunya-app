@@ -167,7 +167,7 @@ class ScaffoldWidget extends StatelessWidget {
               ///--------------- drawer design
               ? Drawer(
                   child: Container(
-                    color: white,
+                    color: Theme.of(context).colorScheme.background,
                     child: ListView(
                       children: [
                         const DrawerHeader(
@@ -175,7 +175,9 @@ class ScaffoldWidget extends StatelessWidget {
                             child: Text(
                               'الاعدادات والخصوصية',
                               style: TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.bold),
+                                  // color: Colors.black,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
@@ -189,7 +191,7 @@ class ScaffoldWidget extends StatelessWidget {
                         ),
                         Container(
                           decoration: BoxDecoration(
-                              color: brownDrawer,
+                              color: Theme.of(context).colorScheme.onBackground,
                               borderRadius: BorderRadius.circular(10)),
                           margin: const EdgeInsets.all(10),
                           child: Column(
@@ -246,7 +248,7 @@ class ScaffoldWidget extends StatelessWidget {
                         Container(
                           margin: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                              color: brownDrawer,
+                              color: Theme.of(context).colorScheme.onBackground,
                               borderRadius: BorderRadius.circular(10)),
                           child: Column(
                             children: [

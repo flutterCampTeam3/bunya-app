@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 class TextFieldConfirmPass extends StatefulWidget {
   const TextFieldConfirmPass({
-    Key? key,
+    super.key,
     required this.confController,
     required this.passController,
-  }) : super(key: key);
+  });
 
   final TextEditingController confController;
   final TextEditingController passController;
@@ -24,7 +24,7 @@ class _TextFieldConfirmPassState extends State<TextFieldConfirmPass> {
       decoration: InputDecoration(
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(color:whiteBrown),
+          borderSide: BorderSide(color: whiteBrown),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
@@ -32,10 +32,10 @@ class _TextFieldConfirmPassState extends State<TextFieldConfirmPass> {
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
-          borderSide: BorderSide(color:brown),
+          borderSide: BorderSide(color: brown),
         ),
         labelText: "تأكيد كلمة المرور",
-        labelStyle: TextStyle(color: blackColor),
+        // labelStyle: TextStyle(color: blackColor),
         filled: true,
         fillColor: freewhiteBrown,
         suffixIcon: IconButton(
@@ -44,8 +44,8 @@ class _TextFieldConfirmPassState extends State<TextFieldConfirmPass> {
               obscureText = !obscureText;
             });
           },
-           icon: Icon(
-            obscureText ? Icons.visibility_off  : Icons.visibility,
+          icon: Icon(
+            obscureText ? Icons.visibility_off : Icons.visibility,
             color: whiteBrown,
           ),
         ),
