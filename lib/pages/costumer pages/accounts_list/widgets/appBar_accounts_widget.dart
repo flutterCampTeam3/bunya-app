@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 class AppBarAccoutWidget extends StatelessWidget {
   const AppBarAccoutWidget({
-    super.key,
+    super.key, required this.controllerSearch,
   });
-
+  final controllerSearch ;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -34,7 +34,7 @@ class AppBarAccoutWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: Colors.grey),
                 ),
-                child: const Row(
+                child:  Row(
                   children: [
                     Icon(Icons.search),
                     SizedBox(width: 5),
@@ -45,7 +45,9 @@ class AppBarAccoutWidget extends StatelessWidget {
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.zero,
                           isCollapsed: true,
+                          
                         ),
+                        controller: controllerSearch,
                       ),
                     ),
                   ],

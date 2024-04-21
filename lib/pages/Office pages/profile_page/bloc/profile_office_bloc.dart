@@ -6,10 +6,13 @@ import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:meta/meta.dart';
 
+import '../../../../data/model/post_model.dart';
+
 part 'profile_office_event.dart';
 part 'profile_office_state.dart';
 
 class ProfileOfficeBloc extends Bloc<ProfileOfficeEvent, ProfileOfficeState> {
+     List<postModel> classPostId = [];
   final locator = GetIt.I.get<DBService>();
   // String? description;
   // String? email;
@@ -21,10 +24,28 @@ class ProfileOfficeBloc extends Bloc<ProfileOfficeEvent, ProfileOfficeState> {
     on<GetOfficeInfoEvent>(getOfficeInfo);
     // on<UpdateUserInfoEvent>(updateUserInfo);
     // on<SignOutEvent>(signOut);
+    on<ShowDataOfficesIdEvent>(fetchDataId);
     on<ProfileOfficeEvent>((event, emit) {
       // TODO: implement event handler
     });
   }
+
+
+Future<void> fetchDataId(
+      ShowDataOfficesIdEvent event, Emitter<ProfileOfficeState> emit) async {
+    emit(LoadingState());
+    try {
+      // List<postModel> postList =
+      //     await DBService().getPostsId(ofiiceId: event.id);
+      classPostId = await DBService().getPostsId(ofiiceId: event.id);
+
+
+      emit(profilePostsSuccesState());
+    } catch (e) {
+      emit(ProfileOfficeErrorState(msg: 'فشل في جلب البيانات '));
+    }
+  }
+
   Future<FutureOr<void>> getOfficeInfo(
       GetOfficeInfoEvent event, Emitter<ProfileOfficeState> emit) async {
     print("in the bloc get");

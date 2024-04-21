@@ -20,6 +20,8 @@ class ConstraintAccountList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        late TextEditingController searchController = TextEditingController();
+
     return Directionality(
       textDirection: TextDirection.rtl,
       child: BlocProvider(
@@ -41,7 +43,7 @@ class ConstraintAccountList extends StatelessWidget {
                   child: SafeArea(
                     child: Column(
                       children: [
-                        const AppBarAccoutWidget(),
+                         AppBarAccoutWidget(controllerSearch: searchController,),
                         Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Column(
