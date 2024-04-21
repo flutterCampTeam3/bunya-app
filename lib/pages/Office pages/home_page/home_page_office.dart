@@ -190,8 +190,11 @@ class HomePageOffice extends StatelessWidget {
                                         context.pushTo(
                                             view: PostPage(
                                                 post: state.classPost[index],
-                                                Office:
-                                                    state.classOffices[index]));
+                                                office:
+                                                    state.classOffices[index]),
+                                            onValue: (_) {
+                                              bloc.add(ShowDataOfficesEvent());
+                                            });
                                       },
                                       child: PostWidget(
                                         postPath: state.classPost[index],

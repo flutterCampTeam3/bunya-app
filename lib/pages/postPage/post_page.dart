@@ -11,17 +11,17 @@ import '../../../helper/sized.dart';
 import 'bloc/post_page_bloc.dart';
 
 class PostPage extends StatelessWidget {
-  const PostPage({super.key, required this.post, required this.Office});
+  const PostPage({super.key, required this.post, required this.office});
   final postModel post;
-  final OfficesModel Office;
+  final OfficesModel office;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          PostPageBloc()..add(ShowPostDataIdEvent(id: Office.officeId)),
+      create: (context) => PostPageBloc()
+        ..add(CheckPostFollowEvent(id: office.officeId))
+        ..add(CheckLikePostEvent(id: post.postId)),
       child: Builder(builder: (context) {
         final bloc = context.read<PostPageBloc>();
-
         return Directionality(
           textDirection: TextDirection.rtl,
           child: Scaffold(
@@ -36,14 +36,23 @@ class PostPage extends StatelessWidget {
             body: BlocConsumer<PostPageBloc, PostPageState>(
                 listener: (context, state) {
               if (state is ErrorPostShowpostState) {
-                // Navigator.pop(context);
                 context.showErrorSnackBar(context, state.msg);
+              }
+              if (state is AddFollowPostState) {
+                context.showSuccessSnackBar(context, state.msg);
+              }
+              if (state is DeleteFollowPostState) {
+                context.showSuccessSnackBar(context, state.msg);
               }
             }, builder: (context, state) {
               if (state is LoadingPostState) {
-                return Center(
-                  child: CircularProgressIndicator(
-                    color: brown,
+                return SizedBox(
+                  height: 100,
+                  width: 100,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: brown,
+                    ),
                   ),
                 );
               } else if (state is PostsSuccesState) {
@@ -65,33 +74,55 @@ class PostPage extends StatelessWidget {
                             ),
                             child: ClipOval(
                               child: Image.network(
-                                Office.image,
+                                office.image,
                                 fit: BoxFit.cover,
                               ),
                             ),
                           ),
                           gapWe5,
                           Text(
-                            (Office.name),
+                            (office.name),
                             style: const TextStyle(
                                 fontSize: 16, fontWeight: FontWeight.bold),
                           ),
                           const Spacer(),
-                          ElevatedButton(
-                              onPressed: () {},
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: white,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                              ),
-                              child: Text(
-                                "متابعة",
-                                style: TextStyle(
-                                    color: blackColor,
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold),
-                              )),
+                          bloc.isFollow
+                              ? ElevatedButton(
+                                  onPressed: () {
+                                    bloc.add(DeleteFollowPostEvent(
+                                        id: office.officeId));
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: white,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    "إلغاء المتابعة",
+                                    style: TextStyle(
+                                        color: blackColor,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold),
+                                  ))
+                              : ElevatedButton(
+                                  onPressed: () {
+                                    bloc.add(AddFollowPostEvent(
+                                        id: office.officeId));
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: white,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  ),
+                                  child: Text(
+                                    "متابعة",
+                                    style: TextStyle(
+                                        color: blackColor,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold),
+                                  )),
                         ],
                       ),
                     ),
@@ -107,19 +138,31 @@ class PostPage extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.favorite_border)),
+                        !bloc.isHomeLike
+                            ? IconButton(
+                                onPressed: () {
+                                  bloc.add(AddLikePostEvent(id: post.postId));
+                                },
+                                icon: const Icon(Icons.favorite_border))
+                            : IconButton(
+                                onPressed: () {
+                                  bloc.add(
+                                      DeleteLikePostEvent(id: post.postId));
+                                },
+                                icon: const Icon(
+                                  Icons.favorite,
+                                  color: Colors.red,
+                                ))
                       ],
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(right: 5),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 5),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Text(
-                            "100 لايك",
-                            style: TextStyle(
+                            "${bloc.likeNumber} لايك",
+                            style: const TextStyle(
                                 fontSize: 15, fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -132,9 +175,7 @@ class PostPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            // "اضائات جميلة بمواصفات مميزه وحديثه وتتمع بمزايا عديده لجعل شقتك او منزلك يبدو افضل واجمل وايضا تمتاز باستهلاكها القليل للطاقة كل ذالك بسعر مميز واقتصادي"
                             post.desc,
-
                             style: const TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.w500),
                           ),

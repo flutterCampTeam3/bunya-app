@@ -189,7 +189,7 @@ class HomePageCustomer extends StatelessWidget {
                                         context.pushTo(
                                             view: PostPage(
                                                 post: state.classPost[index],
-                                                Office:
+                                                office:
                                                     state.classOffices[index]));
                                       },
                                       child: PostWidget(

@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class PostWidget extends StatelessWidget {
-  PostWidget(
+  const PostWidget(
       {super.key,
       required this.postPath,
       required this.description,
@@ -86,16 +86,14 @@ class PostWidget extends StatelessWidget {
                               ),
                               Positioned(
                                 bottom: 15,
-                                child: bloc.isHomeLike
+                                child: !bloc.isHomeLike
                                     ? InkWell(
                                         onTap: () {
                                           bloc.add(AddLikeHomeEvent(
                                               id: description.postId));
                                         },
-                                        child: Icon(
-                                          Icons.favorite,
-                                          color: red,
-                                        ))
+                                        child:
+                                            const Icon(Icons.favorite_border))
                                     : InkWell(
                                         onTap: () {
                                           bloc.add(DeleteLikeHomeEvent(
