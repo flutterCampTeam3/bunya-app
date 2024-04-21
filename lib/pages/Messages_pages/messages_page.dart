@@ -1,4 +1,4 @@
-
+import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/Messages_pages/widgets/message_list.dart';
@@ -7,15 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
-
 class MessageListPage extends StatelessWidget {
-  const MessageListPage({Key? key});
+  const MessageListPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
+        backgroundColor: white,
         body: Stack(
           children: [
             // Background Image
@@ -56,10 +56,7 @@ class MessageListPage extends StatelessWidget {
                                   path: 'assets/images/benaa_cpmpany.png',
                                   title:
                                       "رسالة من شركة بناء للمقاولات والإستثمار",
-                                 
-                                  onTap: () {
-                                    
-                                  },
+                                  onTap: () {},
                                   sendTime: '12:00',
                                 ),
                                 gapWe20,
@@ -67,10 +64,7 @@ class MessageListPage extends StatelessWidget {
                                 MessageListWidget(
                                   path: 'assets/images/mabany.png',
                                   title: "شركة مباني الرياض للمقاولات العامة",
-                                  
-                                  onTap: () {
-                                    
-                                  },
+                                  onTap: () {},
                                   sendTime: '9:00',
                                 ),
                               ],

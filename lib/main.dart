@@ -1,9 +1,12 @@
 import 'package:bunya_app/data/service/supabase_configration.dart';
 import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:bunya_app/pages/Office%20pages/navBar%20page/navBarPage.dart';
+import 'package:bunya_app/pages/costumer%20pages/costumer%20auth%20pages/signIn%20page/signin_customer_page.dart';
 import 'package:bunya_app/pages/costumer%20pages/navBar%20page/navBarPage.dart';
 import 'package:bunya_app/pages/intro%20pages/disconnect_page.dart';
 import 'package:bunya_app/pages/intro%20pages/first_intro.dart';
+import 'package:bunya_app/pages/theme/bloc/drak_mode_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 // import 'package:device_preview/device_preview.dart';import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,17 +37,28 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final locator = GetIt.I.get<DBService>();
     final bool isSignIn = locator.isSession;
-    return MaterialApp(
-        theme: ThemeData(
-          fontFamily: GoogleFonts.aBeeZee().fontFamily,
-        ),
-        debugShowCheckedModeBanner: false,
-        home: Directionality(
-            textDirection: TextDirection.rtl,
-            child: locator.token.isNotEmpty
+   
+
+return BlocProvider(
+      create: (context) => DrakModeBloc()..add(GetThemeEvent()),
+      child:
+          BlocBuilder<DrakModeBloc, DrakModeState>(builder: (context, state) {
+        final bloc = context.read<DrakModeBloc>();
+
+//-----------------
+        return MaterialApp(
+            theme: bloc.themeInfo,
+            debugShowCheckedModeBanner: false,
+            home:  Directionality(
+              textDirection: TextDirection.rtl,
+              child:  locator.token.isNotEmpty
                 ? isSignIn
                     ? const NavBarPage()
                     : const NavBarOfficePage()
-                : const introPage()));
+                : const SigninCustomerPage()
+                
+            ));
+      }),
+    );
   }
 }

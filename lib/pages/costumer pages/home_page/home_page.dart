@@ -2,6 +2,7 @@ import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/costumer%20pages/accounts_list/account_list.dart';
+import 'package:bunya_app/pages/costumer%20pages/home_page/bloc/home_bloc.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/accounts_home_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/image_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/post_widget.dart';
@@ -186,11 +187,16 @@ class HomePageCustomer extends StatelessWidget {
                                   itemBuilder: (context, index) {
                                     return InkWell(
                                       onTap: () {
-                                        context.pushTo(
-                                            view: PostPage(
-                                                post: state.classPost[index],
-                                                office:
-                                                    state.classOffices[index]));
+                                        context
+                                            .pushTo(
+                                                view: PostPage(
+                                                    post:
+                                                        state.classPost[index],
+                                                    office: state
+                                                        .classOffices[index]))
+                                            .then((_) {
+                                          bloc.add(ShowDataEvent());
+                                        });
                                       },
                                       child: PostWidget(
                                         postPath: state.classPost[index],

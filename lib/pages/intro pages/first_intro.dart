@@ -1,8 +1,6 @@
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
-import 'package:bunya_app/pages/intro%20pages/customer/first_intro.dart';
 import 'package:bunya_app/pages/intro%20pages/customer/onboarding_screen.dart';
-import 'package:bunya_app/pages/intro%20pages/offices/first_intro.dart';
 import 'package:flutter/material.dart';
 
 class introPage extends StatelessWidget {
@@ -74,6 +72,11 @@ class introPage extends StatelessWidget {
                   //   fixedSize:
                   //       WidgetStateProperty.all<Size>(const Size(150, 50)),
                   // ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(lightBrown),
+                    fixedSize:
+                        MaterialStateProperty.all<Size>(const Size(150, 50)),
+                  ),
                   child: const Text(
                     'عميل',
                     style: TextStyle(
@@ -93,6 +96,12 @@ class introPage extends StatelessWidget {
                   //   fixedSize:
                   //       WidgetStateProperty.all<Size>(const Size(150, 50)),
                   // ),
+
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(lightBrown),
+                    fixedSize:
+                        MaterialStateProperty.all<Size>(const Size(150, 50)),
+                  ),
                   child: const Text(
                     'صاحب شركة',
                     style: TextStyle(
