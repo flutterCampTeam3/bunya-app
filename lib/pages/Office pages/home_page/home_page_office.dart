@@ -194,6 +194,7 @@ class HomePageOffice extends StatelessWidget {
                                                     state.classOffices[index]),
                                             onValue: (_) {
                                               bloc.add(ShowDataOfficesEvent());
+                                              
                                             });
                                       },
                                       child: PostWidget(

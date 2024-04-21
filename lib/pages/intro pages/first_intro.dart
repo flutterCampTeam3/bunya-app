@@ -69,11 +69,19 @@ class introPage extends StatelessWidget {
                   onPressed: () {
                     context.pushAndRemove(BoardingPage());
                   },
+<<<<<<< HEAD
                   // style: ButtonStyle(
                   //   backgroundColor: WidgetStateProperty.all<Color>(lightBrown),
                   //   fixedSize:
                   //       WidgetStateProperty.all<Size>(const Size(150, 50)),
                   // ),
+=======
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(lightBrown),
+                    fixedSize:
+                        MaterialStateProperty.all<Size>(const Size(150, 50)),
+                  ),
+>>>>>>> origin/dark_mode
                   child: const Text(
                     'عميل',
                     style: TextStyle(
@@ -88,11 +96,19 @@ class introPage extends StatelessWidget {
                       isCustomer: false,
                     ));
                   },
+<<<<<<< HEAD
                   // style: ButtonStyle(
                   //   backgroundColor: WidgetStateProperty.all<Color>(lightBrown),
                   //   fixedSize:
                   //       WidgetStateProperty.all<Size>(const Size(150, 50)),
                   // ),
+=======
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all<Color>(lightBrown),
+                    fixedSize:
+                        MaterialStateProperty.all<Size>(const Size(150, 50)),
+                  ),
+>>>>>>> origin/dark_mode
                   child: const Text(
                     'صاحب شركة',
                     style: TextStyle(
