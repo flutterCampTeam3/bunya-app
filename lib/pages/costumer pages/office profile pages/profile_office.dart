@@ -58,11 +58,11 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Column(
+                            Column(
                               children: [
                                 Text("المتابَعون"),
                                 gapH20,
-                                Text("500"),
+                                Text("${bloc.followerNumber}"),
                               ],
                             ),
                             VerticalDivider(
@@ -70,11 +70,11 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                               thickness: 1.0,
                               color: blackColor,
                             ),
-                            const Column(
+                            Column(
                               children: [
                                 Text("المتابِعون"),
                                 gapH20,
-                                Text("90"),
+                                Text("${bloc.followingNumber}"),
                               ],
                             ),
                             VerticalDivider(
@@ -100,18 +100,18 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                             onPressed: () {
                               //
                             },
-                            // style: ButtonStyle(
-                            //   backgroundColor:
-                            //       WidgetStateProperty.all<Color>(lightBrown),
-                            //   fixedSize: WidgetStateProperty.all<Size>(
-                            //       const Size(130, 50)),
-                            // ),
                             style: ButtonStyle(
                               backgroundColor:
-                                  MaterialStateProperty.all<Color>(lightBrown),
-                              fixedSize: MaterialStateProperty.all<Size>(
-                                  const Size(150, 50)),
+                                  WidgetStateProperty.all<Color>(lightBrown),
+                              fixedSize: WidgetStateProperty.all<Size>(
+                                  const Size(130, 50)),
                             ),
+                            // style: ButtonStyle(
+                            //   backgroundColor:
+                            //       MaterialStateProperty.all<Color>(lightBrown),
+                            //   fixedSize: MaterialStateProperty.all<Size>(
+                            //       const Size(150, 50)),
+                            // ),
                             child: const Text(
                               'محادثة',
                               style: TextStyle(
@@ -122,92 +122,76 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                           ),
                           BlocConsumer<ProfilePostsBloc, ProfilePostsState>(
                             listener: (context, state) {
-                              if (state is LoadingFollowState) {
-                                // context.getDialog();
-                              }
-                              if (state is AddFollowState) {
-                                // context.popNav();
-                              }
-                              if (state is profilePostsSuccesState) {
-                                // context.popNav();
-                              }
-                              if (state is CheckFollowState) {
-                                // context.popNav();
-                              }
                               if (state is ErrorFollowState) {
-                                // context.popNav();
+                                context.showErrorSnackBar(context, state.msg);
                               }
                             },
                             builder: (context, state) {
-                              return Row(
-                                children: [
-                                  Visibility(
-                                    visible: bloc.isFollow,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        bloc.add(DeleteFollowEvent(
-                                            id: office.officeId));
-                                      },
-                                      // style: ButtonStyle(
-                                      //   backgroundColor:
-                                      //       WidgetStateProperty.all<Color>(
-                                      //           lightBrown),
-                                      //   fixedSize:
-                                      //       WidgetStateProperty.all<Size>(
-                                      //           const Size(130, 50)),
-                                      // ),
-                                      style: ButtonStyle(
-                                        backgroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                                lightBrown),
-                                        fixedSize:
-                                            MaterialStateProperty.all<Size>(
-                                                const Size(150, 50)),
-                                      ),
-                                      child: const Text(
-                                        'الغاء المتابعة ',
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
+                              if (state is LoadingState) {
+                                return SizedBox(
+                                  height: 150,
+                                  width: 150,
+                                  child: Center(
+                                    child: CircularProgressIndicator(
+                                      color: brown,
                                     ),
                                   ),
-                                  Visibility(
-                                    visible: !bloc.isFollow,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        print("press the add bottun");
-                                        bloc.add(AddFollowEvent(
-                                            id: office.officeId));
-                                      },
-                                      // style: ButtonStyle(
-                                      //   backgroundColor:
-                                      //       WidgetStateProperty.all<Color>(
-                                      //           brown),
-                                      //   fixedSize:
-                                      //       WidgetStateProperty.all<Size>(
-                                      //           const Size(130, 50)),
-                                      // ),
-                                      style: ButtonStyle(
-                                        backgroundColor:
-                                            MaterialStateProperty.all<Color>(
-                                                lightBrown),
-                                        fixedSize:
-                                            MaterialStateProperty.all<Size>(
-                                                const Size(150, 50)),
-                                      ),
-                                      child: const Text(
-                                        'متابعة',
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
+                                );
+                              } else {
+                                return Row(
+                                  children: [
+                                    Visibility(
+                                      visible: bloc.isFollow,
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          bloc.add(DeleteFollowEvent(
+                                              id: office.officeId));
+                                        },
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              WidgetStateProperty.all<Color>(
+                                                  lightBrown),
+                                          fixedSize:
+                                              WidgetStateProperty.all<Size>(
+                                                  const Size(130, 50)),
+                                        ),
+                                        child: const Text(
+                                          'الغاء المتابعة ',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              );
+                                    Visibility(
+                                      visible: !bloc.isFollow,
+                                      child: ElevatedButton(
+                                        onPressed: () {
+                                          print("press the add bottun");
+                                          bloc.add(AddFollowEvent(
+                                              id: office.officeId));
+                                        },
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              WidgetStateProperty.all<Color>(
+                                                  brown),
+                                          fixedSize:
+                                              WidgetStateProperty.all<Size>(
+                                                  const Size(130, 50)),
+                                        ),
+                                        child: const Text(
+                                          'متابعة',
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              }
                             },
                           ),
                         ],
@@ -221,9 +205,6 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                             borderRadius: BorderRadius.circular(20),
                             color: lightbrownColor),
                         child: TabBar(
-                          onTap: (value) {
-                            //
-                          },
                           // indicatorSize: TabBarIndicatorSize.values[2],
                           indicator: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
@@ -258,27 +239,6 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                           SingleChildScrollView(
                             child: Column(
                               children: [
-                                // Align(
-                                //   alignment: Alignment.topLeft,
-                                //   child: IconButton(
-                                //       onPressed: () {
-                                //         Navigator.push(
-                                //           context,
-                                //           MaterialPageRoute(
-                                //             builder: (context) {
-                                //               // Return the widget for the new route here
-                                //               return EditPageOffice(
-                                //                 name: state.name,
-                                //               );
-                                //             },
-                                //           ),
-                                //         );
-                                //       },
-                                //       icon: Image.asset(
-                                //         'assets/images/edit.png',
-                                //         width: 18,
-                                //       )),
-                                // ),
                                 InformationWidgetOffice(
                                   widget: Column(
                                     crossAxisAlignment:
@@ -336,7 +296,6 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                             },
                             builder: (context, state) {
                               if (bloc.classPostId.isNotEmpty) {
-                                print("inside the 22");
                                 return SizedBox(
                                   child: GridView.builder(
                                       gridDelegate:
@@ -348,7 +307,6 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                       ),
                                       itemCount: bloc.classPostId.length,
                                       itemBuilder: (context, index) {
-                                        print("inside the loob");
                                         return PostProfileWidget(
                                           desc: bloc.classPostId[index],
                                           path: bloc.classPostId[index],
@@ -363,24 +321,6 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                               }
                             },
                           )
-                          // SingleChildScrollView(
-                          //   child: Column(
-                          //     children: [
-                          //       PostProfileWidget(
-                          //         path:post!.image,
-                          //         desc:
-                          //             post!.desc,
-                          //       ),
-                          //       gapH15,
-                          //       PostProfileWidget(
-                          //        path:post!.image,
-                          //         likes: "100 لايك",
-                          //         desc:
-                          //             post!.desc,
-                          //       ),
-                          //     ],
-                          //   ),
-                          // ),
                         ]),
                       ),
                     ],

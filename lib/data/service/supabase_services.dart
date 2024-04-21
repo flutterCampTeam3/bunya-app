@@ -153,8 +153,7 @@ class DBService {
     final profileData = await supabase
         .from('Customer')
         .select()
-        .eq('customerId', supabase.auth.currentUser!.id)
-        .single();
+        .eq('customerId', supabase.auth.currentUser!.id);
     if (profileData.isNotEmpty) {
       userType = true;
       return true;
