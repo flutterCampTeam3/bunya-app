@@ -8,6 +8,7 @@ import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/widgets/auth/button_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../widgets/auth/signin_text_field_auth.dart';
@@ -107,11 +108,11 @@ class _SigninPageState extends State<SigninPage> {
                                   obscureText: false,
                                   email: true,
                                 ),
-                                gapH40,
+                                gapH30,
                                 SigninPassTextField(
                                   controller: passController,
                                 ),
-                                gapH20,
+                                gapH10,
                                 InkWell(
                                     onTap: () {
                                       // Here VerifyEmailPage
@@ -126,26 +127,9 @@ class _SigninPageState extends State<SigninPage> {
                                           fontWeight: FontWeight.bold),
                                     )),
                                 gapH10,
-                                InkWell(
-                                    onTap: () {
-                                      context.pushTo(view: const introPage());
-                                    },
-                                    child: Text(
-                                      "تغيير حساب المستخدم",
-                                      style: TextStyle(
-                                          decoration: TextDecoration.underline,
-                                          color: blackColor,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold),
-                                    )),
-                              ],
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
                                 ButtonWidget(
-                                  backgroundColor: darkBrown,
-                                  text: "تسجيل دخول",
+                                  backgroundColor: brown,
+                                  text: "تسجيل الدخول",
                                   onPressed: () {
                                     if (_formKey.currentState!.validate()) {
                                       bloc.add(AddSignInEvent(
@@ -155,35 +139,47 @@ class _SigninPageState extends State<SigninPage> {
                                   },
                                   textColor: whiteColor,
                                 ),
-                                gapH15,
-                                RichText(
-                                  text: TextSpan(children: [
-                                    TextSpan(
-                                      text: "لا يوجد لديك حساب؟  ",
+                              ],
+                            ),
+
+                            ButtonWidget(
+                              backgroundColor: darkBrown,
+                              text: "تغيير حساب المستخدم",
+                              onPressed: () {
+                                context.pushTo(view: const introPage());
+                              },
+                              textColor: whiteColor,
+                            ),
+                            // gapH5,
+                            Align(
+                              alignment: Alignment.center,
+                              child: RichText(
+                                text: TextSpan(children: [
+                                  TextSpan(
+                                    text: "لا يوجد لديك حساب؟  ",
+                                    style: TextStyle(
+                                      color: whiteBrown,
+                                      fontSize: 15,
+                                      fontFamily:
+                                          GoogleFonts.vazirmatn().fontFamily,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                      text: "سجل الآن",
                                       style: TextStyle(
-                                        color: whiteBrown,
+                                        color: darkBrown,
                                         fontSize: 15,
+                                        fontWeight: FontWeight.w600,
                                         fontFamily:
                                             GoogleFonts.vazirmatn().fontFamily,
                                       ),
-                                    ),
-                                    TextSpan(
-                                        text: "سجل الآن",
-                                        style: TextStyle(
-                                          color: darkBrown,
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w600,
-                                          fontFamily: GoogleFonts.vazirmatn()
-                                              .fontFamily,
-                                        ),
-                                        recognizer: TapGestureRecognizer()
-                                          ..onTap = () {
-                                            context.pushAndRemove(
-                                                const SignUpPage());
-                                          })
-                                  ]),
-                                ),
-                              ],
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          context.pushAndRemove(
+                                              const SignUpPage());
+                                        })
+                                ]),
+                              ),
                             ),
                           ],
                         ),

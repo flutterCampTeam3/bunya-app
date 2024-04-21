@@ -21,7 +21,7 @@ class ButtonWidget extends StatelessWidget {
             shadowColor: borderColor,
             elevation: 2,
             minimumSize: const Size(double.infinity, 60),
-            backgroundColor: brown,
+            backgroundColor: backgroundColor,
             shape: RoundedRectangleBorder(
                 side: BorderSide(color: borderColor ?? transparent),
                 borderRadius: const BorderRadius.all(Radius.circular(20)))),

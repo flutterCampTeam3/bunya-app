@@ -100,11 +100,11 @@ class _SigninCustomerPageState extends State<SigninCustomerPage> {
                                 obscureText: false,
                                 email: true,
                               ),
-                              gapH40,
+                              gapH30,
                               SigninPassTextField(
                                 controller: passController,
                               ),
-                              gapH20,
+                              gapH10,
                               InkWell(
                                   onTap: () {
                                     // Here VerifyEmailPage
@@ -118,26 +118,14 @@ class _SigninCustomerPageState extends State<SigninCustomerPage> {
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
                                   )),
-                              gapH10,
-                              InkWell(
-                                  onTap: () {
-                                    context.pushTo(view: const introPage());
-                                  },
-                                  child: Text(
-                                    "تغيير حساب المستخدم",
-                                    style: TextStyle(
-                                        decoration: TextDecoration.underline,
-                                        color: blackColor,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold),
-                                  )),
+                              // gapH10,
                             ],
                           ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               ButtonWidget(
-                                backgroundColor: darkBrown,
+                                backgroundColor: brown,
                                 text: "تسجيل دخول",
                                 onPressed: () {
                                   if (_formKey.currentState!.validate()) {
@@ -149,6 +137,20 @@ class _SigninCustomerPageState extends State<SigninCustomerPage> {
                                 textColor: whiteColor,
                               ),
                               gapH15,
+                              InkWell(
+                                onTap: () {
+                                  context.pushTo(view: const introPage());
+                                },
+                                child: ButtonWidget(
+                                  backgroundColor: darkBrown,
+                                  text: "تغيير حساب المستخدم",
+                                  onPressed: () {
+                                    context.pushTo(view: const introPage());
+                                  },
+                                  textColor: whiteColor,
+                                ),
+                              ),
+                              gapH10,
                               RichText(
                                 text: TextSpan(children: [
                                   TextSpan(

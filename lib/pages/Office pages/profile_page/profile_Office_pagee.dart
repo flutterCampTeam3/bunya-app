@@ -1,6 +1,8 @@
 import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:bunya_app/helper/colors.dart';
+import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
+import 'package:bunya_app/pages/Office%20pages/office%20auth%20pages/signIn%20page/signin_page.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/bloc/profile_office_bloc.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/edit_office_page.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/widgets/widgets/information_widget.dart';
@@ -216,6 +218,42 @@ class ProfilePageOffice extends StatelessWidget {
                                           //   style: TextStyle(fontSize: 14),
                                           // )
                                         ],
+                                      ),
+                                    ),
+                                    gapH20,
+                                    InkWell(
+                                      onTap: () async {
+                                        await locator.signOut();
+                                        context
+                                            .pushAndRemove(const SigninPage());
+                                      },
+                                      child: Container(
+                                        height: 65,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          color: whiteColor,
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color:
+                                                  Colors.grey.withOpacity(0.3),
+                                              spreadRadius: 1,
+                                              blurRadius: 2,
+                                              offset: const Offset(0, 4),
+                                            ),
+                                          ],
+                                        ),
+                                        child: Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text("تسجيل الخروج",
+                                                    style:
+                                                        TextStyle(color: red))
+                                              ],
+                                            )),
                                       ),
                                     ),
                                   ],
