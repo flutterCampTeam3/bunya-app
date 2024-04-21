@@ -8,3 +8,8 @@ class GetAccountEvent extends AccountListEvent {
 
   GetAccountEvent({required this.type});
 }
+
+class SearchWord extends AccountListEvent {
+  final String word;
+  SearchWord({required this.word});
+}

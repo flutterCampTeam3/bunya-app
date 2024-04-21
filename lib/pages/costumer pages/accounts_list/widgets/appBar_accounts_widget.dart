@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 class AppBarAccoutWidget extends StatelessWidget {
-  const AppBarAccoutWidget({
+   AppBarAccoutWidget({
     super.key, required this.controllerSearch,
+    required this.onSubmitted
   });
   final controllerSearch ;
+  void Function(String)? onSubmitted;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -40,6 +42,8 @@ class AppBarAccoutWidget extends StatelessWidget {
                     SizedBox(width: 5),
                     Expanded(
                       child: TextField(
+                        textInputAction: TextInputAction.search,
+                        onSubmitted: onSubmitted,
                         decoration: InputDecoration(
                           hintText: "البحث",
                           border: InputBorder.none,

@@ -1,4 +1,5 @@
 import 'package:bunya_app/helper/colors.dart';
+import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/Office%20pages/navBar%20page/bloc/nav_bloc.dart';
 import 'package:bunya_app/pages/costumer%20pages/navBar%20page/bloc/nav_bloc.dart';
@@ -6,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../add post page/add_post_page.dart';
 
 class NavBarOfficePage extends StatelessWidget {
   const NavBarOfficePage({
@@ -138,7 +141,7 @@ class NavBarOfficePage extends StatelessWidget {
                 height: 80,
                 child: FloatingActionButton(
                     onPressed: () {
-                      // Handle the floating button press
+                      context.pushTo(view: AddPostPage());
                     },
                     shape: const CircleBorder(),
                     backgroundColor: const Color.fromARGB(255, 223, 216, 208),

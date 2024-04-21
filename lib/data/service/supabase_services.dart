@@ -466,6 +466,17 @@ class DBService {
     return officeAccount;
   }
 
+  Future<List<OfficesModel>> getSearchOfficeAccount(String name) async {
+    final officeAccountsResponse =
+        await supabase.from('Offices').select("*").eq('name', '$name');
+
+    final List<OfficesModel> SearchofficeAccounts = [];
+    for (var element in officeAccountsResponse) {
+      SearchofficeAccounts.add(OfficesModel.fromJson(element));
+    }
+    return SearchofficeAccounts;
+  }
+
   Future<List<OfficesModel>> getOffices() async {
     final officesData = await supabase.from('Offices').select('*');
     final List<OfficesModel> classOffices = [];
