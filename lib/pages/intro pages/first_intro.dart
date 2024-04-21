@@ -70,9 +70,9 @@ class introPage extends StatelessWidget {
                     context.pushAndRemove(BoardingPage());
                   },
                   style: ButtonStyle(
-                    backgroundColor: WidgetStateProperty.all<Color>(lightBrown),
+                    backgroundColor: MaterialStateProperty.all<Color>(lightBrown),
                     fixedSize:
-                        WidgetStateProperty.all<Size>(const Size(150, 50)),
+                        MaterialStateProperty.all<Size>(const Size(150, 50)),
                   ),
                   child: const Text(
                     'عميل',
@@ -89,9 +89,9 @@ class introPage extends StatelessWidget {
                     ));
                   },
                   style: ButtonStyle(
-                    backgroundColor: WidgetStateProperty.all<Color>(lightBrown),
+                    backgroundColor: MaterialStateProperty.all<Color>(lightBrown),
                     fixedSize:
-                        WidgetStateProperty.all<Size>(const Size(150, 50)),
+                        MaterialStateProperty.all<Size>(const Size(150, 50)),
                   ),
                   child: const Text(
                     'صاحب شركة',
