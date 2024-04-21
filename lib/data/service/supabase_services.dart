@@ -12,6 +12,7 @@ class DBService {
   // ------ Data Storage -----
 
   final box = GetStorage();
+  
   String token = '';
 
   String id = '';

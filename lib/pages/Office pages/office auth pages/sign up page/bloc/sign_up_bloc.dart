@@ -80,6 +80,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         } catch (error) {
           emit(ErrorSignUpState(msg: "هناك خطأ في إنشاء الحساب"));
         }
+        //---------------add image here 
         await DBService().createProfileOffice(
             userName: event.name,
             email: event.email,
