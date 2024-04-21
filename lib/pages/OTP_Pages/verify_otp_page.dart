@@ -1,5 +1,6 @@
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
+import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/OTP_Pages/bloc/password_reset_bloc.dart';
 import 'package:bunya_app/pages/OTP_Pages/change_password_page.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +20,18 @@ class VerifyOtpPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => PasswordResetBloc(),
       child: Scaffold(
+        appBar: AppBar(
+          automaticallyImplyLeading: false,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+                },
+                icon: const Icon(Icons.arrow_forward_ios_outlined)),
+          ],
+        ),
+        backgroundColor: whiteColor,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: SingleChildScrollView(
@@ -69,8 +82,9 @@ class VerifyOtpPage extends StatelessWidget {
                   final prBloc = context.read<PasswordResetBloc>();
 
                   return Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      // gapH30,
                       Image.asset("assets/images/otp.png"),
                       // SvgPicture.asset('assets/repassword.svg'),
                       Text(
@@ -81,6 +95,7 @@ class VerifyOtpPage extends StatelessWidget {
                           fontSize: context.getWidth() * .06,
                         ),
                       ),
+                      gapH10,
                       Align(
                           alignment: Alignment.centerRight,
                           child: Text(
@@ -91,6 +106,7 @@ class VerifyOtpPage extends StatelessWidget {
                               fontSize: context.getWidth() * .05,
                             ),
                           )),
+                      gapH20,
                       TimerButton(
                         onPressed: () {
                           prBloc.add(ResendOtpEvent(email: remail));
@@ -109,6 +125,8 @@ class VerifyOtpPage extends StatelessWidget {
                             fontWeight: FontWeight.w500),
                         label: "إعادة إرسال الرمز",
                       ),
+                      gapH10,
+
                       OtpTextField(
                         alignment: Alignment.centerLeft,
                         showFieldAsBox: true,
@@ -129,6 +147,7 @@ class VerifyOtpPage extends StatelessWidget {
                               VerifyOtpEvent(otpToken: value, email: remail));
                         },
                       ),
+                      const Spacer(),
                       ButtonWidget(
                           backgroundColor: brown,
                           text: "تحقق",

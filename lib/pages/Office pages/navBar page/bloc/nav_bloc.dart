@@ -12,13 +12,13 @@ part 'nav_event.dart';
 part 'nav_state.dart';
 
 class NavOfficeBloc extends Bloc<NavOfficeEvent, NavOfficeState> {
-  int currentIndex = 0;
+  int currentIndex = 3;
 
   final List<Widget> pages = [
-    const HomePageOffice(),
+    ProfilePageOffice(),
     const MessageListPage(),
     const CategoriesPage(),
-     ProfilePageOffice(),
+    const HomePageOffice(),
   ];
 
   NavOfficeBloc() : super(NavInitial()) {

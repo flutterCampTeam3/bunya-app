@@ -148,6 +148,7 @@ class PostWidget extends StatelessWidget {
                             ),
                           )
                         ],
+                        
                       )
                     ],
                   ),
