@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:bunya_app/data/model/office_follow_model.dart';
 import 'package:bunya_app/data/model/offices_model.dart';
 import 'package:bunya_app/data/model/post_like_model.dart';
 import 'package:bunya_app/data/model/profile_model_customer.dart';
@@ -369,18 +370,37 @@ class DBService {
     }
   }
 
-
-    Future followerNumber({
-    required String postId,
+  Future followerNumber({
+    required String officeId,
   }) async {
-    final postLikeNumber =
-        await supabase.from('office_followers').select('*').eq('postId', postId);
-    if (postLikeNumber.isNotEmpty) {
-      final List<postLikeModel> likes = [];
-      for (var element in postLikeNumber) {
-        likes.add(postLikeModel.fromJson(element));
+    final followerNumber = await supabase
+        .from('office_followers')
+        .select('*')
+        .eq('officeId', officeId);
+    if (followerNumber.isNotEmpty) {
+      final List<ProfileOfficeFollowModel> follower = [];
+      for (var element in followerNumber) {
+        follower.add(ProfileOfficeFollowModel.fromJson(element));
       }
-      return likes.length;
+      return follower.length;
+    } else {
+      return 0;
+    }
+  }
+
+  Future followingNumber({
+    required String customerId,
+  }) async {
+    final followerNumber = await supabase
+        .from('office_followers')
+        .select('*')
+        .eq('customerId', customerId);
+    if (followerNumber.isNotEmpty) {
+      final List<ProfileOfficeFollowModel> follower = [];
+      for (var element in followerNumber) {
+        follower.add(ProfileOfficeFollowModel.fromJson(element));
+      }
+      return follower.length;
     } else {
       return 0;
     }

@@ -21,7 +21,7 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          ProfilePostsBloc()..add(ShowDataIdEvent(id: office.officeId)),
+          ProfilePostsBloc()..add(ShowDataIdEvent(id: office.officeId))..add(CheckFollowNumberEvent(officeId: office.officeId,)),
       child: Builder(builder: (context) {
         final bloc = context.read<ProfilePostsBloc>();
         bloc.add(CheckFollowEvent(id: office.officeId));
