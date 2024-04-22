@@ -134,9 +134,7 @@ class ProfilePageOffice extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20),
                                 color: lightbrownColor),
                             child: TabBar(
-                              onTap: (value) {
-                                print("object");
-                              },
+                              onTap: (value) {},
 
                               dividerColor: transparent,
                               // indicatorSize: TabBarIndicatorSize.values[2],
@@ -191,7 +189,8 @@ class ProfilePageOffice extends StatelessWidget {
                                                           phone: bloc
                                                               .profile.phone,
                                                         ))).then((value) {
-                                              bloc.add(GetOfficeInfoOfficeEvent());
+                                              bloc.add(
+                                                  GetOfficeInfoOfficeEvent());
                                             });
                                           },
                                           icon: Image.asset(
@@ -242,10 +241,6 @@ class ProfilePageOffice extends StatelessWidget {
                                             style:
                                                 const TextStyle(fontSize: 14),
                                           ),
-                                          // const Text(
-                                          //   "الموقع : الرياض -شارع فهد",
-                                          //   style: TextStyle(fontSize: 14),
-                                          // )
                                         ],
                                       ),
                                     ),
@@ -327,31 +322,6 @@ class ProfilePageOffice extends StatelessWidget {
                                   }
                                 },
                               )
-                              // SingleChildScrollView(
-                              //   child: Column(
-                              //     children: [
-                              //       PostProfileWidget(
-                              //         path:
-                              //             "assets/images/design_category.jpeg",
-                              //         name: "لاء علي",
-                              //         profilePath: 'assets/images/post1.jpeg',
-                              //         likes: "100 لايك",
-                              //         desc:
-                              //             "تصميم ديكور صالة  فاخرة  احد فنادق مدينة جدة بستايل\n مودرن حديث  ",
-                              //       ),
-                              //       gapH15,
-                              //       PostProfileWidget(
-                              //         path:
-                              //             "assets/images/design_category.jpeg",
-                              //         name: "لاء علي",
-                              //         profilePath: 'assets/images/post1.jpeg',
-                              //         likes: "100 لايك",
-                              //         desc:
-                              //             "تصميم ديكور صالة  فاخرة  احد فنادق مدينة جدة بستايل\n مودرن حديث  ",
-                              //       ),
-                              //     ],
-                              //   ),
-                              // ),
                             ]),
                           ),
                         ],

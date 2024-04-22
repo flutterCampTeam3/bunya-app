@@ -95,8 +95,10 @@ class PostWidget extends StatelessWidget {
                                         bloc.add(AddLikeHomeEvent(
                                             post: description));
                                       },
-                                      child:
-                                          const Icon(Icons.favorite_border , color: Colors.black,))
+                                      child: const Icon(
+                                        Icons.favorite_border,
+                                        color: Colors.black,
+                                      ))
                                   : InkWell(
                                       onTap: () {
                                         bloc.add(DeleteLikeHomeEvent(
@@ -119,7 +121,7 @@ class PostWidget extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        description.desc,
+                        description.desc ?? " ",
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: TextStyle(color: blackColor),
@@ -149,7 +151,9 @@ class PostWidget extends StatelessWidget {
                             child: Text(
                               profilePath.name,
                               style: const TextStyle(
-                                  fontSize: 12, fontWeight: FontWeight.bold , color: Colors.black),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
                             ),
                           )
                         ],

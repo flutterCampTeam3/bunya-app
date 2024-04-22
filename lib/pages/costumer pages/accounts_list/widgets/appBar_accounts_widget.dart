@@ -46,7 +46,7 @@ class AppBarAccoutWidget extends StatelessWidget {
                     Expanded(
                       child: TextField(
                         textInputAction: TextInputAction.search,
-                        onChanged: (_) {
+                        onSubmitted: (_) {
                           bloc.add(SearchWord(word: controllerSearch.text));
                         },
                         decoration: const InputDecoration(

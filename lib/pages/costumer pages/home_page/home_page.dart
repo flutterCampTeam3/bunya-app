@@ -183,7 +183,7 @@ class HomePageCustomer extends StatelessWidget {
                                     mainAxisSpacing: 10.0,
                                     childAspectRatio: 0.75,
                                   ),
-                                  itemCount: state.classPost.length,
+                                  itemCount: state.classPost.length - 1,
                                   itemBuilder: (context, index) {
                                     return InkWell(
                                       onTap: () {
