@@ -2,22 +2,21 @@ part of 'profile_office_bloc.dart';
 
 @immutable
 sealed class ProfileOfficeEvent {}
-class ShowDataOfficesIdEvent extends ProfileOfficeEvent {
-  final String id;
-  ShowDataOfficesIdEvent({required this.id});
-}
-final class GetOfficeInfoEvent extends ProfileOfficeEvent {}
 
-final class ActivateEditModeEvent extends ProfileOfficeEvent {}
+class ShowDataOfficesIdEvent extends ProfileOfficeEvent {}
 
-final class DeactivateEditModeEvent extends ProfileOfficeEvent {}
+final class GetOfficeInfoOfficeEvent extends ProfileOfficeEvent {}
 
-final class UpdateOfficeInfoEvent extends ProfileOfficeEvent {
+final class ActivateEditModeOfficeEvent extends ProfileOfficeEvent {}
+
+final class DeactivateEditModeOfficeEvent extends ProfileOfficeEvent {}
+
+final class UpdateOfficeInfoOfficeEvent extends ProfileOfficeEvent {
   final String description;
   final String email;
   final int phone;
   final String name;
-  UpdateOfficeInfoEvent({
+  UpdateOfficeInfoOfficeEvent({
     required this.description,
     required this.email,
     required this.phone,
@@ -25,4 +24,6 @@ final class UpdateOfficeInfoEvent extends ProfileOfficeEvent {
   });
 }
 
-final class SignOutEvent extends ProfileOfficeEvent {}
+final class SignOutOfficeEvent extends ProfileOfficeEvent {}
+
+final class CheckFollowNumberOfOfficeEvent extends ProfileOfficeEvent {}

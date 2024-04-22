@@ -18,8 +18,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 class ProfilePageOffice extends StatelessWidget {
-  ProfilePageOffice({super.key, this.officeId});
-  final OfficesModel? officeId;
+  ProfilePageOffice({
+    super.key,
+    // required this.officeId
+  });
+  // final OfficesModel officeId;
   @override
   final locator = GetIt.I.get<DBService>();
   @override
@@ -30,17 +33,32 @@ class ProfilePageOffice extends StatelessWidget {
       child: BlocProvider(
         create: (context) => ProfileOfficeBloc(),
         child: Builder(builder: (context) {
-          final bloc = context.read<ProfileOfficeBloc>();
-          // ..add(ShowDataOfficesIdEvent(id:officeId!.officeId ));
-          // bloc.add(GetOfficeInfoEvent());
-           bloc.add(ShowDataOfficesIdEvent(id: officeId!.officeId));
-          return BlocBuilder<ProfileOfficeBloc, ProfileOfficeState>(
+          final bloc = context.read<ProfileOfficeBloc>()
+            ..add(GetOfficeInfoOfficeEvent())
+            ..add(ShowDataOfficesIdEvent())
+            ..add(CheckFollowNumberOfOfficeEvent());
+          return BlocConsumer<ProfileOfficeBloc, ProfileOfficeState>(
+            listener: (context, state) {
+              if (state is ProfileOfficeErrorState) {
+                // Navigator.pop(context);
+                context.showErrorSnackBar(context, state.msg);
+              }
+            },
             builder: (context, state) {
-              if (state is DisplayOfficeInfoState) {
+              if (state is ProfileLoadingState) {
+                return SizedBox(
+                  height: 200,
+                  width: 200,
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: brown,
+                    ),
+                  ),
+                );
+              } else if (state is DisplayOfficeInfoState) {
                 return Directionality(
                   textDirection: TextDirection.rtl,
                   child: Scaffold(
-                    // backgroundColor: whiteColor,
                     body: SafeArea(
                         child: Padding(
                       padding: const EdgeInsets.all(20.0),
@@ -49,20 +67,20 @@ class ProfilePageOffice extends StatelessWidget {
                           Row(
                             children: [
                               ImageAacountWodget(
-                                path: state.image,
+                                path: bloc.profile.image,
                               ),
                               gapWe15,
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    state.name,
+                                    bloc.profile.name,
                                     style: TextStyle(
                                         color: Theme.of(context)
                                             .colorScheme
                                             .onSurface),
                                   ),
-                                  Text(state.email)
+                                  Text(bloc.profile.email)
                                 ],
                               )
                             ],
@@ -72,11 +90,11 @@ class ProfilePageOffice extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Column(
+                                Column(
                                   children: [
-                                    Text("التقييم"),
+                                    const Text("المتابَعون"),
                                     gapH20,
-                                    Text("4/5"),
+                                    Text("${bloc.followerNumber}"),
                                   ],
                                 ),
                                 VerticalDivider(
@@ -85,11 +103,11 @@ class ProfilePageOffice extends StatelessWidget {
                                   color:
                                       Theme.of(context).colorScheme.onSurface,
                                 ),
-                                const Column(
+                                Column(
                                   children: [
-                                    Text("المتابَعون"),
+                                    const Text("المتابِعون"),
                                     gapH20,
-                                    Text("500"),
+                                    Text("${bloc.followingNumber}"),
                                   ],
                                 ),
                                 VerticalDivider(
@@ -98,24 +116,11 @@ class ProfilePageOffice extends StatelessWidget {
                                   color:
                                       Theme.of(context).colorScheme.onSurface,
                                 ),
-                                const Column(
+                                Column(
                                   children: [
-                                    Text("المتابِعون"),
+                                    const Text("الإعجابات"),
                                     gapH20,
-                                    Text("90"),
-                                  ],
-                                ),
-                                VerticalDivider(
-                                  width: 30.0,
-                                  thickness: 1.0,
-                                  color:
-                                      Theme.of(context).colorScheme.onSurface,
-                                ),
-                                const Column(
-                                  children: [
-                                    Text("الإعجابات"),
-                                    gapH20,
-                                    Text("1500"),
+                                    Text("${bloc.likesNumber}"),
                                   ],
                                 ),
                               ],
@@ -177,13 +182,16 @@ class ProfilePageOffice extends StatelessWidget {
                                                 MaterialPageRoute(
                                                     builder: (context) =>
                                                         EditPageOffice(
-                                                          desc:
-                                                              state.description,
-                                                          name: state.name,
-                                                          email: state.email,
-                                                          phone: state.phone,
+                                                          desc: bloc.profile
+                                                              .description,
+                                                          name:
+                                                              bloc.profile.name,
+                                                          email: bloc
+                                                              .profile.email,
+                                                          phone: bloc
+                                                              .profile.phone,
                                                         ))).then((value) {
-                                              bloc.add(GetOfficeInfoEvent());
+                                              bloc.add(GetOfficeInfoOfficeEvent());
                                             });
                                           },
                                           icon: Image.asset(
@@ -205,7 +213,7 @@ class ProfilePageOffice extends StatelessWidget {
                                           ),
                                           gapH5,
                                           Text(
-                                            state.name,
+                                            bloc.profile.name,
                                             style:
                                                 const TextStyle(fontSize: 14),
                                           )
@@ -225,12 +233,12 @@ class ProfilePageOffice extends StatelessWidget {
                                           ),
                                           gapH5,
                                           Text(
-                                            state.email,
+                                            bloc.profile.email,
                                             style:
                                                 const TextStyle(fontSize: 14),
                                           ),
                                           Text(
-                                            state.phone.toString(),
+                                            bloc.profile.phone.toString(),
                                             style:
                                                 const TextStyle(fontSize: 14),
                                           ),
@@ -304,7 +312,6 @@ class ProfilePageOffice extends StatelessWidget {
                                           ),
                                           itemCount: bloc.classPostId.length,
                                           itemBuilder: (context, index) {
-                                            print("inside the loob");
                                             return PostProfileWidget(
                                               desc: bloc.classPostId[index],
                                               path: bloc.classPostId[index],
@@ -352,8 +359,6 @@ class ProfilePageOffice extends StatelessWidget {
                     )),
                   ),
                 );
-              } else if (state is ProfileLoadingState) {
-                return const Center(child: CircularProgressIndicator());
               } else {
                 return const Center(
                   child: Text("Error"),

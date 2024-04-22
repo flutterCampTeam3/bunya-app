@@ -1,3 +1,4 @@
+import 'package:bunya_app/data/model/offices_model.dart';
 import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
@@ -41,7 +42,7 @@ class EditPageOffice extends StatelessWidget {
         final bloc = context.read<ProfileOfficeBloc>();
         return BlocConsumer<ProfileOfficeBloc, ProfileOfficeState>(
           listener: (context, state) {
-            if (state is ProfilOfficeSuccessState) {
+            if (state is ProfilOfficeSuccessOfficeState) {
               context.showSuccessSnackBar(context, state.msg);
               context.pushAndRemove(ProfilePageOffice());
               // bloc.add(GetUserInfoEvent());
@@ -49,7 +50,6 @@ class EditPageOffice extends StatelessWidget {
             if (state is ProfileOfficeErrorState) {
               context.showErrorSnackBar(context, state.msg);
             }
-            // TODO: implement listener
           },
           builder: (context, state) {
             return Directionality(

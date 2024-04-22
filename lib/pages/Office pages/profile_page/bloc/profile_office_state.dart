@@ -5,42 +5,31 @@ sealed class ProfileOfficeState {}
 
 final class ProfileOfficeInitial extends ProfileOfficeState {}
 
-// final class ActivatedEditModeState extends ProfileOfficeState {
-//   String name;
-//   String email;
-
-//   ActivatedEditModeState({
-//     required this.email,
-//     required this.name,
-//   });
-// }
-
-final class ProfilOfficeSuccessState extends ProfileOfficeState {
+final class ProfilOfficeSuccessOfficeState extends ProfileOfficeState {
   String msg;
-  ProfilOfficeSuccessState({required this.msg});
+  ProfilOfficeSuccessOfficeState({required this.msg});
 }
 
-class profilePostsSuccesState extends ProfileOfficeState {
-  // final List<postModel> classPostId;
-  // profilePostsSuccesState ({required this.classPostId});
-}
+class profilePostsSuccesState extends ProfileOfficeState {}
+
 final class LoadingState extends ProfileOfficeState {}
 
+final class DisplayOfficeInfoState extends ProfileOfficeState {}
 
-final class DisplayOfficeInfoState extends ProfileOfficeState {
+final class ActivatedEditModeOfficeState extends ProfileOfficeState {
   String name;
   String email;
-  String description;
-    String image;
-  int phone;
-  DisplayOfficeInfoState(
-      {required this.email,
-      required this.name,
-      required this.phone,
-      required this.description,required this.image});
+
+  ActivatedEditModeOfficeState({
+    required this.email,
+    required this.name,
+  });
 }
 
 final class ProfileLoadingState extends ProfileOfficeState {}
+
+final class DeactivatedEditModeOfficeState extends ProfileOfficeState {}
+
 
 final class ProfileOfficeErrorState extends ProfileOfficeState {
   final String msg;

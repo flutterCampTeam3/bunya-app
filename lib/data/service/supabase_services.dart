@@ -225,7 +225,6 @@ class DBService {
         .eq('officeId', supabase.auth.currentUser!.id)
         .single();
     ProfileOfficeModel profileoffice = ProfileOfficeModel.fromJson(response);
-
     return profileoffice;
   }
 
@@ -418,6 +417,27 @@ class DBService {
     }
   }
 
+  Future getOfficeLikeOfficeNumber() async {
+    final postLikeNumber = await supabase
+        .from('post_likes')
+        .select('*')
+        .eq('postOfficeId', supabase.auth.currentUser!.id);
+    print("in the getOfficeLikeNumber after");
+    print("-------------------------------");
+    print("-------------------------------${postLikeNumber.length}");
+    if (postLikeNumber.isNotEmpty) {
+      final List<postLikeModel> likes = [];
+      for (var element in postLikeNumber) {
+        likes.add(postLikeModel.fromJson(element));
+      }
+      print("-------------------------------the num${likes.length}");
+      return likes.length;
+    } else {
+      print("-------------------------------the num  else 0");
+      return 0;
+    }
+  }
+
   Future followerNumber({
     required String officeId,
   }) async {
@@ -425,6 +445,22 @@ class DBService {
         .from('office_followers')
         .select('*')
         .eq('officeId', officeId);
+    if (followerNumber.isNotEmpty) {
+      final List<ProfileOfficeFollowModel> follower = [];
+      for (var element in followerNumber) {
+        follower.add(ProfileOfficeFollowModel.fromJson(element));
+      }
+      return follower.length;
+    } else {
+      return 0;
+    }
+  }
+
+    Future followerOfficeNumber() async {
+    final followerNumber = await supabase
+        .from('office_followers')
+        .select('*')
+        .eq('officeId', supabase.auth.currentUser!.id);
     if (followerNumber.isNotEmpty) {
       final List<ProfileOfficeFollowModel> follower = [];
       for (var element in followerNumber) {
@@ -454,6 +490,22 @@ class DBService {
     }
   }
 
+    Future followingOfficeNumber() async {
+    final followerNumber = await supabase
+        .from('office_followers')
+        .select('*')
+        .eq('customerId', supabase.auth.currentUser!.id);
+    if (followerNumber.isNotEmpty) {
+      final List<ProfileOfficeFollowModel> follower = [];
+      for (var element in followerNumber) {
+        follower.add(ProfileOfficeFollowModel.fromJson(element));
+      }
+      return follower.length;
+    } else {
+      return 0;
+    }
+  }
+
   Future<List<postModel>> getposts() async {
     final postData = await supabase.from('post').select('*');
     final List<postModel> classposts = [];
@@ -466,6 +518,16 @@ class DBService {
   Future<List<postModel>> getPostsId({required String ofiiceId}) async {
     final postData =
         await supabase.from('post').select('*').match({'ofiiceId': ofiiceId});
+    final List<postModel> classposts = [];
+    for (var element in postData) {
+      classposts.add(postModel.fromJson(element));
+    }
+    return classposts;
+  }
+
+    Future<List<postModel>> getPostsOffficeId() async {
+    final postData =
+        await supabase.from('post').select('*').match({'ofiiceId':  supabase.auth.currentUser!.id});
     final List<postModel> classposts = [];
     for (var element in postData) {
       classposts.add(postModel.fromJson(element));
