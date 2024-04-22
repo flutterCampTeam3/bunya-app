@@ -442,17 +442,22 @@ class DBService {
   Future followerNumber({
     required String officeId,
   }) async {
+     print("---------------in function----");
     final followerNumber = await supabase
+
         .from('office_followers')
         .select('*')
         .eq('officeId', officeId);
+         print("---------------inside f..----");
     if (followerNumber.isNotEmpty) {
       final List<ProfileOfficeFollowModel> follower = [];
       for (var element in followerNumber) {
         follower.add(ProfileOfficeFollowModel.fromJson(element));
       }
+       print("---------------${follower.length}----");
       return follower.length;
     } else {
+       print("---------------Else ----");
       return 0;
     }
   }
@@ -581,13 +586,16 @@ class DBService {
 
   Future<List<OfficesModel>> getOfficeAccount(String type) async {
     final officeAccounte = await supabase
+    
         .from('Offices')
         .select("*")
         .match({'departmentId': type});
+         print("-----------------in func-------");
     final List<OfficesModel> officeAccount = [];
     for (var element in officeAccounte) {
       officeAccount.add(OfficesModel.fromJson(element));
     }
+     print("------------------------");
     return officeAccount;
   }
 

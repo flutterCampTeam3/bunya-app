@@ -1,3 +1,4 @@
+import 'package:bunya_app/data/model/offices_model.dart';
 import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
@@ -14,13 +15,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 class ConstraintAccountList extends StatelessWidget {
-  ConstraintAccountList({super.key, required this.type});
+  ConstraintAccountList({super.key, required this.type,  });
   final String type;
+  
   final locator = GetIt.I.get<DBService>();
 
   @override
   Widget build(BuildContext context) {
-        late TextEditingController searchController = TextEditingController();
+    late TextEditingController searchController = TextEditingController();
 
     return Directionality(
       textDirection: TextDirection.rtl,
@@ -28,9 +30,8 @@ class ConstraintAccountList extends StatelessWidget {
         create: (context) => AccountListBloc(),
         child: Builder(builder: (context) {
           final bloc = context.read<AccountListBloc>();
-          bloc.add(GetAccountEvent(type: type));
-                    
-
+          bloc.add(GetAccountEvent(type: type ));
+          // bloc.add(ShowFollowersEvent(id: office!.officeId));
 
           return Scaffold(
             body: Stack(
@@ -46,13 +47,14 @@ class ConstraintAccountList extends StatelessWidget {
                   child: SafeArea(
                     child: Column(
                       children: [
-                         AppBarAccoutWidget(controllerSearch: searchController, 
-                        //  onChanged: (String ) { 
-                          
-                        //   bloc.add(SearchWord(word: searchController.text));
+                        AppBarAccoutWidget(
+                          controllerSearch: searchController,
+                          //  onChanged: (String ) {
 
-                        //   },
-                          ),
+                          //   bloc.add(SearchWord(word: searchController.text));
+
+                          //   },
+                        ),
                         Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Column(
@@ -119,8 +121,9 @@ class ConstraintAccountList extends StatelessWidget {
                                               path: med.image,
                                               title: med.name,
                                               description: med.disc,
+                                              officeId: med, 
                                               //rate: 5,
-                                              followers: 200,
+                                             
                                               onTap: () {
                                                 context.pushTo(
                                                   view:
@@ -128,7 +131,7 @@ class ConstraintAccountList extends StatelessWidget {
                                                     office: med,
                                                   ),
                                                 );
-                                              },
+                                              }, 
                                             );
                                           },
                                         ),
@@ -163,7 +166,6 @@ class ConstraintAccountList extends StatelessWidget {
     );
   }
 }
-
 
 //  else {
 //                                       return const Center(

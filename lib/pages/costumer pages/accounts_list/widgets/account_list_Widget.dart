@@ -1,6 +1,10 @@
+import 'package:bunya_app/data/model/offices_model.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../bloc/account_list_bloc.dart';
 
 class AccountListWidget extends StatelessWidget {
   const AccountListWidget({
@@ -8,110 +12,121 @@ class AccountListWidget extends StatelessWidget {
     required this.description,
     required this.path,
     required this.title,
-    required this.followers,
     required this.onTap,
+    required this.officeId,
   });
 
   final String path;
   final String title;
   final String description;
-  final int followers;
   final VoidCallback onTap;
-
+  final OfficesModel officeId;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Column(
-        children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.4),
-                  spreadRadius: 1,
-                  blurRadius: 1,
-                  offset: const Offset(0, 3),
-                ),
-              ],
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Row(
+   
+    return BlocProvider(
+      create: (context) => AccountListBloc(),
+      child: Builder(builder: (context) {
+         final bloc = context.read<AccountListBloc>();
+        bloc.add(ShowFollowersEvent(id: officeId.officeId));
+        return BlocBuilder<AccountListBloc, AccountListState>(
+          builder: (context, state) {
+            return GestureDetector(
+              onTap: onTap,
+              child: Column(
                 children: [
                   Container(
-                    width: 50,
-                    height: 50,
                     decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(
-                        color: Colors.black,
-                        width: 1,
-                      ),
-                    ),
-                    child: ClipOval(
-                      child: Image.network(
-                        path,
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          title,
-                          style: TextStyle(color: blackColor),
-                        ),
-                        Text(
-                          description,
-                          style:
-                              const TextStyle(fontSize: 9, color: Colors.grey),
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.4),
+                          spreadRadius: 1,
+                          blurRadius: 1,
+                          offset: const Offset(0, 3),
                         ),
                       ],
                     ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      const Row(
-                          /*
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Row(
                         children: [
-                          Text('$rate '),
-                          Icon(
-                            Icons.star,
-                            color: Colors.yellow,
-                            size: 20,
+                          Container(
+                            width: 50,
+                            height: 50,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: Colors.black,
+                                width: 1,
+                              ),
+                            ),
+                            child: ClipOval(
+                              child: Image.network(
+                                path,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
-                        ],
-                        */
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  title,
+                                  style: TextStyle(color: blackColor),
+                                ),
+                                Text(
+                                  description,
+                                  style: const TextStyle(
+                                      fontSize: 9, color: Colors.grey),
+                                ),
+                              ],
+                            ),
                           ),
-                      const Divider(
-                          height: 18, thickness: 1, color: Colors.grey),
-                      Row(
-                        children: [
-                          Text('$followers'),
-                          const SizedBox(width: 5),
-                          const Icon(
-                            Icons.people_outline_rounded,
-                            color: Colors.red,
-                            size: 20,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              const Row(
+                                  /*
+                                          children: [
+                                            Text('$rate '),
+                                            Icon(
+                                              Icons.star,
+                                              color: Colors.yellow,
+                                              size: 20,
+                                            ),
+                                          ],
+                                          */
+                                  ),
+                              const Divider(
+                                  height: 18, thickness: 1, color: Colors.grey),
+                              Row(
+                                children: [
+                                  Text('${bloc.followerNumber}'),
+                                  const SizedBox(width: 5),
+                                  const Icon(
+                                    Icons.people_outline_rounded,
+                                    color: Colors.red,
+                                    size: 20,
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                    ],
+                    ),
                   ),
+                  gapH15
                 ],
               ),
-            ),
-          ),
-          gapH15
-        ],
-      ),
+            );
+          },
+        );
+      }),
     );
   }
 }
