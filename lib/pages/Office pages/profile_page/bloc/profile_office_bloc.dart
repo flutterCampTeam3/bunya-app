@@ -6,6 +6,8 @@ import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:meta/meta.dart';
 
+import '../../../../data/model/offices_model.dart';
+
 part 'profile_office_event.dart';
 part 'profile_office_state.dart';
 
@@ -24,7 +26,20 @@ class ProfileOfficeBloc extends Bloc<ProfileOfficeEvent, ProfileOfficeState> {
     on<ProfileOfficeEvent>((event, emit) {
       // TODO: implement event handler
     });
+    on<ShowFloowersEvent>(fetchFllowers);
   }
+
+  Future<void> fetchFllowers(
+      ShowFloowersEvent event, Emitter<ProfileOfficeState> emit) async {
+    emit(ProfileLoadingState());
+    try {
+      List<OfficesModel> officeList = await DBService().followingNumber(customerId: event.id);
+      emit(dataFlowrsSuccesState(classOffices: officeList));
+    } catch (e) {
+      emit(ProfileOfficeErrorState(msg: ""));
+    }
+  }
+
   Future<FutureOr<void>> getOfficeInfo(
       GetOfficeInfoEvent event, Emitter<ProfileOfficeState> emit) async {
     print("in the bloc get");

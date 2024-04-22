@@ -20,5 +20,8 @@ final class UpdateUserInfoEvent extends ProfileEvent {
     required this.phone,
   });
 }
+final class ShowFloowersEvent extends ProfileEvent {
+ 
+}
 
 final class SignOutEvent extends ProfileEvent {}

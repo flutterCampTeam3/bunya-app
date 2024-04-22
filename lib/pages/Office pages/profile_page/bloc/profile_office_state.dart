@@ -24,13 +24,14 @@ final class DisplayOfficeInfoState extends ProfileOfficeState {
   String name;
   String email;
   String description;
-    String image;
+  String image;
   int phone;
   DisplayOfficeInfoState(
       {required this.email,
       required this.name,
       required this.phone,
-      required this.description,required this.image});
+      required this.description,
+      required this.image});
 }
 
 final class ProfileLoadingState extends ProfileOfficeState {}
@@ -45,4 +46,10 @@ final class SignedOutState extends ProfileOfficeState {
   final String msg;
 
   SignedOutState({required this.msg});
+}
+
+class dataFlowrsSuccesState extends ProfileOfficeState {
+  final List<OfficesModel> classOffices;
+
+  dataFlowrsSuccesState({required this.classOffices});
 }

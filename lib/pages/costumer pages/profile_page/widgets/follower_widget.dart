@@ -1,11 +1,12 @@
+import 'package:bunya_app/data/model/offices_model.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:flutter/material.dart';
 
 class FollowresRow extends StatelessWidget {
   FollowresRow({super.key, required this.path, required this.name});
-  String path;
-  String name;
+  final OfficesModel  path;
+  final OfficesModel  name;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,15 +38,15 @@ class FollowresRow extends StatelessWidget {
                   ),
                 ),
                 child: ClipOval(
-                  child: Image.asset(
-                    path,
+                  child: Image.network(
+                    path.image,
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
               gapWe20,
               Text(
-                name,
+                name.name,
                 style: TextStyle(color: blackColor),
               ),
               const Spacer(),

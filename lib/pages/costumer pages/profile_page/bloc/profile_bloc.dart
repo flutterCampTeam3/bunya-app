@@ -7,6 +7,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
 import 'package:meta/meta.dart';
 
+import '../../../../data/model/offices_model.dart';
+
 part 'profile_event.dart';
 part 'profile_state.dart';
 
@@ -15,9 +17,11 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   // String? name;
   // String? email;
   // int? phone;
+  List<OfficesModel> classFollowing = [];
   ProfileBloc() : super(ProfileInitial()) {
     on<ActivateEditModeEvent>(activateEditMode);
     on<DeactivateEditModeEvent>(deactivateEditMode);
+    // on<ShowFloowersEvent>(fetchFllowers);
     on<GetUserInfoEvent>(getUserInfo);
     on<UpdateUserInfoEvent>(updateUserInfo);
     on<SignOutEvent>(signOut);
@@ -40,12 +44,31 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     await getUserInfo(GetUserInfoEvent(), emit);
   }
 
+  // Future<void> fetchFllowers(
+  //     ShowFloowersEvent event, Emitter<ProfileState> emit) async {
+  //   emit(ProfileLoadingState());
+  //   try {
+  //     print("in the bloc Fllowrs");
+
+  //     // classFollowing = await DBService().followingNumber(customerId: event.id);
+
+  //     classFollowing = await DBService().getFollowers();
+  //      print("-------------------------------------------------------X");
+       
+  //     emit(dataFlowrsSuccesState());
+  //   } catch (e) {
+  //     emit(ProfileErrorState(msg: "هناك خطاء"));
+  //   }
+  // }
+
   Future<FutureOr<void>> getUserInfo(
       GetUserInfoEvent event, Emitter<ProfileState> emit) async {
     print("in the bloc");
     emit(ProfileLoadingState());
     try {
       print("in the try");
+      classFollowing = await DBService().getFollowers();
+      
       final ProfileModel profile = await locator.getUser();
       print("after");
       final email = profile.email;

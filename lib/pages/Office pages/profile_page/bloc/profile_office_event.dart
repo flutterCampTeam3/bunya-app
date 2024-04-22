@@ -22,4 +22,10 @@ final class UpdateOfficeInfoEvent extends ProfileOfficeEvent {
   });
 }
 
+final class ShowFloowersEvent extends ProfileOfficeEvent {
+  final String id;
+
+  ShowFloowersEvent({required this.id});
+}
+
 final class SignOutEvent extends ProfileOfficeEvent {}
