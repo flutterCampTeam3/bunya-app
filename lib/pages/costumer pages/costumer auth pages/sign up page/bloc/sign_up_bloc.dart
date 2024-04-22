@@ -14,16 +14,18 @@ class SignUpBlocCustomer
     extends Bloc<SignUpCustomerEvent, SignUpCustomerState> {
   SignUpBlocCustomer() : super(SignUpInitial()) {
     on<CreateAccountCustomerEvent>(createAccount);
+
+    //------------
     on<CustomerChoosImageEvent>((event, emit) async {
       //----imgaepick
       File avatar = File(await pickedImage());
-      GetIt.I.get<DBService>().uploadImage(avatar);
-//-------
+      GetIt.I.get<DBService>().uploadCustomerImage(avatar);
       emit(CustomerChoosImageEventShowImageState(avatar));
     });
+    //--------------
   }
 
-  Future pickedImage() async {
+  Future pickedImage() async { 
     var img = await ImagePicker().pickImage(source: ImageSource.gallery);
 
     return (img!.path);

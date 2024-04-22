@@ -1,9 +1,11 @@
 import 'package:bunya_app/helper/colors.dart';
+import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/sized.dart';
+import 'package:bunya_app/pages/Office%20pages/add%20post%20page/add_post_page.dart';
 import 'package:bunya_app/pages/costumer%20pages/navBar%20page/bloc/nav_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -141,7 +143,7 @@ class NavBarPage extends StatelessWidget {
                 height: 80,
                 child: FloatingActionButton(
                   onPressed: () {
-                    // Handle the floating button press
+                    
                   },
                   shape: const CircleBorder(),
                   backgroundColor: const Color.fromARGB(255, 223, 216, 208),

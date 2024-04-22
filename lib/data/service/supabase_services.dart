@@ -496,18 +496,45 @@ class DBService {
 
   //-------------------- uplaod image
 
-  Future<void> uploadImage(File imageFile) async {
+  Future<void> uploadCustomerImage(File imageFile) async {
     print("object");
     //supabase.storage.setAuth("jwt");
     final response = await supabase.storage.from('profile').upload(
-          'testfloder/saud',
+          'CustomerProfileFolder/k1',
           imageFile,
         );
-    print("oooooo");
+    print("Customer");
     UrlImage();
     print("done");
   }
+  //-------- uplaod office profile
+
+  Future<void> uploadOfficeImage(File imageFile) async {
+    print("object");
+
+    final response = await supabase.storage.from('profile').upload(
+          'OfficeProfileFolder/k2',
+          imageFile,
+        );
+    print("Office");
+    UrlImage();
+    print("done");
+  }
+
+  Future<void> uploadPostImage(File imageFile) async {
+    print("object");
+
+    final response = await supabase.storage.from('profile').upload(
+          'PostFolder/khlod',
+          imageFile,
+        );
+    print("Post");
+    UrlImage();
+    print("done");
+  }
+
   /*
+  
   //--
 
 Future<void> uploadImage(File imageFile, {String? name,String id}) async {
@@ -521,15 +548,15 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
     UrlImage();
     print("done");
   }
-
-  //--
 */
+  //--
+
 
   Future<void> UrlImage() async {
     final response = supabase.storage.from('profile').getPublicUrl("kk");
     print(response);
   }
-
+//-----------------
   getSession() async {
     try {
       final Session? session = await DBService().getCurrentSession();

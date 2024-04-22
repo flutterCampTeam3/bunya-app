@@ -41,35 +41,11 @@ class VerifyEmailPage extends StatelessWidget {
                         ));
                       }
                       if (state is OtpLoadingState) {
-                        showDialog(
-                            barrierDismissible: false,
-                            barrierColor: Colors.transparent,
-                            context: context,
-                            builder: (context) {
-                              return const AlertDialog(
-                                backgroundColor: Colors.transparent,
-                                elevation: 0,
-                                content: SizedBox(
-                                  height: 80,
-                                  width: 80,
-                                  child: Center(
-                                    child: CircularProgressIndicator(),
-                                  ),
-                                ),
-                              );
-                            });
+                        context.getDialog();
                       }
                     },
                     builder: (context, state) {
                       final prBloc = context.read<PasswordResetBloc>();
-                      if (state is OtpLoadingState) {
-                        return Center(
-                          child: CircularProgressIndicator(
-                            color: whiteBrown,
-                          ),
-                        );
-                      } else {
-                        final prBloc = context.read<PasswordResetBloc>();
                         return Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -87,6 +63,7 @@ class VerifyEmailPage extends StatelessWidget {
                               ),
                             ),
                             gapH20,
+                           
                             Align(
                                 alignment: Alignment.centerRight,
                                 child: Text(
@@ -116,7 +93,7 @@ class VerifyEmailPage extends StatelessWidget {
                           ],
                         );
                       }
-                    },
+                    
                   )),
             ),
           ),

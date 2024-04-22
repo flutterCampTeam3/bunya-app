@@ -33,13 +33,13 @@ class _AddPostPageState extends State<AddPostPage> {
     }
 
     return BlocProvider(
-      create: (context) => PostBloc()..add(ChoseImagePostEvent()),
+      create: (context) => PostBloc(),
       child: Builder(builder: (context) {
         final bloc = context.read<PostBloc>();
         return Scaffold(
           backgroundColor: white,
           appBar: PreferredSize(
-            preferredSize: const Size.fromHeight(100.0),
+            preferredSize: const Size.fromHeight(50.0),
             child: AppBar(
               backgroundColor: whitegrey,
               leading: TextButton(
@@ -54,107 +54,110 @@ class _AddPostPageState extends State<AddPostPage> {
               ),
             ),
           ),
-          body: Center(
-              child: Column(
-            children: [
-              Text(
-                "اضافة منشور",
-                style: TextStyle(
-                    color: blackColor,
-                    fontWeight: FontWeight.w500,
-                    fontSize: 30),
-              ),
-              gapH10,
-              Padding(
-                padding: const EdgeInsets.all(14.0),
-                child: BlocBuilder<PostBloc, PostState>(
-                  builder: (context, state) {
-                    if (state is ShowImagepostState) {
+          body: ListView(
+            padding: EdgeInsets.all(20.0),
+            children:[ Center(
+                child: Column(
+              children: [
+                Text(
+                  "اضافة منشور",
+                  style: TextStyle(
+                      color: blackColor,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 30),
+                ),
+                gapH10,
+                Padding(
+                  padding: const EdgeInsets.all(14.0),
+                  child: BlocBuilder<PostBloc, PostState>(
+                    builder: (context, state) {
+                      if (state is ShowImagepostState) {
+                        return Container(
+                          height: 400,
+                          decoration: BoxDecoration(
+                              color: whiteColor,
+                              border: Border.all(color: darkGreyColor),
+                              image: DecorationImage(
+                                  image: FileImage(state.PickedImage),
+                                  fit: BoxFit.cover)),
+                        );
+                      }
                       return Container(
-                        height: 400,
+                        height: 300,
                         decoration: BoxDecoration(
                             color: whiteColor,
-                            border: Border.all(color: darkGreyColor),
-                            image: DecorationImage(
-                                image: FileImage(state.PickedImage),
-                                fit: BoxFit.contain)),
-                      );
-                    }
-                    return Container(
-                      height: 400,
-                      decoration: BoxDecoration(
-                          color: whiteColor,
-                          border: Border.all(color: darkGreyColor)),
-                      child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            IconButton(
-                                onPressed: () {
-                                  bloc.add(ChoseImagePostEvent());
-                                },
-                                icon: const Icon(
-                                  Icons.image,
-                                  size: 75,
-                                )),
-                            Text(
-                              "اضغط على الايقونة لرفع منشور جديد",
-                              style: TextStyle(
-                                  color: darkgreyColor,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500),
-                            )
-                          ],
+                            border: Border.all(color: darkGreyColor)),
+                        child: Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                  onPressed: () {
+                                    bloc.add(ChoseImagePostEvent());
+                                  },
+                                  icon: const Icon(
+                                    Icons.image,
+                                    size: 75,
+                                  )),
+                              Text(
+                                "اضغط على الايقونة لرفع منشور جديد",
+                                style: TextStyle(
+                                    color: darkgreyColor,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(14.0),
-                child: TextField(
-                  decoration: InputDecoration(
-                      labelText: '   اضافة وصف',
-                      hintText:
-                          " تصميم ديكور شقة فاخرة لاحد ابراج الرياض بتصميم مودرن كلاسيكي",
-                      labelStyle: TextStyle(
-                          color: darkGreyColor,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15),
-                      hintStyle: TextStyle(color: darkGreyColor),
-                      floatingLabelStyle: TextStyle(
-                          color: blackColor,
-                          fontSize: 23,
-                          fontWeight: FontWeight.w600),
-                      border: OutlineInputBorder(
-                        borderSide: BorderSide(color: whiteColor),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: darkGreyColor)),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: darkGreyColor)),
-                      filled: true,
-                      fillColor: whiteColor,
-                      contentPadding:
-                          const EdgeInsets.symmetric(vertical: 40.0)),
-                  textAlignVertical: TextAlignVertical.bottom,
-                  maxLines: 3,
-                  controller: descController,
+                Padding(
+                  padding: const EdgeInsets.all(14.0),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        labelText: '   اضافة وصف',
+                        hintText:
+                            "اضف وصف للعمل الخاص بك ",
+                        labelStyle: TextStyle(
+                            color: darkGreyColor,
+                            fontWeight: FontWeight.w500,
+                            fontSize: 15),
+                        hintStyle: TextStyle(color: darkGreyColor),
+                        floatingLabelStyle: TextStyle(
+                            color: blackColor,
+                            fontSize: 23,
+                            fontWeight: FontWeight.w600),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: whiteColor),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: darkGreyColor)),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: darkGreyColor)),
+                        filled: true,
+                        fillColor: whiteColor,
+                        contentPadding:
+                            const EdgeInsets.symmetric(vertical: 40.0)),
+                    textAlignVertical: TextAlignVertical.bottom,
+                    maxLines: 3,
+                    controller: descController,
+                  ),
                 ),
-              ),
-              gapH20,
-              Padding(
-                padding: const EdgeInsets.only(left: 12, right: 12),
-                child: ButtonWidget(
-                  backgroundColor: darkBrown,
-                  text: 'نشر',
-                  textColor: whiteColor,
-                  onPressed: () {},
-                ),
-              )
-            ],
-          )),
+                gapH20,
+                Padding(
+                  padding: const EdgeInsets.only(left: 12, right: 12),
+                  child: ButtonWidget(
+                    backgroundColor: darkBrown,
+                    text: 'نشر',
+                    textColor: whiteColor,
+                    onPressed: () {},
+                  ),
+                )
+              ],
+            )),
+          ]),
         );
       }),
     );
