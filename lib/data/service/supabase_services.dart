@@ -337,7 +337,7 @@ class DBService {
     await supabase.from('post_likes').insert(
       {
         'postId': post.postId,
-        'postOfficeId': post.postId,
+        'postOfficeId': post.ofiiceId,
         'customerId': supabase.auth.currentUser!.id,
       },
     );
@@ -396,8 +396,6 @@ class DBService {
   Future getOfficeLikeNumber({
     required String officeId,
   }) async {
-    print("in the getOfficeLikeNumber func");
-    print("-------------------------------");
     final postLikeNumber = await supabase
         .from('post_likes')
         .select('*')
@@ -410,10 +408,10 @@ class DBService {
       for (var element in postLikeNumber) {
         likes.add(postLikeModel.fromJson(element));
       }
-      print("-------------------------------1111${likes.length}");
+      print("-------------------------------the num${likes.length}");
       return likes.length;
     } else {
-      print("-------------------------------1111   0000");
+      print("-------------------------------the num  else 0");
       return 0;
     }
   }

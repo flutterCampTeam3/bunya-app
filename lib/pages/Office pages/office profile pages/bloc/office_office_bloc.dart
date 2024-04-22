@@ -1,96 +1,95 @@
 import 'dart:async';
-import 'package:bloc/bloc.dart';
-import 'package:meta/meta.dart';
-import '../../../../data/model/post_model.dart';
-import '../../../../data/service/supabase_services.dart';
-part 'profile_posts_event.dart';
-part 'profile_posts_state.dart';
 
-class ProfilePostsBloc extends Bloc<ProfilePostsEvent, ProfilePostsState> {
+import 'package:bloc/bloc.dart';
+import 'package:bunya_app/data/model/post_model.dart';
+import 'package:bunya_app/data/service/supabase_services.dart';
+import 'package:meta/meta.dart';
+
+part 'office_office_event.dart';
+part 'office_office_state.dart';
+
+class OfficeOfficeBloc extends Bloc<OfficeOfficeEvent, OfficeOfficeState> {
   bool isFollow = true;
   int followerNumber = 0;
   int followingNumber = 0;
   int likesNumber = 0;
   List<postModel> classPostId = [];
-  ProfilePostsBloc() : super(ProfilePostsInitial()) {
-    on<ShowDataIdEvent>(fetchDataId);
-    on<CheckFollowEvent>(checkFollow);
-    on<AddFollowEvent>(addFollow);
-    on<DeleteFollowEvent>(deleteFollow);
-    on<CheckFollowNumberEvent>(checkFollowNumber);
+  OfficeOfficeBloc() : super(OfficeOfficeInitial()) {
+    on<OfficeOfficeEvent>((event, emit) {});
+    on<ShowDataIdOfficeEvent>(fetchDataId);
+    on<CheckFollowOfficeEvent>(checkFollow);
+    on<AddFollowOfficeEvent>(addFollow);
+    on<DeleteFollowOfficeEvent>(deleteFollow);
+    on<CheckFollowNumberOfficeEvent>(checkFollowNumber);
   }
-  Future<void> fetchDataId(
-      ShowDataIdEvent event, Emitter<ProfilePostsState> emit) async {
-    emit(LoadingState());
+
+  FutureOr<void> fetchDataId(
+      ShowDataIdOfficeEvent event, Emitter<OfficeOfficeState> emit) async {
+    emit(LoadingOfficeState());
     try {
       classPostId = await DBService().getPostsId(ofiiceId: event.id);
       followerNumber = await DBService().followerNumber(officeId: event.id);
       followingNumber = await DBService().followingNumber(customerId: event.id);
-      likesNumber = classPostId =
-          await DBService().getOfficeLikeNumber(officeId: event.id);
-      emit(profilePostsSuccesState());
+      likesNumber = await DBService().getOfficeLikeNumber(officeId: event.id);
+      emit(profilePostsSuccesOfficeState());
     } catch (e) {
-      emit(ErrorprofileShowpostState(msg: 'فشل في جلب البيانات '));
+      emit(ErrorprofileShowpostOfficeState(msg: 'فشل في جلب البيانات '));
     }
   }
 
-  Future<void> checkFollow(
-      CheckFollowEvent event, Emitter<ProfilePostsState> emit) async {
-    // emit(LoadingFollowState());
-    try {
+  FutureOr<void> checkFollow(
+      CheckFollowOfficeEvent event, Emitter<OfficeOfficeState> emit) async {
+            try {
       isFollow = await DBService().checkFollowers(officeID: event.id);
       classPostId = await DBService().getPostsId(ofiiceId: event.id);
       followerNumber = await DBService().followerNumber(officeId: event.id);
       followingNumber = await DBService().followingNumber(customerId: event.id);
       likesNumber = await DBService().getOfficeLikeNumber(officeId: event.id);
       print("the bloc after the func ${likesNumber}");
-      emit(profilePostsSuccesState());
-      emit(CheckFollowState());
+      emit(profilePostsSuccesOfficeState());
+      emit(CheckFollowOfficeState());
     } catch (e) {
       print(e.toString());
-      emit(ErrorFollowState(msg: 'حدث خطاء في تحميل بيانات الحساب'));
+      emit(ErrorFollowOfficeState(msg: 'حدث خطاء في تحميل بيانات الحساب'));
     }
-  }
+      }
 
   FutureOr<void> addFollow(
-      AddFollowEvent event, Emitter<ProfilePostsState> emit) async {
-    // emit(LoadingFollowState());
-    try {
+      AddFollowOfficeEvent event, Emitter<OfficeOfficeState> emit) async {
+            try {
       print("press the add bottun");
       isFollow = await DBService().addFollowers(officeID: event.id);
       classPostId = await DBService().getPostsId(ofiiceId: event.id);
       followerNumber = await DBService().followerNumber(officeId: event.id);
       followingNumber = await DBService().followingNumber(customerId: event.id);
       likesNumber = await DBService().getOfficeLikeNumber(officeId: event.id);
-      emit(profilePostsSuccesState());
-      emit(AddFollowState(msg: 'تم متابعة المستخدم'));
+      emit(profilePostsSuccesOfficeState());
+      emit(AddFollowOfficeState(msg: 'تم متابعة المستخدم'));
     } catch (e) {
       print(e.toString());
-      emit(ErrorFollowState(msg: 'حدث خطا يرجي المحاولة مرة اخرى'));
+      emit(ErrorFollowOfficeState(msg: 'حدث خطا يرجي المحاولة مرة اخرى'));
     }
-  }
+      }
 
   FutureOr<void> deleteFollow(
-      DeleteFollowEvent event, Emitter<ProfilePostsState> emit) async {
-    // emit(LoadingFollowState());
-    try {
+      DeleteFollowOfficeEvent event, Emitter<OfficeOfficeState> emit) async {
+            try {
       isFollow = await DBService().deleteFollowers(officeID: event.id);
       classPostId = await DBService().getPostsId(ofiiceId: event.id);
       followerNumber = await DBService().followerNumber(officeId: event.id);
       followingNumber = await DBService().followingNumber(customerId: event.id);
       likesNumber = await DBService().getOfficeLikeNumber(officeId: event.id);
-      emit(profilePostsSuccesState());
-      emit(DeleteFollowState(msg: 'تم الغاء متابعة المستخدم'));
+      emit(profilePostsSuccesOfficeState());
+      emit(DeleteFollowOfficeState(msg: 'تم الغاء متابعة المستخدم'));
     } catch (e) {
       print(e.toString());
-      emit(ErrorFollowState(msg: 'حدث خطا يرجي المحاولة مرة اخرى'));
+      emit(ErrorFollowOfficeState(msg: 'حدث خطا يرجي المحاولة مرة اخرى'));
     }
-  }
+      }
 
-  FutureOr<void> checkFollowNumber(
-      CheckFollowNumberEvent event, Emitter<ProfilePostsState> emit) async {
-    // emit(LoadingFollowState());
-    try {
+  FutureOr<void> checkFollowNumber(CheckFollowNumberOfficeEvent event,
+      Emitter<OfficeOfficeState> emit) async {
+            try {
       followerNumber =
           await DBService().followerNumber(officeId: event.officeId);
       followingNumber =
@@ -99,10 +98,10 @@ class ProfilePostsBloc extends Bloc<ProfilePostsEvent, ProfilePostsState> {
       likesNumber =
           await DBService().getOfficeLikeNumber(officeId: event.officeId);
       print("in the bloc of post after the func");
-      emit(profilePostsSuccesState());
+      emit(profilePostsSuccesOfficeState());
     } catch (e) {
       print(e.toString());
-      emit(ErrorFollowState(msg: 'حدث خطا يرجي المحاولة مرة اخرى'));
+      emit(ErrorFollowOfficeState(msg: 'حدث خطا يرجي المحاولة مرة اخرى'));
     }
-  }
+      }
 }
