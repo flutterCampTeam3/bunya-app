@@ -1,3 +1,6 @@
+import 'package:bunya_app/helper/extintion.dart';
+import 'package:bunya_app/pages/Office%20pages/notification_page/notificaition_page.dart';
+import 'package:bunya_app/pages/costumer%20pages/notification_page/notificaition_page.dart';
 import 'package:flutter/material.dart';
 
 class AppBarWidget extends StatelessWidget {
@@ -16,7 +19,9 @@ class AppBarWidget extends StatelessWidget {
         ),
         // const Spacer(),
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            context.pushTo(view: const NotificationOfficePage());
+          },
           icon: const Icon(Icons.notifications_none_outlined),
           iconSize: 27,
         ),
