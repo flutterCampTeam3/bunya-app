@@ -494,8 +494,9 @@ class DBService {
       }
       return followers;
     } else {
-      final List<OfficesModel> followers = [];
-      return followers;
+             final List<OfficesModel> followers = [];
+
+      return  followers;
     }
   }
 

@@ -26,7 +26,7 @@ class ProfilePostsBloc extends Bloc<ProfilePostsEvent, ProfilePostsState> {
       classPostId = await DBService().getPostsId(ofiiceId: event.id);
       followerNumber = await DBService().followerNumber(officeId: event.id);
       followingNumber = await DBService().followingNumber(customerId: event.id);
-      likesNumber = classPostId =
+      likesNumber  =
           await DBService().getOfficeLikeNumber(officeId: event.id);
       emit(profilePostsSuccesState());
     } catch (e) {

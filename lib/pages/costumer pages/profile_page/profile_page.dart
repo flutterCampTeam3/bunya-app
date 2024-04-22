@@ -376,7 +376,7 @@ class ProfilePageCustomer extends StatelessWidget {
                                     Row(
                                       children: [
                                         ImageAacountWodget(
-                                          path: state.image!,
+                                          path: state.image,
                                         ),
                                         gapWe15,
                                         Column(
@@ -601,38 +601,51 @@ class ProfilePageCustomer extends StatelessWidget {
                                               //     }
                                               //   },
                                               // )
-                                                     
-                                              ListView.builder(
-                                                shrinkWrap: true,
-                                                itemCount:
-                                                    bloc.classFollowing.length,
-                                                itemBuilder: (context, index) {
-                                                  return Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: InkWell(
-                                                      onTap: () {
-                                                        context.pushTo(
-                                                            view:
-                                                                ProfilePageOfficeCustomur(
-                                                          office:
-                                                              bloc.classFollowing[
-                                                                  index],
-                                                        ));
+
+                                              BlocBuilder<ProfileBloc,
+                                                  ProfileState>(
+                                                builder: (context, state) {
+                                                  if (bloc.classFollowing
+                                                      .isNotEmpty) {
+                                                    return ListView.builder(
+                                                      shrinkWrap: true,
+                                                      itemCount: bloc
+                                                          .classFollowing
+                                                          .length,
+                                                      itemBuilder:
+                                                          (context, index) {
+                                                        return Padding(
+                                                          padding:
+                                                              const EdgeInsets
+                                                                  .all(8.0),
+                                                          child: InkWell(
+                                                            onTap: () {
+                                                              context.pushTo(
+                                                                  view:
+                                                                      ProfilePageOfficeCustomur(
+                                                                office:
+                                                                    bloc.classFollowing[
+                                                                        index],
+                                                              ));
+                                                            },
+                                                            child: FollowresRow(
+                                                              name:
+                                                                  bloc.classFollowing[
+                                                                      index],
+                                                              path:
+                                                                  bloc.classFollowing[
+                                                                      index],
+                                                            ),
+                                                          ),
+                                                        );
                                                       },
-                                                      child: 
-                                                     
-                                                      FollowresRow(
-                                                        name:
-                                                            bloc.classFollowing[
-                                                                index],
-                                                        path:
-                                                            bloc.classFollowing[
-                                                                index],
-                                                      ),
-                                                    ),
-                                                  );
+                                                    );
+                                                  } else {
+                                                    return const Center(
+                                                      child: Text(
+                                                          "لايوجد لديك متابعون "),
+                                                    );
+                                                  }
                                                 },
                                               ),
 
