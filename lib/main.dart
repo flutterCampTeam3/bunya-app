@@ -1,6 +1,7 @@
 import 'package:bunya_app/data/service/supabase_configration.dart';
 import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:bunya_app/pages/Office%20pages/navBar%20page/navBarPage.dart';
+import 'package:bunya_app/pages/costumer%20pages/aichat/chat.dart';
 import 'package:bunya_app/pages/costumer%20pages/navBar%20page/navBarPage.dart';
 import 'package:bunya_app/pages/intro%20pages/disconnect_page.dart';
 import 'package:bunya_app/pages/intro%20pages/first_intro.dart';
@@ -35,25 +36,23 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final locator = GetIt.I.get<DBService>();
     final bool isSignIn = locator.isSession;
-
     return BlocProvider(
       create: (context) => DrakModeBloc()..add(GetThemeEvent()),
       child:
           BlocBuilder<DrakModeBloc, DrakModeState>(builder: (context, state) {
         final bloc = context.read<DrakModeBloc>();
+              return MaterialApp(
+                  theme: bloc.themeInfo,
+                  debugShowCheckedModeBanner: false,
+                  home: Directionality(
+                      textDirection: TextDirection.rtl,
+                      child:  isSignIn
+                          ? locator.userType
+                              ? const NavBarPage()
+                              : const NavBarOfficePage()
+                          : const introPage()));
+            }),
+          );
+        }
 
-//-----------------
-        return MaterialApp(
-            theme: bloc.themeInfo,
-            debugShowCheckedModeBanner: false,
-            home: Directionality(
-                textDirection: TextDirection.rtl,
-                child: isSignIn
-                    ? locator.userType
-                        ? const NavBarPage()
-                        : const NavBarOfficePage()
-                    : const introPage()));
-      }),
-    );
-  }
 }

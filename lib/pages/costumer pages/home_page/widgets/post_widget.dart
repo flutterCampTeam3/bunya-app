@@ -1,9 +1,12 @@
 import 'package:bunya_app/data/model/offices_model.dart';
 import 'package:bunya_app/data/model/post_model.dart';
 import 'package:bunya_app/helper/colors.dart';
+import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/bloc/home_bloc.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -92,10 +95,8 @@ class PostWidget extends StatelessWidget {
                                         bloc.add(AddLikeHomeEvent(
                                             post: description));
                                       },
-                                      child: const Icon(
-                                        Icons.favorite_border,
-                                        color: Colors.black,
-                                      ))
+                                      child:
+                                          const Icon(Icons.favorite_border , color: Colors.black,))
                                   : InkWell(
                                       onTap: () {
                                         bloc.add(DeleteLikeHomeEvent(
@@ -112,7 +113,6 @@ class PostWidget extends StatelessWidget {
                                 child: Text("${bloc.likeNumber} لايك",
                                     style: GoogleFonts.balooBhaijaan2(
                                       textStyle: const TextStyle(
-                                          color: Colors.black,
                                           fontWeight: FontWeight.bold),
                                     )))
                           ],
@@ -149,9 +149,7 @@ class PostWidget extends StatelessWidget {
                             child: Text(
                               profilePath.name,
                               style: const TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black),
+                                  fontSize: 12, fontWeight: FontWeight.bold , color: Colors.black),
                             ),
                           )
                         ],
