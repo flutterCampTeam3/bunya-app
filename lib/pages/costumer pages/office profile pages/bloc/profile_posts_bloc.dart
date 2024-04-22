@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
+import 'package:bunya_app/data/model/room_model.dart';
 import 'package:meta/meta.dart';
 import '../../../../data/model/post_model.dart';
 import '../../../../data/service/supabase_services.dart';
@@ -11,12 +12,14 @@ class ProfilePostsBloc extends Bloc<ProfilePostsEvent, ProfilePostsState> {
   int followerNumber = 0;
   int followingNumber = 0;
   int likesNumber = 0;
+  Room? room;
   List<postModel> classPostId = [];
   ProfilePostsBloc() : super(ProfilePostsInitial()) {
     on<ShowDataIdEvent>(fetchDataId);
     on<CheckFollowEvent>(checkFollow);
     on<AddFollowEvent>(addFollow);
     on<DeleteFollowEvent>(deleteFollow);
+    on<CheckRoomEvent>(checkRoom);
     on<CheckFollowNumberEvent>(checkFollowNumber);
   }
   Future<void> fetchDataId(
@@ -43,7 +46,7 @@ class ProfilePostsBloc extends Bloc<ProfilePostsEvent, ProfilePostsState> {
       followerNumber = await DBService().followerNumber(officeId: event.id);
       followingNumber = await DBService().followingNumber(customerId: event.id);
       likesNumber = await DBService().getOfficeLikeNumber(officeId: event.id);
-      print("the bloc after the func ${likesNumber}");
+      print("the bloc after the func $likesNumber");
       emit(profilePostsSuccesState());
       emit(CheckFollowState());
     } catch (e) {
@@ -100,6 +103,19 @@ class ProfilePostsBloc extends Bloc<ProfilePostsEvent, ProfilePostsState> {
           await DBService().getOfficeLikeNumber(officeId: event.officeId);
       print("in the bloc of post after the func");
       emit(profilePostsSuccesState());
+    } catch (e) {
+      print(e.toString());
+      emit(ErrorFollowState(msg: 'حدث خطا يرجي المحاولة مرة اخرى'));
+    }
+  }
+
+  FutureOr<void> checkRoom(
+      CheckRoomEvent event, Emitter<ProfilePostsState> emit) async {
+    // emit(LoadingFollowState());
+    try {
+      room = await DBService().checkRoom(event.officeId);
+      print("in the bloc of chat create");
+      emit(CheckChatState(room: room!));
     } catch (e) {
       print(e.toString());
       emit(ErrorFollowState(msg: 'حدث خطا يرجي المحاولة مرة اخرى'));

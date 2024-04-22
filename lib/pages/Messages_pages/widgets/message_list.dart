@@ -20,6 +20,7 @@ class MessageListWidget extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        margin: EdgeInsets.only(bottom: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: Colors.white,
@@ -47,7 +48,7 @@ class MessageListWidget extends StatelessWidget {
                   ),
                 ),
                 child: ClipOval(
-                  child: Image.asset(
+                  child: Image.network(
                     path,
                     fit: BoxFit.cover,
                   ),
