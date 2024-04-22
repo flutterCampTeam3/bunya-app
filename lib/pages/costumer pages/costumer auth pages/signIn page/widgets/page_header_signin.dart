@@ -79,8 +79,8 @@ class PageHeaderSignIn extends StatelessWidget {
                 alignment: Alignment.bottomRight,
                 child: Text(
                   bottomText,
-                  style: TextStyle(
-                      color: blackColor,
+                  style: const TextStyle(
+                      // color: blackColor,
                       fontSize: 24,
                       fontWeight: FontWeight.bold),
                 ),

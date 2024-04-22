@@ -1,13 +1,14 @@
+import 'package:bunya_app/helper/colors.dart';
 import 'package:flutter/material.dart';
 
 class MessageListWidget extends StatelessWidget {
-  MessageListWidget({
-    Key? key,
+  const MessageListWidget({
+    super.key,
     required this.path,
     required this.title,
     required this.sendTime,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   final String path;
   final String title;
@@ -52,13 +53,15 @@ class MessageListWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title),
-                    
+                    Text(
+                      title,
+                      style: TextStyle(color: blackColor),
+                    ),
                   ],
                 ),
               ),
@@ -67,8 +70,8 @@ class MessageListWidget extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Text('$sendTime'),
-                      SizedBox(width: 5),
+                      Text(sendTime),
+                      const SizedBox(width: 5),
                       Icon(
                         Icons.watch_later_outlined,
                         color: Colors.brown[200],

@@ -1,15 +1,16 @@
+import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:flutter/material.dart';
 
 class AccountListWidget extends StatelessWidget {
-  AccountListWidget({
-    Key? key,
+  const AccountListWidget({
+    super.key,
     required this.description,
     required this.path,
     required this.title,
     required this.followers,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   final String path;
   final String title;
@@ -57,15 +58,19 @@ class AccountListWidget extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(title),
+                        Text(
+                          title,
+                          style: TextStyle(color: blackColor),
+                        ),
                         Text(
                           description,
-                          style: TextStyle(fontSize: 9, color: Colors.grey),
+                          style:
+                              const TextStyle(fontSize: 9, color: Colors.grey),
                         ),
                       ],
                     ),
@@ -73,7 +78,7 @@ class AccountListWidget extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Row(
+                      const Row(
                           /*
                         children: [
                           Text('$rate '),
@@ -85,12 +90,13 @@ class AccountListWidget extends StatelessWidget {
                         ],
                         */
                           ),
-                      Divider(height: 18, thickness: 1, color: Colors.grey),
+                      const Divider(
+                          height: 18, thickness: 1, color: Colors.grey),
                       Row(
                         children: [
                           Text('$followers'),
-                          SizedBox(width: 5),
-                          Icon(
+                          const SizedBox(width: 5),
+                          const Icon(
                             Icons.people_outline_rounded,
                             color: Colors.red,
                             size: 20,

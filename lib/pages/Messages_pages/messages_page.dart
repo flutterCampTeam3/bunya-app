@@ -15,7 +15,7 @@ class MessageListPage extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
-        backgroundColor: white,
+        // backgroundColor: white,
         body: Stack(
           children: [
             // Background Image

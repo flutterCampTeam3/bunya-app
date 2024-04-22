@@ -36,7 +36,7 @@ class ProfilePageCustomer extends StatelessWidget {
                   return Directionality(
                     textDirection: TextDirection.rtl,
                     child: Scaffold(
-                        backgroundColor: whiteColor,
+                        // backgroundColor: whiteColor,
                         body: SafeArea(
                             child: Padding(
                                 padding: const EdgeInsets.all(20.0),
@@ -142,6 +142,9 @@ class ProfilePageCustomer extends StatelessWidget {
                                                       },
                                                       icon: Image.asset(
                                                         'assets/images/edit.png',
+                                                        color: Theme.of(context)
+                                                            .colorScheme
+                                                            .secondary,
                                                         width: 18,
                                                       )),
                                                 ],
@@ -157,14 +160,18 @@ class ProfilePageCustomer extends StatelessWidget {
                                               gapH15,
                                               InformationRowCustomer(
                                                 icon: const Icon(
-                                                    Icons.phone_outlined),
+                                                  Icons.phone_outlined,
+                                                  color: Colors.black,
+                                                ),
                                                 info: state.phone.toString() ??
                                                     '',
                                               ),
                                               gapH15,
                                               InformationRowCustomer(
                                                 icon: const Icon(
-                                                    Icons.email_outlined),
+                                                  Icons.email_outlined,
+                                                  color: Colors.black,
+                                                ),
                                                 info: state.email ?? '',
                                               ),
                                               gapH60,

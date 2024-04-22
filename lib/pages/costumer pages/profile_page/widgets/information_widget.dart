@@ -30,7 +30,10 @@ class InformationRowCustomer extends StatelessWidget {
             children: [
               icon,
               gapWe10,
-              Text(info),
+              Text(
+                info,
+                style: TextStyle(color: blackColor),
+              ),
               gapWe20,
             ],
           )),

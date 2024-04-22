@@ -34,7 +34,7 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
               initialIndex: 0,
               length: 2,
               child: Scaffold(
-                backgroundColor: whiteColor,
+                // backgroundColor: whiteColor,
                 body: SafeArea(
                     child: Padding(
                   padding: const EdgeInsets.only(left: 20.0, right: 20),
@@ -70,7 +70,8 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                 VerticalDivider(
                                   width: 30.0,
                                   thickness: 1.0,
-                                  color: blackColor,
+                                  color:
+                                      Theme.of(context).colorScheme.secondary,
                                 ),
                                 Column(
                                   children: [
@@ -251,12 +252,14 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                       const Text(
                                         "معلومات الشركة :",
                                         style: TextStyle(
+                                            color: Colors.black,
                                             fontWeight: FontWeight.bold),
                                       ),
                                       gapH5,
                                       Text(
                                         office.disc,
-                                        style: const TextStyle(fontSize: 14),
+                                        style: const TextStyle(
+                                            fontSize: 14, color: Colors.black),
                                       )
                                     ],
                                   ),
@@ -270,20 +273,24 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                       const Text(
                                         "معلومات التواصل :",
                                         style: TextStyle(
-                                            fontWeight: FontWeight.bold),
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black),
                                       ),
                                       gapH5,
                                       Text(
                                         office.email,
-                                        style: const TextStyle(fontSize: 14),
+                                        style: const TextStyle(
+                                            fontSize: 14, color: Colors.black),
                                       ),
                                       Text(
                                         office.phoneNumber.toString(),
-                                        style: const TextStyle(fontSize: 14),
+                                        style: const TextStyle(
+                                            fontSize: 14, color: Colors.black),
                                       ),
                                       Text(
                                         office.name,
-                                        style: const TextStyle(fontSize: 14),
+                                        style: const TextStyle(
+                                            fontSize: 14, color: Colors.black),
                                       )
                                     ],
                                   ),

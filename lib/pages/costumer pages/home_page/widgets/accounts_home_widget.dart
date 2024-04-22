@@ -63,7 +63,9 @@ class AccountsHomeWidget extends StatelessWidget {
                   Text(
                     title.name,
                     style: const TextStyle(
-                        fontSize: 15, fontWeight: FontWeight.bold),
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
                   ),
                   Text(
                     description.disc,

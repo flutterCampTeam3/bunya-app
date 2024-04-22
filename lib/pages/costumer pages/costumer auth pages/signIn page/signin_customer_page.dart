@@ -110,11 +110,11 @@ class _SigninCustomerPageState extends State<SigninCustomerPage> {
                                     // Here VerifyEmailPage
                                     context.pushTo(view: VerifyEmailPage());
                                   },
-                                  child: Text(
+                                  child: const Text(
                                     "هل نسيت كلمة المرور؟",
                                     style: TextStyle(
                                         decoration: TextDecoration.underline,
-                                        color: blackColor,
+                                        // color: blackColor,
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold),
                                   )),
@@ -165,7 +165,7 @@ class _SigninCustomerPageState extends State<SigninCustomerPage> {
                                   TextSpan(
                                       text: "سجل الآن",
                                       style: TextStyle(
-                                        color: darkBrown,
+                                        // color: darkBrown,
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
                                         fontFamily:
