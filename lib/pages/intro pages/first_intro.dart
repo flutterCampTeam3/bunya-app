@@ -67,11 +67,11 @@ class introPage extends StatelessWidget {
                   onPressed: () {
                     context.pushAndRemove(BoardingPage());
                   },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(lightBrown),
-                    fixedSize:
-                        MaterialStateProperty.all<Size>(const Size(150, 50)),
-                  ),
+                  // style: ButtonStyle(
+                  //   backgroundColor: WidgetStateProperty.all<Color>(lightBrown),
+                  //   fixedSize:
+                  //       WidgetStateProperty.all<Size>(const Size(150, 50)),
+                  // ),
                   // style: ButtonStyle(
                   //   backgroundColor:
                   //       MaterialStateProperty.all<Color>(lightBrown),
@@ -92,11 +92,11 @@ class introPage extends StatelessWidget {
                       isCustomer: false,
                     ));
                   },
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(lightBrown),
-                    fixedSize:
-                        MaterialStateProperty.all<Size>(const Size(150, 50)),
-                  ),
+                  // style: ButtonStyle(
+                  //   backgroundColor: WidgetStateProperty.all<Color>(lightBrown),
+                  //   fixedSize:
+                  //       WidgetStateProperty.all<Size>(const Size(150, 50)),
+                  // ),
                   // style: ButtonStyle(
                   //   backgroundColor:
                   //       MaterialStateProperty.all<Color>(lightBrown),

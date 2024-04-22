@@ -35,7 +35,6 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
               initialIndex: 0,
               length: 2,
               child: Scaffold(
-                // backgroundColor: whiteColor,
                 body: SafeArea(
                   child: Padding(
                       padding: const EdgeInsets.only(left: 20.0, right: 20),
@@ -70,277 +69,288 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                         Text("${bloc.followerNumber}"),
                                       ],
                                     ),
-                                 
-                                VerticalDivider(
-                                  width: 30.0,
-                                  thickness: 1.0,
-                                  color:
-                                      Theme.of(context).colorScheme.secondary,
-                                ),
-                                Column(
-                                  children: [
-                                    const Text("المتابِعون"),
-                                    gapH20,
-                                    Text("${bloc.followingNumber}"),
+                                    VerticalDivider(
+                                      width: 30.0,
+                                      thickness: 1.0,
+                                      color: Theme.of(context).colorScheme.secondary,
+                                    ),
+                                     Column(
+                                      children: [
+                                        Text("المتابِعون"),
+                                        gapH20,
+                                        Text("${bloc.followingNumber}"),
+                                      ],
+                                    ),
+                                    VerticalDivider(
+                                      width: 30.0,
+                                      thickness: 1.0,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
+                                    ),
+                                     Column(
+                                      children: [
+                                        Text("الإعجابات"),
+                                        gapH20,
+                                        Text("${bloc.likesNumber}"),
+                                      ],
+                                    ),
                                   ],
                                 ),
-                                VerticalDivider(
-                                  width: 30.0,
-                                  thickness: 1.0,
-                                  color: blackColor,
+                              );
+                            },
+                          ),
+
+                          gapH20,
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              ElevatedButton(
+                                onPressed: () {
+                                  //
+                                },
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      WidgetStateProperty.all<Color>(
+                                          lightBrown),
+                                  fixedSize: WidgetStateProperty.all<Size>(
+                                      const Size(130, 50)),
                                 ),
-                                Column(
-                                  children: [
-                                    const Text("الإعجابات"),
-                                    gapH20,
-                                    Text("${bloc.likesNumber}"),
-                                  ],
+                                // style: ButtonStyle(
+                                //   backgroundColor:
+                                //       MaterialStateProperty.all<Color>(lightBrown),
+                                //   fixedSize: MaterialStateProperty.all<Size>(
+                                //       const Size(150, 50)),
+                                // ),
+                                child: const Text(
+                                  'محادثة',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              BlocConsumer<ProfilePostsBloc, ProfilePostsState>(
+                                listener: (context, state) {
+                                  if (state is ErrorFollowState) {
+                                    context.showErrorSnackBar(
+                                        context, state.msg);
+                                  }
+                                },
+                                builder: (context, state) {
+                                  if (state is LoadingState) {
+                                    return SizedBox(
+                                      height: 150,
+                                      width: 150,
+                                      child: Center(
+                                        child: CircularProgressIndicator(
+                                          color: brown,
+                                        ),
+                                      ),
+                                    );
+                                  } else {
+                                    return Row(
+                                      children: [
+                                        Visibility(
+                                          visible: bloc.isFollow,
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              bloc.add(DeleteFollowEvent(
+                                                  id: office.officeId));
+                                            },
+                                            style: ButtonStyle(
+                                              backgroundColor:
+                                                  WidgetStateProperty.all<
+                                                      Color>(lightBrown),
+                                              fixedSize:
+                                                  WidgetStateProperty.all<Size>(
+                                                      const Size(130, 50)),
+                                            ),
+                                            child: const Text(
+                                              'الغاء المتابعة ',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                        ),
+                                        Visibility(
+                                          visible: !bloc.isFollow,
+                                          child: ElevatedButton(
+                                            onPressed: () {
+                                              bloc.add(AddFollowEvent(
+                                                  id: office.officeId));
+                                            },
+                                            style: ButtonStyle(
+                                              backgroundColor:
+                                                  WidgetStateProperty.all<
+                                                      Color>(brown),
+                                              fixedSize:
+                                                  WidgetStateProperty.all<Size>(
+                                                      const Size(130, 50)),
+                                            ),
+                                            child: const Text(
+                                              'متابعة',
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  }
+                                },
+                              ),
+                            ],
+                          ),
+                          gapH20,
+                          // gapH20,
+                          Container(
+                            padding: const EdgeInsets.all(2),
+                            height: 40,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: lightbrownColor),
+                            child: TabBar(
+                              // indicatorSize: TabBarIndicatorSize.values[2],
+                              indicator: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(30),
+                                  gradient: RadialGradient(
+                                      colors: [whiteColor, whiteColor])),
+                              tabs: [
+                                Tab(
+                                  icon: SizedBox(
+                                    width: 80,
+                                    child: Image.asset(
+                                      'assets/images/person_icon.png',
+                                      height: 20,
+                                      width: 45,
+                                    ),
+                                  ),
+                                ),
+                                Tab(
+                                  icon: SizedBox(
+                                    width: 80,
+                                    child: Image.asset(
+                                      'assets/images/post_icon.png',
+                                      height: 20,
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),
-                          );
-                        },
-                      ),
-                      gapH20,
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          ElevatedButton(
-                            onPressed: () {
-                              //
-                            },
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  WidgetStateProperty.all<Color>(lightBrown),
-                              fixedSize: WidgetStateProperty.all<Size>(
-                                  const Size(130, 50)),
-                            ),
-                            // style: ButtonStyle(
-                            //   backgroundColor:
-                            //       MaterialStateProperty.all<Color>(lightBrown),
-                            //   fixedSize: MaterialStateProperty.all<Size>(
-                            //       const Size(150, 50)),
-                            // ),
-                            child: const Text(
-                              'محادثة',
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold),
-                            ),
                           ),
-                          BlocConsumer<ProfilePostsBloc, ProfilePostsState>(
-                            listener: (context, state) {
-                              if (state is ErrorFollowState) {
-                                context.showErrorSnackBar(context, state.msg);
-                              }
-                            },
-                            builder: (context, state) {
-                              if (state is LoadingState) {
-                                return SizedBox(
-                                  height: 150,
-                                  width: 150,
-                                  child: Center(
-                                    child: CircularProgressIndicator(
-                                      color: brown,
-                                    ),
+                          gapH20,
+                          Expanded(
+                            child: TabBarView(
+                              children: [
+                                SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      InformationWidgetOffice(
+                                        widget: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const Text(
+                                              "معلومات الشركة :",
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            gapH5,
+                                            Text(
+                                              office.disc,
+                                              style: const TextStyle(
+                                                  fontSize: 14,
+                                                  color: Colors.black),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                      gapH20,
+                                      InformationWidgetOffice(
+                                        widget: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const Text(
+                                              "معلومات التواصل :",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color: Colors.black),
+                                            ),
+                                            gapH5,
+                                            Text(
+                                              office.email,
+                                              style: const TextStyle(
+                                                  fontSize: 14,
+                                                  color: Colors.black),
+                                            ),
+                                            Text(
+                                              office.phoneNumber.toString(),
+                                              style: const TextStyle(
+                                                  fontSize: 14,
+                                                  color: Colors.black),
+                                            ),
+                                            Text(
+                                              office.name,
+                                              style: const TextStyle(
+                                                  fontSize: 14,
+                                                  color: Colors.black),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                );
-                              } else {
-                                return Row(
-                                  children: [
-                                    Visibility(
-                                      visible: bloc.isFollow,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          bloc.add(DeleteFollowEvent(
-                                              id: office.officeId));
-                                        },
-                                        style: ButtonStyle(
-                                          backgroundColor:
-                                              WidgetStateProperty.all<Color>(
-                                                  lightBrown),
-                                          fixedSize:
-                                              WidgetStateProperty.all<Size>(
-                                                  const Size(130, 50)),
-                                        ),
-                                        child: const Text(
-                                          'الغاء المتابعة ',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    ),
-                                    Visibility(
-                                      visible: !bloc.isFollow,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          print("press the add bottun");
-                                          bloc.add(AddFollowEvent(
-                                              id: office.officeId));
-                                        },
-                                        style: ButtonStyle(
-                                          backgroundColor:
-                                              WidgetStateProperty.all<Color>(
-                                                  brown),
-                                          fixedSize:
-                                              WidgetStateProperty.all<Size>(
-                                                  const Size(130, 50)),
-                                        ),
-                                        child: const Text(
-                                          'متابعة',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                );
-                              }
-                            },
+                                ),
+                                BlocConsumer<ProfilePostsBloc,
+                                    ProfilePostsState>(
+                                  listener: (context, state) {
+                                    if (state is ErrorprofileShowpostState) {
+                                      // Navigator.pop(context);
+                                      context.showErrorSnackBar(
+                                          context, state.msg);
+                                    }
+                                  },
+                                  builder: (context, state) {
+                                    if (bloc.classPostId.isNotEmpty) {
+                                      return SizedBox(
+                                        child: GridView.builder(
+                                            gridDelegate:
+                                                const SliverGridDelegateWithFixedCrossAxisCount(
+                                              crossAxisCount: 1,
+                                              crossAxisSpacing: 10.0,
+                                              mainAxisSpacing: 10.0,
+                                              childAspectRatio: 0.75,
+                                            ),
+                                            itemCount: bloc.classPostId.length,
+                                            itemBuilder: (context, index) {
+                                              return PostProfileWidget(
+                                                desc: bloc.classPostId[index],
+                                                path: bloc.classPostId[index],
+                                              );
+                                            }),
+                                      );
+                                    } else {
+                                      return const SizedBox(
+                                        child: Center(
+                                            child: Text(
+                                                "لا يوجد منشورات حتى الان")),
+                                      );
+                                    }
+                                  },
+                                )
+                              ],
+                            ),
                           ),
                         ],
-                      ),
-                      gapH20,
-                      // gapH20,
-                      Container(
-                        padding: const EdgeInsets.all(2),
-                        height: 40,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: lightbrownColor),
-                        child: TabBar(
-                          // indicatorSize: TabBarIndicatorSize.values[2],
-                          indicator: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              gradient: RadialGradient(
-                                  colors: [whiteColor, whiteColor])),
-                          tabs: [
-                            Tab(
-                              icon: SizedBox(
-                                width: 80,
-                                child: Image.asset(
-                                  'assets/images/person_icon.png',
-                                  height: 20,
-                                  width: 45,
-                                ),
-                              ),
-                            ),
-                            Tab(
-                              icon: SizedBox(
-                                width: 80,
-                                child: Image.asset(
-                                  'assets/images/post_icon.png',
-                                  height: 20,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      gapH20,
-                      Expanded(
-                        child: TabBarView(children: [
-                          SingleChildScrollView(
-                            child: Column(
-                              children: [
-                                InformationWidgetOffice(
-                                  widget: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        "معلومات الشركة :",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      gapH5,
-                                      Text(
-                                        office.disc,
-                                        style: const TextStyle(
-                                            fontSize: 14, color: Colors.black),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                                gapH20,
-                                InformationWidgetOffice(
-                                  widget: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      const Text(
-                                        "معلومات التواصل :",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.black),
-                                      ),
-                                      gapH5,
-                                      Text(
-                                        office.email,
-                                        style: const TextStyle(
-                                            fontSize: 14, color: Colors.black),
-                                      ),
-                                      Text(
-                                        office.phoneNumber.toString(),
-                                        style: const TextStyle(
-                                            fontSize: 14, color: Colors.black),
-                                      ),
-                                      Text(
-                                        office.name,
-                                        style: const TextStyle(
-                                            fontSize: 14, color: Colors.black),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          BlocConsumer<ProfilePostsBloc, ProfilePostsState>(
-                            listener: (context, state) {
-                              if (state is ErrorprofileShowpostState) {
-                                // Navigator.pop(context);
-                                context.showErrorSnackBar(context, state.msg);
-                              }
-                            },
-                            builder: (context, state) {
-                              if (bloc.classPostId.isNotEmpty) {
-                                return SizedBox(
-                                  child: GridView.builder(
-                                      gridDelegate:
-                                          const SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 1,
-                                        crossAxisSpacing: 10.0,
-                                        mainAxisSpacing: 10.0,
-                                        childAspectRatio: 0.75,
-                                      ),
-                                      itemCount: bloc.classPostId.length,
-                                      itemBuilder: (context, index) {
-                                        return PostProfileWidget(
-                                          desc: bloc.classPostId[index],
-                                          path: bloc.classPostId[index],
-                                        );
-                                      }),
-                                );
-                              } else {
-                                return const SizedBox(
-                                  child: Center(
-                                      child: Text("لا يوجد منشورات حتى الان")),
-                                );
-                              }
-                            },
-                          )
-                        ]),
-                      ),
-                    ],
-                  ),
-                )),
+                      )),
+                ),
               ),
             ),
           );

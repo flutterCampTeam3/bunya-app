@@ -107,10 +107,11 @@ class ProfilePageOfficeOffice extends StatelessWidget {
                             },
                             style: ButtonStyle(
                               backgroundColor:
-                                  WidgetStateProperty.all<Color>(lightBrown),
-                              fixedSize: WidgetStateProperty.all<Size>(
+                                  MaterialStateProperty.all<Color>(lightBrown),
+                              fixedSize: MaterialStateProperty.all<Size>(
                                   const Size(130, 50)),
                             ),
+
                             // style: ButtonStyle(
                             //   backgroundColor:
                             //       MaterialStateProperty.all<Color>(lightBrown),
@@ -154,12 +155,13 @@ class ProfilePageOfficeOffice extends StatelessWidget {
                                         },
                                         style: ButtonStyle(
                                           backgroundColor:
-                                              WidgetStateProperty.all<Color>(
+                                              MaterialStateProperty.all<Color>(
                                                   lightBrown),
                                           fixedSize:
-                                              WidgetStateProperty.all<Size>(
+                                              MaterialStateProperty.all<Size>(
                                                   const Size(130, 50)),
                                         ),
+                                        
                                         child: const Text(
                                           'الغاء المتابعة ',
                                           style: TextStyle(
@@ -179,10 +181,10 @@ class ProfilePageOfficeOffice extends StatelessWidget {
                                         },
                                         style: ButtonStyle(
                                           backgroundColor:
-                                              WidgetStateProperty.all<Color>(
+                                              MaterialStateProperty.all<Color>(
                                                   brown),
                                           fixedSize:
-                                              WidgetStateProperty.all<Size>(
+                                              MaterialStateProperty.all<Size>(
                                                   const Size(130, 50)),
                                         ),
                                         child: const Text(

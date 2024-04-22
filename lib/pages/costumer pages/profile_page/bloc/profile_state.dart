@@ -18,7 +18,7 @@ final class ActivatedEditModeState extends ProfileState {
 final class DeactivatedEditModeState extends ProfileState {}
 
 final class DisplayUserInfoState extends ProfileState {
-  String name;
+ final String name;
   String email;
     String image;
   int phone;
@@ -44,4 +44,16 @@ final class SignedOutState extends ProfileState {
   final String msg;
 
   SignedOutState({required this.msg});
+}
+class dataFlowrsSuccesState extends ProfileState {
+  // final List<OfficesModel> classOffices;
+
+  // dataFlowrsSuccesState({required this.classOffices});
+}
+
+
+final class ErrorFollowrsState extends ProfileState {
+  final String msg;
+
+  ErrorFollowrsState({required this.msg});
 }

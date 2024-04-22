@@ -19,7 +19,6 @@ final class DisplayOfficeInfoState extends ProfileOfficeState {}
 final class ActivatedEditModeOfficeState extends ProfileOfficeState {
   String name;
   String email;
-
   ActivatedEditModeOfficeState({
     required this.email,
     required this.name,
@@ -41,4 +40,10 @@ final class SignedOutState extends ProfileOfficeState {
   final String msg;
 
   SignedOutState({required this.msg});
+}
+
+class dataFlowrsSuccesState extends ProfileOfficeState {
+  final List<OfficesModel> classOffices;
+
+  dataFlowrsSuccesState({required this.classOffices});
 }

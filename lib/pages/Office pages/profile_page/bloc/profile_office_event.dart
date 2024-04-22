@@ -24,6 +24,4 @@ final class UpdateOfficeInfoOfficeEvent extends ProfileOfficeEvent {
   });
 }
 
-final class SignOutOfficeEvent extends ProfileOfficeEvent {}
 
-final class CheckFollowNumberOfOfficeEvent extends ProfileOfficeEvent {}

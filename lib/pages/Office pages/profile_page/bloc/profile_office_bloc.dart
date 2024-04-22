@@ -6,9 +6,7 @@ import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/bloc/profile_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:meta/meta.dart';
-
-import '../../../../data/model/post_model.dart';
-
+import '../../../../data/model/offices_model.dart';
 part 'profile_office_event.dart';
 part 'profile_office_state.dart';
 
@@ -25,24 +23,20 @@ class ProfileOfficeBloc extends Bloc<ProfileOfficeEvent, ProfileOfficeState> {
     on<GetOfficeInfoOfficeEvent>(getOfficeInfo);
     on<UpdateOfficeInfoOfficeEvent>(updateUserInfo);
     on<SignOutOfficeEvent>(signOut);
-    on<ShowDataOfficesIdEvent>(fetchDataId);
     on<CheckFollowNumberOfOfficeEvent>(checkFollowNumber);
     on<ProfileOfficeEvent>((event, emit) {});
   }
 
-  Future<void> fetchDataId(
-      ShowDataOfficesIdEvent event, Emitter<ProfileOfficeState> emit) async {
-    // emit(LoadingState());
+   Future<void> fetchFllowers(
+      ShowFloowersEvent event, Emitter<ProfileOfficeState> emit) async {
     emit(ProfileLoadingState());
     try {
-      print("in the bloc of profile");
-      classPostId = await DBService().getPostsOffficeId();
-      emit(profilePostsSuccesState());
+      List<OfficesModel> officeList = await DBService().followingNumber(customerId: event.id);
+      emit(dataFlowrsSuccesState(classOffices: officeList));
     } catch (e) {
-      emit(ProfileOfficeErrorState(msg: 'فشل في جلب البيانات '));
+      emit(ProfileOfficeErrorState(msg: ""));
     }
   }
-
   Future<FutureOr<void>> getOfficeInfo(
       GetOfficeInfoOfficeEvent event, Emitter<ProfileOfficeState> emit) async {
     print("in the bloc get");
@@ -106,7 +100,7 @@ class ProfileOfficeBloc extends Bloc<ProfileOfficeEvent, ProfileOfficeState> {
         emit(ProfileOfficeErrorState(msg: "هناك خطأ في عملية تحديث بياناتك"));
       }
     } else {
-      emit(ProfileOfficeErrorState(msg: "يرجى عدم ترك حقل الاسم فارغاً"));
+      emit(ProfileOfficeErrorState(msg: "الرجاء ادخال جميع البيانات"));
     }
   }
 }

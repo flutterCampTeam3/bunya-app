@@ -34,7 +34,7 @@ class DBService {
 
   File PostImageFile = File("");
 
-  String imageId="" ;
+  String imageId = "";
 
   DBService() {
     getToken();
@@ -459,6 +459,46 @@ class DBService {
     }
   }
 
+  Future getFollowers() async {
+    print("in the Function -------------------------------------------------");
+    final followerNumber = await supabase
+        .from('office_followers')
+        .select('*')
+        .eq('customerId', supabase.auth.currentUser!.id);
+    print(
+        "in the $followerNumber -------------------------------------------------");
+
+    if (followerNumber.isNotEmpty) {
+      print("Hhhhh -------------------------------------------------");
+
+      final List<ProfileOfficeFollowModel> follower = [];
+      for (var element in followerNumber) {
+        follower.add(ProfileOfficeFollowModel.fromJson(element));
+      }
+      print(
+          "BBBB ------${follower.length}-------------------------------------------");
+
+      final List<OfficesModel> followers = [];
+      for (var element in follower) {
+        final follow = await supabase
+            .from('Offices')
+            .select('*')
+            .eq('officeId', element.officeId);
+        print("BBBB ------$follow-------------------------------------------");
+
+        for (var element in follow) {
+          followers.add(OfficesModel.fromJson(element));
+        }
+        print(
+            "BBBB ------${follower.length}-------------------------------------------");
+      }
+      return followers;
+    } else {
+      final List<OfficesModel> followers = [];
+      return followers;
+    }
+  }
+
   Future followerOfficeNumber() async {
     final followerNumber = await supabase
         .from('office_followers')
@@ -580,8 +620,8 @@ class DBService {
       File imageFile, String bucket, String nameFile) async {
     await supabase.storage
         .from(bucket) // Replace with your storage bucket name
-        .upload("${nameFile}", imageFile,
-            fileOptions: FileOptions(upsert: true));
+        .upload(nameFile, imageFile,
+            fileOptions: const FileOptions(upsert: true));
     await urlImage(bucket, nameFile);
     print("done");
   }
@@ -590,7 +630,7 @@ class DBService {
       File imageFile, String bucket, String nameFile) async {
     await supabase.storage
         .from(bucket) // Replace with your storage bucket name
-        .update("${nameFile}", imageFile);
+        .update(nameFile, imageFile);
     await urlImage(bucket, nameFile);
     print("done add");
   }
@@ -598,14 +638,14 @@ class DBService {
   Future<void> deleteImage(String bucket, String nameFile) async {
     await supabase.storage
         .from(bucket) // Replace with your storage bucket name
-        .remove(["${nameFile}"]);
+        .remove([nameFile]);
     print("done remove");
   }
 
   Future<String> urlImage(String bucket, String nameFile) async {
-    final response = await supabase.storage
+    final response = supabase.storage
         .from(bucket) // Replace with your storage bucket name
-        .getPublicUrl("${nameFile}");
+        .getPublicUrl(nameFile);
     return response;
   }
 
@@ -684,7 +724,7 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
     final response = supabase.storage.from('profile').getPublicUrl(id);
     print(response);
 
-    return response ;
+    return response;
   }
 
 //-----------------
