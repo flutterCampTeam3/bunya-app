@@ -1,9 +1,13 @@
 import 'package:bunya_app/helper/colors.dart';
+import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/pages/Office%20pages/add%20post%20page/bloc/post_bloc.dart';
+import 'package:bunya_app/pages/Office%20pages/home_page/home_page_office.dart';
 import 'package:bunya_app/pages/Office%20pages/navBar%20page/navBarPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../helper/sized.dart';
 import '../../widgets/auth/button_widget.dart';
@@ -19,6 +23,7 @@ class _AddPostPageState extends State<AddPostPage> {
   @override
   Widget build(BuildContext context) {
     late TextEditingController descController = TextEditingController();
+    String imageId = const Uuid().v4();
 
     @override
     void initState() {
@@ -36,6 +41,7 @@ class _AddPostPageState extends State<AddPostPage> {
       create: (context) => PostBloc(),
       child: Builder(builder: (context) {
         final bloc = context.read<PostBloc>();
+        // final bloc = context.read<UploadPost>();
         return Scaffold(
           backgroundColor: white,
           appBar: PreferredSize(
@@ -54,9 +60,8 @@ class _AddPostPageState extends State<AddPostPage> {
               ),
             ),
           ),
-          body: ListView(
-            padding: EdgeInsets.all(20.0),
-            children:[ Center(
+          body: ListView(padding: EdgeInsets.all(20.0), children: [
+            Center(
                 child: Column(
               children: [
                 Text(
@@ -118,8 +123,7 @@ class _AddPostPageState extends State<AddPostPage> {
                   child: TextField(
                     decoration: InputDecoration(
                         labelText: '   اضافة وصف',
-                        hintText:
-                            "اضف وصف للعمل الخاص بك ",
+                        hintText: "اضف وصف للعمل الخاص بك ",
                         labelStyle: TextStyle(
                             color: darkGreyColor,
                             fontWeight: FontWeight.w500,
@@ -152,7 +156,40 @@ class _AddPostPageState extends State<AddPostPage> {
                     backgroundColor: darkBrown,
                     text: 'نشر',
                     textColor: whiteColor,
-                    onPressed: () {},
+                    onPressed: () {
+                      if (imageId.isEmpty || descController.text.isEmpty) {
+                        // Show a dialog to inform the user that image or description is empty
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: Text('Error'),
+                              content:
+                                  Text('Image or description cannot be empty.'),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text('OK'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      } else {
+                        // If neither the image nor the description is empty, proceed with upload and navigation
+                        try {
+                          bloc.add(UploadPost(
+                              bucketName: "profile", fileName: imageId));
+                          bloc.add(UploadDesc(desc: descController.text));
+                          Navigator.pop(context, const NavBarOfficePage());
+                        } catch (e) {
+                          print('Error uploading post or navigating: $e');
+                          // Handle the error appropriately, such as showing an error message to the user.
+                        }
+                      }
+                    },
                   ),
                 )
               ],
