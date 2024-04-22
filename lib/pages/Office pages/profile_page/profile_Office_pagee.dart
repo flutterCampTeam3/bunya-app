@@ -37,7 +37,7 @@ class ProfilePageOffice extends StatelessWidget {
                 return Directionality(
                   textDirection: TextDirection.rtl,
                   child: Scaffold(
-                    backgroundColor: whiteColor,
+                    // backgroundColor: whiteColor,
                     body: SafeArea(
                         child: Padding(
                       padding: const EdgeInsets.all(20.0),
@@ -51,7 +51,16 @@ class ProfilePageOffice extends StatelessWidget {
                               gapWe15,
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [Text(state.name), Text(state.email)],
+                                children: [
+                                  Text(
+                                    state.name,
+                                    style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface),
+                                  ),
+                                  Text(state.email)
+                                ],
                               )
                             ],
                           ),
@@ -70,7 +79,8 @@ class ProfilePageOffice extends StatelessWidget {
                                 VerticalDivider(
                                   width: 30.0,
                                   thickness: 1.0,
-                                  color: blackColor,
+                                  color:
+                                      Theme.of(context).colorScheme.onSurface,
                                 ),
                                 const Column(
                                   children: [
@@ -82,7 +92,8 @@ class ProfilePageOffice extends StatelessWidget {
                                 VerticalDivider(
                                   width: 30.0,
                                   thickness: 1.0,
-                                  color: blackColor,
+                                  color:
+                                      Theme.of(context).colorScheme.onSurface,
                                 ),
                                 const Column(
                                   children: [
@@ -94,7 +105,8 @@ class ProfilePageOffice extends StatelessWidget {
                                 VerticalDivider(
                                   width: 30.0,
                                   thickness: 1.0,
-                                  color: blackColor,
+                                  color:
+                                      Theme.of(context).colorScheme.onSurface,
                                 ),
                                 const Column(
                                   children: [
@@ -117,6 +129,8 @@ class ProfilePageOffice extends StatelessWidget {
                               onTap: (value) {
                                 print("object");
                               },
+
+                              dividerColor: transparent,
                               // indicatorSize: TabBarIndicatorSize.values[2],
                               indicator: BoxDecoration(
                                   borderRadius: BorderRadius.circular(30),
@@ -170,9 +184,11 @@ class ProfilePageOffice extends StatelessWidget {
                                             });
                                           },
                                           icon: Image.asset(
-                                            'assets/images/edit.png',
-                                            width: 18,
-                                          )),
+                                              'assets/images/edit.png',
+                                              width: 18,
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onSurface)),
                                     ),
                                     InformationWidgetOffice(
                                       widget: Column(
@@ -234,7 +250,9 @@ class ProfilePageOffice extends StatelessWidget {
                                         decoration: BoxDecoration(
                                           borderRadius:
                                               BorderRadius.circular(15),
-                                          color: whiteColor,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .surface,
                                           boxShadow: [
                                             BoxShadow(
                                               color:

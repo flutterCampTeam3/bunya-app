@@ -77,6 +77,7 @@ class ProfilePageCustomer extends StatelessWidget {
                                         onTap: (value) {
                                           print("object");
                                         },
+                                        dividerColor: transparent,
                                         // indicatorSize: TabBarIndicatorSize.values[2],
                                         indicator: BoxDecoration(
                                             borderRadius:
@@ -144,7 +145,7 @@ class ProfilePageCustomer extends StatelessWidget {
                                                         'assets/images/edit.png',
                                                         color: Theme.of(context)
                                                             .colorScheme
-                                                            .secondary,
+                                                            .surface,
                                                         width: 18,
                                                       )),
                                                 ],
@@ -202,7 +203,9 @@ class ProfilePageCustomer extends StatelessWidget {
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               15),
-                                                      color: whiteColor,
+                                                      color: Theme.of(context)
+                                                          .colorScheme
+                                                          .surface,
                                                       boxShadow: [
                                                         BoxShadow(
                                                           color: Colors.grey

@@ -68,7 +68,7 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                             VerticalDivider(
                               width: 30.0,
                               thickness: 1.0,
-                              color: Theme.of(context).colorScheme.secondary,
+                              color: Theme.of(context).colorScheme.onSurface,
                             ),
                             const Column(
                               children: [
@@ -80,7 +80,7 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                             VerticalDivider(
                               width: 30.0,
                               thickness: 1.0,
-                              color: Theme.of(context).colorScheme.secondary,
+                              color: Theme.of(context).colorScheme.onSurface,
                             ),
                             const Column(
                               children: [

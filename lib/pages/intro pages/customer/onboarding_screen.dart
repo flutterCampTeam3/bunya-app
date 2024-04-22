@@ -151,7 +151,13 @@ class BoardingPage extends StatelessWidget {
                                                 elevation: 0,
                                                 backgroundColor: transparent,
                                                 shape: const CircleBorder()),
-                                            child: const Text("التالي"),
+                                            child: Text(
+                                              "التالي",
+                                              style: TextStyle(
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .onSurface),
+                                            ),
                                           ),
                                           Directionality(
                                             textDirection: TextDirection.ltr,
@@ -189,7 +195,13 @@ class BoardingPage extends StatelessWidget {
                                                 elevation: 0,
                                                 foregroundColor: blackColor,
                                                 backgroundColor: transparent),
-                                            child: const Text("التخطي"),
+                                            child: Text(
+                                              "التخطي",
+                                              style: TextStyle(
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .onSurface),
+                                            ),
                                           ),
                                         ],
                                       ),
