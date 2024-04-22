@@ -111,7 +111,7 @@ class PostProfileWidget extends StatelessWidget {
                               )
                             : InkWell(
                                 onTap: () {
-                                  bloc.add(AddLikeEvent(id: desc.postId));
+                                  bloc.add(AddLikeEvent(post: desc));
                                 },
                                 child:
                                     const Icon(Icons.favorite_border_outlined)))

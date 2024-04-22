@@ -10,6 +10,7 @@ class ProfilePostsBloc extends Bloc<ProfilePostsEvent, ProfilePostsState> {
   bool isFollow = true;
   int followerNumber = 0;
   int followingNumber = 0;
+  int likesNumber = 0;
   List<postModel> classPostId = [];
   ProfilePostsBloc() : super(ProfilePostsInitial()) {
     on<ShowDataIdEvent>(fetchDataId);
@@ -22,9 +23,11 @@ class ProfilePostsBloc extends Bloc<ProfilePostsEvent, ProfilePostsState> {
       ShowDataIdEvent event, Emitter<ProfilePostsState> emit) async {
     emit(LoadingState());
     try {
-      print("in the bloc of post fitch");
       classPostId = await DBService().getPostsId(ofiiceId: event.id);
-      print("in the bloc of post after the func");
+      followerNumber = await DBService().followerNumber(officeId: event.id);
+      followingNumber = await DBService().followingNumber(customerId: event.id);
+      likesNumber = classPostId =
+          await DBService().getOfficeLikeNumber(officeId: event.id);
       emit(profilePostsSuccesState());
     } catch (e) {
       emit(ErrorprofileShowpostState(msg: 'فشل في جلب البيانات '));
@@ -37,7 +40,9 @@ class ProfilePostsBloc extends Bloc<ProfilePostsEvent, ProfilePostsState> {
     try {
       isFollow = await DBService().checkFollowers(officeID: event.id);
       classPostId = await DBService().getPostsId(ofiiceId: event.id);
-      print("in the bloc of post after the func");
+      followerNumber = await DBService().followerNumber(officeId: event.id);
+      followingNumber = await DBService().followingNumber(customerId: event.id);
+      likesNumber = await DBService().getOfficeLikeNumber(officeId: event.id);
       emit(profilePostsSuccesState());
       emit(CheckFollowState());
     } catch (e) {
@@ -52,8 +57,10 @@ class ProfilePostsBloc extends Bloc<ProfilePostsEvent, ProfilePostsState> {
     try {
       print("press the add bottun");
       isFollow = await DBService().addFollowers(officeID: event.id);
-            classPostId = await DBService().getPostsId(ofiiceId: event.id);
-      print("in the bloc of post after the func");
+      classPostId = await DBService().getPostsId(ofiiceId: event.id);
+      followerNumber = await DBService().followerNumber(officeId: event.id);
+      followingNumber = await DBService().followingNumber(customerId: event.id);
+      likesNumber = await DBService().getOfficeLikeNumber(officeId: event.id);
       emit(profilePostsSuccesState());
       emit(AddFollowState(msg: 'تم متابعة المستخدم'));
     } catch (e) {
@@ -67,8 +74,10 @@ class ProfilePostsBloc extends Bloc<ProfilePostsEvent, ProfilePostsState> {
     // emit(LoadingFollowState());
     try {
       isFollow = await DBService().deleteFollowers(officeID: event.id);
-            classPostId = await DBService().getPostsId(ofiiceId: event.id);
-      print("in the bloc of post after the func");
+      classPostId = await DBService().getPostsId(ofiiceId: event.id);
+      followerNumber = await DBService().followerNumber(officeId: event.id);
+      followingNumber = await DBService().followingNumber(customerId: event.id);
+      likesNumber = await DBService().getOfficeLikeNumber(officeId: event.id);
       emit(profilePostsSuccesState());
       emit(DeleteFollowState(msg: 'تم الغاء متابعة المستخدم'));
     } catch (e) {
@@ -85,7 +94,9 @@ class ProfilePostsBloc extends Bloc<ProfilePostsEvent, ProfilePostsState> {
           await DBService().followerNumber(officeId: event.officeId);
       followingNumber =
           await DBService().followingNumber(customerId: event.officeId);
-            classPostId = await DBService().getPostsId(ofiiceId: event.officeId);
+      classPostId = await DBService().getPostsId(ofiiceId: event.officeId);
+      likesNumber =
+          await DBService().getOfficeLikeNumber(officeId: event.officeId);
       print("in the bloc of post after the func");
       emit(profilePostsSuccesState());
     } catch (e) {

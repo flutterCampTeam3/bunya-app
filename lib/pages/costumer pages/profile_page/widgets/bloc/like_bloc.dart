@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bunya_app/data/model/post_model.dart';
 import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:meta/meta.dart';
 
@@ -34,8 +35,8 @@ class LikeBloc extends Bloc<LikeEvent, LikeState> {
   FutureOr<void> addLike(AddLikeEvent event, Emitter<LikeState> emit) async {
     emit(LaudLikeState());
     try {
-      isLike = await DBService().addLike(postId: event.id);
-      number = await DBService().getLikeNumber(postId: event.id);
+      isLike = await DBService().addLike(post: event.post);
+      number = await DBService().getLikeNumber(postId: event.post.postId);
       emit(AddLikeState());
     } catch (e) {
       print(e.toString());

@@ -54,43 +54,47 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                           )
                         ],
                       ),
-                      IntrinsicHeight(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Column(
+                      BlocBuilder<ProfilePostsBloc, ProfilePostsState>(
+                        builder: (context, state) {
+                          return IntrinsicHeight(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text("المتابَعون"),
-                                gapH20,
-                                Text("${bloc.followerNumber}"),
+                                Column(
+                                  children: [
+                                    const Text("المتابَعون"),
+                                    gapH20,
+                                    Text("${bloc.followerNumber}"),
+                                  ],
+                                ),
+                                VerticalDivider(
+                                  width: 30.0,
+                                  thickness: 1.0,
+                                  color: blackColor,
+                                ),
+                                Column(
+                                  children: [
+                                    const Text("المتابِعون"),
+                                    gapH20,
+                                    Text("${bloc.followingNumber}"),
+                                  ],
+                                ),
+                                VerticalDivider(
+                                  width: 30.0,
+                                  thickness: 1.0,
+                                  color: blackColor,
+                                ),
+                                Column(
+                                  children: [
+                                    const Text("الإعجابات"),
+                                    gapH20,
+                                    Text("${bloc.likesNumber}"),
+                                  ],
+                                ),
                               ],
                             ),
-                            VerticalDivider(
-                              width: 30.0,
-                              thickness: 1.0,
-                              color: blackColor,
-                            ),
-                            Column(
-                              children: [
-                                Text("المتابِعون"),
-                                gapH20,
-                                Text("${bloc.followingNumber}"),
-                              ],
-                            ),
-                            VerticalDivider(
-                              width: 30.0,
-                              thickness: 1.0,
-                              color: blackColor,
-                            ),
-                            const Column(
-                              children: [
-                                Text("الإعجابات"),
-                                gapH20,
-                                Text("1500"),
-                              ],
-                            ),
-                          ],
-                        ),
+                          );
+                        },
                       ),
                       gapH20,
                       Row(

@@ -4,8 +4,8 @@ part of 'like_bloc.dart';
 sealed class LikeEvent {}
 
 final class AddLikeEvent extends LikeEvent {
-  final String id;
-  AddLikeEvent({required this.id});
+  final postModel post;
+  AddLikeEvent({required this.post});
 }
 
 final class CheckLikeEvent extends LikeEvent {

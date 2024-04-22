@@ -1,12 +1,9 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:bunya_app/data/model/post_model.dart';
 import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:meta/meta.dart';
-
 import '../../../../data/model/offices_model.dart';
-
 part 'home_event.dart';
 part 'home_state.dart';
 
@@ -51,8 +48,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       AddLikeHomeEvent event, Emitter<HomeState> emit) async {
     emit(LaudLikeHomeState());
     try {
-      isHomeLike = await DBService().addLike(postId: event.id);
-      likeNumber = await DBService().getLikeNumber(postId: event.id);
+      isHomeLike = await DBService().addLike(post: event.post);
+      likeNumber = await DBService().getLikeNumber(postId: event.post.postId);
       emit(AddLikeHomeState());
     } catch (e) {
       print(e.toString());

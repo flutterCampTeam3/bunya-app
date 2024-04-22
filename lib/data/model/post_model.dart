@@ -20,8 +20,6 @@ class postModel {
         postId: json['postId'],
         createdAt: DateTime.parse(json['created_at']),
         image: json['image'] ?? "",
-       
-       
         ofiiceId: json['ofiiceId'],
         desc: json['desc'] ?? '',
         comment: json['comment'] ?? "");
@@ -32,8 +30,6 @@ class postModel {
       'postId': postId,
       'created_at': createdAt.toIso8601String(),
       'image': image,
-      
-    
       'ofiiceId': ofiiceId,
       'desc': desc,
       'comment': comment,

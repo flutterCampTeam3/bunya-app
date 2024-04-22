@@ -8,8 +8,8 @@ sealed class HomeEvent {}
 
 
 final class AddLikeHomeEvent extends HomeEvent {
-  final String id;
-  AddLikeHomeEvent({required this.id});
+  final postModel post;
+  AddLikeHomeEvent({required this.post});
 }
 
 final class CheckLikeHomeEvent extends HomeEvent {

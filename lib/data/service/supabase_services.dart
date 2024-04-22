@@ -332,18 +332,19 @@ class DBService {
 
   ///-- add Like
   Future addLike({
-    required String postId,
+    required postModel post,
   }) async {
     await supabase.from('post_likes').insert(
       {
-        'postId': postId,
+        'postId': post.postId,
+        'postOfficeId': post.postId,
         'customerId': supabase.auth.currentUser!.id,
       },
     );
     final response = await supabase
         .from('post_likes')
         .select()
-        .eq('postId', postId)
+        .eq('postId', post.postId)
         .eq('customerId', supabase.auth.currentUser!.id);
     if (response.isEmpty) {
       return false;
@@ -378,8 +379,6 @@ class DBService {
   Future getLikeNumber({
     required String postId,
   }) async {
-    print("in the function");
-    print("---------------------");
     final postLikeNumber =
         await supabase.from('post_likes').select('*').eq('postId', postId);
     if (postLikeNumber.isNotEmpty) {
@@ -389,6 +388,32 @@ class DBService {
       }
       return likes.length;
     } else {
+      return 0;
+    }
+  }
+
+  // post like number
+  Future getOfficeLikeNumber({
+    required String officeId,
+  }) async {
+    print("in the getOfficeLikeNumber func");
+    print("-------------------------------");
+    final postLikeNumber = await supabase
+        .from('post_likes')
+        .select('*')
+        .eq('postOfficeId', officeId);
+    print("in the getOfficeLikeNumber after");
+    print("-------------------------------");
+    print("-------------------------------${postLikeNumber.length}");
+    if (postLikeNumber.isNotEmpty) {
+      final List<postLikeModel> likes = [];
+      for (var element in postLikeNumber) {
+        likes.add(postLikeModel.fromJson(element));
+      }
+      print("-------------------------------1111${likes.length}");
+      return likes.length;
+    } else {
+      print("-------------------------------1111   0000");
       return 0;
     }
   }
@@ -439,17 +464,12 @@ class DBService {
   }
 
   Future<List<postModel>> getPostsId({required String ofiiceId}) async {
-    print("git the post");
     final postData =
         await supabase.from('post').select('*').match({'ofiiceId': ofiiceId});
-    print("git the post11");
-
     final List<postModel> classposts = [];
     for (var element in postData) {
       classposts.add(postModel.fromJson(element));
     }
-    print("git the post11 ${classposts.length}");
-
     return classposts;
   }
 

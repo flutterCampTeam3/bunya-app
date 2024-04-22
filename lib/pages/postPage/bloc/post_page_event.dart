@@ -10,8 +10,8 @@ class CheckPostFollowEvent extends PostPageEvent {
 
 
 final class AddLikePostEvent extends PostPageEvent {
-  final String id;
-  AddLikePostEvent({required this.id});
+  final postModel post;
+  AddLikePostEvent({required this.post});
 }
 
 final class CheckLikePostEvent extends PostPageEvent {

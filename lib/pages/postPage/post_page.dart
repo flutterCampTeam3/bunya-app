@@ -141,7 +141,7 @@ class PostPage extends StatelessWidget {
                         !bloc.isHomeLike
                             ? IconButton(
                                 onPressed: () {
-                                  bloc.add(AddLikePostEvent(id: post.postId));
+                                  bloc.add(AddLikePostEvent(post: post));
                                 },
                                 icon: const Icon(Icons.favorite_border))
                             : IconButton(

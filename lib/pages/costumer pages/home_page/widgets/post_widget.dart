@@ -90,7 +90,7 @@ class PostWidget extends StatelessWidget {
                                   ? InkWell(
                                       onTap: () {
                                         bloc.add(AddLikeHomeEvent(
-                                            id: description.postId));
+                                            post: description));
                                       },
                                       child: const Icon(Icons.favorite_border))
                                   : InkWell(
