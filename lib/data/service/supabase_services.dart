@@ -6,7 +6,9 @@ import 'package:bunya_app/data/model/profile_model_customer.dart';
 import 'package:bunya_app/data/model/profile_model_office.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
+import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
 import '../model/post_model.dart';
 
 class DBService {
@@ -565,6 +567,8 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
     final response = supabase.storage.from('profile').getPublicUrl("kk");
     print(response);
   }
+
+
 //-----------------
   getSession() async {
     try {
@@ -573,10 +577,6 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
         id = await getCurrentUser();
         await checkUserCustomer();
         isSession = true;
-        print("in the function of bool");
-        print("-----------------------------2");
-        print("$isSession");
-        print("-----------------------------2");
         return true;
       } else {
         isSession = false;
