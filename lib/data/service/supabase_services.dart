@@ -242,13 +242,11 @@ class DBService {
   // to edit office profile
   Future editUpdateOffice(
       {required String name,
-      required String email,
       required int phone,
       required String description}) async {
     await supabase.from('Offices').update(
       {
         'name': name,
-        'email': email,
         'disc': description,
         'phoneNumber': phone,
       },
@@ -456,7 +454,7 @@ class DBService {
     }
   }
 
-    Future followerOfficeNumber() async {
+  Future followerOfficeNumber() async {
     final followerNumber = await supabase
         .from('office_followers')
         .select('*')
@@ -490,7 +488,7 @@ class DBService {
     }
   }
 
-    Future followingOfficeNumber() async {
+  Future followingOfficeNumber() async {
     final followerNumber = await supabase
         .from('office_followers')
         .select('*')
@@ -525,9 +523,11 @@ class DBService {
     return classposts;
   }
 
-    Future<List<postModel>> getPostsOffficeId() async {
-    final postData =
-        await supabase.from('post').select('*').match({'ofiiceId':  supabase.auth.currentUser!.id});
+  Future<List<postModel>> getPostsOffficeId() async {
+    final postData = await supabase
+        .from('post')
+        .select('*')
+        .match({'ofiiceId': supabase.auth.currentUser!.id});
     final List<postModel> classposts = [];
     for (var element in postData) {
       classposts.add(postModel.fromJson(element));
@@ -549,7 +549,7 @@ class DBService {
 
   Future<List<OfficesModel>> getSearchOfficeAccount(String name) async {
     final officeAccountsResponse =
-        await supabase.from('Offices').select("*").eq('name', '$name');
+        await supabase.from('Offices').select("*").eq('name', name);
 
     final List<OfficesModel> SearchofficeAccounts = [];
     for (var element in officeAccountsResponse) {
@@ -624,12 +624,10 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
 */
   //--
 
-
   Future<void> UrlImage() async {
     final response = supabase.storage.from('profile').getPublicUrl("kk");
     print(response);
   }
-
 
 //-----------------
   getSession() async {

@@ -100,14 +100,14 @@ class EditPageOffice extends StatelessWidget {
                       gapH20,
                       EditInfoRow(
                         controller: infoController,
-                        title: "معلومات\n الشركة :",
+                        title: "الاسم",
                       ),
                       EditInfoRow(
+                          controller: phoneController, title: "معلومات\n الشركة :"),
+                       EditInfoRow(
                           controller: phoneController, title: "الجوال:"),
-                      EditInfoRow(
-                          controller: emailController, title: "الايميل:"),
-                      // EditInfoRow(
-                      //     controller: descController, title: "العنوان:"),
+                      
+                      
                       const Spacer(),
                       ElevatedButton(
                           style: ElevatedButton.styleFrom(
@@ -116,7 +116,7 @@ class EditPageOffice extends StatelessWidget {
                           onPressed: () async {
                             await locator.editUpdateOffice(
                                 name: infoController.text,
-                                email: emailController.text,
+                                
                                 phone: int.parse(phoneController.text),
                                 description: descController.text);
                             Navigator.pop(context);

@@ -4,7 +4,7 @@ class OfficesModel {
   final String name;
   final String departmentId;
   final String disc;
-  final int cn;
+  final int cr;
   final String image;
   final int phoneNumber;
   final String email;
@@ -15,7 +15,7 @@ class OfficesModel {
     required this.name,
     required this.departmentId,
     required this.disc,
-    required this.cn,
+    required this.cr,
     required this.image,
     required this.phoneNumber,
     required this.email,
@@ -28,7 +28,7 @@ class OfficesModel {
       name: json['name'] ?? "",
       departmentId: json['departmentId'] ?? "",
       disc: json['disc'],
-      cn: json['cn'] ?? 0,
+      cr: json['cr'] ?? 0,
       image: json['image'] ?? "",
       phoneNumber: json['phoneNumber'] ?? "",
       email: json['email'] ?? "",
@@ -42,7 +42,7 @@ class OfficesModel {
       'name': name,
       'departmentId': departmentId,
       'disc': disc,
-      'cn': cn,
+      'cr': cr,
       'image': image,
       'phoneNumber': phoneNumber,
       'email': email,
