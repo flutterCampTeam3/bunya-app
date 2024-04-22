@@ -33,7 +33,7 @@ class _AddPostPageState extends State<AddPostPage> {
     }
 
     return BlocProvider(
-      create: (context) => PostBloc()..add(ChoseImagePostEvent()),
+      create: (context) => PostBloc(),
       child: Builder(builder: (context) {
         final bloc = context.read<PostBloc>();
         return Scaffold(

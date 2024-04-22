@@ -46,11 +46,13 @@ class ConstraintAccountList extends StatelessWidget {
                   child: SafeArea(
                     child: Column(
                       children: [
-                         AppBarAccoutWidget(controllerSearch: searchController, onSubmitted: (String ) { 
+                         AppBarAccoutWidget(controllerSearch: searchController, 
+                        //  onChanged: (String ) { 
                           
-                          bloc.add(SearchWord(word: searchController.text));
+                        //   bloc.add(SearchWord(word: searchController.text));
 
-                          },),
+                        //   },
+                          ),
                         Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Column(
@@ -161,3 +163,15 @@ class ConstraintAccountList extends StatelessWidget {
     );
   }
 }
+
+
+//  else {
+//                                       return const Center(
+//                                         child: Padding(
+//                                           padding: EdgeInsets.only(top: 180.0),
+//                                           child: Text(
+//                                             "لا يوجد حسابات لهذا القسم",
+//                                           ),
+//                                         ),
+//                                       );
+//                                     }

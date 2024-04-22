@@ -1,14 +1,17 @@
+import 'package:bunya_app/pages/costumer%20pages/accounts_list/bloc/account_list_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppBarAccoutWidget extends StatelessWidget {
-   AppBarAccoutWidget({
-    super.key, required this.controllerSearch,
-    required this.onSubmitted
+  AppBarAccoutWidget({
+    super.key,
+    required this.controllerSearch,
   });
-  final controllerSearch ;
-  void Function(String)? onSubmitted;
+  final TextEditingController controllerSearch;
+  void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
+    final bloc = context.read<AccountListBloc>();
     return AppBar(
         automaticallyImplyLeading: false,
         title: Row(
@@ -36,20 +39,21 @@ class AppBarAccoutWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(color: Colors.grey),
                 ),
-                child:  Row(
+                child: Row(
                   children: [
-                    Icon(Icons.search),
-                    SizedBox(width: 5),
+                    const Icon(Icons.search),
+                    const SizedBox(width: 5),
                     Expanded(
                       child: TextField(
                         textInputAction: TextInputAction.search,
-                        onSubmitted: onSubmitted,
-                        decoration: InputDecoration(
+                        onChanged: (_) {
+                          bloc.add(SearchWord(word: controllerSearch.text));
+                        },
+                        decoration: const InputDecoration(
                           hintText: "البحث",
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.zero,
                           isCollapsed: true,
-                          
                         ),
                         controller: controllerSearch,
                       ),

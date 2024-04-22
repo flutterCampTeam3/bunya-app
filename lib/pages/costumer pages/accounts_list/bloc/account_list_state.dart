@@ -25,9 +25,9 @@ class LoadeWords extends AccountListState {
   LoadeWords({required this.words});
 }
 
-class Search extends AccountListState {
+class SearchState extends AccountListState {
   final List<OfficesModel> Listaccount;
 
-  Search({required this.Listaccount});
+  SearchState(List<OfficesModel> searchofficeAccountData, {required this.Listaccount});
 
 }

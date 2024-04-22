@@ -14,6 +14,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
      File post =await pickedPost();
      emit(ShowImagepostState(post));
     });
+    
   }
  Future pickedPost() async {
     var posts = await ImagePicker().pickImage(source: ImageSource.gallery);

@@ -36,6 +36,8 @@ class AccountListBloc extends Bloc<AccountListEvent, AccountListState> {
     try {
       emit(LoadingHomeState());
       SearchofficeAccountData.clear();
+      
+
       officeAccountData = await locator.getSearchOfficeAccount(event.word);
       final String search = event.word;
       print(search);
@@ -45,9 +47,11 @@ class AccountListBloc extends Bloc<AccountListEvent, AccountListState> {
           SearchofficeAccountData.add(e);
         }
       }
-
-      emit(SuccessHomeState(officeAccounte: SearchofficeAccountData));
-    } catch (error) {
+      emit(SuccessHomeState(officeAccounte: search.isEmpty? officeAccountData: SearchofficeAccountData));
+    } 
+    //   emit(SuccessHomeState(officeAccounte: SearchofficeAccountData));
+    // } 
+    catch (error) {
       emit(ErrorHomeState(msg: 'حدث خطا اثناء محاولة جلب البيانات'));
     }
   }
@@ -58,6 +62,7 @@ class AccountListBloc extends Bloc<AccountListEvent, AccountListState> {
     try {
       emit(LoadingHomeState());
       officeAccountData = await locator.getOfficeAccount(event.type);
+     
       emit(SuccessHomeState(officeAccounte: officeAccountData));
     } catch (error) {
       emit(ErrorHomeState(msg: 'حدث خطا اثناء محاولة جلب البيانات'));
