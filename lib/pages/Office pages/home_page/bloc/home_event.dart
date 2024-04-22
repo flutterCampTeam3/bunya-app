@@ -7,8 +7,8 @@ sealed class HomeOfficesEvent {}
   class ShowDataOfficesEvent extends HomeOfficesEvent {}
 
   final class AddLikeHomeOfficesEvent extends HomeOfficesEvent {
-  final String id;
-  AddLikeHomeOfficesEvent({required this.id});
+  final postModel post;
+  AddLikeHomeOfficesEvent({required this.post});
 }
 
 final class CheckLikeHomeOfficesEvent extends HomeOfficesEvent {

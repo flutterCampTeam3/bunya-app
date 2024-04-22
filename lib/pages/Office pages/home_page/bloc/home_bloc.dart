@@ -52,8 +52,8 @@ class HomeOfficesBloc extends Bloc<HomeOfficesEvent, HomeOfficesState> {
       AddLikeHomeOfficesEvent event, Emitter<HomeOfficesState> emit) async {
     emit(LaudLikeHomeOfficesState());
     try {
-      isHomeLike = await DBService().addLike(postId: event.id);
-      likeNumber = await DBService().getLikeNumber(postId: event.id);
+      isHomeLike = await DBService().addLike(post: event.post);
+      likeNumber = await DBService().getLikeNumber(postId: event.post.postId);
       emit(AddLikeHomeOfficesState());
     } catch (e) {
       print(e.toString());

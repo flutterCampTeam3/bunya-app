@@ -1,6 +1,7 @@
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
+import 'package:bunya_app/pages/Office%20pages/home_page/widgets/post_widget.dart';
 import 'package:bunya_app/pages/Office%20pages/office%20profile%20pages/profile_office.dart';
 import 'package:bunya_app/pages/costumer%20pages/accounts_list/account_list.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/accounts_home_widget.dart';
@@ -197,7 +198,7 @@ class HomePageOffice extends StatelessWidget {
                                           bloc.add(ShowDataOfficesEvent());
                                         });
                                       },
-                                      child: PostWidget(
+                                      child: PostOfficeHomeWidget(
                                         postPath: state.classPost[index],
                                         description: state.classPost[index],
                                         profilePath: state.classOffices[index],
