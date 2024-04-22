@@ -23,7 +23,7 @@ class AccountsHomeWidget extends StatelessWidget {
         width: context.getWidth() * 0.7,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: whiteColor,
+          color: Theme.of(context).colorScheme.surface,
           boxShadow: [
             BoxShadow(
               color: darkGreyColor.withOpacity(0.4),
@@ -69,7 +69,9 @@ class AccountsHomeWidget extends StatelessWidget {
                   ),
                   Text(
                     description.disc,
-                    style: TextStyle(fontSize: 15, color: darkGreyColor),
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: Theme.of(context).colorScheme.secondary),
                   )
                 ],
               ),

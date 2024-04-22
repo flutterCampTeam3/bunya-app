@@ -27,3 +27,4 @@ Color brownNavSelect = const Color(0xff9E8D7B);
 Color whitegrey = const Color(0xff9E8D7B);
 Color brownDrawer = const Color(0xffDFD8D0);
 Color darkbrown = const Color(0xff706152);
+Color whitegreyy = const Color.fromARGB(255, 210, 198, 184);

@@ -36,7 +36,7 @@ class PostWidget extends StatelessWidget {
                 // height: 240,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: whiteColor,
+                  color: Theme.of(context).colorScheme.surface,
                   boxShadow: [
                     BoxShadow(
                       color: darkGreyColor.withOpacity(0.4),

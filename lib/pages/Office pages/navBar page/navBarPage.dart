@@ -40,8 +40,9 @@ class NavBarOfficePage extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.person_2_outlined,
-                            color:
-                                bloc.currentIndex == 0 ? brownNavSelect : null,
+                            color: bloc.currentIndex == 0
+                                ? brownNavSelect
+                                : blackColor,
                           ),
                           Text(
                             "الحساب",
@@ -49,7 +50,7 @@ class NavBarOfficePage extends StatelessWidget {
                               fontSize: 11,
                               color: bloc.currentIndex == 0
                                   ? brownNavSelect
-                                  : null,
+                                  : blackColor,
                             ),
                           )
                         ],
@@ -64,8 +65,9 @@ class NavBarOfficePage extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.category_outlined,
-                            color:
-                                bloc.currentIndex == 1 ? brownNavSelect : null,
+                            color: bloc.currentIndex == 1
+                                ? brownNavSelect
+                                : blackColor,
                           ),
                           Text(
                             "الفئات",
@@ -73,7 +75,7 @@ class NavBarOfficePage extends StatelessWidget {
                               fontSize: 11,
                               color: bloc.currentIndex == 1
                                   ? brownNavSelect
-                                  : null,
+                                  : blackColor,
                             ),
                           )
                         ],
@@ -89,8 +91,9 @@ class NavBarOfficePage extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.messenger_outline,
-                            color:
-                                bloc.currentIndex == 2 ? brownNavSelect : null,
+                            color: bloc.currentIndex == 2
+                                ? brownNavSelect
+                                : blackColor,
                           ),
                           Text(
                             "الرسائل",
@@ -98,7 +101,7 @@ class NavBarOfficePage extends StatelessWidget {
                               fontSize: 11,
                               color: bloc.currentIndex == 2
                                   ? brownNavSelect
-                                  : null,
+                                  : blackColor,
                             ),
                           )
                         ],
@@ -113,8 +116,9 @@ class NavBarOfficePage extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.home_outlined,
-                            color:
-                                bloc.currentIndex == 3 ? brownNavSelect : null,
+                            color: bloc.currentIndex == 3
+                                ? brownNavSelect
+                                : blackColor,
                           ),
                           Text(
                             "الرئيسية",
@@ -122,7 +126,7 @@ class NavBarOfficePage extends StatelessWidget {
                               fontSize: 11,
                               color: bloc.currentIndex == 3
                                   ? brownNavSelect
-                                  : null,
+                                  : blackColor,
                             ),
                           )
                         ],

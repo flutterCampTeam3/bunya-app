@@ -22,7 +22,7 @@ class MessageListWidget extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surface,
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.4),
@@ -70,7 +70,11 @@ class MessageListWidget extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Text(sendTime),
+                      Text(
+                        sendTime,
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.secondary),
+                      ),
                       const SizedBox(width: 5),
                       Icon(
                         Icons.watch_later_outlined,
