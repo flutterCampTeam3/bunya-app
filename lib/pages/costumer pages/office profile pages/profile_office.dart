@@ -107,8 +107,8 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                             },
                             style: ButtonStyle(
                               backgroundColor:
-                                  WidgetStateProperty.all<Color>(lightBrown),
-                              fixedSize: WidgetStateProperty.all<Size>(
+                                  MaterialStateProperty.all<Color>(lightBrown),
+                              fixedSize: MaterialStateProperty.all<Size>(
                                   const Size(130, 50)),
                             ),
                             // style: ButtonStyle(
@@ -154,10 +154,10 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                         },
                                         style: ButtonStyle(
                                           backgroundColor:
-                                              WidgetStateProperty.all<Color>(
+                                              MaterialStateProperty.all<Color>(
                                                   lightBrown),
                                           fixedSize:
-                                              WidgetStateProperty.all<Size>(
+                                              MaterialStateProperty.all<Size>(
                                                   const Size(130, 50)),
                                         ),
                                         child: const Text(
@@ -179,10 +179,10 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                         },
                                         style: ButtonStyle(
                                           backgroundColor:
-                                              WidgetStateProperty.all<Color>(
+                                              MaterialStateProperty.all<Color>(
                                                   brown),
                                           fixedSize:
-                                              WidgetStateProperty.all<Size>(
+                                              MaterialStateProperty.all<Size>(
                                                   const Size(130, 50)),
                                         ),
                                         child: const Text(

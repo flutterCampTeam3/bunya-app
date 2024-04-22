@@ -4,6 +4,7 @@ import 'package:bunya_app/data/model/offices_model.dart';
 import 'package:bunya_app/data/model/post_like_model.dart';
 import 'package:bunya_app/data/model/profile_model_customer.dart';
 import 'package:bunya_app/data/model/profile_model_office.dart';
+import 'package:bunya_app/pages/Office%20pages/add%20post%20page/bloc/post_bloc.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -28,6 +29,14 @@ class DBService {
   String email = '';
 
   String currentTheme = 'Light';
+
+  File coustomerImageFile = File("");
+
+  File OfficeImageFile = File("");
+
+  File PostImageFile = File("");
+
+  String imageId="" ;
 
   DBService() {
     getToken();
@@ -494,7 +503,70 @@ class DBService {
     return classOffices;
   }
 
-  //-------------------- uplaod image
+  //-------------------- uplaod post image
+
+  //-------------------------------
+  //-------------------------------
+  Future<void> uploadImage(
+      File imageFile, String bucket, String nameFile) async {
+    await supabase.storage
+        .from(bucket) // Replace with your storage bucket name
+        .upload("${nameFile}", imageFile,
+            fileOptions: FileOptions(upsert: true));
+    await urlImage(bucket, nameFile);
+    print("done");
+  }
+
+  Future<void> updateImage(
+      File imageFile, String bucket, String nameFile) async {
+    await supabase.storage
+        .from(bucket) // Replace with your storage bucket name
+        .update("${nameFile}", imageFile);
+    await urlImage(bucket, nameFile);
+    print("done add");
+  }
+
+  Future<void> deleteImage(String bucket, String nameFile) async {
+    await supabase.storage
+        .from(bucket) // Replace with your storage bucket name
+        .remove(["${nameFile}"]);
+    print("done remove");
+  }
+
+  Future<String> urlImage(String bucket, String nameFile) async {
+    final response = await supabase.storage
+        .from(bucket) // Replace with your storage bucket name
+        .getPublicUrl("${nameFile}");
+    return response;
+  }
+
+  //-----------------------------------------------
+  //-----------------------------------------------
+
+  Future addPost({
+    required String desc,
+  }) async {
+    await supabase.from('post').insert(
+      {
+        'ofiiceId': supabase.auth.currentUser!.id,
+        'desc': desc,
+        'image': imageId
+      },
+    );
+  }
+/*
+  Future<void> uploadPostImage(File imageFile) async {
+    print("object");
+    print('-------------------------------------');
+    final response = await supabase.storage.from('profile').upload(
+          'PostFolder/yess',
+          imageFile,
+        );
+    print("Post");
+    UrlImage();
+    print("done");
+  }
+  //-------------- uplaod imgae profile
 
   Future<void> uploadCustomerImage(File imageFile) async {
     print("object");
@@ -504,7 +576,7 @@ class DBService {
           imageFile,
         );
     print("Customer");
-    UrlImage();
+ //   UrlImage();
     print("done");
   }
   //-------- uplaod office profile
@@ -517,23 +589,11 @@ class DBService {
           imageFile,
         );
     print("Office");
-    UrlImage();
+   // UrlImage();
     print("done");
   }
 
-  Future<void> uploadPostImage(File imageFile) async {
-    print("object");
-
-    final response = await supabase.storage.from('profile').upload(
-          'PostFolder/khlod',
-          imageFile,
-        );
-    print("Post");
-    UrlImage();
-    print("done");
-  }
-
-  /*
+  
   
   //--
 
@@ -551,11 +611,13 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
 */
   //--
 
-
-  Future<void> UrlImage() async {
-    final response = supabase.storage.from('profile').getPublicUrl("kk");
+  Future<String> UrlImage(String id) async {
+    final response = supabase.storage.from('profile').getPublicUrl(id);
     print(response);
+
+    return response ;
   }
+
 //-----------------
   getSession() async {
     try {

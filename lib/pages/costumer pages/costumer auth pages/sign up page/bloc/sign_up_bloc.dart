@@ -19,7 +19,7 @@ class SignUpBlocCustomer
     on<CustomerChoosImageEvent>((event, emit) async {
       //----imgaepick
       File avatar = File(await pickedImage());
-      GetIt.I.get<DBService>().uploadCustomerImage(avatar);
+    //  GetIt.I.get<DBService>().uploadCustomerImage(avatar);
       emit(CustomerChoosImageEventShowImageState(avatar));
     });
     //--------------

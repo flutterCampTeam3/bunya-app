@@ -10,3 +10,10 @@ final class ShowImagepostState extends PostState{
   final File  PickedImage;
   ShowImagepostState(this.PickedImage);
 }
+
+ class DisplayDesc extends PostState{
+  final List  <postModel> desc;
+  DisplayDesc({required this.desc});
+}
+
+final class successState extends PostState {}
