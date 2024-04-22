@@ -24,6 +24,7 @@ class ShowImageState extends SignUpState{
   final File  PickedImage;
   ShowImageState(this.PickedImage);
 }
+
 final class ErrorSignUpState extends SignUpState {
   final String msg;
 

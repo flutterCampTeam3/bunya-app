@@ -90,7 +90,7 @@ class DBService {
     id = respons.user!.id;
     print("${respons.hashCode}");
     // Send email verification
-    await supabase.auth.resetPasswordForEmail(email);
+    // await supabase.auth.resetPasswordForEmail(email);
   }
 
   //--- Office SignUp func
@@ -110,7 +110,7 @@ class DBService {
         'officeId': supabase.auth.currentUser!.id,
         'cr': cr,
         'disc': disc,
-        'phoneNumber': phoneNumber,
+        'phoneNumber': int.parse(phoneNumber),
         'email': email,
         'image': 'nn',
       },
@@ -125,18 +125,16 @@ class DBService {
     required String phoneNumber,
     required String image,
   }) async {
-    print(" before: ");
     final respons = await supabase.auth.signUp(
       data: {'Name': userName},
       email: email,
       password: password,
     );
-    print("iidone");
     await supabase.from('Customer').insert(
       {
         'email': email,
         'name': userName,
-        'phoneNumber': phoneNumber,
+        'phoneNumber': int.parse(phoneNumber),
         'customerId': respons.user!.id,
         'image':
             'https://mtaainvajktwbwpffkxw.supabase.co/storage/v1/object/public/profile/Ellipse%2024.svg'
