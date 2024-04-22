@@ -9,7 +9,6 @@ final class LoadingHomeState extends AccountListState {}
 
 final class ChangeState extends AccountListState {}
 
-
 final class ErrorHomeState extends AccountListState {
   final String msg;
   ErrorHomeState({required this.msg});
@@ -18,4 +17,17 @@ final class ErrorHomeState extends AccountListState {
 final class SuccessHomeState extends AccountListState {
   final List<OfficesModel> officeAccounte;
   SuccessHomeState({required this.officeAccounte});
+}
+
+class LoadeWords extends AccountListState {
+  final List<String> words;
+
+  LoadeWords({required this.words});
+}
+
+class SearchState extends AccountListState {
+  final List<OfficesModel> Listaccount;
+
+  SearchState(List<OfficesModel> searchofficeAccountData, {required this.Listaccount});
+
 }

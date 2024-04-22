@@ -13,23 +13,15 @@ part 'post_state.dart';
 class PostBloc extends Bloc<PostEvent, PostState> {
   PostBloc() : super(PostInitial()) {
     on<ChoseImagePostEvent>((event, emit) async{
-
-     File avatar = File(await pickedPost());
-     //---- make it in other event in the bittin to push
-      GetIt.I.get<DBService>().uploadPostImage(avatar);
-      //-------
-     emit(ShowImagepostState(avatar));
+     File post =await pickedPost();
+     emit(ShowImagepostState(post));
     });
-    //---------  new event to test sent post
 
-    
-  on<UploadPost>((event, emit) async{
+      on<UploadPost>((event, emit) async{
      
      //---- make it in other event in the bittin to push
    
     });
-
-
   }
 
  Future pickedPost() async {

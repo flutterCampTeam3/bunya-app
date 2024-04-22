@@ -18,7 +18,6 @@ import 'bloc/home_bloc.dart';
 
 class HomePageOffice extends StatelessWidget {
   const HomePageOffice({super.key});
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -34,7 +33,8 @@ class HomePageOffice extends StatelessWidget {
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(20.0),
+                      padding:
+                          const EdgeInsets.only(right: 20.0, left: 20, top: 20),
                       child: Column(
                         children: [
                           gapH15,
@@ -158,22 +158,20 @@ class HomePageOffice extends StatelessWidget {
                           BlocConsumer<HomeOfficesBloc, HomeOfficesState>(
                             listener: (context, state) {
                               if (state is ErrorOfficesState) {
-                                // Navigator.pop(context);
+                                Navigator.pop(context);
                                 context.showErrorSnackBar(context, state.msg);
                               }
-                              // if (state is LoadingState) {
-                              //   showDialog(
-                              //     context: context,
-                              //     builder: (context) {
-                              //       return CircularProgressIndicator(
-                              //         color: darkBrown,
-                              //       );
-                              //     },
-                              //   );
-                              // }
                             },
                             builder: (context, state) {
+                              // if (state is LoadingState) {
+                              //   return Center(
+                              //     child: CircularProgressIndicator(
+                              //       color: darkBrown,
+                              //     ),
+                              //   );
+                              // } else
                               if (state is datahomeSuccesOfficesState) {
+                                // Return GridView when the state is postsLoadedState
                                 return GridView.builder(
                                   shrinkWrap: true,
                                   physics: const NeverScrollableScrollPhysics(),
@@ -188,14 +186,16 @@ class HomePageOffice extends StatelessWidget {
                                   itemBuilder: (context, index) {
                                     return InkWell(
                                       onTap: () {
-                                        context.pushTo(
-                                            view: PostPage(
-                                                post: state.classPost[index],
-                                                office:
-                                                    state.classOffices[index]),
-                                            onValue: (_) {
-                                              bloc.add(ShowDataOfficesEvent());
-                                            });
+                                        context
+                                            .pushTo(
+                                                view: PostPage(
+                                                    post:
+                                                        state.classPost[index],
+                                                    office: state
+                                                        .classOffices[index]))
+                                            .then((_) {
+                                          bloc.add(ShowDataOfficesEvent());
+                                        });
                                       },
                                       child: PostWidget(
                                         postPath: state.classPost[index],
@@ -206,6 +206,7 @@ class HomePageOffice extends StatelessWidget {
                                   },
                                 );
                               } else {
+                                // Return an empty SizedBox for other states
                                 return const SizedBox();
                               }
                             },

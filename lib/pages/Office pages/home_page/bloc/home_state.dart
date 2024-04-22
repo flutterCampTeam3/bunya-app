@@ -19,3 +19,17 @@ final class ErrorOfficesState extends HomeOfficesState {
   ErrorOfficesState({required this.msg});
 }
 
+
+final class LaudLikeHomeOfficesState extends HomeOfficesState {}
+
+final class AddLikeHomeOfficesState extends HomeOfficesState {}
+
+final class DeleteLikeHomeOfficesState extends HomeOfficesState {}
+
+final class CheckLikeHomeOfficesState extends HomeOfficesState {}
+
+final class ErrorLikeHomeOfficesState extends HomeOfficesState {
+  final String msg;
+
+  ErrorLikeHomeOfficesState({required this.msg});
+}

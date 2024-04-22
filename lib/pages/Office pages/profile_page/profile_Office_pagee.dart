@@ -1,7 +1,9 @@
+import 'package:bunya_app/data/model/offices_model.dart';
 import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
+import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/pages/Office%20pages/office%20auth%20pages/signIn%20page/signin_page.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/bloc/profile_office_bloc.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/edit_office_page.dart';
@@ -15,8 +17,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 class ProfilePageOffice extends StatelessWidget {
-  ProfilePageOffice({super.key});
-
+  ProfilePageOffice({super.key, this.officeId});
+  final OfficesModel? officeId;
   @override
   final locator = GetIt.I.get<DBService>();
   @override
@@ -28,7 +30,9 @@ class ProfilePageOffice extends StatelessWidget {
         create: (context) => ProfileOfficeBloc(),
         child: Builder(builder: (context) {
           final bloc = context.read<ProfileOfficeBloc>();
-          bloc.add(GetOfficeInfoEvent());
+          // ..add(ShowDataOfficesIdEvent(id:officeId!.officeId ));
+          // bloc.add(GetOfficeInfoEvent());
+           bloc.add(ShowDataOfficesIdEvent(id: officeId!.officeId));
           return BlocBuilder<ProfileOfficeBloc, ProfileOfficeState>(
             builder: (context, state) {
               if (state is DisplayOfficeInfoState) {
@@ -277,6 +281,44 @@ class ProfilePageOffice extends StatelessWidget {
                                   ],
                                 ),
                               ),
+                              BlocConsumer<ProfileOfficeBloc,
+                                  ProfileOfficeState>(
+                                listener: (context, state) {
+                                  if (state is ProfileOfficeErrorState) {
+                                    // Navigator.pop(context);
+                                    context.showErrorSnackBar(
+                                        context, state.msg);
+                                  }
+                                },
+                                builder: (context, state) {
+                                  if (state is profilePostsSuccesState) {
+                                    return SizedBox(
+                                      child: GridView.builder(
+                                          gridDelegate:
+                                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                            crossAxisCount: 1,
+                                            crossAxisSpacing: 10.0,
+                                            mainAxisSpacing: 10.0,
+                                            childAspectRatio: 0.75,
+                                          ),
+                                          itemCount: bloc.classPostId.length,
+                                          itemBuilder: (context, index) {
+                                            print("inside the loob");
+                                            return PostProfileWidget(
+                                              desc: bloc.classPostId[index],
+                                              path: bloc.classPostId[index],
+                                            );
+                                          }),
+                                    );
+                                  } else {
+                                    return const SizedBox(
+                                      child: Center(
+                                          child:
+                                              Text("لا يوجد منشورات حتى الان")),
+                                    );
+                                  }
+                                },
+                              )
                               // SingleChildScrollView(
                               //   child: Column(
                               //     children: [

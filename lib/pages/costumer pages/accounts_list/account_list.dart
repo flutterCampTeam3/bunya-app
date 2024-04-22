@@ -20,6 +20,8 @@ class ConstraintAccountList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+        late TextEditingController searchController = TextEditingController();
+
     return Directionality(
       textDirection: TextDirection.rtl,
       child: BlocProvider(
@@ -27,6 +29,9 @@ class ConstraintAccountList extends StatelessWidget {
         child: Builder(builder: (context) {
           final bloc = context.read<AccountListBloc>();
           bloc.add(GetAccountEvent(type: type));
+                    
+
+
           return Scaffold(
             body: Stack(
               children: [
@@ -41,7 +46,13 @@ class ConstraintAccountList extends StatelessWidget {
                   child: SafeArea(
                     child: Column(
                       children: [
-                        const AppBarAccoutWidget(),
+                         AppBarAccoutWidget(controllerSearch: searchController, 
+                        //  onChanged: (String ) { 
+                          
+                        //   bloc.add(SearchWord(word: searchController.text));
+
+                        //   },
+                          ),
                         Padding(
                           padding: const EdgeInsets.all(20.0),
                           child: Column(
@@ -152,3 +163,15 @@ class ConstraintAccountList extends StatelessWidget {
     );
   }
 }
+
+
+//  else {
+//                                       return const Center(
+//                                         child: Padding(
+//                                           padding: EdgeInsets.only(top: 180.0),
+//                                           child: Text(
+//                                             "لا يوجد حسابات لهذا القسم",
+//                                           ),
+//                                         ),
+//                                       );
+//                                     }

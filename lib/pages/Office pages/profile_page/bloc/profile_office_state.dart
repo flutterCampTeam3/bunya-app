@@ -20,6 +20,13 @@ final class ProfilOfficeSuccessState extends ProfileOfficeState {
   ProfilOfficeSuccessState({required this.msg});
 }
 
+class profilePostsSuccesState extends ProfileOfficeState {
+  // final List<postModel> classPostId;
+  // profilePostsSuccesState ({required this.classPostId});
+}
+final class LoadingState extends ProfileOfficeState {}
+
+
 final class DisplayOfficeInfoState extends ProfileOfficeState {
   String name;
   String email;

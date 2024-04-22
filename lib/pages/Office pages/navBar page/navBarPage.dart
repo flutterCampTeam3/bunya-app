@@ -1,5 +1,7 @@
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
+import 'package:bunya_app/helper/extintion.dart';
+
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/Office%20pages/add%20post%20page/add_post_page.dart';
 import 'package:bunya_app/pages/Office%20pages/navBar%20page/bloc/nav_bloc.dart';
@@ -7,7 +9,7 @@ import 'package:bunya_app/pages/costumer%20pages/navBar%20page/bloc/nav_bloc.dar
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
+
 
 class NavBarOfficePage extends StatelessWidget {
   const NavBarOfficePage({
@@ -143,7 +145,7 @@ class NavBarOfficePage extends StatelessWidget {
                 width: 80,
                 height: 80,
                 child: FloatingActionButton(
-                    onPressed: () { 
+                    onPressed: () {
                       context.pushTo(view: AddPostPage());
                     },
                     shape: const CircleBorder(),
