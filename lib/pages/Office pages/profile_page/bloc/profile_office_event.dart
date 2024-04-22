@@ -24,4 +24,14 @@ final class UpdateOfficeInfoOfficeEvent extends ProfileOfficeEvent {
   });
 }
 
+final class ShowFloowersEvent extends ProfileOfficeEvent {
+  final String id;
+
+  ShowFloowersEvent({required this.id});
+}
+
+final class SignOutOfficeEvent extends ProfileOfficeEvent {}
+
+final class CheckFollowNumberOfOfficeEvent extends ProfileOfficeEvent {}
+
 

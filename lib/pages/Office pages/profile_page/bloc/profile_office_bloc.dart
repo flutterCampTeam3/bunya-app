@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:bunya_app/data/model/post_model.dart';
 import 'package:bunya_app/data/model/profile_model_office.dart';
 import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/bloc/profile_bloc.dart';
