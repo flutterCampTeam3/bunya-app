@@ -1,15 +1,15 @@
-import 'package:bunya_app/data/model/offices_model.dart';
 import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
-import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/pages/Office%20pages/office%20auth%20pages/signIn%20page/signin_page.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/bloc/profile_office_bloc.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/edit_office_page.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/widgets/widgets/information_widget.dart';
+import 'package:bunya_app/pages/Office%20pages/profile_page/widgets/widgets/post_widget%20copy.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/image_aacount_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/post_widget.dart';
+import 'package:bunya_app/pages/intro%20pages/first_intro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -249,7 +249,7 @@ class ProfilePageOffice extends StatelessWidget {
                                       onTap: () async {
                                         await locator.signOut();
                                         context
-                                            .pushAndRemove(const SigninPage());
+                                            .pushAndRemove(const introPage());
                                       },
                                       child: Container(
                                         height: 65,
@@ -295,7 +295,7 @@ class ProfilePageOffice extends StatelessWidget {
                                   }
                                 },
                                 builder: (context, state) {
-                                  if (state is profilePostsSuccesState) {
+                                  if (bloc.classPostId.isNotEmpty) {
                                     return SizedBox(
                                       child: GridView.builder(
                                           gridDelegate:
@@ -307,7 +307,7 @@ class ProfilePageOffice extends StatelessWidget {
                                           ),
                                           itemCount: bloc.classPostId.length,
                                           itemBuilder: (context, index) {
-                                            return PostProfileWidget(
+                                            return PostProfileOfficeWidget(
                                               desc: bloc.classPostId[index],
                                               path: bloc.classPostId[index],
                                             );

@@ -1,11 +1,7 @@
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
-import 'package:bunya_app/helper/extintion.dart';
-
-import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/Office%20pages/add%20post%20page/add_post_page.dart';
 import 'package:bunya_app/pages/Office%20pages/navBar%20page/bloc/nav_bloc.dart';
-import 'package:bunya_app/pages/costumer%20pages/navBar%20page/bloc/nav_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

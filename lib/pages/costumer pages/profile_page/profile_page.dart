@@ -327,6 +327,7 @@ import 'package:bunya_app/pages/costumer%20pages/profile_page/edit_page.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/follower_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/image_aacount_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/information_widget.dart';
+import 'package:bunya_app/pages/intro%20pages/first_intro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -469,7 +470,7 @@ class ProfilePageCustomer extends StatelessWidget {
                                                         'assets/images/edit.png',
                                                         color: Theme.of(context)
                                                             .colorScheme
-                                                            .surface,
+                                                            .onSurface,
                                                         width: 18,
                                                       )),
                                                 ],
@@ -519,7 +520,7 @@ class ProfilePageCustomer extends StatelessWidget {
                                                   onTap: () async {
                                                     await locator.signOut();
                                                     context.pushAndRemove(
-                                                        const SigninPage());
+                                                        const introPage());
                                                   },
                                                   child: Container(
                                                     height: 65,

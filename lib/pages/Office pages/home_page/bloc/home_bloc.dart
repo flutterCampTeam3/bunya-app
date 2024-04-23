@@ -12,6 +12,8 @@ part 'home_state.dart';
 
 class HomeOfficesBloc extends Bloc<HomeOfficesEvent, HomeOfficesState> {
   bool isHomeLike = false;
+  List<postModel> classPost = [];
+  List<OfficesModel> officeList = [];
   int likeNumber = 0;
   HomeOfficesBloc() : super(HomeInitial()) {
     // on<ShowImageEvent>(fetchPosts);
@@ -21,12 +23,13 @@ class HomeOfficesBloc extends Bloc<HomeOfficesEvent, HomeOfficesState> {
     on<DeleteLikeHomeOfficesEvent>(deleteHomeLike);
   }
 
-  Future<void> fetchData(ShowDataOfficesEvent event, Emitter<HomeOfficesState> emit) async {
+  Future<void> fetchData(
+      ShowDataOfficesEvent event, Emitter<HomeOfficesState> emit) async {
     emit(LoadingState());
     try {
-      List<OfficesModel> officeList = await DBService().getOffices();
-      List<postModel> postList = await DBService().getposts();
-      emit(datahomeSuccesOfficesState(classOffices: officeList, classPost: postList));
+      officeList = await DBService().getOffices();
+      classPost = await DBService().getposts();
+      emit(datahomeSuccesOfficesState());
     } catch (e) {
       emit(ErrorOfficesState(msg: 'فشل في جلب البيانات '));
     }

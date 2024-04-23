@@ -34,4 +34,25 @@ final class SignOutOfficeEvent extends ProfileOfficeEvent {}
 
 final class CheckFollowNumberOfOfficeEvent extends ProfileOfficeEvent {}
 
+final class AddLikeOfficeEvent extends ProfileOfficeEvent {
+  final postModel post;
+  AddLikeOfficeEvent({required this.post});
+}
+
+final class CheckLikeOfficeEvent extends ProfileOfficeEvent {
+  final String id;
+  CheckLikeOfficeEvent({required this.id});
+}
+
+final class DeleteLikeOfficeEvent extends ProfileOfficeEvent {
+  final String id;
+  DeleteLikeOfficeEvent({required this.id});
+}
+
+
+final class GetLikeNumberOfficeEvent extends ProfileOfficeEvent {
+  final String id;
+  GetLikeNumberOfficeEvent({required this.id});
+}
+
 

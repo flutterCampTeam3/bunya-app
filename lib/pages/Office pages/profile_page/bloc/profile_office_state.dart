@@ -47,3 +47,17 @@ class dataFlowrsSuccesState extends ProfileOfficeState {
 
   dataFlowrsSuccesState({required this.classOffices});
 }
+
+final class LaudLikeOfficeState extends ProfileOfficeState {}
+
+final class AddLikeOfficeState extends ProfileOfficeState {}
+
+final class DeleteLikeOfficeState extends ProfileOfficeState {}
+
+final class CheckLikeOfficeState extends ProfileOfficeState {}
+
+final class ErrorLikeOfficeState extends ProfileOfficeState {
+  final String msg;
+
+  ErrorLikeOfficeState({required this.msg});
+}

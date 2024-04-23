@@ -22,31 +22,21 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     });
     //---------  new event to test sent post
 
-    
-  on<UploadPost>((event, emit) async{
-     
-     //---- make it in other event in the bittin to push
-   
-    });
-        on<UploadPost>((event, emit) async {
+    on<UploadPost>((event, emit) async {
       // GetIt.I.get<DBService>().deleteImage(event.bucketName, event.fileName);
       GetIt.I.get<DBService>().uploadImage(
-        
           GetIt.I.get<DBService>().PostImageFile,
           event.bucketName,
           event.fileName);
 
       GetIt.I.get<DBService>().imageId =
           await GetIt.I.get<DBService>().UrlImage(event.fileName);
-      
     });
 
-        on<UploadDesc>((event, emit) async {
+    on<UploadDesc>((event, emit) async {
       await GetIt.I.get<DBService>().addPost(desc: event.desc);
       emit(successState());
     });
-
-
   }
 
   Future pickedPost() async {

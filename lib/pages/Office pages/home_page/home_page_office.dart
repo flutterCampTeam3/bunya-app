@@ -113,27 +113,26 @@ class HomePageOffice extends StatelessWidget {
                                     color: brown,
                                   ),
                                 );
-                              } else if (state is datahomeSuccesOfficesState) {
+                              } else if (bloc.officeList.isNotEmpty) {
                                 // Return ListView.builder when the state is postsLoadedState
                                 return SizedBox(
                                   height: 100,
                                   width: context.getWidth(),
                                   child: ListView.builder(
                                     scrollDirection: Axis.horizontal,
-                                    itemCount: state.classOffices.length,
+                                    itemCount: bloc.officeList.length,
                                     itemBuilder: (context, index) {
                                       return InkWell(
                                         onTap: () {
                                           context.pushTo(
                                               view: ProfilePageOfficeOffice(
-                                            office: state.classOffices[index],
+                                            office: bloc.officeList[index],
                                           ));
                                         },
                                         child: AccountsHomeWidget(
-                                          description:
-                                              state.classOffices[index],
-                                          path: state.classOffices[index],
-                                          title: state.classOffices[index],
+                                          description: bloc.officeList[index],
+                                          path: bloc.officeList[index],
+                                          title: bloc.officeList[index],
                                         ),
                                       );
                                     },
@@ -171,7 +170,7 @@ class HomePageOffice extends StatelessWidget {
                               //     ),
                               //   );
                               // } else
-                              if (state is datahomeSuccesOfficesState) {
+                              if (bloc.classPost.isNotEmpty) {
                                 // Return GridView when the state is postsLoadedState
                                 return GridView.builder(
                                   shrinkWrap: true,
@@ -183,25 +182,24 @@ class HomePageOffice extends StatelessWidget {
                                     mainAxisSpacing: 10.0,
                                     childAspectRatio: 0.75,
                                   ),
-                                  itemCount: state.classPost.length,
+                                  itemCount: bloc.classPost.length,
                                   itemBuilder: (context, index) {
                                     return InkWell(
                                       onTap: () {
                                         context
                                             .pushTo(
                                                 view: PostPage(
-                                                    post:
-                                                        state.classPost[index],
-                                                    office: state
-                                                        .classOffices[index]))
+                                                    post: bloc.classPost[index],
+                                                    office:
+                                                        bloc.officeList[index]))
                                             .then((_) {
                                           bloc.add(ShowDataOfficesEvent());
                                         });
                                       },
                                       child: PostOfficeHomeWidget(
-                                        postPath: state.classPost[index],
-                                        description: state.classPost[index],
-                                        profilePath: state.classOffices[index],
+                                        postPath: bloc.classPost[index],
+                                        description: bloc.classPost[index],
+                                        profilePath: bloc.officeList[index],
                                       ),
                                     );
                                   },

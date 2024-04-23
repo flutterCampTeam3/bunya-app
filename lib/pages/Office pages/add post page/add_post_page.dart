@@ -1,14 +1,10 @@
 import 'package:bunya_app/helper/colors.dart';
-import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/pages/Office%20pages/add%20post%20page/bloc/post_bloc.dart';
-import 'package:bunya_app/pages/Office%20pages/home_page/home_page_office.dart';
 import 'package:bunya_app/pages/Office%20pages/navBar%20page/navBarPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
 import 'package:uuid/uuid.dart';
-
 import '../../../helper/sized.dart';
 import '../../widgets/auth/button_widget.dart';
 

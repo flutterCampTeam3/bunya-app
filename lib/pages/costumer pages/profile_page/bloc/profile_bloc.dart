@@ -63,14 +63,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   Future<FutureOr<void>> getUserInfo(
       GetUserInfoEvent event, Emitter<ProfileState> emit) async {
-    print("in the bloc");
     emit(ProfileLoadingState());
     try {
-      print("in the try");
       classFollowing = await DBService().getFollowers();
-      
       final ProfileModel profile = await locator.getUser();
-      print("after");
       final email = profile.email;
       final name = profile.name;
       final phone = profile.phone;
@@ -103,7 +99,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   Future<FutureOr<void>> signOut(
       SignOutEvent event, Emitter<ProfileState> emit) async {
     emit(ProfileLoadingState());
-
     try {
       await locator.signOut();
       emit(SignedOutState(msg: "تم تسجيل الخروج من حسابك"));
