@@ -12,8 +12,8 @@ class ImageAacountWodget extends StatelessWidget {
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         border: Border.all(
-          color: brownColor,
-          width: 3,
+          color: blackColor,
+          width: 1,
         ),
       ),
       child: ClipOval(

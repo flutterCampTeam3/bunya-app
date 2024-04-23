@@ -303,12 +303,12 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                                   fontSize: 14,
                                                   color: Colors.black),
                                             ),
-                                            Text(
-                                              office.name,
-                                              style: const TextStyle(
-                                                  fontSize: 14,
-                                                  color: Colors.black),
-                                            )
+                                            // Text(
+                                            //   office.name,
+                                            //   style: const TextStyle(
+                                            //       fontSize: 14,
+                                            //       color: Colors.black),
+                                            // )
                                           ],
                                         ),
                                       ),
