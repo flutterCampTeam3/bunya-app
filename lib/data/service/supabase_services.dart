@@ -774,11 +774,6 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
   //--
 
 
-  Future<String> UrlImage(String id) async {
-    final response = supabase.storage.from('profile').getPublicUrl(id);
-
-    return response;
-  }
 
 //-----------------
   getSession() async {
