@@ -137,8 +137,10 @@ class ScaffoldWidget extends StatelessWidget {
 //-------------------------- dark mode ON
 
 import 'package:bunya_app/helper/colors.dart';
+import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/appbar_widget.dart';
+import 'package:bunya_app/pages/supportPage/support_page.dart';
 import 'package:bunya_app/pages/theme/bloc/drak_mode_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -232,7 +234,9 @@ class ScaffoldWidget extends StatelessWidget {
                                   'إمكانيات الوصول',
                                   style: TextStyle(fontSize: 20),
                                 ),
-                                onTap: () {},
+                                onTap: () {
+                               
+                                },
                               ),
                             ],
                           ),
@@ -240,7 +244,7 @@ class ScaffoldWidget extends StatelessWidget {
                         gapH60,
                         const ListTile(
                           title: Text(
-                            'الدعم وحول', // Add your title text here
+                            'الدعم ', // Add your title text here
                             style: TextStyle(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           ),
@@ -267,7 +271,9 @@ class ScaffoldWidget extends StatelessWidget {
                                   'الدعم',
                                   style: TextStyle(fontSize: 20),
                                 ),
-                                onTap: () {},
+                                onTap: () {
+                                     context.pushTo(view: SupportPage());
+                                },
                               ),
                             ],
                           ),

@@ -183,8 +183,7 @@ class HomePageCustomer extends StatelessWidget {
                                     mainAxisSpacing: 10.0,
                                     childAspectRatio: 0.75,
                                   ),
-                                  itemCount: 10,
-                                  // 6,
+                                  itemCount: 6,
                                   // state.classPost.length,
                                   itemBuilder: (context, index) {
                                     print("===================");

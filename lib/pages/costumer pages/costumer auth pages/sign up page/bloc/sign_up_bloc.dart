@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'package:bloc/bloc.dart';
 import 'package:bunya_app/data/service/supabase_services.dart';
-import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
 
@@ -33,7 +31,7 @@ class SignUpBlocCustomer
 
   Future<void> createAccount(CreateAccountCustomerEvent event,
       Emitter<SignUpCustomerState> emit) async {
-    print("in the bloc");
+    // print("in the bloc");
     // if (event.name.trim().isNotEmpty &&
     //     event.email.trim().isNotEmpty &&
     //     event.password.trim().isNotEmpty &&
@@ -51,8 +49,7 @@ class SignUpBlocCustomer
           password: event.password);
       emit(SuccessSignUpCustomerState(msg: "تم إنشاء الحساب بنجاح"));
     } catch (error) {
-      print(error);
-
+      print("error");
       emit(ErrorSignUpCustomerState(msg: "هناك خطأ في إنشاء الحساب"));
     }
     // } else {
