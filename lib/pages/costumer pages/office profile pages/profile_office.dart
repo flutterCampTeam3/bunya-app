@@ -37,62 +37,66 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
               length: 2,
               child: Scaffold(
                 body: SafeArea(
-                    child: Padding(
-                  padding: const EdgeInsets.only(left: 20.0, right: 20),
-                  child: Column(
-                    children: [
-                      const AppBarOfficeProfileWidget(),
-                      gapH5,
-                      Row(
+                  child: Padding(
+                      padding: const EdgeInsets.only(left: 20.0, right: 20),
+                      child: Column(
                         children: [
-                          ImageAacountWodget(
-                            path: office.image,
+                          const AppBarOfficeProfileWidget(),
+                          gapH5,
+                          Row(
+                            children: [
+                              ImageAacountWodget(
+                                path: office.image,
+                              ),
+                              gapWe15,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(office.name),
+                                  Text(office.email)
+                                ],
+                              )
+                            ],
                           ),
-                          gapWe15,
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [Text(office.name), Text(office.email)],
-                          )
-                        ],
-                      ),
-                      BlocBuilder<ProfilePostsBloc, ProfilePostsState>(
-                        builder: (context, state) {
-                          return IntrinsicHeight(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Column(
+                          BlocBuilder<ProfilePostsBloc, ProfilePostsState>(
+                            builder: (context, state) {
+                              return IntrinsicHeight(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    const Text("المتابَعون"),
-                                    gapH20,
-                                    Text("${bloc.followerNumber}"),
-                                  ],
-                                ),
-                                VerticalDivider(
-                                  width: 30.0,
-                                  thickness: 1.0,
-                                  color:
-                                      Theme.of(context).colorScheme.secondary,
-                                ),
-                                Column(
-                                  children: [
-                                    const Text("المتابِعون"),
-                                    gapH20,
-                                    Text("${bloc.followingNumber}"),
-                                  ],
-                                ),
-                                VerticalDivider(
-                                  width: 30.0,
-                                  thickness: 1.0,
-                                  color: Theme.of(context)
+                                    Column(
+                                      children: [
+                                        const Text("المتابَعون"),
+                                        gapH20,
+                                        Text("${bloc.followerNumber}"),
+                                      ],
+                                    ),
+                                    VerticalDivider(
+                                      width: 30.0,
+                                      thickness: 1.0,
+                                      color: Theme.of(context)
                                           .colorScheme
                                           .secondary,
                                     ),
-                                     Column(
+                                    Column(
+                                      children: [
+                                        const Text("المتابِعون"),
+                                        gapH20,
+                                        Text("${bloc.followingNumber}"),
+                                      ],
+                                    ),
+                                    VerticalDivider(
+                                      width: 30.0,
+                                      thickness: 1.0,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .secondary,
+                                    ),
+                                    Column(
                                       children: [
                                         const Text("الإعجابات"),
-                                    gapH20,
-                                    Text("${bloc.likesNumber}"),
+                                        gapH20,
+                                        Text("${bloc.likesNumber}"),
                                       ],
                                     ),
                                   ],
@@ -107,24 +111,25 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                             children: [
                               ElevatedButton(
                                 onPressed: () {
-                                  bloc.add(
-                                  CheckRoomEvent(officeId: office.officeId));
-                              //
+                                  bloc.add(CheckRoomEvent(
+                                      officeId: office.officeId));
+                                  //
                                 },
-                                style: ButtonStyle(
-                                  backgroundColor:
-                                      WidgetStateProperty.all<Color>(
-                                          lightBrown),
-                                  fixedSize: WidgetStateProperty.all<Size>(
-                                      const Size(130, 50)),
-                                ),
-
                                 // style: ButtonStyle(
                                 //   backgroundColor:
-                                //       MaterialStateProperty.all<Color>(lightBrown),
-                                //   fixedSize: MaterialStateProperty.all<Size>(
-                                //       const Size(150, 50)),
+                                //       WidgetStateProperty.all<Color>(
+                                //           lightBrown),
+                                //   fixedSize: WidgetStateProperty.all<Size>(
+                                //       const Size(130, 50)),
                                 // ),
+
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          lightBrown),
+                                  fixedSize: MaterialStateProperty.all<Size>(
+                                      const Size(150, 50)),
+                                ),
                                 child: const Text(
                                   'محادثة',
                                   style: TextStyle(
@@ -139,10 +144,10 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                     context.showErrorSnackBar(
                                         context, state.msg);
                                   }
-                                   if (state is CheckChatState) {
-                                context.pushTo(
-                                    view: ChatView(room: state.room));
-                              }
+                                  if (state is CheckChatState) {
+                                    context.pushTo(
+                                        view: ChatView(room: state.room));
+                                  }
                                 },
                                 builder: (context, state) {
                                   if (state is LoadingState) {
@@ -165,13 +170,21 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                               bloc.add(DeleteFollowEvent(
                                                   id: office.officeId));
                                             },
+                                            // style: ButtonStyle(
+                                            //   backgroundColor:
+                                            //       WidgetStateProperty.all<
+                                            //           Color>(lightBrown),
+                                            //   fixedSize:
+                                            //       WidgetStateProperty.all<Size>(
+                                            //           const Size(130, 50)),
+                                            // ),
                                             style: ButtonStyle(
                                               backgroundColor:
-                                                  WidgetStateProperty.all<
+                                                  MaterialStateProperty.all<
                                                       Color>(lightBrown),
-                                              fixedSize:
-                                                  WidgetStateProperty.all<Size>(
-                                                      const Size(130, 50)),
+                                              fixedSize: MaterialStateProperty
+                                                  .all<Size>(
+                                                      const Size(150, 50)),
                                             ),
                                             child: const Text(
                                               'الغاء المتابعة ',
@@ -189,13 +202,21 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                               bloc.add(AddFollowEvent(
                                                   id: office.officeId));
                                             },
+                                            // style: ButtonStyle(
+                                            //   backgroundColor:
+                                            //       WidgetStateProperty.all<
+                                            //           Color>(brown),
+                                            //   fixedSize:
+                                            //       WidgetStateProperty.all<Size>(
+                                            //           const Size(130, 50)),
+                                            // ),
                                             style: ButtonStyle(
                                               backgroundColor:
-                                                  WidgetStateProperty.all<
-                                                      Color>(brown),
-                                              fixedSize:
-                                                  WidgetStateProperty.all<Size>(
-                                                      const Size(130, 50)),
+                                                  MaterialStateProperty.all<
+                                                      Color>(lightBrown),
+                                              fixedSize: MaterialStateProperty
+                                                  .all<Size>(
+                                                      const Size(150, 50)),
                                             ),
                                             child: const Text(
                                               'متابعة',

@@ -67,18 +67,18 @@ class introPage extends StatelessWidget {
                   onPressed: () {
                     context.pushAndRemove(BoardingPage());
                   },
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStateProperty.all<Color>(lightBrown),
-                    fixedSize:
-                        WidgetStateProperty.all<Size>(const Size(150, 50)),
-                  ),
-                  
                   // style: ButtonStyle(
-                  //   backgroundColor:
-                  //       MaterialStateProperty.all<Color>(lightBrown),
+                  //   backgroundColor: WidgetStateProperty.all<Color>(lightBrown),
                   //   fixedSize:
-                  //       MaterialStateProperty.all<Size>(const Size(150, 50)),
+                  //       WidgetStateProperty.all<Size>(const Size(150, 50)),
                   // ),
+
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(lightBrown),
+                    fixedSize:
+                        MaterialStateProperty.all<Size>(const Size(150, 50)),
+                  ),
                   child: const Text(
                     'عميل',
                     style: TextStyle(
@@ -93,18 +93,18 @@ class introPage extends StatelessWidget {
                       isCustomer: false,
                     ));
                   },
-                  style: ButtonStyle(
-                    backgroundColor: WidgetStateProperty.all<Color>(lightBrown),
-                    fixedSize:
-                        WidgetStateProperty.all<Size>(const Size(150, 50)),
-                  ),
-                 
                   // style: ButtonStyle(
-                  //   backgroundColor:
-                  //       MaterialStateProperty.all<Color>(lightBrown),
+                  //   backgroundColor: WidgetStateProperty.all<Color>(lightBrown),
                   //   fixedSize:
-                  //       MaterialStateProperty.all<Size>(const Size(150, 50)),
+                  //       WidgetStateProperty.all<Size>(const Size(150, 50)),
                   // ),
+
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(lightBrown),
+                    fixedSize:
+                        MaterialStateProperty.all<Size>(const Size(150, 50)),
+                  ),
                   child: const Text(
                     'صاحب شركة',
                     style: TextStyle(

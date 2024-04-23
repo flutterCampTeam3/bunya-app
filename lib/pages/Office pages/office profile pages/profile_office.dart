@@ -105,22 +105,22 @@ class ProfilePageOfficeOffice extends StatelessWidget {
                         children: [
                           ElevatedButton(
                             onPressed: () {
-                               bloc.add(
-                                  CheckRoomOfficeEvent(officeId: office.officeId));
+                              bloc.add(CheckRoomOfficeEvent(
+                                  officeId: office.officeId));
                             },
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  WidgetStateProperty.all<Color>(lightBrown),
-                              fixedSize: WidgetStateProperty.all<Size>(
-                                  const Size(130, 50)),
-                            ),
-                          
                             // style: ButtonStyle(
                             //   backgroundColor:
-                            //       MaterialStateProperty.all<Color>(lightBrown),
-                            //   fixedSize: MaterialStateProperty.all<Size>(
-                            //       const Size(150, 50)),
+                            //       WidgetStateProperty.all<Color>(lightBrown),
+                            //   fixedSize: WidgetStateProperty.all<Size>(
+                            //       const Size(130, 50)),
                             // ),
+
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all<Color>(lightBrown),
+                              fixedSize: MaterialStateProperty.all<Size>(
+                                  const Size(150, 50)),
+                            ),
                             child: const Text(
                               'محادثة',
                               style: TextStyle(
@@ -160,14 +160,14 @@ class ProfilePageOfficeOffice extends StatelessWidget {
                                           bloc.add(DeleteFollowOfficeEvent(
                                               id: office.officeId));
                                         },
-                                        style: ButtonStyle(
-                                          backgroundColor:
-                                              WidgetStateProperty.all<Color>(
-                                                  lightBrown),
-                                          fixedSize:
-                                              WidgetStateProperty.all<Size>(
-                                                  const Size(130, 50)),
-                                        ),
+                                        // style: ButtonStyle(
+                                        //   backgroundColor:
+                                        //       WidgetStateProperty.all<Color>(
+                                        //           lightBrown),
+                                        //   fixedSize:
+                                        //       WidgetStateProperty.all<Size>(
+                                        //           const Size(130, 50)),
+                                        // ),
                                         // style: ButtonStyle(
                                         //   backgroundColor:
                                         //       MaterialStateProperty.all<Color>(
@@ -176,7 +176,15 @@ class ProfilePageOfficeOffice extends StatelessWidget {
                                         //       WidgetStateProperty.all<Size>(
                                         //           const Size(130, 50)),
                                         // ),
-                                        
+                                        style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all<Color>(
+                                                  lightBrown),
+                                          fixedSize:
+                                              MaterialStateProperty.all<Size>(
+                                                  const Size(150, 50)),
+                                        ),
+
                                         child: const Text(
                                           'الغاء المتابعة ',
                                           style: TextStyle(
@@ -194,7 +202,7 @@ class ProfilePageOfficeOffice extends StatelessWidget {
                                           bloc.add(AddFollowOfficeEvent(
                                               id: office.officeId));
                                         },
-                                       style: ButtonStyle(
+                                        style: ButtonStyle(
                                           backgroundColor:
                                               MaterialStateProperty.all<Color>(
                                                   lightBrown),
@@ -210,7 +218,7 @@ class ProfilePageOfficeOffice extends StatelessWidget {
                                         //       WidgetStateProperty.all<Size>(
                                         //           const Size(130, 50)),
                                         // ),
-                                        
+
                                         child: const Text(
                                           'متابعة',
                                           style: TextStyle(

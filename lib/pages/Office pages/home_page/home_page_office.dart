@@ -120,7 +120,8 @@ class HomePageOffice extends StatelessWidget {
                                   width: context.getWidth(),
                                   child: ListView.builder(
                                     scrollDirection: Axis.horizontal,
-                                    itemCount: bloc.officeList.length,
+                                    itemCount: 6,
+                                    // bloc.officeList.length,
                                     itemBuilder: (context, index) {
                                       return InkWell(
                                         onTap: () {
