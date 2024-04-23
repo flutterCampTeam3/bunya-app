@@ -7,6 +7,7 @@ import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'sign_up_event.dart';
 part 'sign_up_state.dart';
@@ -42,7 +43,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
             event.confirmPass.trim().isNotEmpty
         // && event.isChecked
         ) {
-      emit(LoadingSignUpState());
+      // emit(LoadingSignUpState());
       try {
         checkOffice = await CheckOffice().checkOffice(event.cr);
         print("the value $checkOffice");
@@ -63,45 +64,47 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
       CreateAccountprofileEvent event, Emitter<SignUpState> emit) async {
     emit(LoadingSignUpState());
     print("-------------------------------1");
-    if (event.name.trim().isNotEmpty &&
-        event.email.trim().isNotEmpty &&
-        event.cr.trim().isNotEmpty &&
-        event.info.trim().isNotEmpty &&
-        event.location.trim().isNotEmpty &&
-        event.phone.trim().isNotEmpty) {
+    if (!event.name.trim().isNotEmpty &&
+        !event.email.trim().isNotEmpty &&
+        !event.cr.trim().isNotEmpty &&
+        !event.info.trim().isNotEmpty &&
+        !event.location.trim().isNotEmpty &&
+        !event.phone.trim().isNotEmpty) {
+      emit(ErrorSignUpState(msg: "الرجاء إدخال جميع القيم"));
+    } else {
+      // try {
+      print("in the bloc");
       try {
-        print("in the bloc");
-        try {
-          print("-------------------------------2");
-          print("in try ");
-          print("in the if condition");
-          await DBService().signUpO(
-              userName: event.name,
-              email: event.email,
-              password: event.password);
-          print("--------- End sign up -------");
-          await DBService().uploadImageSignUb(
-              bucket: "profile", imageFile: locator.OfficeImageFile);
-          DBService().imageId = await DBService().urlImageSignUp();
-          print("-------------------------------2");
-        } catch (error) {
-          emit(ErrorSignUpState(msg: "هناك خطأ في إنشاء الحساب"));
-        }
-        await DBService().createProfileOffice(
-          userName: event.name,
+        print("-------------------------------2");
+        print("in try ");
+        print("in the if condition");
+        final supabase = Supabase.instance.client;
+        await supabase.auth.signUp(
+          // data: {'Name': userName},
           email: event.email,
-          cr: event.cr,
-          departmentId: event.departmentId,
-          disc: event.info,
-          phoneNumber: event.phone,
-          image: DBService().imageId,
+          password: event.password,
         );
-        emit(SuccessSignUpState(msg: "تم إنشاء الحساب بنجاح"));
+        print("--------- End sign up -------");
+        await DBService().uploadImageSignUb(
+            bucket: "profile", imageFile: locator.OfficeImageFile);
+        DBService().imageId = await DBService().urlImageSignUp();
+        print("-------------------------------2");
       } catch (error) {
         emit(ErrorSignUpState(msg: "هناك خطأ في إنشاء الحساب"));
       }
-    } else {
-      emit(ErrorSignUpState(msg: "الرجاء إدخال جميع القيم"));
+      // await DBService().createProfileOffice(
+      //   userName: event.name,
+      //   email: event.email,
+      //   cr: event.cr,
+      //   departmentId: event.departmentId,
+      //   disc: event.info,
+      //   phoneNumber: event.phone,
+      //   image: DBService().imageId,
+      // );
+      emit(SuccessSignUpState(msg: "تم إنشاء الحساب بنجاح"));
+      // } catch (error) {
+      //   emit(ErrorSignUpState(msg: "هناك خطأ في إنشاء الحساب"));
+      // }
     }
   }
 }

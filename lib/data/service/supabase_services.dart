@@ -80,21 +80,24 @@ class DBService {
   final supabase = Supabase.instance.client;
 
 //--- Office SignUp func
-  Future signUpO({
+  Future<void> signUpO({
     required String email,
     required String password,
     required String userName,
     // required String image,
   }) async {
     print(" before: in the func");
-    final respons = await supabase.auth.signUp(
+    print(" before: $email");
+    print(" before: $password");
+    await supabase.auth.signUp(
       // data: {'Name': userName},
       email: email,
       password: password,
     );
-    id = respons.user!.id;
-    print("======================");
-    print("${respons.hashCode}");
+    print("before");
+    // id = respons.user!.id;
+    // print("======================");
+    // print("${respons.hashCode}");
     // Send email verification
     // await supabase.auth.resetPasswordForEmail(email);
   }
@@ -131,21 +134,23 @@ class DBService {
     required String phoneNumber,
     required String image,
   }) async {
+    print("in the signup");
     final respons = await supabase.auth.signUp(
-      data: {'Name': userName},
       email: email,
       password: password,
     );
-    await supabase.from('Customer').insert(
-      {
-        'email': email,
-        'name': userName,
-        'phoneNumber': int.parse(phoneNumber),
-        'customerId': respons.user!.id,
-        'image':
-            'https://mtaainvajktwbwpffkxw.supabase.co/storage/v1/object/public/profile/Ellipse%2024.svg'
-      },
-    );
+
+    // data: {'username': userName},
+    // await supabase.from('Customer').insert(
+    //   {
+    //     'email': email,
+    //     'name': userName,
+    //     'phoneNumber': int.parse(phoneNumber),
+    //     'customerId': respons.user!.id,
+    //     'image':
+    //         'https://mtaainvajktwbwpffkxw.supabase.co/storage/v1/object/public/profile/Ellipse%2024.svg'
+    //   },
+    // );
 
     print("in the signup: ${respons.hashCode}");
     // Send email verification

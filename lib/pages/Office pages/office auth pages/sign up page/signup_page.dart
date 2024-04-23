@@ -83,6 +83,12 @@ class _SignUpPageState extends State<SignUpPage> {
                   pass: passController.text,
                 ));
               }
+              if (state is SuccessSignUpState) {
+                // SignUp Function Here
+                Navigator.pop(context);
+                context.showSuccessSnackBar(context, state.msg);
+                context.pushAndRemove(const SigninPage());
+              }
               if (state is ErrorSignUpState) {
                 // Error SignUp Function Here
                 Navigator.pop(context);
