@@ -134,13 +134,17 @@ class DBService {
     required String phoneNumber,
     required String image,
   }) async {
-       try {
-      final respons = await supabase.auth.signUp(
+    try {
+      final response = await supabase.auth.signUp(
         email: email,
         password: password,
       );
     } catch (e) {
-      print(e);
+      if (e is AuthException) {
+        print('Authentication Error: ${e.message}');
+      } else {
+        print('Unknown Error: $e');
+      }
     }
     // data: {'Name': userName},
     // await supabase.from('Customer').insert(
@@ -464,12 +468,11 @@ class DBService {
   }) async {
     print("---------------in function----");
     final followerNumber = await supabase
-
         .from('office_followers')
         .select('*')
         .eq('officeId', officeId);
 
-         print("---------------inside f..----");
+    print("---------------inside f..----");
     if (followerNumber.isNotEmpty) {
       final List<ProfileOfficeFollowModel> follower = [];
       for (var element in followerNumber) {
@@ -717,15 +720,13 @@ class DBService {
     );
   }
 
-   Future addProblemMassage({
+  Future addProblemMassage({
     required String massage,
-    
   }) async {
     await supabase.from('Problem').insert(
       {
         'iduser': supabase.auth.currentUser!.id,
         'massage': massage,
-        
       },
     );
   }
@@ -785,8 +786,6 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
   }
 */
   //--
-
-
 
 //-----------------
   getSession() async {
@@ -913,8 +912,7 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
               .add(ChatProfileModel.fromJson(resCustomer.first, room));
         }
         if (resOffices.isNotEmpty) {
-        
-          //حيكون اوفيس ويضيف 
+          //حيكون اوفيس ويضيف
           chatProfileList
               .add(ChatProfileModel.fromJson(resOffices.first, room));
         }

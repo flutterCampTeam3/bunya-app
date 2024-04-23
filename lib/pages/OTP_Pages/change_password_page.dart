@@ -19,7 +19,6 @@ class ChangePasswordPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => PasswordResetBloc(),
       child: Scaffold(
-       
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: SingleChildScrollView(
@@ -30,11 +29,11 @@ class ChangePasswordPage extends StatelessWidget {
                 listener: (context, state) {
                   if (state is PasswordChangedState) {
                     context.showSuccessSnackBar(context, state.msg);
-                    context.pushAndRemove(const SigninPage());
+                    context.popNav();
+                    context.popNav();
+                    // context.pushAndRemove(const SigninPage());
                   }
-                  if (state is OtpLoadingState) {
-                    
-                  }
+                  if (state is OtpLoadingState) {}
                 },
                 builder: (context, state) {
                   final prBloc = context.read<PasswordResetBloc>();
@@ -44,43 +43,49 @@ class ChangePasswordPage extends StatelessWidget {
                         color: whiteBrown,
                       ),
                     );
-                  }else {
+                  } else {
                     return Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Image.asset("assets/images/reset.png", height: 280,),
-                      Text(
-                        "تم التحقق من بريدك بنجاح",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w300,
-                          color: blackColor,
-                          fontSize: context.getWidth() * .06,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Image.asset(
+                          "assets/images/reset.png",
+                          height: 280,
                         ),
-                      ),
-                      Align(
-                          alignment: Alignment.centerRight,
-                          child: Text(
-                            "يرجى إدخال كلمة المرور الجديدة",
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              color: blackColor,
-                              fontSize: context.getWidth() * .05,
-                            ),
-                          )),
-                     PassTextField(controller: passwordController),
-                     TextFieldConfirmPass(confController:rePasswordController, passController: passwordController ),
-                      ButtonWidget(
-                          backgroundColor: brown,
-                          text: "إعادة تعيين كلمة المرور",
-                          textColor: whiteColor,
-                          onPressed: () {
-                            prBloc.add(ChangePasswordEvent(password: passwordController.text, rePassword: rePasswordController.text));
-                            context.pushAndRemove(SigninPage());
-                          })
-                    ],
-                  );
+                        Text(
+                          "تم التحقق من بريدك بنجاح",
+                          style: TextStyle(
+                            fontWeight: FontWeight.w300,
+                            color: blackColor,
+                            fontSize: context.getWidth() * .06,
+                          ),
+                        ),
+                        Align(
+                            alignment: Alignment.centerRight,
+                            child: Text(
+                              "يرجى إدخال كلمة المرور الجديدة",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                color: blackColor,
+                                fontSize: context.getWidth() * .05,
+                              ),
+                            )),
+                        PassTextField(controller: passwordController),
+                        TextFieldConfirmPass(
+                            confController: rePasswordController,
+                            passController: passwordController),
+                        ButtonWidget(
+                            backgroundColor: brown,
+                            text: "إعادة تعيين كلمة المرور",
+                            textColor: whiteColor,
+                            onPressed: () {
+                              prBloc.add(ChangePasswordEvent(
+                                  password: passwordController.text,
+                                  rePassword: rePasswordController.text));
+                              context.pushAndRemove(const SigninPage());
+                            })
+                      ],
+                    );
                   }
-                  
                 },
               ),
             ),
