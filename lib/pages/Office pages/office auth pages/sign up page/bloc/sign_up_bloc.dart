@@ -14,12 +14,13 @@ part 'sign_up_state.dart';
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   bool checkOffice = false;
   String type = 'التصميم الداخلي';
+  final locator = GetIt.I.get<DBService>();
   SignUpBloc() : super(SignUpInitial()) {
     on<CreateAccountEvent>(createAccount);
     on<CreateAccountprofileEvent>(createProfileAccount);
     on<ChoosImageEvent>((event, emit) async {
       File avatar = await pickedImage();
-      GetIt.I.get<DBService>().OfficeImageFile = avatar;
+      locator.OfficeImageFile = avatar;
       emit(ShowImageState(avatar));
     });
   }
@@ -41,7 +42,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
             event.confirmPass.trim().isNotEmpty
         // && event.isChecked
         ) {
-        emit(LoadingSignUpState());
+      emit(LoadingSignUpState());
       try {
         checkOffice = await CheckOffice().checkOffice(event.cr);
         print("the value $checkOffice");
@@ -69,7 +70,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         event.location.trim().isNotEmpty &&
         event.phone.trim().isNotEmpty) {
       try {
-                print("in the bloc");
+        print("in the bloc");
         try {
           print("-------------------------------2");
           print("in try ");
@@ -78,17 +79,23 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
               userName: event.name,
               email: event.email,
               password: event.password);
+          print("--------- End sign up -------");
+          await DBService().uploadImageSignUb(
+              bucket: "profile", imageFile: locator.OfficeImageFile);
+          DBService().imageId = await DBService().urlImageSignUp();
           print("-------------------------------2");
         } catch (error) {
           emit(ErrorSignUpState(msg: "هناك خطأ في إنشاء الحساب"));
         }
         await DBService().createProfileOffice(
-            userName: event.name,
-            email: event.email,
-            cr: event.cr,
-            departmentId: event.departmentId,
-            disc: event.info,
-            phoneNumber: event.phone);
+          userName: event.name,
+          email: event.email,
+          cr: event.cr,
+          departmentId: event.departmentId,
+          disc: event.info,
+          phoneNumber: event.phone,
+          image: DBService().imageId,
+        );
         emit(SuccessSignUpState(msg: "تم إنشاء الحساب بنجاح"));
       } catch (error) {
         emit(ErrorSignUpState(msg: "هناك خطأ في إنشاء الحساب"));

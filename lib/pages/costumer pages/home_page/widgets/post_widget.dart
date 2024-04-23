@@ -33,7 +33,6 @@ class PostWidget extends StatelessWidget {
           return BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) {
               return Container(
-                // height: 240,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Theme.of(context).colorScheme.surface,
@@ -56,7 +55,7 @@ class PostWidget extends StatelessWidget {
                         child: Stack(
                           children: [
                             Container(
-                              height: 120,
+                              height: context.getHeight() * 0.3,
                               width: MediaQuery.of(context).size.width *
                                   0.3, ///////////////
                               decoration: BoxDecoration(

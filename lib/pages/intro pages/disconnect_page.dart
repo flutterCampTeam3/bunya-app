@@ -11,14 +11,19 @@ class DisconnectPage extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: ListView(
             children: [
-              Image.asset("assets/images/NoConnection-bro.png"),
-              gapH20,
-              Text(
-                'No internet connection',
-                style: TextStyle(fontSize: 30, color: brown),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  gapH30,
+                  Image.asset("assets/images/NoConnection-bro.png"),
+                  gapH20,
+                  Text(
+                    'No internet connection',
+                    style: TextStyle(fontSize: 30, color: brown),
+                  ),
+                ],
               ),
             ],
           ),
