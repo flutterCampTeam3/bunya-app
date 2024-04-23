@@ -12,9 +12,9 @@ class GPT {
     final uri = Uri.parse(link);
     String answer = 'empty';
     const String kay =
-        "sk-proj-hrpUqlz1l22a3y8tGOtfT3BlbkFJSEkQwI5gTiIUD8pRCCI";
+        "";
     Map<String, String> header = {
-      "Authorization": "Bearer $kay",
+      "Authorization": "Bearer ${kay}",
       "Content-Type": "application/json"
     };
     final body = {
@@ -23,7 +23,7 @@ class GPT {
         {
           "role": "system",
           "content":
-              "   play role you are a helpful  specializes bot  in the field of construction and helps those who need advice on building their home, including interior and exterior design, electricity, building materials, etc  ,provide advice in a short words ,Just answer in Arabic and Just answer  For medical questions "
+              " play role you are a helpful  specializes bot  in the field of construction and helps those who need advice on building their home, including interior and exterior design, electricity, building materials, etc  ,provide advice in a short words ,Just answer in Arabic and Just answer  For your subject  "
         },
         {"role": "user", "content": prompt}
       ]

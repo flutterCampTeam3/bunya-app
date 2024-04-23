@@ -16,7 +16,10 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setup();
   InternetConnection().onStatusChange.listen((status) async {
-    if (status == InternetStatus.connected) {
+    if (
+      // status == InternetStatus.connected
+      true
+      ) {
       await databaseConfig();
       final locator = GetIt.I.get<DBService>();
       await locator.getSession();

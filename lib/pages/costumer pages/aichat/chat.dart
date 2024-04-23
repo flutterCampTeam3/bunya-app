@@ -34,30 +34,39 @@ class Chat extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child: const Padding(
-                    padding: EdgeInsets.only(top: 30.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        BackButton(),
-                        Padding(
-                          padding: EdgeInsets.all(8.0),
-                          child: Row(
-                            children: [
-                              CircleAvatar(
-                                backgroundImage:
-                                    AssetImage('assets/images/ai.png'),
-                              ),
-                              gapWe5,
-                              Text(
-                                "اسأل بنية",
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              )
-                            ],
-                          ),
+                  child:  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      BackButton(),
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Row(
+                          children: [
+                         Container(
+                          height: 50,
+                          width: 50,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(50)),
+                              color: whiteColor,
+                              border: Border.all(color: whiteColor),
+                              image: DecorationImage(
+                                  image: AssetImage("assets/images/ai.png"),
+                                  fit: BoxFit.cover)),
                         ),
-                      ],
-                    ),
+                            // CircleAvatar(
+                            //   backgroundImage:
+                            //       AssetImage('assets/images/ai.png'),
+                                  
+                            // ),
+                            gapWe5,
+                            Text(
+                              "اسأل بنية",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -71,14 +80,15 @@ class Chat extends StatelessWidget {
                 builder: (context, state) {
                   return DashChat(
                     inputOptions: InputOptions(
-                        sendButtonBuilder: (send) {
-                          return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Icon(
-                                Icons.send,
-                                color: brown,
-                              ));
-                        },
+                        // sendButtonBuilder: (send) {
+                        //   return Padding(
+                        //       padding: const EdgeInsets.all(8.0),
+                        //       child: Icon(
+                        //         Icons.send,
+                        //         color: brown,
+                        //       )
+                        //       );
+                        // },
                         sendOnEnter: true,
                         alwaysShowSend: true,
                         textController: TextEditingController(),
