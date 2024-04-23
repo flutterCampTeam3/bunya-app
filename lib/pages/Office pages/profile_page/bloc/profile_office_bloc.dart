@@ -119,7 +119,9 @@ class ProfileOfficeBloc extends Bloc<ProfileOfficeEvent, ProfileOfficeState> {
     try {
       isLike = await DBService().checkLike(postId: event.id);
       number = await DBService().getLikeNumber(postId: event.id);
+      checkFollowNumber(CheckFollowNumberOfOfficeEvent(), emit);
       emit(CheckLikeOfficeState());
+      emit(DisplayOfficeInfoState());
     } catch (e) {
       print(e.toString());
       emit(ErrorLikeOfficeState(msg: 'حدث خطاء في تحميل بيانات الاعجابات'));
@@ -134,6 +136,7 @@ class ProfileOfficeBloc extends Bloc<ProfileOfficeEvent, ProfileOfficeState> {
       number = await DBService().getLikeNumber(postId: event.post.postId);
       checkFollowNumber(CheckFollowNumberOfOfficeEvent(), emit);
       emit(AddLikeOfficeState());
+      emit(DisplayOfficeInfoState());
     } catch (e) {
       print(e.toString());
       emit(ErrorLikeOfficeState(msg: 'حدث خطا يرجي المحاولة مرة اخرى'));
@@ -146,7 +149,9 @@ class ProfileOfficeBloc extends Bloc<ProfileOfficeEvent, ProfileOfficeState> {
     try {
       isLike = await DBService().deleteLike(postId: event.id);
       number = await DBService().getLikeNumber(postId: event.id);
+      checkFollowNumber(CheckFollowNumberOfOfficeEvent(), emit);
       emit(DeleteLikeOfficeState());
+      emit(DisplayOfficeInfoState());
     } catch (e) {
       print(e.toString());
       emit(ErrorLikeOfficeState(msg: 'حدث خطا يرجي المحاولة مرة اخرى'));
