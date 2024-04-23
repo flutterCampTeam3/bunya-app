@@ -38,6 +38,7 @@ class PostOfficeHomeWidget extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Theme.of(context).colorScheme.surface,
+                  // color: Colors.red,
                   boxShadow: [
                     BoxShadow(
                       color: darkGreyColor.withOpacity(0.4),
@@ -51,13 +52,14 @@ class PostOfficeHomeWidget extends StatelessWidget {
                   padding:
                       const EdgeInsets.only(right: 8.0, left: 8, bottom: 8),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
                         height: 145,
                         child: Stack(
                           children: [
                             Container(
-                              height: 130,
+                              // height: 120,
                               width: MediaQuery.of(context).size.width *
                                   0.6, ///////////////
                               decoration: BoxDecoration(
@@ -80,11 +82,14 @@ class PostOfficeHomeWidget extends StatelessWidget {
                                   bottomRight: Radius.circular(20),
                                 ),
                                 child: Image.network(postPath.image,
+                                    height: context.getHeight() * 0.3,
+                                    width: 100,
                                     fit: BoxFit.cover, errorBuilder:
                                         (BuildContext context, Object error,
                                             StackTrace? stackTrace) {
                                   return Image.asset(
-                                      "assets/images/noimage.png");
+                                    "assets/images/noimage.png",
+                                  );
                                 }),
                               ),
                             ),
@@ -96,8 +101,10 @@ class PostOfficeHomeWidget extends StatelessWidget {
                                         bloc.add(AddLikeHomeOfficesEvent(
                                             post: description));
                                       },
-                                      child:
-                                          const Icon(Icons.favorite_border , color: Colors.black,))
+                                      child: const Icon(
+                                        Icons.favorite_border,
+                                        color: Colors.black,
+                                      ))
                                   : InkWell(
                                       onTap: () {
                                         bloc.add(DeleteLikeHomeOfficesEvent(
@@ -150,7 +157,9 @@ class PostOfficeHomeWidget extends StatelessWidget {
                             child: Text(
                               profilePath.name,
                               style: const TextStyle(
-                                  fontSize: 12, fontWeight: FontWeight.bold , color: Colors.black),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),
                             ),
                           )
                         ],

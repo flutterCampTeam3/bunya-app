@@ -131,6 +131,9 @@ class _SigninPageState extends State<SigninPage> {
                                   backgroundColor: brown,
                                   text: "تسجيل الدخول",
                                   onPressed: () {
+                                    print("-------");
+                                    print("--${emailController.text}-----");
+                                    print("---${passController.text}----");
                                     if (_formKey.currentState!.validate()) {
                                       bloc.add(AddSignInEvent(
                                           email: emailController.text,

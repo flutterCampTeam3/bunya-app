@@ -49,41 +49,46 @@ class PostWidget extends StatelessWidget {
                   padding:
                       const EdgeInsets.only(right: 8.0, left: 8, bottom: 8),
                   child: Column(
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
                         height: 145,
                         child: Stack(
                           children: [
-                            Container(
-                              height: context.getHeight() * 0.3,
-                              width: MediaQuery.of(context).size.width *
-                                  0.3, ///////////////
-                              decoration: BoxDecoration(
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: darkGreyColor.withOpacity(0.4),
-                                    spreadRadius: 1,
-                                    blurRadius: 1,
-                                    offset: const Offset(0, 3),
+                            Positioned(
+                              // top: 0,
+                              child: Container(
+                                height: 120,
+                                // context.getHeight() * 0.3,
+                                width: MediaQuery.of(context).size.width * 0.3,
+                                ///////////////
+                                decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: darkGreyColor.withOpacity(0.4),
+                                      spreadRadius: 1,
+                                      blurRadius: 1,
+                                      offset: const Offset(0, 3),
+                                    ),
+                                  ],
+                                  borderRadius: const BorderRadius.only(
+                                    bottomLeft: Radius.circular(20),
+                                    bottomRight: Radius.circular(20),
                                   ),
-                                ],
-                                borderRadius: const BorderRadius.only(
-                                  bottomLeft: Radius.circular(20),
-                                  bottomRight: Radius.circular(20),
                                 ),
-                              ),
-                              child: ClipRRect(
-                                borderRadius: const BorderRadius.only(
-                                  bottomLeft: Radius.circular(20),
-                                  bottomRight: Radius.circular(20),
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                    bottomLeft: Radius.circular(20),
+                                    bottomRight: Radius.circular(20),
+                                  ),
+                                  child: Image.network(postPath.image,
+                                      fit: BoxFit.cover, errorBuilder:
+                                          (BuildContext context, Object error,
+                                              StackTrace? stackTrace) {
+                                    return Image.asset(
+                                        "assets/images/noimage.png");
+                                  }),
                                 ),
-                                child: Image.network(postPath.image,
-                                    fit: BoxFit.cover, errorBuilder:
-                                        (BuildContext context, Object error,
-                                            StackTrace? stackTrace) {
-                                  return Image.asset(
-                                      "assets/images/noimage.png");
-                                }),
                               ),
                             ),
                             Positioned(

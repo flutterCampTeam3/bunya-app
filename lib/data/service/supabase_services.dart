@@ -160,10 +160,17 @@ class DBService {
   }
 
   Future signIn({required String email, required String password}) async {
+    print("---=-=here i am-=----");
+    print("---=-=-$email=----");
+    print("---=-=-$password=----");
+
     final state = await supabase.auth
         .signInWithPassword(email: email, password: password);
+    print(state);
+    print("---=-=-55555=----");
     token = supabase.auth.currentSession!.accessToken;
     id = supabase.auth.currentSession!.user.id;
+
     addToken();
   }
 
@@ -457,16 +464,18 @@ class DBService {
   }) async {
     print("---------------in function----");
     final followerNumber = await supabase
+
         .from('office_followers')
         .select('*')
         .eq('officeId', officeId);
 
-    print("---------------inside f..----");
+         print("---------------inside f..----");
     if (followerNumber.isNotEmpty) {
       final List<ProfileOfficeFollowModel> follower = [];
       for (var element in followerNumber) {
         follower.add(ProfileOfficeFollowModel.fromJson(element));
       }
+
       print("---------------${follower.length}----");
       return follower.length;
     } else {
@@ -602,6 +611,7 @@ class DBService {
         .from('Offices')
         .select("*")
         .match({'departmentId': type});
+
     print("-----------------in func-------");
     final List<OfficesModel> officeAccount = [];
     for (var element in officeAccounte) {
@@ -763,6 +773,13 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
 */
   //--
 
+
+  Future<String> UrlImage(String id) async {
+    final response = supabase.storage.from('profile').getPublicUrl(id);
+
+    return response;
+  }
+
 //-----------------
   getSession() async {
     try {
@@ -852,7 +869,7 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
     }
   }
 
-//
+////////////
   Future fetchRooms() async {
     final currentUserId = await getCurrentUserID();
 
@@ -888,8 +905,8 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
               .add(ChatProfileModel.fromJson(resCustomer.first, room));
         }
         if (resOffices.isNotEmpty) {
-
-          //حيكون اوفيس ويضيف
+        
+          //حيكون اوفيس ويضيف 
           chatProfileList
               .add(ChatProfileModel.fromJson(resOffices.first, room));
         }

@@ -5,7 +5,7 @@ import 'package:bunya_app/pages/costumer%20pages/office%20profile%20pages/profil
 import 'package:flutter/material.dart';
 
 extension Screen on BuildContext {
-  getWidth() {
+ double getWidth() {
     return MediaQuery.of(this).size.width;
   }
 

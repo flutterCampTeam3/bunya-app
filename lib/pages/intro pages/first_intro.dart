@@ -10,8 +10,8 @@ class introPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height: double.maxFinite,
-        width: double.maxFinite,
+        // height: double.maxFinite,
+        // width: double.maxFinite,
         decoration: const BoxDecoration(
             // gradient: LinearGradient(colors: [
             //   Theme.of(context).colorScheme.background,
@@ -23,7 +23,9 @@ class introPage extends StatelessWidget {
             Stack(
               alignment: Alignment.center,
               children: [
-                Image.asset("assets/images/introv1.png"),
+                Image.asset(
+                  "assets/images/introv1.png",
+                ),
                 const Positioned(
                   top: 480,
                   left: 0,

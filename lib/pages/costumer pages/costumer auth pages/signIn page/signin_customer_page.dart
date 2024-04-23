@@ -29,9 +29,9 @@ class _SigninCustomerPageState extends State<SigninCustomerPage> {
   @override
   Widget build(BuildContext context) {
     TextEditingController emailController =
-        TextEditingController(text: "mm@gmail.com");
+        TextEditingController(text: "shaimaa@gmail.com");
     TextEditingController passController =
-        TextEditingController(text: "123456");
+        TextEditingController(text: "112233");
     return BlocProvider(
       create: (context) => SignInCustomerBloc(),
       child: Builder(builder: (context) {
@@ -129,6 +129,7 @@ class _SigninCustomerPageState extends State<SigninCustomerPage> {
                                 text: "تسجيل دخول",
                                 onPressed: () {
                                   if (_formKey.currentState!.validate()) {
+                                    print("------");
                                     bloc.add(AddSignInCustomerEvent(
                                         email: emailController.text,
                                         password: passController.text));
@@ -168,6 +169,9 @@ class _SigninCustomerPageState extends State<SigninCustomerPage> {
                                         // color: darkBrown,
                                         fontSize: 15,
                                         fontWeight: FontWeight.w600,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface,
                                         fontFamily:
                                             GoogleFonts.vazirmatn().fontFamily,
                                       ),
