@@ -41,3 +41,8 @@ final class ErrorFollowOfficeState extends OfficeOfficeState {
 
   ErrorFollowOfficeState({required this.msg});
 }
+
+  final class CheckChatOfficeState extends OfficeOfficeState {
+  final Room room;
+  CheckChatOfficeState({required this.room});
+  }

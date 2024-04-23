@@ -28,3 +28,8 @@ class CheckFollowNumberOfficeEvent extends OfficeOfficeEvent {
   final String officeId;
   CheckFollowNumberOfficeEvent({required this.officeId});
 }
+
+class CheckRoomOfficeEvent extends OfficeOfficeEvent {
+  final String officeId;
+  CheckRoomOfficeEvent({required this.officeId});
+}

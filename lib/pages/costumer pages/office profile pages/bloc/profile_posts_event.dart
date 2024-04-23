@@ -13,6 +13,12 @@ class CheckFollowEvent extends ProfilePostsEvent {
   CheckFollowEvent({required this.id});
 }
 
+
+class CheckRoomEvent extends ProfilePostsEvent {
+  final String officeId;
+  CheckRoomEvent({required this.officeId});
+}
+
 class AddFollowEvent extends ProfilePostsEvent {
   final String id;
   AddFollowEvent({required this.id});

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:bunya_app/data/model/post_model.dart';
+import 'package:bunya_app/data/model/room_model.dart';
 import 'package:bunya_app/data/service/supabase_services.dart';
 import 'package:meta/meta.dart';
 
@@ -13,6 +14,8 @@ class OfficeOfficeBloc extends Bloc<OfficeOfficeEvent, OfficeOfficeState> {
   int followerNumber = 0;
   int followingNumber = 0;
   int likesNumber = 0;
+  Room? room;
+
   List<postModel> classPostId = [];
   OfficeOfficeBloc() : super(OfficeOfficeInitial()) {
     on<OfficeOfficeEvent>((event, emit) {});
@@ -21,6 +24,8 @@ class OfficeOfficeBloc extends Bloc<OfficeOfficeEvent, OfficeOfficeState> {
     on<AddFollowOfficeEvent>(addFollow);
     on<DeleteFollowOfficeEvent>(deleteFollow);
     on<CheckFollowNumberOfficeEvent>(checkFollowNumber);
+    on<CheckRoomOfficeEvent>(checkRoom);
+
   }
 
   FutureOr<void> fetchDataId(
@@ -104,4 +109,17 @@ class OfficeOfficeBloc extends Bloc<OfficeOfficeEvent, OfficeOfficeState> {
       emit(ErrorFollowOfficeState(msg: 'حدث خطا يرجي المحاولة مرة اخرى'));
     }
       }
+  FutureOr<void> checkRoom(
+      CheckRoomOfficeEvent event,  emit) async {
+    // emit(LoadingFollowState());
+    try {
+      room = await DBService().checkRoom(event.officeId);
+      print("in the bloc of chat create");
+      emit(CheckChatOfficeState(room: room!));
+    } catch (e) {
+      print(e.toString());
+      emit(ErrorFollowOfficeState(msg: 'حدث خطا يرجي المحاولة مرة اخرى'));
+    }
+  }
+
 }

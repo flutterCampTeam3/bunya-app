@@ -1,14 +1,19 @@
 import 'dart:io';
+import 'package:bunya_app/data/model/chat_profile_model.dart';
+import 'package:bunya_app/data/model/messege_model.dart';
 import 'package:bunya_app/data/model/office_follow_model.dart';
 import 'package:bunya_app/data/model/offices_model.dart';
 import 'package:bunya_app/data/model/post_like_model.dart';
 import 'package:bunya_app/data/model/profile_model_customer.dart';
 import 'package:bunya_app/data/model/profile_model_office.dart';
+import 'package:bunya_app/data/model/room_model.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../model/post_model.dart';
 
 class DBService {
+  late Stream<List<Message>> listOfMessages; // Fetched Messages
+
   // ------ Data Storage -----
 
   final box = GetStorage();
@@ -205,7 +210,7 @@ class DBService {
   }
 
   // Get Current User Id
-  Future<String> getCurrentUser() async {
+  String getCurrentUser() {
     final currentUser = supabase.auth.currentSession!.user.id;
     id = currentUser;
     return id;
@@ -729,17 +734,15 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
 
   Future<String> UrlImage(String id) async {
     final response = supabase.storage.from('profile').getPublicUrl(id);
-    print(response);
 
     return response;
   }
-
 //-----------------
   getSession() async {
     try {
       final Session? session = await DBService().getCurrentSession();
       if (session != null) {
-        id = await getCurrentUser();
+        id = getCurrentUser();
         await checkUserCustomer();
         isSession = true;
         return true;
@@ -751,5 +754,139 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
       isSession = false;
       return false;
     }
+  }
+
+//--------------------------------//--------------------------------//--------------------------------
+  // -- Getting current user ID --
+  Future getCurrentUserID() async {
+    final currentUserId = supabase.auth.currentUser?.id;
+    return currentUserId;
+  }
+
+  // -- Submit message --
+  Future submitMessage(String msgContent, Room room) async {
+    final currentUserId = await getCurrentUserID();
+    await supabase.from("messages").insert({
+      'profile_id': currentUserId,
+      'content': msgContent,
+      'room_id': room.id
+    });
+  }
+
+  // -- Get messages stream --
+  Future getMessagesStream(int roomId) async {
+    final userID = await getCurrentUserID();
+    print(roomId);
+    final Stream<List<Message>> msgStream = supabase
+        .from('messages')
+        .stream(primaryKey: ['id'])
+        .eq("room_id", roomId) // عشان يجيب بس حق هذا التيبل
+        .order('created_at')
+        .map((massages) => massages
+            .map((message) => Message.fromJson(json: message))
+            .toList());
+
+    listOfMessages = msgStream;
+  }
+
+  // --- Get Profile data by profile ID of a specific message ---
+  Future getProfileData(String profileID) async {
+    final data =
+        await supabase.from('profiles').select().eq('id', profileID).single();
+    final profile = ProfileModel.fromJson(data);
+    return profile;
+  }
+
+  Future createRoom(String officeId) async {
+    final currentUserId = await getCurrentUserID();
+    print("create");
+    final response = await supabase
+        .from("room")
+        .insert({"customer_id": currentUserId, "offecer_id": officeId});
+  }
+
+  Future checkRoom(String officeId) async {
+    final currentUserId = await getCurrentUserID();
+    final response = await supabase
+        .from('room')
+        .select()
+        .eq('offecer_id', officeId)
+        .eq('customer_id', currentUserId);
+    print(response);
+    if (response.isEmpty) {
+      await createRoom(officeId);
+      final response = await supabase
+          .from('room')
+          .select()
+          .eq('offecer_id', officeId)
+          .eq('customer_id', currentUserId);
+      return Room.fromJson(json: response.first);
+    } else {
+      return Room.fromJson(json: response.first);
+    }
+  }
+////////////
+  Future fetchRooms() async {
+    final currentUserId = await getCurrentUserID();
+
+    final data = await supabase
+        .from('room')
+        .select()
+        .or('customer_id.eq.$currentUserId, offecer_id.eq.$currentUserId');
+        //حجيب كل الرومات اللي اكون فيها كستمر او اوفيس
+
+    final listRooms = data.map((room) => Room.fromJson(json: room)).toList();
+    return listRooms;
+  }
+
+  Future fetchPersonRoom(List<Room> roomsList) async {
+    final currentUserId = await getCurrentUserID();
+    List<ChatProfileModel> chatProfileList = [];
+    print(roomsList.length);
+    for (Room room in roomsList) {
+      print("in loop");
+      if (room.customer_id != currentUserId &&
+          room.offecer_id == currentUserId) {
+        final resCustomer = await supabase
+            .from("Customer")
+            .select("*")
+            .eq("customerId", room.customer_id);
+        final resOffices = await supabase
+            .from("Offices")
+            .select("*")
+            .eq("officeId", room.customer_id);
+        if (resCustomer.isNotEmpty) {
+          //حيكون المستخدم الثاني ويضيف في اللست الي فووق
+          chatProfileList
+              .add(ChatProfileModel.fromJson(resCustomer.first, room));
+        }
+        if (resOffices.isNotEmpty) {
+          //حيكون اوفيس ويضيف 
+          chatProfileList
+              .add(ChatProfileModel.fromJson(resOffices.first, room));
+        }
+        //كل هذا عشان عندنا جدولين
+      } else if (room.offecer_id != currentUserId &&
+          room.customer_id == currentUserId) {
+        final resCustomer = await supabase
+            .from("Customer")
+            .select("*")
+            .eq("customerId", room.offecer_id);
+        final resOffices = await supabase
+            .from("Offices")
+            .select("*")
+            .eq("officeId", room.offecer_id);
+        if (resCustomer.isNotEmpty) {
+          chatProfileList
+              .add(ChatProfileModel.fromJson(resCustomer.first, room));
+        }
+        if (resOffices.isNotEmpty) {
+          chatProfileList
+              .add(ChatProfileModel.fromJson(resOffices.first, room));
+        }
+      }
+    }
+    print(chatProfileList);
+    return chatProfileList;
   }
 }

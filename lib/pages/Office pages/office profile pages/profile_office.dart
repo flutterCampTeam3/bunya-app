@@ -5,6 +5,8 @@ import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/Office%20pages/office%20profile%20pages/bloc/office_office_bloc.dart';
 import 'package:bunya_app/pages/Office%20pages/office%20profile%20pages/widgets/app_par_prof_office.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/widgets/widgets/information_widget.dart';
+import 'package:bunya_app/pages/costumer%20pages/chat_page/chat_page.dart';
+import 'package:bunya_app/pages/costumer%20pages/office%20profile%20pages/bloc/profile_posts_bloc.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/image_aacount_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/post_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -103,15 +105,16 @@ class ProfilePageOfficeOffice extends StatelessWidget {
                         children: [
                           ElevatedButton(
                             onPressed: () {
-                              //
+                               bloc.add(
+                                  CheckRoomOfficeEvent(officeId: office.officeId));
                             },
                             style: ButtonStyle(
                               backgroundColor:
-                                  MaterialStateProperty.all<Color>(lightBrown),
-                              fixedSize: MaterialStateProperty.all<Size>(
+                                  WidgetStateProperty.all<Color>(lightBrown),
+                              fixedSize: WidgetStateProperty.all<Size>(
                                   const Size(130, 50)),
                             ),
-
+                          
                             // style: ButtonStyle(
                             //   backgroundColor:
                             //       MaterialStateProperty.all<Color>(lightBrown),
@@ -130,6 +133,10 @@ class ProfilePageOfficeOffice extends StatelessWidget {
                             listener: (context, state) {
                               if (state is ErrorFollowOfficeState) {
                                 context.showErrorSnackBar(context, state.msg);
+                              }
+                              if (state is CheckChatOfficeState) {
+                                context.pushTo(
+                                    view: ChatView(room: state.room));
                               }
                             },
                             builder: (context, state) {
@@ -155,12 +162,20 @@ class ProfilePageOfficeOffice extends StatelessWidget {
                                         },
                                         style: ButtonStyle(
                                           backgroundColor:
-                                              MaterialStateProperty.all<Color>(
+                                              WidgetStateProperty.all<Color>(
                                                   lightBrown),
                                           fixedSize:
-                                              MaterialStateProperty.all<Size>(
+                                              WidgetStateProperty.all<Size>(
                                                   const Size(130, 50)),
                                         ),
+                                        // style: ButtonStyle(
+                                        //   backgroundColor:
+                                        //       MaterialStateProperty.all<Color>(
+                                        //           lightBrown),
+                                        //   fixedSize:
+                                        //       WidgetStateProperty.all<Size>(
+                                        //           const Size(130, 50)),
+                                        // ),
                                         
                                         child: const Text(
                                           'الغاء المتابعة ',
@@ -179,14 +194,23 @@ class ProfilePageOfficeOffice extends StatelessWidget {
                                           bloc.add(AddFollowOfficeEvent(
                                               id: office.officeId));
                                         },
-                                        style: ButtonStyle(
+                                       style: ButtonStyle(
                                           backgroundColor:
                                               MaterialStateProperty.all<Color>(
-                                                  brown),
+                                                  lightBrown),
                                           fixedSize:
                                               MaterialStateProperty.all<Size>(
-                                                  const Size(130, 50)),
+                                                  const Size(150, 50)),
                                         ),
+                                        // style: ButtonStyle(
+                                        //   backgroundColor:
+                                        //       WidgetStateProperty.all<Color>(
+                                        //           brown),
+                                        //   fixedSize:
+                                        //       WidgetStateProperty.all<Size>(
+                                        //           const Size(130, 50)),
+                                        // ),
+                                        
                                         child: const Text(
                                           'متابعة',
                                           style: TextStyle(
