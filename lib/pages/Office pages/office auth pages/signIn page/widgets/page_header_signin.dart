@@ -46,7 +46,7 @@ class PageHeaderSignIn extends StatelessWidget {
               gapH20,
               Image.asset(
                 'assets/images/bunya_logo.png',
-                height: context.getHeight() / 3,
+                height: context.getHeight() / 4,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

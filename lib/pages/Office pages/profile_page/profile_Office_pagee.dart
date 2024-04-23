@@ -46,13 +46,9 @@ class ProfilePageOffice extends StatelessWidget {
             },
             builder: (context, state) {
               if (state is ProfileLoadingState) {
-                return SizedBox(
-                  height: 200,
-                  width: 200,
-                  child: Center(
-                    child: CircularProgressIndicator(
-                      color: brown,
-                    ),
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: brown,
                   ),
                 );
               } else if (state is DisplayOfficeInfoState) {

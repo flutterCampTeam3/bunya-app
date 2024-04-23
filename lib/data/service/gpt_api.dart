@@ -8,11 +8,11 @@ import 'supabase_services.dart';
 class GPT {
   final locator = GetIt.I.get<DBService>();
   Future<String> getChatAnswer(String prompt) async {
-    
     String link = "https://api.openai.com/v1/chat/completions";
     final uri = Uri.parse(link);
     String answer = 'empty';
-    const String kay = "";
+    const String kay =
+        "sk-proj-hrpUqlz1l22a3y8tGOtfT3BlbkFJSEkQwI5gTiIUD8pRCCI";
     Map<String, String> header = {
       "Authorization": "Bearer $kay",
       "Content-Type": "application/json"
@@ -32,15 +32,10 @@ class GPT {
         .post(uri, headers: header, body: jsonEncode(body))
         .then((value) {
       print(" in the then : ${value.body}");
-     final response = jsonDecode(utf8.decode(value.bodyBytes));
+      final response = jsonDecode(utf8.decode(value.bodyBytes));
       answer = response["choices"][0]["message"]["content"];
       print(" after : $answer");
     });
     return answer;
   }
-
 }
-
-
-
-

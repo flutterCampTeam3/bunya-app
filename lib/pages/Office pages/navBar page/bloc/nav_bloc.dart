@@ -16,8 +16,8 @@ class NavOfficeBloc extends Bloc<NavOfficeEvent, NavOfficeState> {
 
   final List<Widget> pages = [
     ProfilePageOffice(),
-    const MessageListPage(),
     const CategoriesPage(),
+    const MessageListPage(),
     const HomePageOffice(),
   ];
 

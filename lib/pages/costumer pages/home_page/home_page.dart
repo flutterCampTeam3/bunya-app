@@ -177,11 +177,13 @@ class HomePageCustomer extends StatelessWidget {
                                   shrinkWrap: true,
                                   physics: const NeverScrollableScrollPhysics(),
                                   gridDelegate:
-                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                      SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2,
                                     crossAxisSpacing: 10.0,
                                     mainAxisSpacing: 10.0,
-                                    childAspectRatio: 0.75,
+                                    childAspectRatio:
+                                        context.getWidth() >= 650 ? 0.85 : 0.75,
+                                    // 0.75,
                                   ),
                                   itemCount: 6,
                                   // state.classPost.length - 1,

@@ -21,7 +21,7 @@ class Chat extends StatelessWidget {
             textDirection: TextDirection.rtl,
             child: Scaffold(
               appBar: PreferredSize(
-                preferredSize: Size.fromHeight(100.0),
+                preferredSize: const Size.fromHeight(100.0),
                 child: Container(
                   decoration: BoxDecoration(
                     color: white,
@@ -30,31 +30,34 @@ class Chat extends StatelessWidget {
                         color: Colors.black.withOpacity(0.5), // Shadow color
                         spreadRadius: 5, // Spread radius
                         blurRadius: 7, // Blur radius
-                        offset: Offset(0, 3), // Offset position
+                        offset: const Offset(0, 3), // Offset position
                       ),
                     ],
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      BackButton(),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Row(
-                          children: [
-                            CircleAvatar(
-                              backgroundImage:
-                                  AssetImage('assets/images/ai.png'),
-                            ),
-                            gapWe5,
-                            Text(
-                              "اسأل بنية",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )
-                          ],
+                  child: const Padding(
+                    padding: EdgeInsets.only(top: 30.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        BackButton(),
+                        Padding(
+                          padding: EdgeInsets.all(8.0),
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                backgroundImage:
+                                    AssetImage('assets/images/ai.png'),
+                              ),
+                              gapWe5,
+                              Text(
+                                "اسأل بنية",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -71,13 +74,11 @@ class Chat extends StatelessWidget {
                         sendButtonBuilder: (send) {
                           return Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child:  Icon(
-                                  Icons.send,
-                                  color: brown,
-                                
+                              child: Icon(
+                                Icons.send,
+                                color: brown,
                               ));
                         },
-                        
                         sendOnEnter: true,
                         alwaysShowSend: true,
                         textController: TextEditingController(),
@@ -146,7 +147,6 @@ class Chat extends StatelessWidget {
                       bloc.add(SendMassageEvent(chatMessage: chatMessage));
                     },
                     messages: bloc.userMasseges,
-                    
                   );
                 },
               ),

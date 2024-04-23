@@ -7,6 +7,7 @@ import 'package:bunya_app/pages/Office%20pages/profile_page/widgets/widgets/info
 import 'package:bunya_app/pages/costumer%20pages/profile_page/bloc/profile_bloc.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/profile_page.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/image_aacount_widget.dart';
+import 'package:bunya_app/pages/widgets/auth/button_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -108,12 +109,9 @@ class EditPageCustomer extends StatelessWidget {
                       EditInfoRow(
                           controller: phoneController, title: "الجوال:"),
                       gapH50,
-                      ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: brownColor,
-                              minimumSize: const Size(double.infinity, 50)),
-                          onPressed: () async {
-                            await locator.editUpdate(
+                        ButtonWidget(backgroundColor: brownColor,text: "حفظ",textColor: white,
+                        onPressed: () async {
+                           await locator.editUpdate(
                                 name: infoController.text,
                                 email: emailController.text,
                                 phone: int.parse(phoneController.text));
@@ -142,13 +140,49 @@ class EditPageCustomer extends StatelessWidget {
                             context.showSuccessSnackBar(
                                 context, "تم تغيير البيانات بنجاح");
 
-                            // Navigator.pop(context);
-                          },
-                          child: Text(
-                            "حفظ",
-                            style: TextStyle(
-                                color: whiteColor, fontWeight: FontWeight.bold),
-                          ))
+                        },)
+                      // ElevatedButton(
+                      //     style: ElevatedButton.styleFrom(
+                      //         backgroundColor: brownColor,
+                      //         minimumSize: const Size(double.infinity, 50)),
+                      //     onPressed: () async {
+                      //       await locator.editUpdate(
+                      //           name: infoController.text,
+                      //           email: emailController.text,
+                      //           phone: int.parse(phoneController.text));
+                      //       Navigator.pop(context);
+                      //       // Navigator.push(
+                      //       //   context,
+                      //       //   MaterialPageRoute(
+                      //       //     builder: (context) => EditPageCustomer(
+                      //       //       name: infoController.text,
+                      //       //       email: emailController.text,
+                      //       //       phone: int.parse(phoneController.text),
+                      //       //     ),
+                      //       //   ),
+                      //       // );
+                      //       // .then((value) {
+                      //       //   if (value != null && value == true) {
+                      //       //     bloc.add(GetUserInfoEvent());
+                      //       //   }
+                      //       // }
+                      //       // );
+
+                      //       bloc.add(UpdateUserInfoEvent(
+                      //           name: infoController.text,
+                      //           email: emailController.text,
+                      //           phone: int.parse(phoneController.text)));
+                      //       context.showSuccessSnackBar(
+                      //           context, "تم تغيير البيانات بنجاح");
+
+                      //       // Navigator.pop(context);
+                      //     },
+                        
+                      //     child: Text(
+                      //       "حفظ",
+                      //       style: TextStyle(
+                      //           color: whiteColor, fontWeight: FontWeight.bold),
+                      //     ))
                     ],
                   ),
                 ),
