@@ -125,7 +125,7 @@ class ProfilePageOfficeOffice extends StatelessWidget {
                               'محادثة',
                               style: TextStyle(
                                   color: Colors.black,
-                                  fontSize: 20,
+                                  fontSize: 15,
                                   fontWeight: FontWeight.bold),
                             ),
                           ),
@@ -181,7 +181,7 @@ class ProfilePageOfficeOffice extends StatelessWidget {
                                           'الغاء المتابعة ',
                                           style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: 20,
+                                              fontSize: 15,
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ),
@@ -215,7 +215,7 @@ class ProfilePageOfficeOffice extends StatelessWidget {
                                           'متابعة',
                                           style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: 20,
+                                              fontSize: 15,
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ),
@@ -313,11 +313,11 @@ class ProfilePageOfficeOffice extends StatelessWidget {
                                         style: const TextStyle(
                                             fontSize: 14, color: Colors.black),
                                       ),
-                                      Text(
-                                        office.name,
-                                        style: const TextStyle(
-                                            fontSize: 14, color: Colors.black),
-                                      )
+                                      // Text(
+                                      //   office.name,
+                                      //   style: const TextStyle(
+                                      //       fontSize: 14, color: Colors.black),
+                                      // )
                                     ],
                                   ),
                                 ),
