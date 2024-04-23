@@ -159,15 +159,15 @@ class _AddPostPageState extends State<AddPostPage> {
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
-                              title: Text('Error'),
+                              title: Text('حدث خطاء '),
                               content:
-                                  Text('Image or description cannot be empty.'),
+                                  Text('الوصف او الصورة لايمكن ان تكون فارغه.'),
                               actions: <Widget>[
                                 TextButton(
                                   onPressed: () {
                                     Navigator.of(context).pop();
                                   },
-                                  child: Text('OK'),
+                                  child: Text('موافق'),
                                 ),
                               ],
                             );

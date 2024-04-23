@@ -198,14 +198,14 @@ class ScaffoldWidget extends StatelessWidget {
                           margin: const EdgeInsets.all(10),
                           child: Column(
                             children: [
-                              ListTile(
-                                leading: const Icon(Icons.notifications),
-                                title: const Text(
-                                  'التنبيهات ',
-                                  style: TextStyle(fontSize: 20),
-                                ),
-                                onTap: () {},
-                              ),
+                              // ListTile(
+                              //   leading: const Icon(Icons.notifications),
+                              //   title: const Text(
+                              //     'التنبيهات ',
+                              //     style: TextStyle(fontSize: 20),
+                              //   ),
+                              //   onTap: () {},
+                              // ),
                               ListTile(
                                 leading: const Icon(Icons.language),
                                 title: const Text(
@@ -262,19 +262,21 @@ class ScaffoldWidget extends StatelessWidget {
                                   'إبلاغ عن مشكلة ',
                                   style: TextStyle(fontSize: 20),
                                 ),
-                                onTap: () {},
-                              ),
-                              ListTile(
-                                leading:
-                                    const Icon(Icons.contact_support_outlined),
-                                title: const Text(
-                                  'الدعم',
-                                  style: TextStyle(fontSize: 20),
-                                ),
                                 onTap: () {
-                                     context.pushTo(view: SupportPage());
+                                  context.pushTo(view: SupportPage());
                                 },
                               ),
+                              // ListTile(
+                              //   leading:
+                              //       const Icon(Icons.contact_support_outlined),
+                              //   title: const Text(
+                              //     'الدعم',
+                              //     style: TextStyle(fontSize: 20),
+                              //   ),
+                              //   onTap: () {
+                                     
+                              //   },
+                              // ),
                             ],
                           ),
                         ),

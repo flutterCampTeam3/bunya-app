@@ -677,6 +677,19 @@ class DBService {
       },
     );
   }
+
+   Future addProblemMassage({
+    required String massage,
+    
+  }) async {
+    await supabase.from('Problem').insert(
+      {
+        'iduser': supabase.auth.currentUser!.id,
+        'massage': massage,
+        
+      },
+    );
+  }
 /*
   Future<void> uploadPostImage(File imageFile) async {
     print("object");
