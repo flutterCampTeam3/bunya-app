@@ -151,7 +151,7 @@ class _AddPostPageState extends State<AddPostPage> {
                   Padding(
                     padding: const EdgeInsets.only(left: 12, right: 12),
                     child: ButtonWidget(
-                      backgroundColor: brownColor,
+                      backgroundColor: darkBrown,
                       text: 'نشر',
                       textColor: whiteColor,
                       onPressed: () {
@@ -161,15 +161,15 @@ class _AddPostPageState extends State<AddPostPage> {
                             context: context,
                             builder: (BuildContext context) {
                               return AlertDialog(
-                                title: const Text('Error'),
+                                title: const Text('حدث خطاء '),
                                 content: const Text(
-                                    'Image or description cannot be empty.'),
+                                    'الوصف او الصورة لايمكن ان تكون فارغه.'),
                                 actions: <Widget>[
                                   TextButton(
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     },
-                                    child: const Text('OK'),
+                                    child: const Text('موافق'),
                                   ),
                                 ],
                               );
