@@ -12,7 +12,7 @@ class GPT {
     String link = "https://api.openai.com/v1/chat/completions";
     final uri = Uri.parse(link);
     String answer = 'empty';
-    const String kay = "";
+    const String kay = "sk-proj-hrpUqlz1l22a3y8tGOtfT3BlbkFJSEkQwI5gTiIUD8pRCCIe";
     Map<String, String> header = {
       "Authorization": "Bearer $kay",
       "Content-Type": "application/json"

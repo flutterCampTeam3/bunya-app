@@ -130,23 +130,27 @@ class DBService {
     required String phoneNumber,
     required String image,
   }) async {
-    final respons = await supabase.auth.signUp(
-      data: {'Name': userName},
-      email: email,
-      password: password,
-    );
-    await supabase.from('Customer').insert(
-      {
-        'email': email,
-        'name': userName,
-        'phoneNumber': int.parse(phoneNumber),
-        'customerId': respons.user!.id,
-        'image':
-            'https://mtaainvajktwbwpffkxw.supabase.co/storage/v1/object/public/profile/Ellipse%2024.svg'
-      },
-    );
+    try {
+      final respons = await supabase.auth.signUp(
+        // data: {'Name': userName},
+        email: email,
+        password: password,
+      );
+    } catch (e) {
+      print(e);
+    }
+    // await supabase.from('Customer').insert(
+    //   {
+    //     'email': email,
+    //     'name': userName,
+    //     'phoneNumber': int.parse(phoneNumber),
+    //     'customerId': respons.user!.id,
+    //     'image':
+    //         'https://mtaainvajktwbwpffkxw.supabase.co/storage/v1/object/public/profile/Ellipse%2024.svg'
+    //   },
+    // );
 
-    print("in the signup: ${respons.hashCode}");
+    // print("in the signup: ${respons.hashCode}");
     // Send email verification
     // await supabase.auth.resetPasswordForEmail(email);
   }
@@ -447,22 +451,21 @@ class DBService {
   Future followerNumber({
     required String officeId,
   }) async {
-     print("---------------in function----");
+    print("---------------in function----");
     final followerNumber = await supabase
-
         .from('office_followers')
         .select('*')
         .eq('officeId', officeId);
-         print("---------------inside f..----");
+    print("---------------inside f..----");
     if (followerNumber.isNotEmpty) {
       final List<ProfileOfficeFollowModel> follower = [];
       for (var element in followerNumber) {
         follower.add(ProfileOfficeFollowModel.fromJson(element));
       }
-       print("---------------${follower.length}----");
+      print("---------------${follower.length}----");
       return follower.length;
     } else {
-       print("---------------Else ----");
+      print("---------------Else ----");
       return 0;
     }
   }
@@ -502,9 +505,9 @@ class DBService {
       }
       return followers;
     } else {
-             final List<OfficesModel> followers = [];
+      final List<OfficesModel> followers = [];
 
-      return  followers;
+      return followers;
     }
   }
 
@@ -591,16 +594,15 @@ class DBService {
 
   Future<List<OfficesModel>> getOfficeAccount(String type) async {
     final officeAccounte = await supabase
-    
         .from('Offices')
         .select("*")
         .match({'departmentId': type});
-         print("-----------------in func-------");
+    print("-----------------in func-------");
     final List<OfficesModel> officeAccount = [];
     for (var element in officeAccounte) {
       officeAccount.add(OfficesModel.fromJson(element));
     }
-     print("------------------------");
+    print("------------------------");
     return officeAccount;
   }
 
@@ -737,6 +739,7 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
 
     return response;
   }
+
 //-----------------
   getSession() async {
     try {
@@ -825,6 +828,7 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
       return Room.fromJson(json: response.first);
     }
   }
+
 ////////////
   Future fetchRooms() async {
     final currentUserId = await getCurrentUserID();
@@ -833,7 +837,7 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
         .from('room')
         .select()
         .or('customer_id.eq.$currentUserId, offecer_id.eq.$currentUserId');
-        //حجيب كل الرومات اللي اكون فيها كستمر او اوفيس
+    //حجيب كل الرومات اللي اكون فيها كستمر او اوفيس
 
     final listRooms = data.map((room) => Room.fromJson(json: room)).toList();
     return listRooms;
@@ -861,7 +865,7 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
               .add(ChatProfileModel.fromJson(resCustomer.first, room));
         }
         if (resOffices.isNotEmpty) {
-          //حيكون اوفيس ويضيف 
+          //حيكون اوفيس ويضيف
           chatProfileList
               .add(ChatProfileModel.fromJson(resOffices.first, room));
         }

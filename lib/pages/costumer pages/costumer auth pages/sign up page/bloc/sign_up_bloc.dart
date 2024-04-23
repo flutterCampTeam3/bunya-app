@@ -34,12 +34,12 @@ class SignUpBlocCustomer
   Future<void> createAccount(CreateAccountCustomerEvent event,
       Emitter<SignUpCustomerState> emit) async {
     print("in the bloc");
-    if (event.name.trim().isNotEmpty &&
-        event.email.trim().isNotEmpty &&
-        event.password.trim().isNotEmpty &&
-        event.phone.trim().isNotEmpty &&
-        event.confirmPass.trim().isNotEmpty &&
-        event.isChecked) {
+//     if (event.name.trim().isNotEmpty &&
+//         event.email.trim().isNotEmpty &&
+//         event.password.trim().isNotEmpty &&
+//         event.phone.trim().isNotEmpty &&
+//         event.confirmPass.trim().isNotEmpty 
+// ) {
       try {
         emit(LoadingSignUpCustomerState());
     print("befor signup");
@@ -53,8 +53,8 @@ class SignUpBlocCustomer
       } catch (error) {
         emit(ErrorSignUpCustomerState(msg: "هناك خطأ في إنشاء الحساب"));
       }
-    } else {
-      emit(ErrorSignUpCustomerState(msg: "الرجاء إدخال جميع القيم"));
-    }
+    // } else {
+    //   emit(ErrorSignUpCustomerState(msg: "الرجاء إدخال جميع القيم"));
+    // }
   }
 }

@@ -17,7 +17,7 @@ import 'package:get_it/get_it.dart';
 class ConstraintAccountList extends StatelessWidget {
   ConstraintAccountList({super.key, required this.type,  });
   final String type;
-  
+  // final String word;
   final locator = GetIt.I.get<DBService>();
 
   @override
@@ -31,7 +31,7 @@ class ConstraintAccountList extends StatelessWidget {
         child: Builder(builder: (context) {
           final bloc = context.read<AccountListBloc>();
           bloc.add(GetAccountEvent(type: type ));
-          // bloc.add(ShowFollowersEvent(id: office!.officeId));
+         
 
           return Scaffold(
             body: Stack(
@@ -49,6 +49,7 @@ class ConstraintAccountList extends StatelessWidget {
                       children: [
                         AppBarAccoutWidget(
                           controllerSearch: searchController,
+                          type: type,
                           //  onChanged: (String ) {
 
                           //   bloc.add(SearchWord(word: searchController.text));
@@ -105,18 +106,18 @@ class ConstraintAccountList extends StatelessWidget {
                                   }
                                 },
                                 builder: (context, state) {
-                                  if (state is SuccessHomeState) {
-                                    if (state.officeAccounte.isNotEmpty) {
+                                  if (bloc.officeAccountData.isNotEmpty) {
+                                    
                                       return SizedBox(
                                         height: context.getHeight() * 0.80,
                                         width: context.getWidth(),
                                         child: ListView.builder(
                                           shrinkWrap: true,
                                           itemCount:
-                                              state.officeAccounte.length,
+                                             bloc.officeAccountData.length,
                                           itemBuilder: (context, index) {
                                             final med =
-                                                state.officeAccounte[index];
+                                               bloc.officeAccountData[index];
                                             return AccountListWidget(
                                               path: med.image,
                                               title: med.name,
@@ -146,9 +147,7 @@ class ConstraintAccountList extends StatelessWidget {
                                         ),
                                       );
                                     }
-                                  } else {
-                                    return sizedBoxEmpty;
-                                  }
+                                  
                                 },
                               ),
                             ],

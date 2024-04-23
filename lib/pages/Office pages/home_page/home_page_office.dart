@@ -183,7 +183,8 @@ class HomePageOffice extends StatelessWidget {
                                     mainAxisSpacing: 10.0,
                                     childAspectRatio: 0.75,
                                   ),
-                                  itemCount: bloc.classPost.length,
+                                  itemCount:6,
+                                  //  bloc.classPost.length,
                                   itemBuilder: (context, index) {
                                     return InkWell(
                                       onTap: () {

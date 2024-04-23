@@ -6,7 +6,10 @@ class AppBarAccoutWidget extends StatelessWidget {
   AppBarAccoutWidget({
     super.key,
     required this.controllerSearch,
+    required this.type,
   });
+  final String type;
+
   final TextEditingController controllerSearch;
   void Function(String)? onChanged;
   @override
@@ -47,7 +50,7 @@ class AppBarAccoutWidget extends StatelessWidget {
                       child: TextField(
                         textInputAction: TextInputAction.search,
                         onSubmitted: (_) {
-                          bloc.add(SearchWord(word: controllerSearch.text));
+                          bloc.add(SearchWord(word: controllerSearch.text , type: type));
                         },
                         decoration: const InputDecoration(
                           hintText: "البحث",

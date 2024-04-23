@@ -19,5 +19,8 @@ class ShowFollowersEvent extends AccountListEvent {
 
 class SearchWord extends AccountListEvent {
   final String word;
-  SearchWord({required this.word});
+  final String type;
+
+  SearchWord({required this.word, required this.type});
+  
 }
