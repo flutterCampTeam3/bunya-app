@@ -9,7 +9,10 @@ import 'package:get_it/get_it.dart';
 // import 'package:timeago/timeago.dart';
 
 class ChatBubble extends StatelessWidget {
-  const ChatBubble({super.key, required this.message, });
+  const ChatBubble({
+    super.key,
+    required this.message,
+  });
 
   final Message message;
 
@@ -32,7 +35,7 @@ class ChatBubble extends StatelessWidget {
           ),
           decoration: BoxDecoration(
             color: isMine
-                ? const Color.fromARGB(255, 79, 158, 143)
+                ? Theme.of(context).colorScheme.surface
                 : const Color.fromARGB(255, 223, 223, 223),
             borderRadius: BorderRadius.only(
               topLeft: const Radius.circular(15),
