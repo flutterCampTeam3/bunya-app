@@ -144,10 +144,12 @@ class PostWidget extends StatelessWidget {
                               ),
                             ),
                             child: ClipOval(
-                              child: Image.network(
-                                profilePath.image,
-                                fit: BoxFit.cover,
-                              ),
+                              child: Image.network(profilePath.image,
+                                  fit: BoxFit.cover, errorBuilder:
+                                      (BuildContext context, Object error,
+                                          StackTrace? stackTrace) {
+                                return Image.asset("assets/images/profil.png");
+                              }),
                             ),
                           ),
                           gapWe5,

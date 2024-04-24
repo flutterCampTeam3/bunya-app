@@ -117,8 +117,8 @@ class ProfilePageOfficeOffice extends StatelessWidget {
 
                             style: ButtonStyle(
                               backgroundColor:
-                                  MaterialStateProperty.all<Color>(lightBrown),
-                              fixedSize: MaterialStateProperty.all<Size>(
+                                  WidgetStateProperty.all<Color>(lightBrown),
+                              fixedSize: WidgetStateProperty.all<Size>(
                                   const Size(150, 50)),
                             ),
                             child: const Text(
@@ -151,85 +151,85 @@ class ProfilePageOfficeOffice extends StatelessWidget {
                                   ),
                                 );
                               } else {
-                                return Row(
-                                  children: [
-                                    Visibility(
-                                      visible: bloc.isFollow,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          bloc.add(DeleteFollowOfficeEvent(
-                                              id: office.officeId));
-                                        },
-                                        // style: ButtonStyle(
-                                        //   backgroundColor:
-                                        //       WidgetStateProperty.all<Color>(
-                                        //           lightBrown),
-                                        //   fixedSize:
-                                        //       WidgetStateProperty.all<Size>(
-                                        //           const Size(130, 50)),
-                                        // ),
-                                        // style: ButtonStyle(
-                                        //   backgroundColor:
-                                        //       MaterialStateProperty.all<Color>(
-                                        //           lightBrown),
-                                        //   fixedSize:
-                                        //       WidgetStateProperty.all<Size>(
-                                        //           const Size(130, 50)),
-                                        // ),
-                                        style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                                  lightBrown),
-                                          fixedSize:
-                                              MaterialStateProperty.all<Size>(
-                                                  const Size(150, 50)),
-                                        ),
+                              return Row(
+                                children: [
+                                  Visibility(
+                                    visible: bloc.isFollow,
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        bloc.add(DeleteFollowOfficeEvent(
+                                            id: office.officeId));
+                                      },
+                                      // style: ButtonStyle(
+                                      //   backgroundColor:
+                                      //       WidgetStateProperty.all<Color>(
+                                      //           lightBrown),
+                                      //   fixedSize:
+                                      //       WidgetStateProperty.all<Size>(
+                                      //           const Size(130, 50)),
+                                      // ),
+                                      // style: ButtonStyle(
+                                      //   backgroundColor:
+                                      //       MaterialStateProperty.all<Color>(
+                                      //           lightBrown),
+                                      //   fixedSize:
+                                      //       WidgetStateProperty.all<Size>(
+                                      //           const Size(130, 50)),
+                                      // ),
+                                      style: ButtonStyle(
+                                        backgroundColor:
+                                            WidgetStateProperty.all<Color>(
+                                                lightBrown),
+                                        fixedSize:
+                                            WidgetStateProperty.all<Size>(
+                                                const Size(150, 50)),
+                                      ),
 
-                                        child: const Text(
-                                          'الغاء المتابعة ',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold),
-                                        ),
+                                      child: const Text(
+                                        'الغاء المتابعة ',
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold),
                                       ),
                                     ),
-                                    Visibility(
-                                      visible: !bloc.isFollow,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          print("press the add bottun");
-                                          bloc.add(AddFollowOfficeEvent(
-                                              id: office.officeId));
-                                        },
-                                        style: ButtonStyle(
-                                          backgroundColor:
-                                              MaterialStateProperty.all<Color>(
-                                                  lightBrown),
-                                          fixedSize:
-                                              MaterialStateProperty.all<Size>(
-                                                  const Size(150, 50)),
-                                        ),
-                                        // style: ButtonStyle(
-                                        //   backgroundColor:
-                                        //       WidgetStateProperty.all<Color>(
-                                        //           brown),
-                                        //   fixedSize:
-                                        //       WidgetStateProperty.all<Size>(
-                                        //           const Size(130, 50)),
-                                        // ),
+                                  ),
+                                  Visibility(
+                                    visible: !bloc.isFollow,
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        print("press the add bottun");
+                                        bloc.add(AddFollowOfficeEvent(
+                                            id: office.officeId));
+                                      },
+                                      style: ButtonStyle(
+                                        backgroundColor:
+                                            WidgetStateProperty.all<Color>(
+                                                lightBrown),
+                                        fixedSize:
+                                            WidgetStateProperty.all<Size>(
+                                                const Size(150, 50)),
+                                      ),
+                                      // style: ButtonStyle(
+                                      //   backgroundColor:
+                                      //       WidgetStateProperty.all<Color>(
+                                      //           brown),
+                                      //   fixedSize:
+                                      //       WidgetStateProperty.all<Size>(
+                                      //           const Size(130, 50)),
+                                      // ),
 
-                                        child: const Text(
-                                          'متابعة',
-                                          style: TextStyle(
-                                              color: Colors.black,
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold),
-                                        ),
+                                      child: const Text(
+                                        'متابعة',
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold),
                                       ),
                                     ),
-                                  ],
-                                );
+                                  ),
+                                ],
+                              );
                               }
                             },
                           ),

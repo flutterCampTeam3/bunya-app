@@ -188,11 +188,6 @@ class HomePageCustomer extends StatelessWidget {
                                   itemCount: 6,
                                   // state.classPost.length,
                                   itemBuilder: (context, index) {
-                                    print("===================");
-                                    print(
-                                        "Class Post Length ${state.classPost.length}");
-                                    print("Class Post Index $index");
-                                    print("===================");
 
                                     return InkWell(
                                       onTap: () {

@@ -17,10 +17,10 @@ class ImageAacountWodget extends StatelessWidget {
         ),
       ),
       child: ClipOval(
-        child: Image.network(
-          path,
-          fit: BoxFit.cover,
-        ),
+        child: Image.network(path, fit: BoxFit.cover, errorBuilder:
+            (BuildContext context, Object error, StackTrace? stackTrace) {
+          return Image.asset("assets/images/profil.png");
+        }),
       ),
     );
   }
