@@ -87,7 +87,9 @@ class PostWidget extends StatelessWidget {
                                               StackTrace? stackTrace) {
                                     return Image.asset(
                                         "assets/images/noimage.png");
-                                  }),
+                                  }
+                                  )
+                                  ,
                                 ),
                               ),
                             ),

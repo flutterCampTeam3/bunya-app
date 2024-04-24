@@ -50,7 +50,10 @@ class ImagePickerWidget extends StatelessWidget {
                       return CircleAvatar(
                           radius: 70,
                           backgroundImage:
-                              FileImage(state.PickedImage));
+                              FileImage(state.PickedImage),
+                              
+                              
+                              );
                     }
                     return CircleAvatar(
                       radius: 70,

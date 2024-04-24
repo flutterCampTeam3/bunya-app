@@ -49,9 +49,9 @@ class AccountsHomeWidget extends StatelessWidget {
                 ),
                 child: ClipOval(
                   child: Image.network(path.image, fit: BoxFit.cover,
-                      errorBuilder: (BuildContext context, Object error,
+                     errorBuilder: (BuildContext context, Object error,
                           StackTrace? stackTrace) {
-                    return Image.asset("assets/images/noimage.png");
+                    return Image.asset("assets/images/profil.png");
                   }),
                 ),
               ),
@@ -60,20 +60,31 @@ class AccountsHomeWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    title.name,
-                    style: const TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black),
+                   SizedBox(
+                    width: context.getWidth() * 0.4,
+                    child: Text(
+                     title.name, 
+                      overflow: TextOverflow.clip,
+                      maxLines: 1,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 15,fontWeight: FontWeight.bold),
+                    ),
                   ),
+                  // Text(
+                  //   title.name,
+                  //   style: const TextStyle(
+                  //       fontSize: 15,
+                  //       fontWeight: FontWeight.bold,
+                  //       color: Colors.black),
+                  // ),
                   SizedBox(
                     width: context.getWidth()*0.4,
                     child: Text(
                       description.disc ?? " ",
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
-                      style: TextStyle(color:  Theme.of(context).colorScheme.secondary,fontSize: 15),
+                      style: TextStyle(color:  Theme.of(context).colorScheme.secondary,fontSize: 15,fontWeight: FontWeight.bold),
                       
                     ),
                   ),
