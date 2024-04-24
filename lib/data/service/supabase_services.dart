@@ -201,7 +201,7 @@ class DBService {
   }
 
   Future resendOtp({required String email}) async {
-    sendOtp(email: email);
+    await sendOtp(email: email);
   }
 
   Future resetPassword({required String newPassword}) async {
