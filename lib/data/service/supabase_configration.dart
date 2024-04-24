@@ -9,7 +9,10 @@ databaseConfig() async {
   await dotenv.load(fileName: ".env");
   await Supabase.initialize(
       url: dotenv.env["urlSupabase"]!,
-      anonKey: dotenv.env["anoneKeySupabase"]!);
+      anonKey: dotenv.env["anoneKeySupabase"]!,
+      
+      );
+      
   GetIt.I.registerSingleton<DBService>(DBService());
 }
 

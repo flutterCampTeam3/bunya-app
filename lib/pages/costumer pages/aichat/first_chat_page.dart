@@ -56,33 +56,7 @@ class FirstChatPage extends StatelessWidget {
                           width: 300,
                         ),
                       ),
-                      Positioned(
-                        top: 150,
-                        left: context.getWidth() / 18,
-                        child: Container(
-                          width: context.getWidth() / 4,
-                          height: 60,
-                          decoration: BoxDecoration(
-                            color: white,
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(12),
-                              topRight: Radius.circular(25),
-                              bottomLeft: Radius.circular(12),
-                              bottomRight: Radius.circular(1),
-                            ),
-                            border: Border.all(color: Colors.transparent),
-                          ),
-                          child: const Center(
-                            child: Text(
-                              "مرحبا سعود", // Replace with your text
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 0, 0, 0),
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
+                     
                     ],
                   ),
                 ),
