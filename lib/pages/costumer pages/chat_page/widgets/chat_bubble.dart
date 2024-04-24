@@ -1,6 +1,7 @@
 import 'package:bunya_app/data/model/messege_model.dart';
 import 'package:bunya_app/data/model/profile_model_customer.dart';
 import 'package:bunya_app/data/service/supabase_services.dart';
+import 'package:bunya_app/helper/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 // import 'package:public_chat_app/constants/spacing.dart';
@@ -9,7 +10,10 @@ import 'package:get_it/get_it.dart';
 // import 'package:timeago/timeago.dart';
 
 class ChatBubble extends StatelessWidget {
-  const ChatBubble({super.key, required this.message, });
+  const ChatBubble({
+    super.key,
+    required this.message,
+  });
 
   final Message message;
 
@@ -31,9 +35,8 @@ class ChatBubble extends StatelessWidget {
             horizontal: 12,
           ),
           decoration: BoxDecoration(
-            color: isMine
-                ? const Color.fromARGB(255, 79, 158, 143)
-                : const Color.fromARGB(255, 223, 223, 223),
+            color:
+                isMine ? darkBrown : const Color.fromARGB(255, 223, 223, 223),
             borderRadius: BorderRadius.only(
               topLeft: const Radius.circular(15),
               bottomLeft:

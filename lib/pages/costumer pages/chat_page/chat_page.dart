@@ -25,32 +25,40 @@ class ChatView extends StatelessWidget {
         chatBloc.add(GetMessagesEvent(room));
         return Scaffold(
           appBar: AppBar(
-              // backgroundColor: const Color.fromARGB(255, 54, 54, 54),
-              // title: const Text(
-              //   "Chat Room",
-              //   style: TextStyle(color: Colors.white),
-              // ),
-              // centerTitle: true,
-              // leading: BlocListener<AuthBloc, AuthState>(
-              //   listener: (context, state) {
-              //     if (state is LogOutSuccessState) {
-              //       context.pushAndRemove(LoginView());
-              //     }
-              //     if (state is LogOutErrorState) {
-              //       context.showErrorSnackBar(state.msg);
-              //     }
-              //   },
-              //   child: IconButton(
-              //     onPressed: () {
-              //       authBloc.add(LogoutEvent());
-              //     },
-              //     icon: const Icon(
-              //       Icons.logout_outlined,
-              //       color: Colors.white,
-              //     ),
-              //   ),
-              // ),
-              ),
+            automaticallyImplyLeading: false,
+            actions: [
+              IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: const Icon(Icons.arrow_forward_ios_rounded))
+            ],
+            // backgroundColor: const Color.fromARGB(255, 54, 54, 54),
+            // title: const Text(
+            //   "Chat Room",
+            //   style: TextStyle(color: Colors.white),
+            // ),
+            // centerTitle: true,
+            // leading: BlocListener<AuthBloc, AuthState>(
+            //   listener: (context, state) {
+            //     if (state is LogOutSuccessState) {
+            //       context.pushAndRemove(LoginView());
+            //     }
+            //     if (state is LogOutErrorState) {
+            //       context.showErrorSnackBar(state.msg);
+            //     }
+            //   },
+            //   child: IconButton(
+            //     onPressed: () {
+            //       authBloc.add(LogoutEvent());
+            //     },
+            //     icon: const Icon(
+            //       Icons.logout_outlined,
+            //       color: Colors.white,
+            //     ),
+            //   ),
+            // ),
+          ),
           //==============================================================
           body: BlocBuilder<ChatBloc, chatState>(
             builder: (context, state) {
@@ -73,15 +81,17 @@ class ChatView extends StatelessWidget {
                                     itemCount: messages.length,
                                     itemBuilder: (context, index) {
                                       final message = messages[index];
-                                      chatBloc
-                                          .loadProfileCache(message.profileId, room);
+                                      chatBloc.loadProfileCache(
+                                          message.profileId, room);
                                       return ChatBubble(
                                         message: message,
                                       );
                                     },
                                   ),
                           ),
-                          MessageBar(room: room,),
+                          MessageBar(
+                            room: room,
+                          ),
                         ],
                       );
                     } else if (snapshot.connectionState ==
