@@ -208,19 +208,25 @@ class ScaffoldWidget extends StatelessWidget {
                               // ),
                               ListTile(
                                 leading: const Icon(Icons.language),
-                                title: const Text(
+                                iconColor: blackColor,
+                                title: Text(
                                   'اللغة',
-                                  style: TextStyle(fontSize: 20),
+                                  style: TextStyle(
+                                      fontSize: 20, color: blackColor),
                                 ),
                                 onTap: () {},
                               ),
                               ListTile(
                                 leading: bloc.light
                                     ? const Icon(Icons.mode_night_outlined)
-                                    : const Icon(Icons.sunny),
-                                title: const Text(
+                                    : const Icon(
+                                        Icons.sunny,
+                                      ),
+                                iconColor: blackColor,
+                                title: Text(
                                   'الوضع الليلي',
-                                  style: TextStyle(fontSize: 20),
+                                  style: TextStyle(
+                                      fontSize: 20, color: blackColor),
                                 ),
                                 onTap: () {
                                   bloc.add(UpdateThemeEvent());
@@ -230,13 +236,13 @@ class ScaffoldWidget extends StatelessWidget {
                               ),
                               ListTile(
                                 leading: const Icon(Icons.person_pin_circle),
-                                title: const Text(
+                                iconColor: blackColor,
+                                title: Text(
                                   'إمكانيات الوصول',
-                                  style: TextStyle(fontSize: 20),
+                                  style: TextStyle(
+                                      fontSize: 20, color: blackColor),
                                 ),
-                                onTap: () {
-                               
-                                },
+                                onTap: () {},
                               ),
                             ],
                           ),
@@ -257,13 +263,17 @@ class ScaffoldWidget extends StatelessWidget {
                           child: Column(
                             children: [
                               ListTile(
-                                leading: const Icon(Icons.report_problem),
-                                title: const Text(
+                                leading: const Icon(
+                                  Icons.report_problem,
+                                ),
+                                iconColor: blackColor,
+                                title: Text(
                                   'إبلاغ عن مشكلة ',
-                                  style: TextStyle(fontSize: 20),
+                                  style: TextStyle(
+                                      fontSize: 20, color: blackColor),
                                 ),
                                 onTap: () {
-                                  context.pushTo(view: SupportPage());
+                                  context.pushTo(view: const SupportPage());
                                 },
                               ),
                               // ListTile(
@@ -274,7 +284,7 @@ class ScaffoldWidget extends StatelessWidget {
                               //     style: TextStyle(fontSize: 20),
                               //   ),
                               //   onTap: () {
-                                     
+
                               //   },
                               // ),
                             ],

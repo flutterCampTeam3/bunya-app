@@ -243,6 +243,7 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(20),
                                 color: lightbrownColor),
                             child: TabBar(
+                              dividerColor: transparent,
                               indicator: BoxDecoration(
                                   borderRadius: BorderRadius.circular(30),
                                   gradient: RadialGradient(

@@ -201,16 +201,18 @@ class ProfilePageOffice extends StatelessWidget {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          const Text(
+                                          Text(
                                             "معلومات الشركة :",
                                             style: TextStyle(
-                                                fontWeight: FontWeight.bold),
+                                                fontWeight: FontWeight.bold,
+                                                color: blackColor),
                                           ),
                                           gapH5,
                                           Text(
                                             bloc.profile.name,
-                                            style:
-                                                const TextStyle(fontSize: 14),
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                color: blackColor),
                                           )
                                         ],
                                       ),
@@ -221,21 +223,24 @@ class ProfilePageOffice extends StatelessWidget {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          const Text(
+                                          Text(
                                             "معلومات التواصل :",
                                             style: TextStyle(
-                                                fontWeight: FontWeight.bold),
+                                                fontWeight: FontWeight.bold,
+                                                color: blackColor),
                                           ),
                                           gapH5,
                                           Text(
                                             bloc.profile.email,
-                                            style:
-                                                const TextStyle(fontSize: 14),
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                color: blackColor),
                                           ),
                                           Text(
                                             bloc.profile.phone.toString(),
-                                            style:
-                                                const TextStyle(fontSize: 14),
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                color: blackColor),
                                           ),
                                         ],
                                       ),
