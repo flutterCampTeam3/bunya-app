@@ -17,8 +17,7 @@ void main() async {
   await setup();
   InternetConnection().onStatusChange.listen((status) async {
     if (
-      // status == InternetStatus.connected
-      true
+      status == InternetStatus.connected
       ) {
       await databaseConfig();
       final locator = GetIt.I.get<DBService>();
