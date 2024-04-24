@@ -150,11 +150,7 @@ class NavBarPage extends StatelessWidget {
                 height: 80,
                 child: FloatingActionButton(
                   onPressed: () {
-                    
-                    context.pushTo(
-                                      view: FirstChatPage(
-                                    
-                                  ));
+                    context.pushTo(view: const FirstChatPage());
                   },
                   shape: const CircleBorder(),
                   backgroundColor: const Color.fromARGB(255, 223, 216, 208),

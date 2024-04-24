@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class NavBarOfficePage extends StatelessWidget {
   const NavBarOfficePage({
     super.key,
@@ -37,16 +36,16 @@ class NavBarOfficePage extends StatelessWidget {
                       icon: Column(
                         children: [
                           Icon(
-                            Icons.person_2_outlined,
-                            color: bloc.currentIndex == 0
+                            Icons.home_outlined,
+                            color: bloc.currentIndex == 3
                                 ? brownNavSelect
                                 : blackColor,
                           ),
                           Text(
-                            "الحساب",
+                            "الرئيسية",
                             style: TextStyle(
                               fontSize: 11,
-                              color: bloc.currentIndex == 0
+                              color: bloc.currentIndex == 3
                                   ? brownNavSelect
                                   : blackColor,
                             ),
@@ -54,36 +53,10 @@ class NavBarOfficePage extends StatelessWidget {
                         ],
                       ),
                       onPressed: () {
-                        bloc.currentIndex = 0;
-                        bloc.add(ChangePageOfficeEvent(index: 0));
+                        bloc.currentIndex = 3;
+                        bloc.add(ChangePageOfficeEvent(index: 3));
                       },
                     ),
-                    IconButton(
-                      icon: Column(
-                        children: [
-                          Icon(
-                            Icons.category_outlined,
-                            color: bloc.currentIndex == 1
-                                ? brownNavSelect
-                                : blackColor,
-                          ),
-                          Text(
-                            "الفئات",
-                            style: TextStyle(
-                              fontSize: 11,
-                              color: bloc.currentIndex == 1
-                                  ? brownNavSelect
-                                  : blackColor,
-                            ),
-                          )
-                        ],
-                      ),
-                      onPressed: () {
-                        bloc.currentIndex = 1;
-                        bloc.add(ChangePageOfficeEvent(index: 1));
-                      },
-                    ),
-                    const SizedBox(width: 40), // Adjust spacing for FAB
                     IconButton(
                       icon: Column(
                         children: [
@@ -109,20 +82,22 @@ class NavBarOfficePage extends StatelessWidget {
                         bloc.add(ChangePageOfficeEvent(index: 2));
                       },
                     ),
+
+                    const SizedBox(width: 40), // Adjust spacing for FAB
                     IconButton(
                       icon: Column(
                         children: [
                           Icon(
-                            Icons.home_outlined,
-                            color: bloc.currentIndex == 3
+                            Icons.category_outlined,
+                            color: bloc.currentIndex == 1
                                 ? brownNavSelect
                                 : blackColor,
                           ),
                           Text(
-                            "الرئيسية",
+                            "الفئات",
                             style: TextStyle(
                               fontSize: 11,
-                              color: bloc.currentIndex == 3
+                              color: bloc.currentIndex == 1
                                   ? brownNavSelect
                                   : blackColor,
                             ),
@@ -130,8 +105,33 @@ class NavBarOfficePage extends StatelessWidget {
                         ],
                       ),
                       onPressed: () {
-                        bloc.currentIndex = 3;
-                        bloc.add(ChangePageOfficeEvent(index: 3));
+                        bloc.currentIndex = 1;
+                        bloc.add(ChangePageOfficeEvent(index: 1));
+                      },
+                    ),
+                    IconButton(
+                      icon: Column(
+                        children: [
+                          Icon(
+                            Icons.person_2_outlined,
+                            color: bloc.currentIndex == 0
+                                ? brownNavSelect
+                                : blackColor,
+                          ),
+                          Text(
+                            "الحساب",
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: bloc.currentIndex == 0
+                                  ? brownNavSelect
+                                  : blackColor,
+                            ),
+                          )
+                        ],
+                      ),
+                      onPressed: () {
+                        bloc.currentIndex = 0;
+                        bloc.add(ChangePageOfficeEvent(index: 0));
                       },
                     ),
                   ],
@@ -142,7 +142,7 @@ class NavBarOfficePage extends StatelessWidget {
                 height: 80,
                 child: FloatingActionButton(
                     onPressed: () {
-                      context.pushTo(view: AddPostPage());
+                      context.pushTo(view: const AddPostPage());
                     },
                     shape: const CircleBorder(),
                     backgroundColor: const Color.fromARGB(255, 223, 216, 208),
