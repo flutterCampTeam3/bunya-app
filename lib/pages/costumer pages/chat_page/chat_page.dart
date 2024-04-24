@@ -73,15 +73,17 @@ class ChatView extends StatelessWidget {
                                     itemCount: messages.length,
                                     itemBuilder: (context, index) {
                                       final message = messages[index];
-                                      chatBloc
-                                          .loadProfileCache(message.profileId, room);
+                                      chatBloc.loadProfileCache(
+                                          message.profileId, room);
                                       return ChatBubble(
                                         message: message,
                                       );
                                     },
                                   ),
                           ),
-                          MessageBar(room: room,),
+                          MessageBar(
+                            room: room,
+                          ),
                         ],
                       );
                     } else if (snapshot.connectionState ==

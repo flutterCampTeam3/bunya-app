@@ -796,10 +796,14 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
   }
 
   // --- Get Profile data by profile ID of a specific message ---
-  Future getProfileData(String profileID) async {
+  Future getProfileData(String customerId) async {
+    print(customerId);
+
     final data =
-        await supabase.from('profiles').select().eq('id', profileID).single();
-    final profile = ProfileModel.fromJson(data);
+        await supabase.from('Customer').select().eq('customerId', customerId);
+    // .single();
+
+    final profile = data.isNotEmpty ? ProfileModel.fromJson(data.first) : null;
     return profile;
   }
 
