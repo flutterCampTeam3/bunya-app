@@ -105,11 +105,11 @@ class AccountListWidget extends StatelessWidget {
                                   height: 18, thickness: 1, color: Colors.grey),
                               Row(
                                 children: [
-                                  Text('${bloc.followerNumber}'),
+                                  Text('${bloc.followerNumber}',style: TextStyle(color: blackColor),),
                                   const SizedBox(width: 5),
-                                  const Icon(
-                                    Icons.people_outline_rounded,
-                                    color: Colors.red,
+                                   Icon(
+                                    Icons.people,
+                                    color: blackColor,
                                     size: 20,
                                   ),
                                 ],

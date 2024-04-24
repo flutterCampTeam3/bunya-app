@@ -72,7 +72,7 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           body: BlocConsumer<SignUpBloc, SignUpState>(
             listener: (context, state) {
-              if (state is SuccessSignUpState) {
+              if (state is SuccessFindState) {
                 // SignUp Function Here
                 Navigator.pop(context);
                 context.showSuccessSnackBar(context, state.msg);
@@ -81,8 +81,13 @@ class _SignUpPageState extends State<SignUpPage> {
                   cr: crController.text,
                   email: emailController.text,
                   pass: passController.text,
-
                 ));
+              }
+              if (state is SuccessSignUpState) {
+                // SignUp Function Here
+                Navigator.pop(context);
+                context.showSuccessSnackBar(context, state.msg);
+                context.pushAndRemove(const SigninPage());
               }
               if (state is ErrorSignUpState) {
                 // Error SignUp Function Here
@@ -90,23 +95,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 context.showErrorSnackBar(context, state.msg);
               }
               if (state is LoadingSignUpState) {
-                showDialog(
-                    barrierDismissible: false,
-                    barrierColor: Colors.transparent,
-                    context: context,
-                    builder: (context) {
-                      return const AlertDialog(
-                        backgroundColor: Colors.transparent,
-                        elevation: 0,
-                        content: SizedBox(
-                          height: 80,
-                          width: 80,
-                          child: Center(
-                            child: CircularProgressIndicator(),
-                          ),
-                        ),
-                      );
-                    });
+                context.getDialog();
               }
             },
             builder: (context, state) {

@@ -15,8 +15,8 @@ final class ErrorHomeState extends AccountListState {
 }
 
 final class SuccessHomeState extends AccountListState {
-  final List<OfficesModel> officeAccounte;
-  SuccessHomeState({required this.officeAccounte});
+  // final List<OfficesModel> officeAccounte;
+  // SuccessHomeState({required this.officeAccounte});
 }
 
 class LoadeWords extends AccountListState {

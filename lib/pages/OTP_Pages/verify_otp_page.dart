@@ -111,7 +111,7 @@ class VerifyOtpPage extends StatelessWidget {
                         onPressed: () {
                           prBloc.add(ResendOtpEvent(email: remail));
                         },
-                        timeOutInSeconds: 10,
+                        timeOutInSeconds: 61,
                         buttonType: ButtonType.textButton,
                         color: brown,
                         activeTextStyle: const TextStyle(

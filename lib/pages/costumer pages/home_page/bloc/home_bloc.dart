@@ -23,6 +23,17 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     try {
       List<OfficesModel> officeList = await DBService().getOffices();
       List<postModel> postList = await DBService().getposts();
+      // print("the length ${postList.length}");
+      // for (var element in postList) {
+      //   print("===========================");
+      //   print("the p id ${element.postId}");
+      //   print("the com ${element.comment}");
+      //   print("the des ${element.desc}");
+      //   print("the o id ${element.ofiiceId}");
+      //   print("the o id ${element.image}");
+      //   print("===========================");
+
+      // }
       emit(datahomeSuccesState(classOffices: officeList, classPost: postList));
     } catch (e) {
       emit(ErrorShowpostState(msg: 'فشل في جلب البيانات '));

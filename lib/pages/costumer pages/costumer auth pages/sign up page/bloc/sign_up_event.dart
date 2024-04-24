@@ -9,9 +9,8 @@ class CreateAccountCustomerEvent extends SignUpCustomerEvent {
   final String phone;
   final String password;
   final String confirmPass;
-   bool isChecked=false;
   CreateAccountCustomerEvent(
-      {required this.name, required this.email, required this.password,required this.phone,required this.confirmPass,required this.isChecked});
+      {required this.name, required this.email, required this.password,required this.phone,required this.confirmPass});
 }
 
 class CustomerChoosImageEvent extends SignUpCustomerEvent{

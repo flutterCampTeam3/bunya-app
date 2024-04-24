@@ -16,7 +16,7 @@ class ButtonWidget extends StatelessWidget {
   final Color? borderColor;
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return TextButton(
         style: ElevatedButton.styleFrom(
             shadowColor: borderColor,
             elevation: 2,

@@ -134,7 +134,7 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                   'محادثة',
                                   style: TextStyle(
                                       color: Colors.black,
-                                      fontSize: 20,
+                                      fontSize: 16,
                                       fontWeight: FontWeight.bold),
                                 ),
                               ),
@@ -190,7 +190,7 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                               'الغاء المتابعة ',
                                               style: TextStyle(
                                                   color: Colors.black,
-                                                  fontSize: 20,
+                                                  fontSize: 16,
                                                   fontWeight: FontWeight.bold),
                                             ),
                                           ),
@@ -222,7 +222,7 @@ class ProfilePageOfficeCustomur extends StatelessWidget {
                                               'متابعة',
                                               style: TextStyle(
                                                   color: Colors.black,
-                                                  fontSize: 20,
+                                                  fontSize: 16,
                                                   fontWeight: FontWeight.bold),
                                             ),
                                           ),

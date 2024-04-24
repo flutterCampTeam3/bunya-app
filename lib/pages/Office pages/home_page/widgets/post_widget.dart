@@ -59,9 +59,9 @@ class PostOfficeHomeWidget extends StatelessWidget {
                         child: Stack(
                           children: [
                             Container(
-                              // height: 170,
+                              // height: 120,
                               width: MediaQuery.of(context).size.width *
-                                  0.3, ///////////////
+                                  0.6, ///////////////
                               decoration: BoxDecoration(
                                 boxShadow: [
                                   BoxShadow(
@@ -141,8 +141,8 @@ class PostOfficeHomeWidget extends StatelessWidget {
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: brownColor,
-                                width: 3,
+                                color: blackColor,
+                                width: 1,
                               ),
                             ),
                             child: ClipOval(

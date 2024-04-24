@@ -33,6 +33,7 @@ class AccountListBloc extends Bloc<AccountListEvent, AccountListState> {
     // });
   }
 //---- get Search office account list
+
   FutureOr<void> getSearchAccountList(
       SearchWord event, Emitter<AccountListState> emit) async {
     try {
@@ -43,15 +44,39 @@ class AccountListBloc extends Bloc<AccountListEvent, AccountListState> {
       final String search = event.word;
       print(search);
       print("==============================================");
-      for (var e in officeAccountData) {
-        if (e.name == search) {
+      if (search.trim().isEmpty) {
+        officeAccountData = await locator.getOfficeAccount(event.type);
+        officeAccountData = await locator.getOfficeAccount(event.type);
+      } else if (search.startsWith(event.word)) {
+        for (var e in officeAccountData) {
+          // search.startsWith(SearchofficeAccountData.add(e));
           SearchofficeAccountData.add(e);
+          // SearchofficeAccountData.add(e);
         }
       }
-      emit(SuccessHomeState(
-          officeAccounte:
-              search.isEmpty ? officeAccountData : SearchofficeAccountData));
+      emit(SuccessHomeState());
     }
+//------------------------------------------------------
+
+    // FutureOr<void> getSearchAccountList(
+    //     SearchWord event, Emitter<AccountListState> emit) async {
+    //   try {
+    //     emit(LoadingHomeState());
+    //     SearchofficeAccountData.clear();
+
+    //     officeAccountData = await locator.getSearchOfficeAccount(event.word);
+    //     final String search = event.word;
+    //     print(search);
+    //     print("==============================================");
+    //     for (var e in officeAccountData) {
+    //       if (e.name == search) {
+    //         SearchofficeAccountData.add(e);
+    //       }
+    //     }
+    //     emit(SuccessHomeState(
+    //         officeAccounte:
+    //             search.isEmpty ? officeAccountData : SearchofficeAccountData));
+    //   }
     //   emit(SuccessHomeState(officeAccounte: SearchofficeAccountData));
     // }
     catch (error) {
@@ -66,8 +91,8 @@ class AccountListBloc extends Bloc<AccountListEvent, AccountListState> {
       emit(LoadingHomeState());
       print("------------------------");
       officeAccountData = await locator.getOfficeAccount(event.type);
-   print("-------------------------------------u--------------------");
-      emit(SuccessHomeState(officeAccounte: officeAccountData));
+      print("-------------------------------------u--------------------");
+      emit(SuccessHomeState());
     } catch (error) {
       emit(ErrorHomeState(msg: 'حدث خطا اثناء محاولة جلب البيانات'));
     }
@@ -81,7 +106,7 @@ class AccountListBloc extends Bloc<AccountListEvent, AccountListState> {
       print("---------------out----");
       followerNumber = await DBService().followerNumber(officeId: event.id);
       print("---------------in----");
-      emit(SuccessHomeState(officeAccounte: officeAccountData));
+      emit(SuccessHomeState());
     } catch (error) {
       emit(ErrorHomeState(msg: 'حدث خطا اثناء محاولة جلب البيانات'));
     }

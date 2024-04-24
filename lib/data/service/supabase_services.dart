@@ -80,19 +80,23 @@ class DBService {
   final supabase = Supabase.instance.client;
 
 //--- Office SignUp func
-  Future signUpO({
+  Future<void> signUpO({
     required String email,
     required String password,
     required String userName,
     // required String image,
   }) async {
     print(" before: in the func");
+    print(" before: $email");
+    print(" before: $password");
     final respons = await supabase.auth.signUp(
-      data: {'Name': userName},
+      // data: {'Name': userName},
       email: email,
       password: password,
     );
+    print("before");
     id = respons.user!.id;
+    print("======================");
     print("${respons.hashCode}");
     // Send email verification
     // await supabase.auth.resetPasswordForEmail(email);
@@ -106,7 +110,7 @@ class DBService {
     required String phoneNumber,
     required String cr,
     required String disc,
-    // required String image,
+    required String image,
   }) async {
     await supabase.from('Offices').insert(
       {
@@ -117,7 +121,7 @@ class DBService {
         'disc': disc,
         'phoneNumber': int.parse(phoneNumber),
         'email': email,
-        'image': 'nn',
+        'image': image,
       },
     );
   }
@@ -130,23 +134,31 @@ class DBService {
     required String phoneNumber,
     required String image,
   }) async {
-    final respons = await supabase.auth.signUp(
-      data: {'Name': userName},
-      email: email,
-      password: password,
-    );
-    await supabase.from('Customer').insert(
-      {
-        'email': email,
-        'name': userName,
-        'phoneNumber': int.parse(phoneNumber),
-        'customerId': respons.user!.id,
-        'image':
-            'https://mtaainvajktwbwpffkxw.supabase.co/storage/v1/object/public/profile/Ellipse%2024.svg'
-      },
-    );
+    try {
+      final response = await supabase.auth.signUp(
+        email: email,
+        password: password,
+      );
+    } catch (e) {
+      if (e is AuthException) {
+        print('Authentication Error: ${e.message}');
+      } else {
+        print('Unknown Error: $e');
+      }
+    }
+    // data: {'Name': userName},
+    // await supabase.from('Customer').insert(
+    //   {
+    //     'email': email,
+    //     'name': userName,
+    //     'phoneNumber': int.parse(phoneNumber),
+    //     'customerId': respons.user!.id,
+    //     'image':
+    //         'https://mtaainvajktwbwpffkxw.supabase.co/storage/v1/object/public/profile/Ellipse%2024.svg'
+    //   },
+    // );
 
-    print("in the signup: ${respons.hashCode}");
+    // print("in the signup: ${respons.hashCode}");
     // Send email verification
     // await supabase.auth.resetPasswordForEmail(email);
   }
@@ -459,12 +471,14 @@ class DBService {
         .from('office_followers')
         .select('*')
         .eq('officeId', officeId);
+
     print("---------------inside f..----");
     if (followerNumber.isNotEmpty) {
       final List<ProfileOfficeFollowModel> follower = [];
       for (var element in followerNumber) {
         follower.add(ProfileOfficeFollowModel.fromJson(element));
       }
+
       print("---------------${follower.length}----");
       return follower.length;
     } else {
@@ -600,6 +614,7 @@ class DBService {
         .from('Offices')
         .select("*")
         .match({'departmentId': type});
+
     print("-----------------in func-------");
     final List<OfficesModel> officeAccount = [];
     for (var element in officeAccounte) {
@@ -643,6 +658,16 @@ class DBService {
     print("done");
   }
 
+  Future<void> uploadImageSignUb(
+      {required File imageFile, required String bucket}) async {
+    await supabase.storage
+        .from(bucket) // Replace with your storage bucket name
+        .upload(supabase.auth.currentUser!.id, imageFile,
+            fileOptions: const FileOptions(upsert: true));
+    await urlImage(bucket, supabase.auth.currentUser!.id);
+    print("done");
+  }
+
   Future<void> updateImage(
       File imageFile, String bucket, String nameFile) async {
     await supabase.storage
@@ -666,6 +691,20 @@ class DBService {
     return response;
   }
 
+  Future<String> UrlImage(String id) async {
+    final response = supabase.storage.from('profile').getPublicUrl(id);
+
+    return response;
+  }
+
+  Future<String> urlImageSignUp() async {
+    final response = supabase.storage
+        .from('profile')
+        .getPublicUrl(supabase.auth.currentUser!.id);
+
+    return response;
+  }
+
   //-----------------------------------------------
   //-----------------------------------------------
 
@@ -677,6 +716,17 @@ class DBService {
         'ofiiceId': supabase.auth.currentUser!.id,
         'desc': desc,
         'image': imageId
+      },
+    );
+  }
+
+  Future addProblemMassage({
+    required String massage,
+  }) async {
+    await supabase.from('Problem').insert(
+      {
+        'iduser': supabase.auth.currentUser!.id,
+        'massage': massage,
       },
     );
   }
@@ -736,12 +786,6 @@ Future<void> uploadImage(File imageFile, {String? name,String id}) async {
   }
 */
   //--
-
-  Future<String> UrlImage(String id) async {
-    final response = supabase.storage.from('profile').getPublicUrl(id);
-
-    return response;
-  }
 
 //-----------------
   getSession() async {

@@ -72,7 +72,7 @@ class _SignUpCustomerPageState extends State<SignUpCustomerPage> {
           body: BlocConsumer<SignUpBlocCustomer, SignUpCustomerState>(
             listener: (context, state) {
               if (state is SuccessSignUpCustomerState) {
-                Navigator.pop(context);
+                // Navigator.pop(context);
                 // SignUp Function Here
                 context.showSuccessSnackBar(context, state.msg);
                 context.pushAndRemove(const SigninCustomerPage());
@@ -157,7 +157,7 @@ class _SignUpCustomerPageState extends State<SignUpCustomerPage> {
                                         name: nameController.text,
                                         phone: phoneController.text,
                                         confirmPass: confirmPassController.text,
-                                        isChecked: isChecked,
+                                        
                                       ));
                                     }
                                   },

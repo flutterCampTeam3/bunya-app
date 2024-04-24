@@ -85,7 +85,7 @@ class introPage extends StatelessWidget {
                     'عميل',
                     style: TextStyle(
                         color: Colors.black,
-                        fontSize: 20,
+                        fontSize: 15,
                         fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -111,7 +111,7 @@ class introPage extends StatelessWidget {
                     'صاحب شركة',
                     style: TextStyle(
                         color: Colors.black,
-                        fontSize: 20,
+                        fontSize: 15,
                         fontWeight: FontWeight.bold),
                   ),
                 ),

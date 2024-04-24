@@ -49,8 +49,7 @@ class FollowresRow extends StatelessWidget {
                 name.name,
                 style: TextStyle(color: blackColor),
               ),
-              const Spacer(),
-              const Icon(Icons.more_vert_rounded)
+              
             ],
           )),
     );
