@@ -18,8 +18,9 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   final locator = GetIt.I.get<DBService>();
   SignUpBloc() : super(SignUpInitial()) {
     on<CreateAccountEvent>(createAccount);
+    on<AddImageEvent>(addImage);
     on<CreateAccountprofileEvent>(createProfileAccount);
-    on<ChoosImageEvent>((event, emit) async {
+    on<ChooseImageEvent>((event, emit) async {
       File avatar = await pickedImage();
       locator.OfficeImageFile = avatar;
       emit(ShowImageState(avatar));
@@ -72,7 +73,7 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         !event.phone.trim().isNotEmpty) {
       emit(ErrorSignUpState(msg: "الرجاء إدخال جميع القيم"));
     } else {
-      // try {
+      try {
       print("in the bloc");
       try {
         print("-------------------------------2");
@@ -80,31 +81,39 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         print("in the if condition");
         final supabase = Supabase.instance.client;
         await supabase.auth.signUp(
-          // data: {'Name': userName},
           email: event.email,
           password: event.password,
         );
         print("--------- End sign up -------");
-        await DBService().uploadImageSignUb(
-            bucket: "profile", imageFile: locator.OfficeImageFile);
-        DBService().imageId = await DBService().urlImageSignUp();
         print("-------------------------------2");
       } catch (error) {
         emit(ErrorSignUpState(msg: "هناك خطأ في إنشاء الحساب"));
       }
-      // await DBService().createProfileOffice(
-      //   userName: event.name,
-      //   email: event.email,
-      //   cr: event.cr,
-      //   departmentId: event.departmentId,
-      //   disc: event.info,
-      //   phoneNumber: event.phone,
-      //   image: DBService().imageId,
-      // );
+      await DBService().createProfileOffice(
+        userName: event.name,
+        email: event.email,
+        cr: event.cr,
+        departmentId: event.departmentId,
+        disc: event.info,
+        phoneNumber: event.phone,
+        image: DBService().imageId,
+      );
       emit(SuccessSignUpState(msg: "تم إنشاء الحساب بنجاح"));
-      // } catch (error) {
-      //   emit(ErrorSignUpState(msg: "هناك خطأ في إنشاء الحساب"));
-      // }
+      } catch (error) {
+        emit(ErrorSignUpState(msg: "هناك خطأ في إنشاء الحساب"));
+      }
+    }
+  }
+
+  FutureOr<void> addImage(
+      AddImageEvent event, Emitter<SignUpState> emit) async {
+    try {
+      await DBService().uploadImageSignUb(
+          bucket: "profile", imageFile: locator.OfficeImageFile);
+      DBService().imageId = await DBService().urlImageSignUp();
+      DBService().editImageOffice(image: DBService().imageId);
+    } catch (e) {
+      emit(ErrorSignUpState(msg: 'حدث خطاء في رفع الصوره'));
     }
   }
 }

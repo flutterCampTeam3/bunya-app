@@ -45,4 +45,6 @@ class CreateAccountprofileEvent extends SignUpEvent {
   });
 }
 
-class ChoosImageEvent extends SignUpEvent {}
+class ChooseImageEvent extends SignUpEvent {}
+
+class AddImageEvent extends SignUpEvent {}

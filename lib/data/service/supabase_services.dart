@@ -276,6 +276,15 @@ class DBService {
     ).match({'officeId': supabase.auth.currentUser!.id});
   }
 
+    Future editImageOffice(
+      {required String image}) async {
+    await supabase.from('Offices').update(
+      {
+        'image': image,
+      },
+    ).match({'officeId': supabase.auth.currentUser!.id});
+  }
+
   ///-- add Follower
   Future addFollowers({
     required String officeID,
@@ -422,18 +431,13 @@ class DBService {
         .from('post_likes')
         .select('*')
         .eq('postOfficeId', officeId);
-    print("in the getOfficeLikeNumber after");
-    print("-------------------------------");
-    print("-------------------------------${postLikeNumber.length}");
     if (postLikeNumber.isNotEmpty) {
       final List<postLikeModel> likes = [];
       for (var element in postLikeNumber) {
         likes.add(postLikeModel.fromJson(element));
       }
-      print("-------------------------------the num${likes.length}");
       return likes.length;
     } else {
-      print("-------------------------------the num  else 0");
       return 0;
     }
   }
@@ -489,32 +493,20 @@ class DBService {
         .from('office_followers')
         .select('*')
         .eq('customerId', supabase.auth.currentUser!.id);
-    print(
-        "in the $followerNumber -------------------------------------------------");
-
     if (followerNumber.isNotEmpty) {
-      print("Hhhhh -------------------------------------------------");
-
       final List<ProfileOfficeFollowModel> follower = [];
       for (var element in followerNumber) {
         follower.add(ProfileOfficeFollowModel.fromJson(element));
       }
-      print(
-          "BBBB ------${follower.length}-------------------------------------------");
-
       final List<OfficesModel> followers = [];
       for (var element in follower) {
         final follow = await supabase
             .from('Offices')
             .select('*')
             .eq('officeId', element.officeId);
-        print("BBBB ------$follow-------------------------------------------");
-
         for (var element in follow) {
           followers.add(OfficesModel.fromJson(element));
         }
-        print(
-            "BBBB ------${follower.length}-------------------------------------------");
       }
       return followers;
     } else {

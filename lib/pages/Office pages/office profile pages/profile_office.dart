@@ -5,7 +5,7 @@ import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/Office%20pages/office%20profile%20pages/bloc/office_office_bloc.dart';
 import 'package:bunya_app/pages/Office%20pages/office%20profile%20pages/widgets/app_par_prof_office.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/widgets/widgets/information_widget.dart';
-import 'package:bunya_app/pages/costumer%20pages/chat_page/chat_page.dart';
+import 'package:bunya_app/pages/Messages_pages/chat_page/chat_page.dart';
 import 'package:bunya_app/pages/costumer%20pages/office%20profile%20pages/bloc/profile_posts_bloc.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/image_aacount_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/post_widget.dart';

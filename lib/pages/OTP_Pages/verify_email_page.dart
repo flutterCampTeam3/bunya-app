@@ -1,10 +1,10 @@
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
-import 'package:bunya_app/pages/widgets/auth/text_field_auth.dart';
+import 'package:bunya_app/pages/OTP_Pages/widgets/auth/text_field_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../widgets/auth/button_widget.dart';
+import 'widgets/auth/button_widget.dart';
 import 'bloc/password_reset_bloc.dart';
 import 'verify_otp_page.dart';
 

@@ -11,8 +11,6 @@ Map<String, ThemeData> apTheme = {
           onSecondary: darkGreyColor,
           error: red,
           onError: red,
-          background: const Color.fromARGB(255, 41, 34, 34),
-          onBackground: freewhiteBrown,
           surface: whitegreyy,
           onSurface: white),
       appBarTheme: const AppBarTheme(
@@ -37,8 +35,6 @@ Map<String, ThemeData> apTheme = {
           onSecondary: greyColor,
           error: red,
           onError: red,
-          background: white,
-          onBackground: page,
           surface: white,
           onSurface: blackColor),
       appBarTheme: const AppBarTheme(

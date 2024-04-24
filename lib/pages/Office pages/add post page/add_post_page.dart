@@ -6,7 +6,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
 import '../../../helper/sized.dart';
-import '../../widgets/auth/button_widget.dart';
+import '../../OTP_Pages/widgets/auth/button_widget.dart';
 
 class AddPostPage extends StatefulWidget {
   const AddPostPage({super.key});

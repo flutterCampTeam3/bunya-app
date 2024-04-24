@@ -4,9 +4,9 @@ import 'package:bunya_app/data/model/messege_model.dart';
 import 'package:bunya_app/data/model/profile_model_customer.dart';
 import 'package:bunya_app/data/model/room_model.dart';
 import 'package:bunya_app/helper/extintion.dart';
-import 'package:bunya_app/pages/costumer%20pages/chat_page/bloc/chat_bloc.dart';
-import 'package:bunya_app/pages/costumer%20pages/chat_page/widgets/chat_bubble.dart';
-import 'package:bunya_app/pages/costumer%20pages/chat_page/widgets/message_bar.dart';
+import 'package:bunya_app/pages/Messages_pages/chat_page/bloc/chat_bloc.dart';
+import 'package:bunya_app/pages/Messages_pages/chat_page/widgets/chat_bubble.dart';
+import 'package:bunya_app/pages/Messages_pages/chat_page/widgets/message_bar.dart';
 import 'package:flutter/material.dart';
 // ignore: unnecessary_import
 import 'package:flutter/widgets.dart';

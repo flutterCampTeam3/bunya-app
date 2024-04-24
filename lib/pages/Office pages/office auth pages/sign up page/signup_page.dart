@@ -6,12 +6,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../helper/sized.dart';
 import '../signIn page/signin_page.dart';
-import '../../../widgets/auth/button_widget.dart';
+import '../../../OTP_Pages/widgets/auth/button_widget.dart';
 import 'bloc/sign_up_bloc.dart';
-import '../../../widgets/auth/page_header.dart';
-import '../../../widgets/auth/pass_textfiled.dart';
-import '../../../widgets/auth/text_field_auth.dart';
-import '../../../widgets/auth/text_field_confirm_pass.dart';
+import '../../../OTP_Pages/widgets/auth/page_header.dart';
+import '../../../OTP_Pages/widgets/auth/pass_textfiled.dart';
+import '../../../OTP_Pages/widgets/auth/text_field_auth.dart';
+import '../../../OTP_Pages/widgets/auth/text_field_confirm_pass.dart';
 import 'profile_signup.dart';
 
 class SignUpPage extends StatefulWidget {

@@ -58,7 +58,7 @@ class ImagePickerWidget extends StatelessWidget {
                       child: IconButton(
                         onPressed: () {
                           BlocProvider.of<SignUpBloc>(context)
-                              .add(ChoosImageEvent());
+                              .add(ChooseImageEvent());
                         },
                         icon: Icon(Icons.camera_alt_outlined,
                             color: darkBrown),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../helper/colors.dart';
+import '../../../../helper/colors.dart';
 
-class PassTextField extends StatefulWidget {
-  const PassTextField({
+class SigninPassTextField extends StatefulWidget {
+  const SigninPassTextField({
     super.key,
     required this.controller,
   });
@@ -14,7 +14,7 @@ class PassTextField extends StatefulWidget {
   _PassTextFieldState createState() => _PassTextFieldState();
 }
 
-class _PassTextFieldState extends State<PassTextField> {
+class _PassTextFieldState extends State<SigninPassTextField> {
   bool obscureText = true;
 
   @override
@@ -34,8 +34,7 @@ class _PassTextFieldState extends State<PassTextField> {
           borderSide: BorderSide(color: brown),
         ),
         labelText: "كلمة المرور",
-        // labelStyle: TextStyle(color: blackColor),
-        filled: true,
+          filled: true,
         fillColor: freewhiteBrown,
         suffixIcon: IconButton(
           onPressed: () {
@@ -45,7 +44,7 @@ class _PassTextFieldState extends State<PassTextField> {
           },
           icon: Icon(
             obscureText ? Icons.visibility_off : Icons.visibility,
-            color: whiteBrown,
+            color: brown,
           ),
         ),
       ),
@@ -56,6 +55,7 @@ class _PassTextFieldState extends State<PassTextField> {
           return 'الرجاء إدخال كلمة المرور';
         }
         if (value.length >= 6) {
+          print('رقم سري صحيح');
         } else {
           return 'الرقم السري يجب ان يكون اكثر من ٦ ارقام';
         }

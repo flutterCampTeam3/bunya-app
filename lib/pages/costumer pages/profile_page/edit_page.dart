@@ -7,7 +7,7 @@ import 'package:bunya_app/pages/Office%20pages/profile_page/widgets/widgets/info
 import 'package:bunya_app/pages/costumer%20pages/profile_page/bloc/profile_bloc.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/profile_page.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/image_aacount_widget.dart';
-import 'package:bunya_app/pages/widgets/auth/button_widget.dart';
+import 'package:bunya_app/pages/OTP_Pages/widgets/auth/button_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

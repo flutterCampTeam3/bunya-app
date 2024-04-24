@@ -1,5 +1,5 @@
 import 'package:bunya_app/data/model/room_model.dart';
-import 'package:bunya_app/pages/costumer%20pages/chat_page/bloc/chat_bloc.dart';
+import 'package:bunya_app/pages/Messages_pages/chat_page/bloc/chat_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
