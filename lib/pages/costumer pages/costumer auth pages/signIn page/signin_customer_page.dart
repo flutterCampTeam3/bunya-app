@@ -28,8 +28,9 @@ class _SigninCustomerPageState extends State<SigninCustomerPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    TextEditingController emailController =
-        TextEditingController(text: "shaimaa@gmail.com");
+    TextEditingController emailController = TextEditingController(
+      text: "shaimaa@gmail.com",
+    );
     TextEditingController passController =
         TextEditingController(text: "112233");
     return BlocProvider(

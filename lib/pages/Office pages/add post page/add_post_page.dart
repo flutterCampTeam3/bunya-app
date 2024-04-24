@@ -41,7 +41,7 @@ class _AddPostPageState extends State<AddPostPage> {
         return Directionality(
           textDirection: TextDirection.rtl,
           child: Scaffold(
-            backgroundColor: white,
+            // backgroundColor: white,
             appBar: PreferredSize(
               preferredSize: const Size.fromHeight(50.0),
               child: AppBar(
@@ -65,7 +65,7 @@ class _AddPostPageState extends State<AddPostPage> {
                   Text(
                     "اضافة منشور",
                     style: TextStyle(
-                        color: blackColor,
+                        color: Theme.of(context).colorScheme.onSurface,
                         fontWeight: FontWeight.w500,
                         fontSize: 30),
                   ),
@@ -151,7 +151,7 @@ class _AddPostPageState extends State<AddPostPage> {
                   Padding(
                     padding: const EdgeInsets.only(left: 12, right: 12),
                     child: ButtonWidget(
-                      backgroundColor: darkBrown,
+                      backgroundColor: brown,
                       text: 'نشر',
                       textColor: whiteColor,
                       onPressed: () {

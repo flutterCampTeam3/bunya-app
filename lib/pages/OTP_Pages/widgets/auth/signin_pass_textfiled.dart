@@ -34,7 +34,8 @@ class _PassTextFieldState extends State<SigninPassTextField> {
           borderSide: BorderSide(color: brown),
         ),
         labelText: "كلمة المرور",
-          filled: true,
+        labelStyle: TextStyle(color: blackColor),
+        filled: true,
         fillColor: freewhiteBrown,
         suffixIcon: IconButton(
           onPressed: () {
