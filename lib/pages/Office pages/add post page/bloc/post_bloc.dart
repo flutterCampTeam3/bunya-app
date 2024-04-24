@@ -14,21 +14,18 @@ part 'post_state.dart';
 class PostBloc extends Bloc<PostEvent, PostState> {
   PostBloc() : super(PostInitial()) {
     File PostImageFile;
-
     on<ChoseImagePostEvent>((event, emit) async {
       File avatar = File(await pickedPost());
       GetIt.I.get<DBService>().PostImageFile = avatar;
       emit(ShowImagepostState(avatar));
     });
-    //---------  new event to test sent post
-
+     
     on<UploadPost>((event, emit) async {
-      // GetIt.I.get<DBService>().deleteImage(event.bucketName, event.fileName);
       GetIt.I.get<DBService>().uploadImage(
           GetIt.I.get<DBService>().PostImageFile,
           event.bucketName,
           event.fileName);
-
+    
       GetIt.I.get<DBService>().imageId =
           await GetIt.I.get<DBService>().UrlImage(event.fileName);
     });
@@ -45,9 +42,3 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     return (img!.path);
   }
 }
-/*
-https://mtaainvajktwbwpffkxw.supabase.co/storage/v1/object/public/profile/PostFolder/c8a07680-859e-455b-8ce0-9ffedb45de1a%20%20%20%20%20//.%20
-https://mtaainvajktwbwpffkxw.supabase.co/storage/v1/object/public/profile/c8a07680-859e-455b-8ce0-9ffedb45de1a
-https://mtaainvajktwbwpffkxw.supabase.co/storage/v1/object/public/profile/c8a07680-859e-455b-8ce0-9ffedb45de1a
-https://mtaainvajktwbwpffkxw.supabase.co/storage/v1/object/public/profile/PostFolder/c8a07680-859e-455b-8ce0-9ffedb45de1a
-*/

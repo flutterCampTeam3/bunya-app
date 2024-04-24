@@ -8,6 +8,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:uuid/uuid.dart';
 import '../../../../helper/sized.dart';
 import '../../../Office pages/office auth pages/sign up page/bloc/sign_up_bloc.dart';
 import '../../../widgets/auth/button_widget.dart';
@@ -35,6 +36,7 @@ class _SignUpCustomerPageState extends State<SignUpCustomerPage> {
     TextEditingController phoneController = TextEditingController();
     TextEditingController passController = TextEditingController();
     TextEditingController confirmPassController = TextEditingController();
+    String imageId = const Uuid().v4();
 
     void initState() {
       super.initState();
@@ -152,13 +154,17 @@ class _SignUpCustomerPageState extends State<SignUpCustomerPage> {
                                   onPressed: () {
                                     if (_formKey.currentState!.validate()) {
                                       bloc.add(CreateAccountCustomerEvent(
-                                        email: emailController.text,
-                                        password: passController.text,
-                                        name: nameController.text,
-                                        phone: phoneController.text,
-                                        confirmPass: confirmPassController.text,
-                                        
-                                      ));
+                                          email: emailController.text,
+                                          password: passController.text,
+                                          name: nameController.text,
+                                          phone: phoneController.text,
+                                          confirmPass:
+                                              confirmPassController.text,
+                                          bucketName: "profile",
+                                          fileName: imageId));
+                                      bloc.add(UploadProfileImage(
+                                          bucketName: "profile",
+                                          fileName: imageId));
                                     }
                                   },
                                   textColor: Colors.white,

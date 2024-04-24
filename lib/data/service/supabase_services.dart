@@ -84,13 +84,11 @@ class DBService {
     required String email,
     required String password,
     required String userName,
-    // required String image,
   }) async {
     print(" before: in the func");
     print(" before: $email");
     print(" before: $password");
     final respons = await supabase.auth.signUp(
-      // data: {'Name': userName},
       email: email,
       password: password,
     );
@@ -134,27 +132,21 @@ class DBService {
     required String phoneNumber,
     required String image,
   }) async {
-    try {
-      final respons = await supabase.auth.signUp(
-        email: email,
-        password: password,
-      );
-    } catch (e) {
-      print(e);
-    }
-    // data: {'Name': userName},
-    // await supabase.from('Customer').insert(
-    //   {
-    //     'email': email,
-    //     'name': userName,
-    //     'phoneNumber': int.parse(phoneNumber),
-    //     'customerId': respons.user!.id,
-    //     'image':
-    //         'https://mtaainvajktwbwpffkxw.supabase.co/storage/v1/object/public/profile/Ellipse%2024.svg'
-    //   },
-    // );
+    final respons = await supabase.auth.signUp(
+      email: email,
+      password: password,
+    );
+    await supabase.from('Customer').insert(
+      {
+        'email': email,
+        'name': userName,
+        'phoneNumber': int.parse(phoneNumber),
+        'customerId': respons.user!.id,
+        'image': image
+      },
+    );
 
-    // print("in the signup: ${respons.hashCode}");
+    print("in the signup: ${respons.hashCode}");
     // Send email verification
     // await supabase.auth.resetPasswordForEmail(email);
   }
@@ -654,21 +646,15 @@ class DBService {
     print("done");
   }
 
-  Future<void> uploadImageSignUb(
-      {required File imageFile, required String bucket}) async {
-    print("image");
-    print("=======================================");
-    await supabase.storage
-        .from(bucket) // Replace with your storage bucket name
-        .upload(supabase.auth.currentUser!.id, imageFile,
-            fileOptions: const FileOptions(upsert: true));
-    print("=======================================");
-    print("image hiii ${supabase.auth.currentUser!.id}");
-    print("=======================================");
-    await urlImage(bucket, supabase.auth.currentUser!.id);
-
+  Future<void> uploadProfileImage(
+      File imageFile, String bucket, String nameFile) async {
+    await supabase.storage.from(bucket).upload(nameFile, imageFile,
+        fileOptions: const FileOptions(upsert: true));
+    await urlImage(bucket, nameFile);
     print("done");
   }
+
+  
 
   Future<void> updateImage(
       File imageFile, String bucket, String nameFile) async {

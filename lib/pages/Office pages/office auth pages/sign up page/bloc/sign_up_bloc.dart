@@ -85,8 +85,8 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
           password: event.password,
         );
         print("--------- End sign up -------");
-        await DBService().uploadImageSignUb(
-            bucket: "profile", imageFile: locator.OfficeImageFile);
+        // await DBService().uploadImageSignUb(
+        //     bucket: "profile", imageFile: locator.OfficeImageFile);
         DBService().imageId = await DBService().urlImageSignUp();
         print("-------------------------------2");
       } catch (error) {

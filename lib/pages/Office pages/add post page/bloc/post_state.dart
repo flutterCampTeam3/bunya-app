@@ -16,4 +16,4 @@ final class ShowImagepostState extends PostState{
   DisplayDesc({required this.desc});
 }
 
-final class successState extends PostState {}
+final class successState extends PostState {}      

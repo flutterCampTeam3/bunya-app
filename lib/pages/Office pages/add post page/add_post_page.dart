@@ -76,7 +76,7 @@ class _AddPostPageState extends State<AddPostPage> {
                       builder: (context, state) {
                         if (state is ShowImagepostState) {
                           return Container(
-                            height: 400,
+                             height: 400,
                             decoration: BoxDecoration(
                                 color: whiteColor,
                                 border: Border.all(color: darkGreyColor),
@@ -180,6 +180,8 @@ class _AddPostPageState extends State<AddPostPage> {
                           try {
                             bloc.add(UploadPost(
                                 bucketName: "profile", fileName: imageId));
+
+                                
                             bloc.add(UploadDesc(desc: descController.text));
                             Navigator.pop(context, const NavBarOfficePage());
                           } catch (e) {

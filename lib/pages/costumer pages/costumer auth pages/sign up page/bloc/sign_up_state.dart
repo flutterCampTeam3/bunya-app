@@ -24,4 +24,4 @@ final class ErrorSignUpCustomerState extends SignUpCustomerState {
   final String msg;
 
   ErrorSignUpCustomerState({required this.msg});
-}
+}    
