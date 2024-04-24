@@ -67,12 +67,22 @@ class AccountsHomeWidget extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: Colors.black),
                   ),
-                  Text(
-                    description.disc,
-                    style: TextStyle(
-                        fontSize: 15,
-                        color: Theme.of(context).colorScheme.secondary),
-                  )
+                  SizedBox(
+                    width: context.getWidth()*0.4,
+                    child: Text(
+                      description.disc ?? " ",
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: TextStyle(color:  Theme.of(context).colorScheme.secondary,fontSize: 15),
+                      
+                    ),
+                  ),
+                  // Text(
+                  //   description.disc,
+                  //   style: TextStyle(
+                  //       fontSize: 15,
+                  //       color: Theme.of(context).colorScheme.secondary),
+                  // )
                 ],
               ),
             ],
