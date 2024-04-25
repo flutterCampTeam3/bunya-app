@@ -1,4 +1,3 @@
-import 'package:bunya_app/data/service/git_it.dart';
 import 'package:bunya_app/data/service/supabase%20services/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';

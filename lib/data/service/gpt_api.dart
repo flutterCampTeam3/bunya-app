@@ -28,7 +28,7 @@ class GPT {
         {"role": "user", "content": prompt}
       ]
     };
-    final requset = await http
+     await http
         .post(uri, headers: header, body: jsonEncode(body))
         .then((value) {
       print(" in the then : ${value.body}");

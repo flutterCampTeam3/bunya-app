@@ -415,7 +415,6 @@ extension ConnectedUserServices on DBService {
 
   // -- Get messages stream --
   Future getMessagesStream(int roomId) async {
-    final userID = await getCurrentUserID();
     print(roomId);
     final Stream<List<Message>> msgStream = supabase
         .from('messages')
@@ -444,7 +443,7 @@ extension ConnectedUserServices on DBService {
   Future createRoom(String officeId) async {
     final currentUserId = await getCurrentUserID();
     print("create");
-    final response = await supabase
+     await supabase
         .from("room")
         .insert({"customer_id": currentUserId, "offecer_id": officeId});
   }
