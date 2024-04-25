@@ -76,7 +76,6 @@ class introPage extends StatelessWidget {
                     //   fixedSize:
                     //       WidgetStateProperty.all<Size>(const Size(150, 50)),
                     // ),
-
                     style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all<Color>(lightBrown),

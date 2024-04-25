@@ -73,8 +73,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   bottomText: "تسجيل حساب",
                 ),
                 Positioned(
-                  // top: -10,
-                  // bottom: 0,
+                  top: 0,
+                  bottom: 0,
                   child: IconButton(
                     onPressed: () {
                       context.pushAndRemove(const SigninPage());
