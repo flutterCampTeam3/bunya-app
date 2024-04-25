@@ -3,9 +3,13 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<!-- <key>NSPhotoLibraryUsageDescription</key>
-	<string>يحتاج التطبيق إلى الوصول إلى المعرض لتحميل الصور.</string> -->
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>يحتاج التطبيق إلى الوصول إلى مكتبة الصور لتحميل الصور ومشاركتها.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>يحتاج التطبيق إلى الوصول إلى الكاميرا لتسجيل الصور.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>يحتاج التطبيق إلى الوصول إلى الميكروفون لتسجيل الفيديوهات.</string>
 	<key>CFBundleDisplayName</key>
 	<string>Bunya App</string>
 	<key>CFBundleExecutable</key>
