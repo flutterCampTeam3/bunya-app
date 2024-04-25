@@ -52,15 +52,16 @@ class PostWidget extends StatelessWidget {
                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                        height: 145,
+                        height: context.getHeight() / 6,
+                        // height: 145,
                         child: Stack(
                           children: [
                             Positioned(
                               // top: 0,
                               child: Container(
-                                height: 
-                                // 120,
-                                context.getHeight() * 0.3,
+                                height:
+                                    // 120,
+                                    context.getHeight() * 0.3,
                                 width: MediaQuery.of(context).size.width * 0.6,
                                 decoration: BoxDecoration(
                                   boxShadow: [
@@ -125,7 +126,7 @@ class PostWidget extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        description.desc ,
+                        description.desc,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: TextStyle(color: blackColor),

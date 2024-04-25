@@ -1,6 +1,7 @@
 import 'package:bunya_app/helper/colors.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ImageAacountWodget extends StatelessWidget {
   ImageAacountWodget({super.key, required this.path});
   String path;

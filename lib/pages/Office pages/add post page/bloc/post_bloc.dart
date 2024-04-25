@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:bloc/bloc.dart';
 import 'package:bunya_app/data/model/post_model.dart';
 import 'package:bunya_app/data/service/supabase%20services/services.dart';
@@ -13,7 +12,6 @@ part 'post_state.dart';
 
 class PostBloc extends Bloc<PostEvent, PostState> {
   PostBloc() : super(PostInitial()) {
-    File PostImageFile;
     on<ChoseImagePostEvent>((event, emit) async {
       File avatar = File(await pickedPost());
       GetIt.I.get<DBService>().PostImageFile = avatar;

@@ -1,10 +1,10 @@
 import 'package:bunya_app/data/model/post_model.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/bloc/profile_office_bloc.dart';
-import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/bloc/like_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// ignore: must_be_immutable
 class PostProfileOfficeWidget extends StatelessWidget {
   PostProfileOfficeWidget(
       {super.key,

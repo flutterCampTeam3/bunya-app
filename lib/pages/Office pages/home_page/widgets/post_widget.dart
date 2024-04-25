@@ -52,7 +52,8 @@ class PostOfficeHomeWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
-                        height: 145,
+                        height: context.getHeight() / 6,
+                        // height: 145,
                         child: Stack(
                           children: [
                             Container(

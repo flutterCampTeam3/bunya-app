@@ -1,6 +1,6 @@
-import 'package:bunya_app/helper/colors.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class InformationWidgetOffice extends StatelessWidget {
   InformationWidgetOffice({super.key, required this.widget});
 

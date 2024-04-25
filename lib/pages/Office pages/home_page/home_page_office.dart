@@ -6,13 +6,11 @@ import 'package:bunya_app/pages/Office%20pages/office%20profile%20pages/profile_
 import 'package:bunya_app/pages/costumer%20pages/accounts_list/account_list.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/accounts_home_widget.dart';
 import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/image_widget.dart';
-import 'package:bunya_app/pages/costumer%20pages/home_page/widgets/post_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../costumer pages/office profile pages/profile_office.dart';
 import '../../postPage/post_page.dart';
 import '../../costumer pages/home_page/widgets/scaffoldWidget.dart';
 import 'bloc/home_bloc.dart';
