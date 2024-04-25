@@ -1,14 +1,12 @@
-import 'package:bunya_app/data/service/supabase_services.dart';
+import 'package:bunya_app/data/service/supabase%20services/services.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
-import 'package:bunya_app/pages/Office%20pages/office%20auth%20pages/signIn%20page/signin_page.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/bloc/profile_office_bloc.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/edit_office_page.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/widgets/widgets/information_widget.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/widgets/widgets/post_widget%20copy.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/image_aacount_widget.dart';
-import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/post_widget.dart';
 import 'package:bunya_app/pages/intro%20pages/first_intro.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +21,6 @@ class ProfilePageOffice extends StatelessWidget {
     // required this.officeId
   });
   // final OfficesModel officeId;
-  @override
   final locator = GetIt.I.get<DBService>();
   @override
   Widget build(BuildContext context) {

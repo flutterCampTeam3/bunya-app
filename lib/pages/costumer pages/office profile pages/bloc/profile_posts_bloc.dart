@@ -3,7 +3,7 @@ import 'package:bloc/bloc.dart';
 import 'package:bunya_app/data/model/room_model.dart';
 import 'package:meta/meta.dart';
 import '../../../../data/model/post_model.dart';
-import '../../../../data/service/supabase_services.dart';
+import '../../../../data/service/supabase services/services.dart';
 part 'profile_posts_event.dart';
 part 'profile_posts_state.dart';
 

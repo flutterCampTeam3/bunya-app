@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
+// ignore: must_be_immutable
 class InformationRowCustomer extends StatelessWidget {
   InformationRowCustomer({super.key, required this.icon, required this.info});
   Widget icon;

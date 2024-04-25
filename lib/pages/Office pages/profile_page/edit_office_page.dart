@@ -1,5 +1,4 @@
-import 'package:bunya_app/data/model/offices_model.dart';
-import 'package:bunya_app/data/service/supabase_services.dart';
+import 'package:bunya_app/data/service/supabase%20services/services.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
@@ -13,6 +12,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
+// ignore: must_be_immutable
 class EditPageOffice extends StatelessWidget {
   EditPageOffice(
       {super.key,
@@ -39,7 +39,6 @@ class EditPageOffice extends StatelessWidget {
     return BlocProvider(
       create: (context) => ProfileOfficeBloc(),
       child: Builder(builder: (context) {
-        final bloc = context.read<ProfileOfficeBloc>();
         return BlocConsumer<ProfileOfficeBloc, ProfileOfficeState>(
           listener: (context, state) {
             if (state is ProfilOfficeSuccessOfficeState) {

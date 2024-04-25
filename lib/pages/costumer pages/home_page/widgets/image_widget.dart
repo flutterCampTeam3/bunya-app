@@ -2,6 +2,7 @@ import 'package:bunya_app/helper/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+// ignore: must_be_immutable
 class ImageWidget extends StatelessWidget {
   ImageWidget(
       {super.key,

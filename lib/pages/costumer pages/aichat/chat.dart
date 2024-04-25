@@ -21,7 +21,7 @@ class Chat extends StatelessWidget {
             textDirection: TextDirection.rtl,
             child: Scaffold(
               appBar: PreferredSize(
-                preferredSize: const Size.fromHeight(100.0),
+                preferredSize: const Size.fromHeight(110.0),
                 child: Container(
                   decoration: BoxDecoration(
                     color: white,
@@ -34,32 +34,39 @@ class Chat extends StatelessWidget {
                       ),
                     ],
                   ),
-                  child:  Column(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      BackButton(),
+                      IconButton(
+                        icon: const Icon(Icons.arrow_back_ios_new,
+                            color: Colors.black),
+                        onPressed: () {
+                          context.popNav();
+                        },
+                      ),
                       Padding(
-                        padding: EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(8.0),
                         child: Row(
                           children: [
-                         Container(
-                          height: 50,
-                          width: 50,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(50)),
-                              color: whiteColor,
-                              border: Border.all(color: whiteColor),
-                              image: DecorationImage(
-                                  image: AssetImage("assets/images/ai.png"),
-                                  fit: BoxFit.cover)),
-                        ),
+                            Container(
+                              height: 50,
+                              width: 50,
+                              decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(50)),
+                                  color: whiteColor,
+                                  border: Border.all(color: whiteColor),
+                                  image: const DecorationImage(
+                                      image: AssetImage("assets/images/ai.png"),
+                                      fit: BoxFit.cover)),
+                            ),
                             // CircleAvatar(
                             //   backgroundImage:
                             //       AssetImage('assets/images/ai.png'),
-                                  
+
                             // ),
                             gapWe5,
-                            Text(
+                            const Text(
                               "اسأل بنية",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             )

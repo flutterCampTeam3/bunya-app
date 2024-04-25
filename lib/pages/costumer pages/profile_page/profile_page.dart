@@ -1,10 +1,8 @@
-
 import 'package:bunya_app/data/model/offices_model.dart';
-import 'package:bunya_app/data/service/supabase_services.dart';
+import 'package:bunya_app/data/service/supabase%20services/services.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
-import 'package:bunya_app/pages/Office%20pages/office%20auth%20pages/signIn%20page/signin_page.dart';
 import 'package:bunya_app/pages/costumer%20pages/office%20profile%20pages/profile_office.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/bloc/profile_bloc.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/edit_page.dart';
@@ -18,15 +16,13 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../../data/model/office_follow_model.dart';
 
 class ProfilePageCustomer extends StatelessWidget {
   ProfilePageCustomer({super.key, this.follow});
 
-  @override
   final locator = GetIt.I.get<DBService>();
   final OfficesModel? follow;
-  // bool isEditing = false;
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -165,7 +161,7 @@ class ProfilePageCustomer extends StatelessWidget {
                                                   height: 20,
                                                   width: 45,
                                                 ),
-                                                info: state.name ?? '',
+                                                info: state.name ,
                                               ),
                                               gapH15,
                                               InformationRowCustomer(
@@ -173,8 +169,7 @@ class ProfilePageCustomer extends StatelessWidget {
                                                   Icons.phone_outlined,
                                                   color: Colors.black,
                                                 ),
-                                                info: state.phone.toString() ??
-                                                    '',
+                                                info: state.phone.toString() ,
                                               ),
                                               gapH15,
                                               InformationRowCustomer(
@@ -182,7 +177,7 @@ class ProfilePageCustomer extends StatelessWidget {
                                                   Icons.email_outlined,
                                                   color: Colors.black,
                                                 ),
-                                                info: state.email ?? '',
+                                                info: state.email ,
                                               ),
                                               gapH60,
                                               Container(

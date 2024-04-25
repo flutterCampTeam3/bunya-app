@@ -2,6 +2,7 @@ import 'package:bunya_app/pages/costumer%20pages/accounts_list/bloc/account_list
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+// ignore: must_be_immutable
 class AppBarAccoutWidget extends StatelessWidget {
   AppBarAccoutWidget({
     super.key,

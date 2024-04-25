@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:bunya_app/data/service/git_it.dart';
-import 'package:bunya_app/data/service/supabase_services.dart';
+import 'package:bunya_app/data/service/supabase%20services/services.dart';
 import 'package:bunya_app/helper/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';

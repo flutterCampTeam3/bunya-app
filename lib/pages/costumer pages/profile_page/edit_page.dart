@@ -1,20 +1,18 @@
-import 'package:bunya_app/data/model/profile_model_customer.dart';
-import 'package:bunya_app/data/service/supabase_services.dart';
+import 'package:bunya_app/data/service/supabase%20services/services.dart';
 import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/Office%20pages/profile_page/widgets/widgets/info_edit_row.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/bloc/profile_bloc.dart';
-import 'package:bunya_app/pages/costumer%20pages/profile_page/profile_page.dart';
 import 'package:bunya_app/pages/costumer%20pages/profile_page/widgets/image_aacount_widget.dart';
 import 'package:bunya_app/pages/widgets/auth/button_widget.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
 
+// ignore: must_be_immutable
 class EditPageCustomer extends StatelessWidget {
   EditPageCustomer(
       {super.key,

@@ -14,7 +14,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../office profile pages/profile_office.dart';
-import 'bloc/home_bloc.dart';
 
 class HomePageCustomer extends StatelessWidget {
   const HomePageCustomer({super.key});
@@ -164,13 +163,6 @@ class HomePageCustomer extends StatelessWidget {
                               }
                             },
                             builder: (context, state) {
-                              // if (state is LoadingState) {
-                              //   return Center(
-                              //     child: CircularProgressIndicator(
-                              //       color: darkBrown,
-                              //     ),
-                              //   );
-                              // } else
                               if (state is datahomeSuccesState) {
                                 // Return GridView when the state is postsLoadedState
                                 return GridView.builder(
@@ -183,7 +175,6 @@ class HomePageCustomer extends StatelessWidget {
                                     mainAxisSpacing: 10.0,
                                     childAspectRatio:
                                         context.getWidth() >= 650 ? 0.85 : 0.75,
-                                    // 0.75,
                                   ),
                                   itemCount: 6,
                                   // state.classPost.length,

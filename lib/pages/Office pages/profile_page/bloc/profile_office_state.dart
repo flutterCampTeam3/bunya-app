@@ -1,6 +1,6 @@
 part of 'profile_office_bloc.dart';
 
-@immutable
+
 sealed class ProfileOfficeState {}
 
 final class ProfileOfficeInitial extends ProfileOfficeState {}

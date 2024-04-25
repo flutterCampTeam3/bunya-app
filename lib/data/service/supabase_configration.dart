@@ -1,5 +1,5 @@
 import 'package:bunya_app/data/service/git_it.dart';
-import 'package:bunya_app/data/service/supabase_services.dart';
+import 'package:bunya_app/data/service/supabase%20services/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:get_it/get_it.dart';
@@ -19,8 +19,4 @@ databaseConfig() async {
 Future<void> setup() async {
   await GetStorage.init();
   GetIt.instance;
-  // final locator1 = GetIt.I;
-  // locator1.registerSingleton<AppearanceService>(AppearanceService());
-  // locator1
-  //     .registerSingletonAsync<AppearanceService>(() async => AppearanceService());
 }

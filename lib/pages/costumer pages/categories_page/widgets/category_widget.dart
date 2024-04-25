@@ -2,6 +2,7 @@ import 'package:bunya_app/helper/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
 
+// ignore: must_be_immutable
 class CategoryWidget extends StatelessWidget {
   CategoryWidget({super.key, required this.name, required this.path , required this.onTap});
   String path;

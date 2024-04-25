@@ -1,9 +1,8 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:bunya_app/data/model/post_model.dart';
 import 'package:bunya_app/data/model/room_model.dart';
-import 'package:bunya_app/data/service/supabase_services.dart';
+import 'package:bunya_app/data/service/supabase%20services/services.dart';
 import 'package:meta/meta.dart';
 
 part 'office_office_event.dart';

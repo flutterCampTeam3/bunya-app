@@ -1,6 +1,7 @@
 import 'package:bunya_app/helper/colors.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class SignintextFieldAuth extends StatelessWidget {
   SignintextFieldAuth({
     super.key,

@@ -19,7 +19,6 @@ class AccountsHomeWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        // height: ,
         width: context.getWidth() * 0.7,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -75,7 +74,7 @@ class AccountsHomeWidget extends StatelessWidget {
                   SizedBox(
                     width: context.getWidth() * 0.4,
                     child: Text(
-                      description.disc ?? " ",
+                      description.disc ,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       style: TextStyle(

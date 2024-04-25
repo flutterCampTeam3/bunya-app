@@ -4,7 +4,6 @@ import 'package:bunya_app/helper/colors.dart';
 import 'package:bunya_app/helper/extintion.dart';
 import 'package:bunya_app/helper/sized.dart';
 import 'package:bunya_app/pages/Office%20pages/home_page/bloc/home_bloc.dart';
-import 'package:bunya_app/pages/costumer%20pages/home_page/bloc/home_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -34,11 +33,9 @@ class PostOfficeHomeWidget extends StatelessWidget {
           return BlocBuilder<HomeOfficesBloc, HomeOfficesState>(
             builder: (context, state) {
               return Container(
-                // height: 240,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Theme.of(context).colorScheme.surface,
-                  // color: Colors.red,
                   boxShadow: [
                     BoxShadow(
                       color: darkGreyColor.withOpacity(0.4),
@@ -59,7 +56,6 @@ class PostOfficeHomeWidget extends StatelessWidget {
                         child: Stack(
                           children: [
                             Container(
-                              // height: 120,
                               width: MediaQuery.of(context).size.width *
                                   0.6, ///////////////
                               decoration: BoxDecoration(

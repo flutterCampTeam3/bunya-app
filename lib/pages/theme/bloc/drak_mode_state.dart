@@ -1,6 +1,5 @@
 part of 'drak_mode_bloc.dart';
 
-@immutable
 sealed class DrakModeState {}
 
 final class DrakModeInitial extends DrakModeState {}

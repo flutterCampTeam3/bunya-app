@@ -1,6 +1,7 @@
 import 'package:bunya_app/helper/colors.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class EditInfoRowCustomer extends StatelessWidget {
   EditInfoRowCustomer({
     super.key,

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
 
-import 'supabase_services.dart';
+import 'supabase services/services.dart';
 
 class GPT {
   final locator = GetIt.I.get<DBService>();

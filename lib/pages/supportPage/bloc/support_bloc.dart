@@ -1,11 +1,8 @@
 import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:meta/meta.dart';
-
-import '../../../data/service/supabase_services.dart';
-
+import 'package:bunya_app/data/service/supabase%20services/services.dart';
 part 'support_event.dart';
 part 'support_state.dart';
 
