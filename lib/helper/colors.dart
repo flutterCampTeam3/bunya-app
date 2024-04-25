@@ -16,7 +16,7 @@ Color textgreyColor = const Color(0xff504E4E);
 Color brownColor = const Color(0xff9E8D7B);
 Color white = const Color(0xffF5F5F5);
 Color page = const Color(0xffDFD8D0);
-// Color freewhiteBrown = const Color.fromARGB(32, 158, 141, 123);
+Color frewhiteBrown = const Color.fromARGB(32, 158, 141, 123);
 Color freewhiteBrown = const Color(0xffDFD8D0);
 
 Color whiteBrown = const Color(0xff9E8D7B);

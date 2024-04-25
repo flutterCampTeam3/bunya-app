@@ -119,7 +119,8 @@ class PostWidget extends StatelessWidget {
                                 bottom: 0,
                                 child: Text("${bloc.likeNumber} لايك",
                                     style: GoogleFonts.balooBhaijaan2(
-                                      textStyle: const TextStyle(
+                                      textStyle: TextStyle(
+                                          color: white,
                                           fontWeight: FontWeight.bold),
                                     )))
                           ],

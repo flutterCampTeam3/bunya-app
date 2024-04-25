@@ -37,6 +37,7 @@ class Chat extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      gapH30,
                       IconButton(
                         icon: const Icon(Icons.arrow_back_ios_new,
                             color: Colors.black),

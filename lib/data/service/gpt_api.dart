@@ -1,8 +1,6 @@
 import 'dart:convert';
-
 import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
-
 import 'supabase services/services.dart';
 
 class GPT {
@@ -28,7 +26,7 @@ class GPT {
         {"role": "user", "content": prompt}
       ]
     };
-    final requset = await http
+    await http
         .post(uri, headers: header, body: jsonEncode(body))
         .then((value) {
       print(" in the then : ${value.body}");

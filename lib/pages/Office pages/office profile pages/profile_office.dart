@@ -114,12 +114,12 @@ class ProfilePageOfficeOffice extends StatelessWidget {
                             //       const Size(130, 50)),
                             // ),
 
-                            style: ButtonStyle(
-                              backgroundColor:
-                                  WidgetStateProperty.all<Color>(lightBrown),
-                              fixedSize: WidgetStateProperty.all<Size>(
-                                  const Size(150, 50)),
-                            ),
+                            // style: ButtonStyle(
+                            //   backgroundColor:
+                            //       WidgetStateProperty.all<Color>(lightBrown),
+                            //   fixedSize: WidgetStateProperty.all<Size>(
+                            //       const Size(150, 50)),
+                            // ),
                             child: const Text(
                               'محادثة',
                               style: TextStyle(
@@ -129,108 +129,106 @@ class ProfilePageOfficeOffice extends StatelessWidget {
                             ),
                           ),
                           BlocConsumer<OfficeOfficeBloc, OfficeOfficeState>(
-                            listener: (context, state) {
-                              if (state is ErrorFollowOfficeState) {
-                                context.showErrorSnackBar(context, state.msg);
-                              }
-                              if (state is CheckChatOfficeState) {
-                                context.pushTo(
-                                    view: ChatView(room: state.room));
-                              }
-                            },
-                            builder: (context, state) {
-                              // if (state is LoadingOfficeState) {
-                              //   return SizedBox(
-                              //     height: 150,
-                              //     width: 150,
-                              //     child: Center(
-                              //       child: CircularProgressIndicator(
-                              //         color: brown,
-                              //       ),
-                              //     ),
-                              //   );
-                              // } else {
-                              return Row(
-                                children: [
-                                  Visibility(
-                                    visible: bloc.isFollow,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        bloc.add(DeleteFollowOfficeEvent(
-                                            id: office.officeId));
-                                      },
-                                      // style: ButtonStyle(
-                                      //   backgroundColor:
-                                      //       WidgetStateProperty.all<Color>(
-                                      //           lightBrown),
-                                      //   fixedSize:
-                                      //       WidgetStateProperty.all<Size>(
-                                      //           const Size(130, 50)),
-                                      // ),
-                                      // style: ButtonStyle(
-                                      //   backgroundColor:
-                                      //       MaterialStateProperty.all<Color>(
-                                      //           lightBrown),
-                                      //   fixedSize:
-                                      //       WidgetStateProperty.all<Size>(
-                                      //           const Size(130, 50)),
-                                      // ),
-                                      style: ButtonStyle(
-                                        backgroundColor:
-                                            WidgetStateProperty.all<Color>(
-                                                lightBrown),
-                                        fixedSize:
-                                            WidgetStateProperty.all<Size>(
-                                                const Size(150, 50)),
-                                      ),
+                              listener: (context, state) {
+                            if (state is ErrorFollowOfficeState) {
+                              context.showErrorSnackBar(context, state.msg);
+                            }
+                            if (state is CheckChatOfficeState) {
+                              context.pushTo(view: ChatView(room: state.room));
+                            }
+                          }, builder: (context, state) {
+                            // if (state is LoadingOfficeState) {
+                            //   return SizedBox(
+                            //     height: 150,
+                            //     width: 150,
+                            //     child: Center(
+                            //       child: CircularProgressIndicator(
+                            //         color: brown,
+                            //       ),
+                            //     ),
+                            //   );
+                            // } else {
+                            return Row(
+                              children: [
+                                Visibility(
+                                  visible: bloc.isFollow,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      bloc.add(DeleteFollowOfficeEvent(
+                                          id: office.officeId));
+                                    },
+                                    // style: ButtonStyle(
+                                    //   backgroundColor:
+                                    //       WidgetStateProperty.all<Color>(
+                                    //           lightBrown),
+                                    //   fixedSize:
+                                    //       WidgetStateProperty.all<Size>(
+                                    //           const Size(130, 50)),
+                                    // ),
+                                    // style: ButtonStyle(
+                                    //   backgroundColor:
+                                    //       MaterialStateProperty.all<Color>(
+                                    //           lightBrown),
+                                    //   fixedSize:
+                                    //       WidgetStateProperty.all<Size>(
+                                    //           const Size(130, 50)),
+                                    // ),
+                                    // style: ButtonStyle(
+                                    //   backgroundColor:
+                                    //       WidgetStateProperty.all<Color>(
+                                    //           lightBrown),
+                                    //   fixedSize:
+                                    //       WidgetStateProperty.all<Size>(
+                                    //           const Size(150, 50)),
+                                    // ),
 
-                                      child: const Text(
-                                        'الغاء المتابعة ',
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold),
-                                      ),
+                                    child: const Text(
+                                      'الغاء المتابعة ',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                   ),
-                                  Visibility(
-                                    visible: !bloc.isFollow,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        bloc.add(AddFollowOfficeEvent(
-                                            id: office.officeId));
-                                      },
-                                      style: ButtonStyle(
-                                        backgroundColor:
-                                            WidgetStateProperty.all<Color>(
-                                                lightBrown),
-                                        fixedSize:
-                                            WidgetStateProperty.all<Size>(
-                                                const Size(150, 50)),
-                                      ),
-                                      // style: ButtonStyle(
-                                      //   backgroundColor:
-                                      //       WidgetStateProperty.all<Color>(
-                                      //           brown),
-                                      //   fixedSize:
-                                      //       WidgetStateProperty.all<Size>(
-                                      //           const Size(130, 50)),
-                                      // ),
+                                ),
+                                Visibility(
+                                  visible: !bloc.isFollow,
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      bloc.add(AddFollowOfficeEvent(
+                                          id: office.officeId));
+                                    },
+                                    // style: ButtonStyle(
+                                    //   backgroundColor:
+                                    //       WidgetStateProperty.all<Color>(
+                                    //           lightBrown),
+                                    //   fixedSize:
+                                    //       WidgetStateProperty.all<Size>(
+                                    //           const Size(150, 50)),
+                                    // ),
+                                    // style: ButtonStyle(
+                                    //   backgroundColor:
+                                    //       WidgetStateProperty.all<Color>(
+                                    //           brown),
+                                    //   fixedSize:
+                                    //       WidgetStateProperty.all<Size>(
+                                    //           const Size(130, 50)),
+                                    // ),
 
-                                      child: const Text(
-                                        'متابعة',
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold),
-                                      ),
+                                    child: const Text(
+                                      'متابعة',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                   ),
-                                ],
-                              );
-                              }
-                            // },
-                          ),
+                                ),
+                              ],
+                            );
+                          }
+                              // },
+                              ),
                         ],
                       ),
                       gapH20,

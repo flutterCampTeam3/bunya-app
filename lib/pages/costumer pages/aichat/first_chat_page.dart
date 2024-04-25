@@ -14,27 +14,25 @@ class FirstChatPage extends StatelessWidget {
         textDirection: TextDirection.rtl,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: freewhiteBrown.withOpacity(0.12),
+            backgroundColor: frewhiteBrown.withOpacity(0.12),
             leading: IconButton(
                 onPressed: () {
                   context.popNav();
                 },
-                icon: Icon(Icons.arrow_back_ios_new)),
+                icon: const Icon(Icons.arrow_back_ios_new)),
           ),
           body: Container(
             width: double.infinity,
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [freewhiteBrown, whiteBrown],
+                colors: [frewhiteBrown, whiteBrown],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               ),
             ),
             child: Column(
-              
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                
                 SizedBox(
                   width: double.infinity,
                   height: 400,
@@ -56,7 +54,6 @@ class FirstChatPage extends StatelessWidget {
                           width: 300,
                         ),
                       ),
-                     
                     ],
                   ),
                 ),
@@ -72,7 +69,7 @@ class FirstChatPage extends StatelessWidget {
                 const SizedBox(height: 60),
                 ElevatedButton(
                   onPressed: () {
-                    context.pushTo(view: Chat());
+                    context.pushTo(view: const Chat());
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: whiteColor,
@@ -80,7 +77,7 @@ class FirstChatPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                     side: BorderSide.none,
-                    fixedSize: Size(200, 50),
+                    fixedSize: const Size(200, 50),
                   ),
                   child: Image.asset(
                     'assets/images/Vector.png',
