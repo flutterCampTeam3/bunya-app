@@ -1,0 +1,32 @@
+part of 'sign_up_bloc.dart';
+
+@immutable
+sealed class SignUpState {}
+
+final class SignUpInitial extends SignUpState {}
+
+final class LoadingSignUpState extends SignUpState {}
+
+
+final class SuccessSignUpState extends SignUpState {
+  final String msg;
+
+  SuccessSignUpState({required this.msg});
+}
+
+final class SuccessFindState extends SignUpState {
+  final String msg;
+
+  SuccessFindState({required this.msg});
+}
+
+class ShowImageOfficeState extends SignUpState{
+  final File  PickedImage;
+  ShowImageOfficeState(this.PickedImage);
+}
+
+final class ErrorSignUpState extends SignUpState {
+  final String msg;
+
+  ErrorSignUpState({required this.msg});
+}
