@@ -296,6 +296,7 @@ class ProfilePageOffice extends StatelessWidget {
                                   if (bloc.classPostId.isNotEmpty) {
                                     return SizedBox(
                                       child: GridView.builder(
+                                          reverse: true,
                                           gridDelegate:
                                               const SliverGridDelegateWithFixedCrossAxisCount(
                                             crossAxisCount: 1,
