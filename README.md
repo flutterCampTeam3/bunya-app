@@ -4,8 +4,10 @@ First Pgae:
 User Chose if he Customer or Offices
 ![first_page](https://github.com/flutterCampTeam3/bunya-app/assets/124809082/b59ce61b-58b7-4e84-9757-0adf8905be9f)
 
+<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/f6be37b3-63ba-4c7b-b762-bfa46a79a141" alt="home_page_cPart005" width="200">
+
 Intro Pages For Customer:
-![intro-c](https://github.com/flutterCampTeam3/bunya-app/assets/124809082/5247962c-8caf-40dc-a34f-c80a691ef034)
+![intro-c](https://github.com/flutterCampTeam3/bunya-app/assets/124809082/5247962c-8caf-40dc-a34f-c80a691ef034) 
 
 
 SignUp for Customer :
