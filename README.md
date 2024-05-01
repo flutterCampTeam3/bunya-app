@@ -164,7 +164,7 @@ The Office can add a post where he can present his work.
 
 Offices Chat Page:
 
-The Office can talk to the offices he wants to communicate with.
+The Office can view his chats with the offices.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/8dd9f615-9111-4645-a6ae-ddb070d200ef" alt="chatpage" width="300">
 
@@ -188,7 +188,7 @@ The Office can view his posts.
 
 - Offices logout:
 
-The customer can log out from his account.
+The Office can log out from his account.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/6cc914f8-dcad-4a7f-8605-4aadcea0c0a3" alt="logout" width="300">
 
@@ -209,6 +209,8 @@ The users can choose any mode they want.
 
 
 wrong input:
+
+there is validation for each entry in the app to ensure that the information entered is correct.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/06d21401-9ab6-49cc-bfb9-3d671f32e0fd" alt="wrong_entry" width="300">
 
