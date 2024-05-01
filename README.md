@@ -1,18 +1,21 @@
 # bunya_app
 
 First Page:
+
 Users can choose if he is a Customer or an Office.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/b59ce61b-58b7-4e84-9757-0adf8905be9f" alt="first_page" width="300">
 
 
 Intro Pages For Customer:
+
 the user can scroll through the pages or he can skip the pages by pressing the (تخطي) button.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/5247962c-8caf-40dc-a34f-c80a691ef034" alt="intro-c" width="300">
  
 
 SignUp for Customer :
+
 The customer can create an account with his data.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/e728cda8-55ec-4f69-a700-4216df4f7fb0" alt="signup_c_truePart002" width="300">
