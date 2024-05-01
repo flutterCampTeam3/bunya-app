@@ -84,7 +84,7 @@ The customer can view his chats with the offices.
 
 Categories Page for Customer:
 
-The customer can choose a specific category and view the accounts and offices for this category.
+The customer can choose a specific category and view the offices for this category.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/7477797d-71ef-44f1-a7d3-553688fe1f5b" alt="catagory_page_cPart006" width="300">
 
