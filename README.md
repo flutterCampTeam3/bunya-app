@@ -36,7 +36,7 @@ SignIn for Customer:
 
 Home Page for Customer:
 
-The customer can see the latest posts and like or unlike them uploaded by the Offices and the account of the Offices also he can choose a specific category and view the accounts and offices for this category.
+The customer can see the latest posts uploaded by the Offices and like or unlike them also he can view the Offices and he can choose a specific category and view the offices for this category.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/f6be37b3-63ba-4c7b-b762-bfa46a79a141" alt="home_page_cPart005" width="300">
 
