@@ -2,30 +2,30 @@
 
 First Pgae:
 User Chose if he Customer or Offices
-![first_page](https://github.com/flutterCampTeam3/bunya-app/assets/124809082/b59ce61b-58b7-4e84-9757-0adf8905be9f)
+<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/b59ce61b-58b7-4e84-9757-0adf8905be9f" alt="first_page" width="200">
 
-<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/f6be37b3-63ba-4c7b-b762-bfa46a79a141" alt="home_page_cPart005" width="200">
 
 Intro Pages For Customer:
-![intro-c](https://github.com/flutterCampTeam3/bunya-app/assets/124809082/5247962c-8caf-40dc-a34f-c80a691ef034) 
-
+<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/5247962c-8caf-40dc-a34f-c80a691ef034" alt="intro-c" width="200">
+mn 
 
 SignUp for Customer :
-![signup_c_truePart002](https://github.com/flutterCampTeam3/bunya-app/assets/124809082/e728cda8-55ec-4f69-a700-4216df4f7fb0)
+<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/e728cda8-55ec-4f69-a700-4216df4f7fb0" alt="signup_c_truePart002" width="200">
 
-![signup_c_truePart003](https://github.com/flutterCampTeam3/bunya-app/assets/124809082/32c83f00-a35f-47f0-bde7-c6e9028aef97)
+<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/32c83f00-a35f-47f0-bde7-c6e9028aef97" alt="signup_c_truePart003" width="200">
 
 
 SignIn for Customer:
 
-![signin_c](https://github.com/flutterCampTeam3/bunya-app/assets/124809082/265a5232-9031-4435-816c-86c5affe6bc2)
+<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/265a5232-9031-4435-816c-86c5affe6bc2" alt="signin_c" width="200">
 
 
 
 
 
 Home Page for Customer:
-![home_page_cPart005](https://github.com/flutterCampTeam3/bunya-app/assets/124809082/f6be37b3-63ba-4c7b-b762-bfa46a79a141)
+<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/f6be37b3-63ba-4c7b-b762-bfa46a79a141" alt="home_page_cPart005" width="200">
+
 
 
 ![home_page_cPart008](https://github.com/flutterCampTeam3/bunya-app/assets/124809082/bebeca67-93a7-4371-95ef-a5ea937cb46f)
