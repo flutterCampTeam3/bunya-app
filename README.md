@@ -76,7 +76,7 @@ The customer can talk to the offices he wants to communicate with:
 
 Chat Page for Customer:
 
-The customer can talk to the offices he wants to communicate with.
+The customer can view his chats with the offices.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/4d14e54f-3626-4445-99e7-9ce41c6b07f0" alt="chatpage" width="300">
 
