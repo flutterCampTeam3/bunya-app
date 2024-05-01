@@ -30,7 +30,7 @@ SignIn for Customer:
 
 Home Page for Customer:
 
-The customer can see the latest posts uploaded by the Offices and the account of the Offices also he can choose a specific category and view the accounts and offices for this category.
+The customer can see the latest posts and like or unlike them uploaded by the Offices and the account of the Offices also he can choose a specific category and view the accounts and offices for this category.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/f6be37b3-63ba-4c7b-b762-bfa46a79a141" alt="home_page_cPart005" width="300">
 
@@ -43,19 +43,22 @@ The customer can see the latest posts uploaded by the Offices and the account of
 
 
 
--like
-The customer also can add likes to the posts.
+- like:
+
+The customer can enter the post and he can like or unlike the posts and also can follow or unfollow the office of this post.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/c8e62f65-ab9f-4719-9024-26ec72bc2acb" alt="likegif" width="300">
 
 
--follow
+- follow:
+
 The customer also can follow the Offices that he likes.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/a4cef467-03bc-4b21-9750-98a2a02d1ed0" alt="folow" width="300">
 
 
--Chat
+- Chat:
+
 The customer can talk to the offices he wants to communicate with:
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/f6098a68-bde5-4c7f-8c38-bd7ab8064511" alt="chat_cPart002" width="300">
@@ -66,6 +69,7 @@ The customer can talk to the offices he wants to communicate with:
 
 
 Chat Page for Customer:
+
 The customer can talk to the offices he wants to communicate with.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/4d14e54f-3626-4445-99e7-9ce41c6b07f0" alt="chatpage" width="300">
@@ -73,6 +77,7 @@ The customer can talk to the offices he wants to communicate with.
 
 
 Categories Page for Customer:
+
 The customer can choose a specific category and view the accounts and offices for this category.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/7477797d-71ef-44f1-a7d3-553688fe1f5b" alt="catagory_page_cPart006" width="300">
@@ -81,6 +86,7 @@ The customer can choose a specific category and view the accounts and offices fo
 
 
 ChatAi Page for Customer:
+
 The customer can talk to an AI poot to ask him anything about the construction, design, etc.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/22c54aa8-63b9-4c3f-987f-55b58825880e" alt="aichat_cPart002" width="300">
@@ -93,18 +99,23 @@ The customer can talk to an AI poot to ask him anything about the construction, 
 
 
 Profile Page:
--edit
+
+- edit:
+
 The customer can view his profile and edit his data.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/6d802ddc-910c-4c08-b917-10f511b11996" alt="editprofilegif" width="300">
 
--followers
+
+- followers:
+
 The customer can see the offices that he follows.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/20b0310d-7a96-450b-be7d-064b98e23549" alt="folowersgif" width="300">
 
 
-logout:
+- logout:
+
 The customer can log out from his account.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/9c8c4702-5a3a-46c8-ae44-492c7b628dc3" alt="logoutgif" width="300">
@@ -113,6 +124,7 @@ The customer can log out from his account.
 ------------------------------------------
 
 Offices Intro :
+
 the user can scroll through the pages or he can skip the pages by pressing the (تخطي) button.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/c7f685a3-0307-4b93-a220-ea69f70dfc15" alt="intro_o" width="300">
@@ -120,6 +132,7 @@ the user can scroll through the pages or he can skip the pages by pressing the (
 
 
 Offices SignUp :
+
 The Office can create an account with his data but he must have a valid commercial register.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/d98a8206-1b7a-4d8b-a3c8-ba34fd4c4f64" alt="signup_office" width="300">
@@ -134,6 +147,7 @@ Offices SignIn :
 
 
 Offices Add Post:
+
 The Office can add a post where he can present his work.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/d6d0d7f3-479f-4cc2-afba-be75264c14d6" alt="addpost" width="300">
@@ -143,26 +157,31 @@ The Office can add a post where he can present his work.
 
 
 Offices Chat Page:
+
 The Office can talk to the offices he wants to communicate with.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/8dd9f615-9111-4645-a6ae-ddb070d200ef" alt="chatpage" width="300">
 
 
 Offices Profile Page:
--edit
+
+- edit:
+
 The Office can view his profile and edit his data.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/0ac4141f-1040-48a4-a990-3c459475e72a" alt="editprofile" width="300">
 
 
--posts
+- posts:
+
 The Office can view his posts.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/1f185542-7ce0-4f70-b419-c23ab07d70c4" alt="postesgif" width="300">
 
 
 
--Offices logout:
+- Offices logout:
+
 The customer can log out from his account.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/6cc914f8-dcad-4a7f-8605-4aadcea0c0a3" alt="logout" width="300">
@@ -170,18 +189,21 @@ The customer can log out from his account.
 
 --------------------------------------------------
 Reset Password:
+
 The users can change their password.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/0fdc91b9-af9b-47ec-8b7f-16d4637de735" alt="resetpasss" width="300">
 
 
 Dark Mood and Report:
+
 The users can choose any mode they want.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/35cef3bf-1f99-446b-ac28-cd88391d860d" alt="darkmood_problem" width="300">
 
 
 wrong input:
+
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/06d21401-9ab6-49cc-bfb9-3d671f32e0fd" alt="wrong_entry" width="300">
 
 
