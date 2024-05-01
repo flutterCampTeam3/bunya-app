@@ -1,6 +1,6 @@
 # bunya_app
 
-First Page:
+# First Page:
 
 Users can choose if he is a Customer or an Office.
 
@@ -8,7 +8,7 @@ Users can choose if he is a Customer or an Office.
 
 
 
-Intro Pages For Customer:
+# Intro Pages For Customer:
 
 the user can scroll through the pages or he can skip the pages by pressing the (تخطي) button.
 
@@ -16,7 +16,7 @@ the user can scroll through the pages or he can skip the pages by pressing the (
 
  
 
-SignUp for Customer :
+# SignUp for Customer :
 
 The customer can create an account with his data.
 
@@ -26,7 +26,7 @@ The customer can create an account with his data.
 
 
 
-SignIn for Customer:
+# SignIn for Customer:
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/265a5232-9031-4435-816c-86c5affe6bc2" alt="signin_c" width="300">
 
@@ -34,7 +34,7 @@ SignIn for Customer:
 
 
 
-Home Page for Customer:
+# Home Page for Customer:
 
 The customer can see the latest posts uploaded by the Offices and like or unlike them also he can view the Offices and he can choose a specific category and view the offices for this category.
 
@@ -74,7 +74,7 @@ The customer can talk to the offices he wants to communicate with:
 
 
 
-Chat Page for Customer:
+# Chat Page for Customer:
 
 The customer can view his chats with the offices.
 
@@ -82,7 +82,7 @@ The customer can view his chats with the offices.
 
 
 
-Categories Page for Customer:
+# Categories Page for Customer:
 
 The customer can choose a specific category and view the offices for this category.
 
@@ -91,7 +91,7 @@ The customer can choose a specific category and view the offices for this catego
 
 
 
-ChatAi Page for Customer:
+# ChatAi Page for Customer:
 
 The customer can talk to an AI poot to ask him anything about the construction, design, etc.
 
@@ -104,7 +104,7 @@ The customer can talk to an AI poot to ask him anything about the construction, 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/9dc2d530-4c2e-4228-b5e9-3bf3930d640e" alt="aichat_cPart005" width="300">
 
 
-Profile Page:
+# Customer Profile Page:
 
 - edit:
 
@@ -129,7 +129,7 @@ The customer can log out from his account.
 
 ------------------------------------------
 
-Offices Intro :
+#  Intro for Offices:
 
 the user can scroll through the pages or he can skip the pages by pressing the (تخطي) button.
 
@@ -137,7 +137,7 @@ the user can scroll through the pages or he can skip the pages by pressing the (
 
 
 
-Offices SignUp :
+#  SignUp for Offices:
 
 The Office can create an account with his data but he must have a valid commercial register.
 
@@ -147,12 +147,12 @@ The Office can create an account with his data but he must have a valid commerci
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/1d0045e4-0d70-47ec-a768-8924c975fc81" alt="signup_office" width="300">
 
 
-Offices SignIn :
+#  SignIn for Offices:
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/4ab3135d-1c22-4456-8b36-c31726d8fae4" alt="signin_office" width="300">
 
 
-Offices Add Post:
+# Offices Add Post:
 
 The Office can add a post where he can present his work.
 
@@ -162,14 +162,14 @@ The Office can add a post where he can present his work.
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/c0a8a3ba-5b9e-4a4d-bbd5-d4a0936e038e" alt="post" width="300">
 
 
-Offices Chat Page:
+# Offices Chat Page:
 
 The Office can view his chats with the offices.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/8dd9f615-9111-4645-a6ae-ddb070d200ef" alt="chatpage" width="300">
 
 
-Offices Profile Page:
+# Offices Profile Page:
 
 - edit:
 
@@ -194,26 +194,27 @@ The Office can log out from his account.
 
 
 --------------------------------------------------
-Reset Password:
+# Reset Password:
 
 The users can change their password.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/0fdc91b9-af9b-47ec-8b7f-16d4637de735" alt="resetpasss" width="300">
 
 
-Dark Mood and Report:
+# Dark Mood and Report:
 
 The users can choose any mode they want.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/35cef3bf-1f99-446b-ac28-cd88391d860d" alt="darkmood_problem" width="300">
 
 
-wrong input:
+# wrong input:
 
 there is validation for each entry in the app to ensure that the information entered is correct.
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/06d21401-9ab6-49cc-bfb9-3d671f32e0fd" alt="wrong_entry" width="300">
 
 
-## In the end Bunya | بنية is a revolutionary application designed to seamlessly connect offices related to building requirements with users passionate about building projects. With Bunya, users gain access to a vibrant community where they can explore, collaborate, and create.
+##Conclusion
+In the end Bunya | بنية is a revolutionary application designed to seamlessly connect offices related to building requirements with users passionate about building projects. With Bunya, users gain access to a vibrant community where they can explore, collaborate, and create.
 # Thank you and have a great day. 
