@@ -3,38 +3,39 @@
 First Page:
 Users can choose if he is a Customer or an Office.
 
-<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/b59ce61b-58b7-4e84-9757-0adf8905be9f" alt="first_page" width="200">
+<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/b59ce61b-58b7-4e84-9757-0adf8905be9f" alt="first_page" width="300">
 
 
 Intro Pages For Customer:
 the user can scroll through the pages or he can skip the pages by pressing the (تخطي) button.
 
-<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/5247962c-8caf-40dc-a34f-c80a691ef034" alt="intro-c" width="200">
+<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/5247962c-8caf-40dc-a34f-c80a691ef034" alt="intro-c" width="300">
  
 
 SignUp for Customer :
 The customer can create an account with his data.
 
-<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/e728cda8-55ec-4f69-a700-4216df4f7fb0" alt="signup_c_truePart002" width="200">
+<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/e728cda8-55ec-4f69-a700-4216df4f7fb0" alt="signup_c_truePart002" width="300">
 
-<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/32c83f00-a35f-47f0-bde7-c6e9028aef97" alt="signup_c_truePart003" width="200">
+<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/32c83f00-a35f-47f0-bde7-c6e9028aef97" alt="signup_c_truePart003" width="300">
 
 
 SignIn for Customer:
 
-<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/265a5232-9031-4435-816c-86c5affe6bc2" alt="signin_c" width="200">
+<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/265a5232-9031-4435-816c-86c5affe6bc2" alt="signin_c" width="300">
 
 
 
 
 
 Home Page for Customer:
-The customer can see the latest posts uploaded by the Offices and the account of the Offices also he can choose the specific category.
 
-<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/f6be37b3-63ba-4c7b-b762-bfa46a79a141" alt="home_page_cPart005" width="200">
+The customer can see the latest posts uploaded by the Offices and the account of the Offices also he can choose a specific category and view the accounts and offices for this category.
+
+<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/f6be37b3-63ba-4c7b-b762-bfa46a79a141" alt="home_page_cPart005" width="300">
 
 
-<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/bebeca67-93a7-4371-95ef-a5ea937cb46f" alt="home_page_cPart008" width="200">
+<img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/bebeca67-93a7-4371-95ef-a5ea937cb46f" alt="home_page_cPart008" width="300">
 
 
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/90169952-2837-44b9-bc76-68fa26d69c3e" alt="home_page_cPart012" width="300">
