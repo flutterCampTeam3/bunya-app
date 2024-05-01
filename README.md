@@ -215,5 +215,5 @@ there is validation for each entry in the app to ensure that the information ent
 <img src="https://github.com/flutterCampTeam3/bunya-app/assets/124809082/06d21401-9ab6-49cc-bfb9-3d671f32e0fd" alt="wrong_entry" width="300">
 
 
-
-
+## In the end Bunya | بنية is a revolutionary application designed to seamlessly connect offices related to building requirements with users passionate about building projects. With Bunya, users gain access to a vibrant community where they can explore, collaborate, and create.
+# Thank you and have a great day. 
